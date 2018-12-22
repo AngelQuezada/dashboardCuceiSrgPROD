@@ -1,0 +1,13 @@
+.jumbotron{
+	text-align: center; 
+	background: gray; color: white;
+}
+.row#principal{
+	margin: 2%;
+}
+.input-field.col-sm-12#txbox{
+	text-align:center;
+}
+.col-sm-12#divButton{
+	text-align: center;
+}
