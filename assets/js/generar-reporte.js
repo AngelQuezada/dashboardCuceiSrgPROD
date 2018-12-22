@@ -1,5 +1,5 @@
 const nuevoReporte = function(){
-  validar();
+  //validar();
   alert("Boton Generar Reporte");
 }
 const radOtro = function(){
@@ -59,7 +59,7 @@ const getPiso = function(){
       document.getElementById("piso").disabled = true;       
     },
     error: function(data) {
-      alert('Error al cargar lista de Pisos');
+      alert('Debe seleccionar un módulo primero.');
     }
   });
 }
@@ -77,7 +77,7 @@ const getAula = function(){
       document.getElementById("aula").disabled = true;       
     },
     error: function(data) {
-      alert('Error al cargar lista de Aulas');
+      alert('Debe seleccionar un módulo o piso primero.');
     }
   });
 }

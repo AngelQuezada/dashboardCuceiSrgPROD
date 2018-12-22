@@ -7,7 +7,7 @@
   ?>
  <link rel="stylesheet" type="text/css" href="assets/css/generar-reporte.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="">
 <div class="wrapper">
 	<?php
       include("navbar.php");
@@ -21,24 +21,25 @@
         <p>SOLICITUD MANTENIMIENTO PREVENTIVO / CORRECTIVO</p>
     </div>
     <div class="row" id="principal">
-                  <div class="col-sm-3">
-                      <input class="form-control" id="recibe" type="text" name="recibe" required>
-                      <label for="recibe">Recibe</label>
-                  </div>
+      <form name="formulario" autocomplete="off">
                 <div class="col-sm-3">
-                  <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" required>
-                  <span id="emailError"></span>
+                    <input class="form-control" id="recibe" type="text" name="recibe" required>
+                    <label for="recibe">Recibe</label>
+                </div>
+                <div class="form-group col-sm-3">
+                  <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx"  ng-model="correo" required>
+                  <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span>
                   <label for="correo">Correo</label>
                 </div>
-               
                 <div class="col-sm-2">
-                 <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" required>
-                  <label for="telefono">Teléfono de contacto</label>
+                 <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" required>
+                 <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Telefono es requerido.<br/></span>
+                 <label for="telefono">Teléfono de contacto</label>
                 </div>
-              
                 <div class="input-field col-sm-3">
-                    <input class="form-control" id="area" type="text" class="validate" name="area" required>
-                    <label for="area">Area solicitante</label>
+                  <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" required>
+                  <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Area es requerido.<br/></span>
+                  <label for="area">Area solicitante</label>
                 </div>
                 <div class="input-field col-sm-12">
                   <fieldset>
@@ -132,16 +133,16 @@
                       </div>
                     </fieldset>
                 </div>
-                  <div class="input-field col-sm-12" id="txbox">
-                    <p>Descripcion del problema</p><br>
-                      <textarea rows="4" cols="50" name="descripcionProblema">
-                      </textarea>
-                  </div>
-        
-                <div class="col-sm-12" id="divButton">
-                    <button class="btn btn-primary" onclick="nuevoReporte()" id="btnNuevoReporte">Registrar Reporte
-                    </button>
+                <div class="input-field col-sm-12" id="txbox">
+                  <p>Descripcion del problema</p><br>
+                    <textarea rows="4" cols="50" name="descripcionProblema">
+                    </textarea>
                 </div>
+                <div class="col-sm-12" id="divButton">
+                  <button class="btn btn-primary" onclick="nuevoReporte()" id="btnNuevoReporte" ng-disabled="formulario.$invalid">Registrar Reporte
+                  </button>
+                </div>
+      </form>       
     </div>
   <?php
     include("control-sidebar.php");
@@ -151,6 +152,7 @@
 <?php
   require('footer.php');
 ?>
+<script src="assets/js/libs/angular.min.js" type="text/javascript"></script>
 <script src="assets/js/generar-reporte.js" type="text/javascript"></script>
 </body>
 </html>
