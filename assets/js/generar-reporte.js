@@ -28,7 +28,7 @@ const ereaseItems = function(){
   const getModulo = function(){
     $.ajax({
     type: "GET",
-    url: 'http://localhost/api-cucei/index.php/modulo/modulos', 
+    url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos', 
     dataType: "json",
     success: function(data){
       $.each(data,function(key, registro) {
@@ -46,7 +46,7 @@ const getPiso = function(){
   var id_module = document.getElementById('modulo').value;
   $.ajax({
     type: "GET",
-    url: 'http://localhost/api-cucei/index.php/piso/pisos/'+id_module,
+    url: 'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,
     dataType: "json",
     success: function(data){
       $.each(data,function(key, registro) {
@@ -64,7 +64,7 @@ const getAula = function(){
   var floor_id = document.getElementById('piso').value;
   $.ajax({
     type: "GET",
-    url: 'http://localhost/api-cucei/index.php/aula/aulas/'+id_module+'/'+floor_id,
+    url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+id_module+'/'+floor_id,
     dataType: "json",
     success: function(data){
       $.each(data,function(key, registro) {

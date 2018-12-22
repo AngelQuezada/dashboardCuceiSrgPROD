@@ -28,7 +28,6 @@
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-
     	</section>
     </div>
     <?php
