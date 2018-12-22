@@ -22,21 +22,22 @@
     </div>
     <div class="row" id="principal">
                   <div class="col-sm-3">
-                      <input class="form-control" id="recibe" type="text" name="recibe">
+                      <input class="form-control" id="recibe" type="text" name="recibe" required>
                       <label for="recibe">Recibe</label>
                   </div>
                 <div class="col-sm-3">
-                  <input class="form-control" id="correo" type="text" class="validate" name="correo">
+                  <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" required>
+                  <span id="emailError"></span>
                   <label for="correo">Correo</label>
                 </div>
                
                 <div class="col-sm-2">
-                  <input class="form-control" id="telefono" type="text" class="validate" name="telefono">
+                 <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" required>
                   <label for="telefono">Teléfono de contacto</label>
                 </div>
               
                 <div class="input-field col-sm-3">
-                    <input class="form-control" id="area" type="text" class="validate" name="area">
+                    <input class="form-control" id="area" type="text" class="validate" name="area" required>
                     <label for="area">Area solicitante</label>
                 </div>
                 <div class="input-field col-sm-12">
@@ -63,67 +64,68 @@
                       <div class="row">
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="1"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="1"/>
                                 <span>Aire Acondicionado</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="2"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="2"/>
                                 <span>Carpinteria</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="3"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="3"/>
                                 <span>Cristales y/o estructura de aluminio</span>
                             </label>
                         </div>
                          <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="4"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="4"/>
                                 <span>Electrico</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="5"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="5"/>
                                 <span>Herreria</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="6"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="6"/>
                                 <span>Hidraulico</span>
                             </label>
                         </div>
                          <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="7"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="7"/>
                                 <span>Infraestructura</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="8"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="8"/>
                                 <span>Jardineria</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="9"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="9"/>
                                 <span>Limpieza</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="10"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="10"/>
                                 <span>Pintura</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label>
-                                <input name="descripcionServicio" type="radio" value="11"/>
+                                <span id="inputOtro"></span>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="11" onclick="radOtro()" />
                                 <span>Otro</span>
                             </label>
                         </div>

@@ -1,5 +1,9 @@
 const nuevoReporte = function(){
+  validar();
   alert("Boton Generar Reporte");
+}
+const radOtro = function(){
+  $("#inputOtro").append('<input class="form-control" id="descripcionServicio" type="text" class="validate" name="descripcionServicio" placeholder="Describa el servicio" required>');  
 }
 const ereaseItems = function(){
     document.getElementById("modulo").disabled = false;
@@ -75,5 +79,29 @@ const getAula = function(){
     error: function(data) {
       alert('Error al cargar lista de Aulas');
     }
+  });
+}
+const validar = function(){
+  $('#recibe').blur(function(event) {
+    event.target.checkValidity();
+  }).bind('invalid', function(event) {
+    setTimeout(function() { $(event.target).focus();}, 50);
+  });
+
+  $('#correo').blur(function(event) {
+    event.target.checkValidity();
+  }).bind('invalid', function(event) {
+  });
+  
+  $('#telefono').blur(function(event) {
+    event.target.checkValidity();
+  }).bind('invalid', function(event) {
+    setTimeout(function() { $(event.target).focus();}, 50);
+  });
+
+  $('#area').blur(function(event) {
+    event.target.checkValidity();
+  }).bind('invalid', function(event) {
+    setTimeout(function() { $(event.target).focus();}, 50);
   });
 }
