@@ -1,6 +1,6 @@
-<footer class="main-footer">
+<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: white;">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Version</b> 0.5
     </div>
   </footer>
 <script src="assets/js/libs/jquery.min.js"></script>
@@ -29,3 +29,5 @@
 <script src="assets/js/libs/adminlte.min.js"></script>
 <script src="assets/js/libs/dashboard.js"></script>
 <script src="assets/js/libs/demo.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -42,7 +42,7 @@ const registrarReporte = function(recibe,correo,telefono,area,modulo,piso,aula,o
   }
   console.log(JSON.stringify(datos));
   $.ajax({
-    type: 'post',
+    type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevo',
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',

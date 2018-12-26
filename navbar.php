@@ -22,7 +22,7 @@
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
-                <p>
+                <p id="correoNavbar">
                   Usuario Prueba
                 </p>
               </li>
@@ -31,7 +31,7 @@
                   <a href="mi-perfil.php" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="controller/salir.php" class="btn btn-default btn-flat">Salir</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -43,3 +43,6 @@
       </div>
     </nav>
   </header>
+  <script type="text/javascript">
+    document.getElementById("correoNavbar").innerHTML = localStorage.getItem("email");
+  </script>
