@@ -184,15 +184,15 @@ $(function () {
   // Layout options
   $demoSettings.append(
     '<h4 class="control-sidebar-heading">'
-    + 'Layout Options'
+    + 'Personalizar Dashboard'
     + '</h4>'
     // Fixed layout
     + '<div class="form-group">'
     + '<label class="control-sidebar-subheading">'
     + '<input type="checkbox"data-layout="fixed"class="pull-right"/> '
-    + 'Fixed layout'
+    + 'Fijar panel'
     + '</label>'
-    + '<p>Activate the fixed layout. You can\'t use fixed and boxed layouts together</p>'
+    + '<p>Activa esta opcion para fijar el panel superior.</p>'
     + '</div>'
     // Boxed layout
     + '<div class="form-group">'

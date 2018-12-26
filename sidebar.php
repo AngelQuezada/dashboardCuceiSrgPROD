@@ -3,9 +3,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left info">
-          <p>Usuario Prueba</p>
-        </div>
+          <p id="encabezado" style="color: white;"></p>
       </div>
      
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -84,3 +82,16 @@
       </ul>
     </section>
   </aside>
+  <script type="text/javascript">
+  function setNameSideBar() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+      document.getElementById("encabezado").innerHTML = localStorage.getItem("nombreCompleto");
+    }, 2000);
+   });
+  }
+  async function inicio(){
+    var result = await setNameSideBar();
+  }
+    inicio();
+  </script>

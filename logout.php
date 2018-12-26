@@ -1,6 +1,9 @@
 <?php
   include('footer.php');
 ?>
+<?php
+  require_once('centinela.php');
+?>
 <script type="text/javascript">
 	// Initialize Firebase
   var config = {
@@ -12,12 +15,13 @@
     messagingSenderId: "56958534713"
   };
   firebase.initializeApp(config);
+
 	const logout = function(){
 		firebase.auth().signOut().then(function() {
     deleteToken();
-		swal("Admin CUCEI-SRG", "Has cerrado sesión correctamente", "info");
 		}).catch(function(error) {
-		swal("Admin CUCEI-SRG", "Has ocurrido un error al intentar cerrar sesión", "error");
+  		swal("Admin CUCEI-SRG", "Has ocurrido un error al intentar cerrar sesión", "error");
+      return;
 		});
 	}
   const deleteToken = function(){

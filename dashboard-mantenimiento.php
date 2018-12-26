@@ -29,11 +29,7 @@
     <!-- END Content Header (Page header) -->
     <!-- Contenedor principal -->
     <section class="content">
-      <p>Bienvenido: USUARIO</p>
-      <?php
-        $date = getdate();
-        echo "Hoy es: ".$date['weekday']." ".$date['wday']. " de ".$date['month']. " del ".$date['year'];
-      ?>
+      <p id="fechaActual"></p>
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">

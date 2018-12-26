@@ -1,3 +1,6 @@
+<?php
+  require('centinela.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>

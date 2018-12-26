@@ -18,13 +18,11 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">     
-              <span class="hidden-xs">Usuario Prueba</span>
+              <span class="hidden-xs" id="nombrePersonal"></span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
-                <p id="correoNavbar">
-                  Usuario Prueba
-                </p>
+                <p id="correoNavbar"></p>
               </li>
               <li class="user-footer">
                 <div class="pull-left">
@@ -44,5 +42,16 @@
     </nav>
   </header>
   <script type="text/javascript">
-    document.getElementById("correoNavbar").innerHTML = localStorage.getItem("email");
+  function setNameNavBar() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+      document.getElementById("correoNavbar").innerHTML = localStorage.getItem("email");
+      document.getElementById("nombrePersonal").innerHTML = localStorage.getItem("nombreCompleto");
+    }, 2000);
+   });
+  }
+    async function inicio(){
+      var result = await setNameNavBar();
+    }
+inicio();
   </script>

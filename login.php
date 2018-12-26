@@ -28,7 +28,7 @@
     </form>
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-primary btn-block btn-flat" onclick="login()">Ingresar</button>
+          <button class="btn btn-primary btn-block btn-flat" onclick="login()" id="btnIngresar">Ingresar</button>
         </div>
          <div class="col-sm-12">
           <button class="btn btn-danger btn-block btn-flat" onclick="resetPwPage()">¿Contraseña perdida?</button>
@@ -39,6 +39,18 @@
   <?php
       include('footer.php');
   ?>
+  <script type="text/javascript">
+  const userLogIn = function(){
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+           window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+        }
+    });
+  }
+  window.onload = function(){
+    userLogIn();
+  }
+  </script>
   <script type="text/javascript" src="assets/js/registro.js"></script>
 </body>
 </html>

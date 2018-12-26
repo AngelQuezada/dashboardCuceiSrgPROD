@@ -1,10 +1,32 @@
 const index = function(){
-	let correo = localStorage.getItem("email");
-	if (correo == null) {
+	let email = localStorage.getItem("email");
+  if (email === null) {
     window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
-	}
-	console.log(correo);
+    return;
+  }
+	obtainName(email);
+	let d = new Date();
+	$('#fechaActual').append('Hoy es: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear());
 }
-window.onload = function(){
-	index();
+const obtainName = function(email){
+	$.ajax({
+    type: "GET",
+    url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
+    dataType: "json",
+    success: function(data){
+      	let nombre = data.nombre;
+      	let aPaterno = data.a_paterno;
+      	let aMaterno = data.a_materno;
+      	let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
+        console.log(nombreCompleto);
+    	localStorage.setItem("nombreCompleto", nombreCompleto);
+      return;
+    },
+    error: function(data) {
+      return;
+    }
+  });
 }
+  window.onload = function(){
+    index();
+  }
