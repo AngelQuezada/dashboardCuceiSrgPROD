@@ -53,5 +53,5 @@
     async function inicio(){
       var result = await setNameNavBar();
     }
-inicio();
+    inicio();
   </script>

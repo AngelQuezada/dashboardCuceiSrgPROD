@@ -14,12 +14,15 @@ const obtainName = function(email){
     url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
     dataType: "json",
     success: function(data){
+        let idUsuario = data.id;
       	let nombre = data.nombre;
       	let aPaterno = data.a_paterno;
       	let aMaterno = data.a_materno;
       	let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
         console.log(nombreCompleto);
     	localStorage.setItem("nombreCompleto", nombreCompleto);
+      localStorage.setItem("idUsuario", idUsuario);
+      console.log(idUsuario);
       return;
     },
     error: function(data) {

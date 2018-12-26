@@ -3,6 +3,8 @@ const centinela = function(){
 	let email = localStorage.getItem("email");
 	let nombreCompleto = localStorage.getItem("nombreCompleto");
 	let token = localStorage.getItem("token");
+	let idUsuario = localStorage.getItem("idUsuario");
+	console.log(idUsuario);
 	console.log(email);
 	console.log(nombreCompleto);
 	console.log(token);

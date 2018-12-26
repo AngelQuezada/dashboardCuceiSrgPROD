@@ -1,4 +1,17 @@
+const cleanReport = function(){
+    $("#modulo").empty();
+    $("#piso").empty();
+    $("#aula").empty();
+    $('#recibe').val('');
+    $('#correo').val('');
+    $('#telefono').val('');
+    $('#area').val('');
+    $('textarea#descripcionProblema').val('');
+    $('input:radio[name=descripcionServicio]').each(function () { $(this).prop('checked', false); });
+}
 const nuevoReporte = function(){
+  let token = localStorage.getItem("token");
+  let idUsuario = localStorage.getItem("idUsuario");
   let recibe = document.getElementById('recibe').value;
   let correo = document.getElementById('correo').value;
   let telefono = document.getElementById('telefono').value;
@@ -12,14 +25,14 @@ const nuevoReporte = function(){
   if (option == 'otro') {
      option = document.getElementById('otro').value;
   }
-  registrarReporte(recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema);
+  registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema);
 }
 /*
 const radOtro = function(){
   $("#inputOtro").html('<input class="form-control" id="descripcionServicio" type="text" class="validate" name="descripcionServicio" placeholder="Describa el servicio" required>').fadeIn();  
 }
 */
-const registrarReporte = function(recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema){
+const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema){
   console.log(recibe);
   console.log(correo);
   console.log(telefono);
@@ -30,6 +43,8 @@ const registrarReporte = function(recibe,correo,telefono,area,modulo,piso,aula,o
   console.log(option);
   console.log(descripcionProblema);
   var datos = {
+    "token" : token,
+    "idUsuario" : idUsuario,
     "recibe" : recibe,
     "correo" : correo,
     "telefono" : telefono,
@@ -48,9 +63,8 @@ const registrarReporte = function(recibe,correo,telefono,area,modulo,piso,aula,o
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(data){
-      console.log("Se ha registrado el reporte exitosamente");
-      console.log(JSON.stringify(data));
-      alert("Registro completado con el folio: "+data.folio)   
+    swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
+    cleanReport();
     },
     error: function(data) {
       alert('Ha ocurrido un error al intentar registrarse: '+data.mensaje);

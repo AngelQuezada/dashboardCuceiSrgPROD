@@ -12,11 +12,87 @@
     messagingSenderId: "56958534713"
   };
   firebase.initializeApp(config);
+const reenviar = function(){
+  var user = firebase.auth().currentUser;
+      user.sendEmailVerification().then(function(){
+          
+        swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
+        buttons: {
+        catch: {
+          text: "OK",
+          value: "OK",
+          },
+          Cerrar_Sesion: true,
+          reenviar: true,
+        },
+      })
+      .then((value) => {
+      switch (value) {
 
+      case "OK":
+      redirect();
+      break;
+
+      case "Cerrar_Sesion":
+      cerrarSesion();
+      break;
+
+      case "reenviar":
+      reenviar();
+      break;
+      }
+    });
+
+         
+      }).catch(function(error){
+      });
+}
+const cerrarSesion = function(){
+  firebase.auth().signOut().then(function() {
+    redirect();
+    }).catch(function(error) {
+    });
+}
+const redirect = function(){
+    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+}
+const validatedEmail = function(){
+      swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
+        buttons: {
+        catch: {
+          text: "Verificar",
+          value: "verify",
+          },
+          Cerrar_Sesion: true,
+          reenviar: true,
+        },
+      })
+      .then((value) => {
+      switch (value) {
+
+      case "verify":
+      redirect();
+      break;
+
+      case "Cerrar_Sesion":
+      cerrarSesion();
+      break;
+
+      case "reenviar":
+      reenviar();
+      break;
+      }
+    });
+}
 const userLogIn = function(){
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    localStorage.setItem("email", user.email);
+      let emailVerificado = user.emailVerified;
+      if (emailVerificado === false) {
+        validatedEmail(emailVerificado);
+        return;
+      }else{
+            localStorage.setItem("email", user.email);
     var datos = {
       "correo": user.email
     }
@@ -43,6 +119,7 @@ firebase.auth().onAuthStateChanged(function(user) {
    
     }
   });
+      }
   } else {
     window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
   }
