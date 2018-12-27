@@ -105,7 +105,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     success: function(data){
       $.each(data,function(key, registro) {
         let codigo = data.code;
-        console.log(codigo);
         if (codigo == 1) {
            window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
         }else{

@@ -48,7 +48,6 @@ const verificar = function(){
           alert("Ha ocurrido un error al intentar registrarse");
           $('#email').val('');
           $('#password').val('');
-          console.log(error);
       });
 }
 const resetPassword = function(){
@@ -76,8 +75,6 @@ const resetPassword = function(){
           var errorCode = error.code;
           var errorMessage = error.message;
           swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente", "error");
-          console.log(errorCode);
-          console.log(errorMessage);
           $('#email').val('');
       });
 }
@@ -110,7 +107,6 @@ const finalizarRegistro = function(){
     "aMaterno" : aMaterno,
     "correo" : correo
   }
-  console.log(JSON.stringify(datos));
   $.ajax({
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/personal/nuevo',

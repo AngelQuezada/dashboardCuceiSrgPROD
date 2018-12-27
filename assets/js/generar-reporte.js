@@ -1,8 +1,6 @@
 const cleanReport = function(){
-    $("#modulo").empty();
-    $("#piso").empty();
-    $("#aula").empty();
-    $('#recibe').val('');
+    ereaseModule();
+    $("#anotacionExtra").val('');
     $('#correo').val('');
     $('#telefono').val('');
     $('#area').val('');
@@ -19,29 +17,17 @@ const nuevoReporte = function(){
   let modulo = $("#modulo option:selected").text();
   let piso = $("#piso option:selected").text();
   let aula = $("#aula option:selected").text();
+  let anotacionExtra = document.getElementById('anotacionExtra').value;
   let option = document.querySelector('input[name="descripcionServicio"]:checked').value;
   let descripcionProblema = $("textarea#descripcionProblema").val();
   //Si se selecciona la opcion otro
   if (option == 'otro') {
      option = document.getElementById('otro').value;
   }
-  registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema);
+  registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema);
 }
-/*
-const radOtro = function(){
-  $("#inputOtro").html('<input class="form-control" id="descripcionServicio" type="text" class="validate" name="descripcionServicio" placeholder="Describa el servicio" required>').fadeIn();  
-}
-*/
-const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,option,descripcionProblema){
-  console.log(recibe);
-  console.log(correo);
-  console.log(telefono);
-  console.log(area);
-  console.log(modulo);
-  console.log(piso);
-  console.log(aula);
-  console.log(option);
-  console.log(descripcionProblema);
+
+const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema){
   var datos = {
     "token" : token,
     "idUsuario" : idUsuario,
@@ -52,10 +38,10 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
     "modulo" : modulo,
     "piso" : piso,
     "aula" : aula,
+    "anotacionExtra" : anotacionExtra,
     "option" : option,
     "descripcionProblema": descripcionProblema
   }
-  console.log(JSON.stringify(datos));
   $.ajax({
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevo',
@@ -63,11 +49,11 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(data){
-    swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
-    cleanReport();
+      swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
+      cleanReport();
     },
     error: function(data) {
-      alert('Ha ocurrido un error al intentar registrarse: '+data.mensaje);
+        swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+JSON.stringify(data.responseJSON.mensaje), "error");
     }
   });
 }
@@ -153,3 +139,6 @@ const getAula = function(){
     }
   });
 }
+//Seteo el campo recibe y lo deshabilito
+$('#recibe').val(localStorage.getItem("nombreCompleto"));
+document.getElementById("recibe").disabled = true;

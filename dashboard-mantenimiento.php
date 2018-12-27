@@ -1,3 +1,6 @@
+<?php
+  require_once('centinela.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,48 +35,48 @@
       <p id="fechaActual"></p>
       <div class="row">
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-black">
             <div class="inner">
-              <h3>150<sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Nuevos Reportes</p>
+              <h3><span id="reporteSolicitud">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <p>Reportes en solicitud</p>
             </div>
             <div class="icon">
-              <i class="ion ion-checkmark-round"></i>
+              <i class="ion ion-checkmark-round" style="color: green"></i>
             </div>
-            <a href="reportes-nuevos.php" class="small-box-footer">Ver nuevos reportes <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="reportes-nuevos.php" class="small-box-footer">Ver nuevos reportes <i class="fa fa-arrow-circle-right" style="color: green"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-green">
+          <div class="small-box bg-black">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Reportes por atender</p>
+              <h3><span id="reporteAsignado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <p>Reportes Asignados</p>
             </div>
             <div class="icon">
-              <i class="ion ion-alert"></i>
+              <i class="fa fa-check-square-o" style="color: blue"></i>
             </div>
-            <a href="reportes-atender.php" class="small-box-footer">Ver reportes por atender <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="reportes-atender.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-black">
             <div class="inner">
-              <h3>44<sup style="font-size: 20px">Usuarios</sup></h3>
-              <p>Usuarios Registrados</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65<sup style="font-size: 20px">Reportes</sup></h3>
+              <h3><span id="reporteCancelado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes cancelados</p>
             </div>
             <div class="icon">
-              <i class="ion-close-round"></i>
+              <i class="ion-close-round" style="color: red"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <div class="small-box bg-black">
+            <div class="inner">
+              <h3><span id="comunidadRegistrada">...</span><sup style="font-size: 20px">Usuarios</sup></h3>
+              <p>Comunidad registrada</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add" style="color: orange"></i>
             </div>
           </div>
         </div>
