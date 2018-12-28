@@ -30,14 +30,13 @@
     <div class="row">
       <div class="col-sm-12">
         <button type="button" class="btn btn-primary btn-block btn-flat" onclick="registrar();">Registrar</button>
-      </div>
-      <div class="col-sm-12">
-        <button type="button" class="btn btn-danger btn-block btn-flat" onclick="regresar();">Regresar</button>
+  </form>
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-danger btn-block btn-flat" onclick="regresar();">Regresar</button>
+        </div>
       </div>
     </div>
-    </div> 
-  </form>
-</div>
+</div> 
  <?php
       include('footer.php');
  ?>

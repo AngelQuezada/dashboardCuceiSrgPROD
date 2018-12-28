@@ -1,10 +1,10 @@
 <?php
-  require_once('centinela.php');
+  require('centinela.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CUCEI-SRG | Dashboard</title>
+  <title>CUCEI-SRG | Dashboard - Mantenimiento</title>
   <?php
     include('header.php');
   ?>
@@ -18,7 +18,6 @@
       include("sidebar.php");
     ?>
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Dashboard-Mantenimiento
@@ -29,8 +28,6 @@
         <li class="active">Dashboard Mantenimiento</li>
       </ol>
     </section>
-    <!-- END Content Header (Page header) -->
-    <!-- Contenedor principal -->
     <section class="content">
       <p id="fechaActual"></p>
       <div class="row">
@@ -55,7 +52,7 @@
             <div class="icon">
               <i class="fa fa-check-square-o" style="color: blue"></i>
             </div>
-            <a href="reportes-atender.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
+            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">

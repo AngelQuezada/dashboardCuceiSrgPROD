@@ -70,10 +70,9 @@ const obtainName = function(email){
       	let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
     	localStorage.setItem("nombreCompleto", nombreCompleto);
       localStorage.setItem("idUsuario", idUsuario);
-      return;
     },
     error: function(data) {
-      return;
+      window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
     }
   });
 }

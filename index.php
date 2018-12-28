@@ -14,21 +14,18 @@
   firebase.initializeApp(config);
 const reenviar = function(){
   var user = firebase.auth().currentUser;
-      user.sendEmailVerification().then(function(){
-          
-        swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
-        buttons: {
-        catch: {
-          text: "OK",
-          value: "OK",
-          },
-          Cerrar_Sesion: true,
-          reenviar: true,
+    user.sendEmailVerification().then(function(){
+      swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
+      buttons: {
+      catch: {
+        text: "OK",
+        value: "OK",
         },
-      })
-      .then((value) => {
-      switch (value) {
-
+        Cerrar_Sesion: true,
+        reenviar: true,
+      },
+    }).then((value) => {
+    switch (value) {
       case "OK":
       redirect();
       break;
@@ -40,11 +37,9 @@ const reenviar = function(){
       case "reenviar":
       reenviar();
       break;
-      }
-    });
-
-         
-      }).catch(function(error){
+    }
+   });
+    }).catch(function(error){
       });
 }
 const cerrarSesion = function(){
@@ -85,6 +80,10 @@ const validatedEmail = function(){
     });
 }
 const userLogIn = function(){
+  let existToken = localStorage.getItem("token");
+  if (existToken !== null) {
+    window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
+  }
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       let emailVerificado = user.emailVerified;
@@ -115,7 +114,6 @@ firebase.auth().onAuthStateChanged(function(user) {
       });
     },
     error: function(data) {
-   
     }
   });
       }

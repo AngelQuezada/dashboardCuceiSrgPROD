@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>CUCEI-SRG | Reportes Finalizados</title>
 	<?php
     	include('header.php');
-  ?>
+  	?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -17,12 +17,12 @@
     <div class="content-wrapper">
     	<section class="content-header">
     		<h1>
-		        Administración de Personal
+		        Reportes Finalizados-Mantenimiento
 		        <small>Sistema de Reportes Generales</small>
       		</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Personal</li>
+				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
+				<li class="active">Reportes Finalizados</li>
 			</ol>
     	</section>
     	<!-- END Content Header (Page header) -->

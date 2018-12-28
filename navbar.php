@@ -1,6 +1,6 @@
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">C<b>SRG</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -26,10 +26,10 @@
               </li>
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="mi-perfil.php" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="mi-perfil.php" class="btn btn-secondary btn-flat">Mi Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="logout.php" class="btn btn-default btn-flat">Salir</a>
+                  <a href="logout.php" class="btn btn-danger btn-flat">Salir</a>
                 </div>
               </li>
             </ul>

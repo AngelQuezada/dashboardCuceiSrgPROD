@@ -20,7 +20,7 @@
     ?>
   <div class="content-wrapper">
   	<div class="jumbotron">
-        <p>COORDINACION DE SERVICIOS GENERALES / UNIDAD DE MANTENIMIENTO</p>
+        <p>COORDINACIÓN DE SERVICIOS GENERALES / UNIDAD DE MANTENIMIENTO</p>
         <p>SOLICITUD MANTENIMIENTO PREVENTIVO / CORRECTIVO</p>
     </div>
     <div class="row" id="principal">
@@ -36,37 +36,43 @@
                 </div>
                 <div class="col-sm-2">
                  <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" placeholder="3312345678" required>
-                 <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Telefono es requerido.<br/></span>
+                 <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Teléfono es requerido.<br/></span>
                  <label for="telefono" style="color: black;">Teléfono de contacto</label>
                 </div>
                 <div class="input-field col-sm-3">
-                  <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" placeholder="Area" required>
-                  <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Area es requerido.<br/></span>
-                  <label for="area" style="color: black;">Area solicitante</label>
+                  <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" placeholder="Área" required>
+                  <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Área es requerido.<br/></span>
+                  <label for="area" style="color: black;">Área solicitante</label>
                 </div>
                 <div class="input-field col-sm-12">
                   <fieldset>
-                    <legend>Ubicacion del servicio</legend>
-                    <label for="modulo" style="color: black;">Modulo:</label>
-                    <select class="form-control" id="modulo" onclick="getModulo()"><option value="" disabled selected>Seleccione un Módulo.</option></select>
-                    <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
-                    <label for="piso" style="color: black;">Piso:</label>
-                    <select class="form-control" id="piso" 
-                    onclick="getPiso()"><option value="" disabled selected>Seleccione un Piso.</option></select>
-                    <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
-                    <label for="aula" style="color: black;">Aula:</label>
-                    <select class="form-control" id="aula"
-                    onclick="getAula()" 
-                    ><option value="" disabled selected>Seleccione un Aula.</option></select>
-                    <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
+                    <legend>Ubicación del servicio</legend>
+                    <div id="divModulo">
+                      <label for="modulo" style="color: black;">Módulo:</label>
+                      <select class="form-control" id="modulo" onclick="getModulo()"><option value="" disabled selected>Seleccione un Módulo.</option></select>
+                      <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
+                    </div>
+                    <div id="divPiso">
+                      <label for="piso" style="color: black;">Piso:</label>
+                      <select class="form-control" id="piso" 
+                      onclick="getPiso()"><option value="" disabled selected>Seleccione un Piso.</option></select>
+                      <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
+                    </div>
+                    <div id="divAula">
+                      <label for="aula" style="color: black;">Aula:</label>
+                      <select class="form-control" id="aula"
+                      onclick="getAula()" 
+                      ><option value="" disabled selected>Seleccione un Aula.</option></select>
+                      <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
+                    </div>
                     <button class="btn btn-warning" onclick="ereaseItems()">Reiniciar</button>
-                    <input class="form-control" id="anotacionExtra" type="text" name="anotacionExtra" placeholder="Escriba aqui si necesita hacer una descripcion sobre el lugar.">
+                    <input class="form-control" id="anotacionExtra" type="text" name="anotacionExtra" placeholder="Escriba aqui si necesita hacer una descripción sobre el lugar.">
                     <label for="recibe" style="color: black;">Anotación Extra sobre el sitio</label>
                   </fieldset>
                 </div>
                 <div class="input-field col-sm-12">
                     <fieldset>
-                      <legend>Descripcion del servicio solicitado o falla a reparar</legend>
+                      <legend>Descripción del servicio solicitado o falla a reparar</legend>
                       <div class="row">
                         <div class="input-field col-sm-3">
                             <label style="color: black;">
@@ -89,19 +95,19 @@
                          <div class="input-field col-sm-3">
                             <label style="color: black;">
                                 <input name="descripcionServicio" id="descripcionServicio" type="radio" value="4"/>
-                                <span>Electrico</span>
+                                <span>Eléctrico</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label style="color: black;">
                                 <input name="descripcionServicio" id="descripcionServicio" type="radio" value="5"/>
-                                <span>Herreria</span>
+                                <span>Herrería</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">
                             <label style="color: black;">
                                 <input name="descripcionServicio" id="descripcionServicio" type="radio" value="6"/>
-                                <span>Hidraulico</span>
+                                <span>Hidráulico</span>
                             </label>
                         </div>
                          <div class="input-field col-sm-3">
@@ -113,7 +119,7 @@
                         <div class="input-field col-sm-3">
                             <label style="color: black;">
                                 <input name="descripcionServicio" id="descripcionServicio" type="radio" value="8"/>
-                                <span>Jardineria</span>
+                                <span>Jardinería</span>
                             </label>
                         </div>
                         <div class="input-field col-sm-3">

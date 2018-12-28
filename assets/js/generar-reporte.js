@@ -58,6 +58,8 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
   });
 }
 const ereaseItems = function(){
+	$("#divPiso").show();
+	$("#divAula").show();
     document.getElementById("modulo").disabled = false;
     document.getElementById("piso").disabled = false;
     document.getElementById("aula").disabled = false;   
@@ -72,6 +74,8 @@ const ereaseItems = function(){
     ereaseFloor();
     ereaseAula();
     document.getElementById("modulo").disabled = false;
+    $("#divPiso").show();
+	$("#divAula").show();
     $("#modulo").empty();
     $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
 }
@@ -96,16 +100,21 @@ const ereaseItems = function(){
       $.each(data,function(key, registro) {
         $("#modulo").append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
       });
-      document.getElementById("modulo").disabled = true;     
+      document.getElementById("modulo").disabled = true;
     },
     error: function(data) {
       alert('Error al cargar lista de Modulos');
     }
   });
- 
-};
+}
 const getPiso = function(){
   var id_module = document.getElementById('modulo').value;
+  if (id_module === '1') {
+      swal("Reporte de Mantenimiento", "Describe la ubicacion en el siguiente campo.", "info");
+  	$("#divPiso").hide();
+  	$("#divAula").hide();
+  }
+
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,

@@ -94,7 +94,8 @@ const resetPwPage = function(){
     window.location.replace("http://localhost/DashboardCuceiSrg/reset-password.php");
 }
 const regresar = function(){
-    window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
+    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+    //window.history.go(-1);
 }
 const finalizarRegistro = function(){
   let correo = localStorage.getItem("email");

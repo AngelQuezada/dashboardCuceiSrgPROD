@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>CUCEI-SRG | Reportes Asignados</title>
 	<?php
     	include('header.php');
   	?>

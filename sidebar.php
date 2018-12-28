@@ -4,6 +4,8 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
           <p id="encabezado" style="color: white;"></p>
+          <div style="text-align: center">
+          </div>
       </div>
      
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -34,8 +36,8 @@
           <ul class="treeview-menu">
             <li><a href="generar-reporte.php"><i class="fa fa-circle-o"></i> Nuevo reporte</a></li>
             <li><a href="ver-reportes.php"><i class="fa fa-circle-o"></i> Ver nuevos reportes</a></li>
-            <li><a href="reportes-atender.php"><i class="fa fa-circle-o"></i>Ver reportes por atender</a></li>
-            <li><a href="reportes-atendidos.php"><i class="fa fa-circle-o"></i>Ver reportes atendidos</a></li>
+            <li><a href="reportes-asignados.php"><i class="fa fa-circle-o"></i>Ver reportes asignados</a></li>
+            <li><a href="reportes-finalizados.php"><i class="fa fa-circle-o"></i>Ver reportes finalizados</a></li>
             <li><a href="reportes-cancelados.php"><i class="fa fa-circle-o"></i>Ver reportes cancelados</a></li>
           </ul>
         </li>
@@ -65,8 +67,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="nuevo-personal.php"><i class="fa fa-circle-o"></i>Dar de alta nuevo personal</a></li>
-            <li><a href="administrar-personal.php"><i class="fa fa-circle-o"></i>Administrar Personal</a></li>
+            <li><a href="registro.php"><i class="fa fa-circle-o"></i>Dar de alta nuevo Usuario</a></li>
+            <li><a href="administrar-usuarios.php"><i class="fa fa-circle-o"></i>Administrar Usuarios</a></li>
           </ul>
         </li>
 

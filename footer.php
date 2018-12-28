@@ -14,8 +14,9 @@
 <script>
     $.material.init();
 </script>
-<script src="assets/js/libs/raphael.min.js"></script>
-<script src="assets/js/libs/morris.min.js"></script>
+
+<!--<script src="assets/js/libs/raphael.min.js"></script>-->
+<!--<script src="assets/js/libs/morris.min.js"></script>-->
 <script src="assets/js/libs/jquery.sparkline.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-world-mill-en.js"></script>
