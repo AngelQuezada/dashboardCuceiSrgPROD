@@ -79,6 +79,18 @@ const validatedEmail = function(){
       }
     });
 }
+/*
+//Bloquear todos los navegadores a excepcion de firefox [***NO DESCOMENTAR*** >:V]
+const agent = function(){
+  var isFirefox = typeof InstallTrigger !== 'undefined';
+  if (isFirefox === false) {
+    window.location.replace("http://localhost/DashboardCuceiSrg/compatibility.php");
+    return;
+  }else{
+  userLogIn();
+  }
+}
+*/
 const userLogIn = function(){
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
@@ -123,6 +135,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 }
 window.onload = function(){
-	userLogIn();
+  userLogIn();
 }
 </script>

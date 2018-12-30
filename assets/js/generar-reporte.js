@@ -1,4 +1,5 @@
 const cleanReport = function(){
+    ereaseLC();
     ereaseModule();
     $("#anotacionExtra").val('');
     $('#correo').val('');
@@ -58,54 +59,62 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
   });
 }
 const ereaseItems = function(){
-	$("#divPiso").show();
-	$("#divAula").show();
-    document.getElementById("modulo").disabled = false;
-    document.getElementById("piso").disabled = false;
-    document.getElementById("aula").disabled = false;   
-    $("#modulo").empty();
-    $("#piso").empty();
-    $("#aula").empty();
-    $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
-    $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
-    $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
+  ereaseLC();
+  $("#divPiso").show();
+  $("#divAula").show();  
+  $("#modulo").empty();
+  $("#piso").empty();
+  $("#aula").empty();
+  $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
+  $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
+  $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
-  const ereaseModule = function(){
-    ereaseFloor();
-    ereaseAula();
-    document.getElementById("modulo").disabled = false;
-    $("#divPiso").show();
-	$("#divAula").show();
-    $("#modulo").empty();
-    $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
+const ereaseModule = function(){
+  localStorage.removeItem("getModulo");
+  ereaseFloor();
+  ereaseAula();
+  document.getElementById("modulo").disabled = false;
+  $("#divPiso").show();
+  $("#divAula").show();
+  $("#modulo").empty();
+  $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
 }
-  const ereaseFloor = function(){
-    ereaseAula();
-    document.getElementById("piso").disabled = false;
-    $("#piso").empty();
-    $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
-
+const ereaseFloor = function(){
+  localStorage.removeItem("getPiso");
+  ereaseAula();
+  document.getElementById("piso").disabled = false;
+  $("#piso").empty();
+  $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
 }
-  const ereaseAula = function(){
-    document.getElementById("aula").disabled = false;   
-    $("#aula").empty();
-    $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
+const ereaseAula = function(){
+  localStorage.removeItem("getAula");
+  document.getElementById("aula").disabled = false;   
+  $("#aula").empty();
+  $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
-  const getModulo = function(){
-    $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos', 
-    dataType: "json",
-    success: function(data){
-      $.each(data,function(key, registro) {
-        $("#modulo").append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
-      });
-      document.getElementById("modulo").disabled = true;
-    },
-    error: function(data) {
-      alert('Error al cargar lista de Modulos');
-    }
-  });
+const getModulo = function(){
+  var $select = $('#modulo');
+  let lcM = localStorage.getItem("getModulo");
+  if(lcM !== null){
+    return;
+  }
+  $.ajax({
+  type: "GET",
+  url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos', 
+  dataType: "json",
+  success: function(data){
+  //$select.html('');
+   $.each(data,function(key, registro) {
+      $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
+    });
+    //console.log(options);
+    //$select.append(options);
+    localStorage.setItem("getModulo","1");
+  },
+  error: function(data) {
+    alert('Error al cargar lista de Modulos');
+  }
+});
 }
 const getPiso = function(){
   var id_module = document.getElementById('modulo').value;
@@ -114,7 +123,10 @@ const getPiso = function(){
   	$("#divPiso").hide();
   	$("#divAula").hide();
   }
-
+  let lcP = localStorage.getItem("getPiso");
+  if(lcP !== null){
+    return;
+  }
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,
@@ -123,7 +135,8 @@ const getPiso = function(){
       $.each(data,function(key, registro) {
         $("#piso").append('<option value='+registro.floor_id+'>PISO: '+registro.floor_id+'</option>');
       });
-      document.getElementById("piso").disabled = true;       
+      localStorage.setItem("getPiso","1");
+      //document.getElementById("piso").disabled = true;       
     },
     error: function(data) {
       alert('Debe seleccionar un módulo primero.');
@@ -133,6 +146,10 @@ const getPiso = function(){
 const getAula = function(){
   var id_module = document.getElementById('modulo').value;
   var floor_id = document.getElementById('piso').value;
+  let lcA = localStorage.getItem("getAula");
+  if(lcA !== null){
+    return;
+  }
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+id_module+'/'+floor_id,
@@ -141,13 +158,21 @@ const getAula = function(){
       $.each(data,function(key, registro) {
         $("#aula").append('<option value='+registro.aula_name+'>AULA: '+registro.aula_name+'</option>');
       });
-      document.getElementById("aula").disabled = true;       
+      localStorage.setItem("getAula","1");
+      //document.getElementById("aula").disabled = true;       
     },
     error: function(data) {
       alert('Debe seleccionar un módulo o piso primero.');
     }
   });
 }
+const ereaseLC = function(){
+  localStorage.removeItem("getModulo");
+  localStorage.removeItem("getPiso");
+  localStorage.removeItem("getAula");
+}
+//Elimino del LocalStorage para manipular los selects nuevamente
+ereaseLC();
 //Seteo el campo recibe y lo deshabilito
 $('#recibe').val(localStorage.getItem("nombreCompleto"));
 document.getElementById("recibe").disabled = true;
