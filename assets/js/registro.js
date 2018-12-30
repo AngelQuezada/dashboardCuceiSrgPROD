@@ -8,7 +8,6 @@
     messagingSenderId: "56958534713"
   };
   firebase.initializeApp(config);
-
 const registrar = function(){
       var email = document.getElementById('email').value;
       var password = document.getElementById('password').value;

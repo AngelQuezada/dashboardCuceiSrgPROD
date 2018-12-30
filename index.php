@@ -79,18 +79,6 @@ const validatedEmail = function(){
       }
     });
 }
-/*
-//Bloquear todos los navegadores a excepcion de firefox [***NO DESCOMENTAR*** >:V]
-const agent = function(){
-  var isFirefox = typeof InstallTrigger !== 'undefined';
-  if (isFirefox === false) {
-    window.location.replace("http://localhost/DashboardCuceiSrg/compatibility.php");
-    return;
-  }else{
-  userLogIn();
-  }
-}
-*/
 const userLogIn = function(){
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
@@ -103,6 +91,25 @@ firebase.auth().onAuthStateChanged(function(user) {
         validatedEmail(emailVerificado);
         return;
       }else{
+            let email = localStorage.getItem("email");
+            $.ajax({
+              type: "GET",
+              url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
+              dataType: "json",
+              async: false,
+              success: function(data){
+                  let idUsuario = data.id;
+                  let nombre = data.nombre;
+                  let aPaterno = data.a_paterno;
+                  let aMaterno = data.a_materno;
+                  let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
+                localStorage.setItem("nombreCompleto", nombreCompleto);
+                localStorage.setItem("idUsuario", idUsuario);
+              },
+              error: function(data) {
+                window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+              }
+            });
             localStorage.setItem("email", user.email);
     var datos = {
       "correo": user.email

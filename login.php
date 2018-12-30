@@ -19,7 +19,7 @@
     <form autocomplete="off">
       <div class="form-group">
         <label for="correo" style="color: blue;">Correo electrónico</label>
-        <i class="fa fa-envelope"></i><input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="correo">
+        <i class="fa fa-envelope"></i><input type="email" class="form-control" placeholder="correo@dominio.com" id="correo">
       </div>
       <div class="form-group">
         <label for="password" style="color: blue;">Contraseña</label>
@@ -29,6 +29,9 @@
       <div class="row">
         <div class="col-sm-12">
           <button class="btn btn-primary btn-block btn-flat" onclick="login()" id="btnIngresar">Ingresar</button>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-secondary btn-block btn-flat" onclick="registroPage()" id="btnRegistro">Registrarse</button>
         </div>
          <div class="col-sm-12">
           <button class="btn btn-danger btn-block btn-flat" onclick="resetPwPage()">¿Contraseña perdida?</button>
@@ -47,6 +50,9 @@
         }
     });
   }
+  const registroPage = function(){
+    window.location.replace("http://localhost/DashboardCuceiSrg/registro.php");
+}
   window.onload = function(){
     userLogIn();
   }

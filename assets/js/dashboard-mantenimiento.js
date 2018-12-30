@@ -1,9 +1,3 @@
-
-const index = function(){
-	let email = localStorage.getItem("email");
-  obtainName(email);
-}
-
 const getReportesNuevo = function(){
   $.ajax({
     type: "GET",
@@ -57,32 +51,12 @@ const fechaActual = function(){
   $('#fechaActual').append('Hoy es: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear());
 }
 
-const obtainName = function(email){
-	$.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
-    dataType: "json",
-    success: function(data){
-        let idUsuario = data.id;
-      	let nombre = data.nombre;
-      	let aPaterno = data.a_paterno;
-      	let aMaterno = data.a_materno;
-      	let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
-    	localStorage.setItem("nombreCompleto", nombreCompleto);
-      localStorage.setItem("idUsuario", idUsuario);
-    },
-    error: function(data) {
-      window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
-    }
-  });
-}
 
-  window.onload = function(){
-    index();
-    getReportesNuevo();
-    getReportesAtender();
-    getReportesCancelado();
-    getComunidadRegistrada();
-    fechaActual();
-  }
+
+//obtainName();
+getReportesNuevo();
+getReportesAtender();
+getReportesCancelado();
+getComunidadRegistrada();
+fechaActual();
   

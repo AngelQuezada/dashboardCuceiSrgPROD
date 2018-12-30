@@ -22,9 +22,10 @@
   	<div class="jumbotron">
         <p>COORDINACIÓN DE SERVICIOS GENERALES / UNIDAD DE MANTENIMIENTO</p>
         <p>SOLICITUD MANTENIMIENTO PREVENTIVO / CORRECTIVO</p>
+        <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
     </div>
     <div class="row" id="principal">
-      <form name="formulario" autocomplete="off">
+      <form name="formulario" autocomplete="off" required>
                 <div class="col-sm-3">
                     <input class="form-control" id="recibe" type="text" name="recibe" required>
                     <label for="recibe" style="color: black;">Recibe</label>
@@ -32,37 +33,37 @@
                 <div class="col-sm-3">
                   <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" ng-model="correo" required>
                   <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span>
-                  <label for="correo" style="color: black;">Correo</label>
+                  <label for="correo" style="color: black;"><small style="color: red">*</small>Correo</label>
                 </div>
                 <div class="col-sm-2">
                  <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" placeholder="3312345678" required>
                  <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Teléfono es requerido.<br/></span>
-                 <label for="telefono" style="color: black;">Teléfono de contacto</label>
+                 <label for="telefono" style="color: black;"><small style="color: red">*</small>Teléfono de contacto</label>
                 </div>
                 <div class="input-field col-sm-3">
                   <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" placeholder="Área" required>
                   <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Área es requerido.<br/></span>
-                  <label for="area" style="color: black;">Área solicitante</label>
+                  <label for="area" style="color: black;"><small style="color: red">*</small>Área solicitante</label>
                 </div>
                 <div class="input-field col-sm-12">
                   <fieldset>
                     <legend>Ubicación del servicio</legend>
                     <div id="divModulo">
-                      <label for="modulo" style="color: black;">Módulo:</label>
-                      <select class="form-control" id="modulo" onclick="getModulo()"><option value="" disabled selected>Seleccione un Módulo.</option></select>
+                      <label for="modulo" style="color: black;"><small style="color: red">*</small>Módulo:</label>
+                      <select class="form-control" id="modulo" onclick="getModulo()" required><option value="" disabled selected>Seleccione un Módulo.</option></select>
                       <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
                     </div>
                     <div id="divPiso">
-                      <label for="piso" style="color: black;">Piso:</label>
+                      <label for="piso" style="color: black;"><small style="color: red">*</small>Piso:</label>
                       <select class="form-control" id="piso" 
-                      onclick="getPiso()"><option value="" disabled selected>Seleccione un Piso.</option></select>
+                      onclick="getPiso()" required><option value="" disabled selected>Seleccione un Piso.</option></select>
                       <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
                     </div>
                     <div id="divAula">
-                      <label for="aula" style="color: black;">Aula:</label>
+                      <label for="aula" style="color: black;"><small style="color: red">*</small>Aula:</label>
                       <select class="form-control" id="aula"
                       onclick="getAula()" 
-                      ><option value="" disabled selected>Seleccione un Aula.</option></select>
+                      required><option value="" disabled selected>Seleccione un Aula.</option></select>
                       <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
                     </div>
                     <button class="btn btn-warning" onclick="ereaseItems()">Reiniciar</button>
@@ -72,11 +73,11 @@
                 </div>
                 <div class="input-field col-sm-12">
                     <fieldset>
-                      <legend>Descripción del servicio solicitado o falla a reparar</legend>
+                      <legend><small style="color: red">*</small>Descripción del servicio solicitado o falla a reparar</legend>
                       <div class="row">
                         <div class="input-field col-sm-3">
                             <label style="color: black;">
-                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="1"/>
+                                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="1" required/>
                                 <span>Aire Acondicionado</span>
                             </label>
                         </div>
@@ -146,7 +147,7 @@
                 </div>
                 <div class="input-field col-sm-12" id="txbox">
                   <fieldset>
-                    <legend>Descripción del problema</legend>
+                    <legend><small style="color: red">*</small>Descripción del problema</legend>
 <textarea rows="4" cols="50" name="descripcionProblema" id="descripcionProblema"></textarea>
                   </fieldset>
                 </div>

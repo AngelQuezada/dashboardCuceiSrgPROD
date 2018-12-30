@@ -17,12 +17,12 @@
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">     
-              <span class="hidden-xs" id="nombrePersonal"></span>
-            </a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nombrePersonal"></a>
             <ul class="dropdown-menu">
-              <li class="user-header">
-                <p id="correoNavbar"></p>
+              <li class="user-header" id="user-header">
+                <div id="correoNavbar">
+                  <img src="assets/img/cucei-srg-logo.png" width="50%">
+                </div>
               </li>
               <li class="user-footer">
                 <div class="pull-left">
@@ -45,9 +45,9 @@
   function setNameNavBar() {
     return new Promise(resolve => {
       setTimeout(() => {
-      document.getElementById("correoNavbar").innerHTML = localStorage.getItem("email");
-      document.getElementById("nombrePersonal").innerHTML = localStorage.getItem("nombreCompleto");
-    }, 2000);
+      $('#correoNavbar').append('<span>'+localStorage.getItem("email")+'</span>');
+      $('#nombrePersonal').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
+    }, 1000);
    });
   }
     async function inicio(){

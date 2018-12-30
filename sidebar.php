@@ -2,11 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-          <p id="encabezado" style="color: white;"></p>
-          <div style="text-align: center">
-          </div>
-      </div>
+      <div class="user-panel" id="user-panel"></div>
      
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -20,7 +16,7 @@
           </a>
           <!--Bloque Dashboard Mantenimiento-Seguridad -->
           <ul class="treeview-menu">
-            <li class="active"><a href="index.php"><i class="fa fa-circle-o"></i> Dashboard Mantenimiento</a></li>
+            <li class="active"><a href="dashboard-mantenimiento.php"><i class="fa fa-circle-o"></i> Dashboard Mantenimiento</a></li>
             <li><a href="dashboard-seguridad.php"><i class="fa fa-circle-o"></i> Dashboard Seguridad</a></li>
           </ul>
         </li>
@@ -67,7 +63,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="registro.php"><i class="fa fa-circle-o"></i>Dar de alta nuevo Usuario</a></li>
             <li><a href="administrar-usuarios.php"><i class="fa fa-circle-o"></i>Administrar Usuarios</a></li>
           </ul>
         </li>
@@ -88,8 +83,8 @@
   function setNameSideBar() {
     return new Promise(resolve => {
       setTimeout(() => {
-      document.getElementById("encabezado").innerHTML = localStorage.getItem("nombreCompleto");
-    }, 2000);
+      $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
+    }, 1000);
    });
   }
   async function inicio(){

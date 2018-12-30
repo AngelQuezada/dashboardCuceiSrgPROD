@@ -1,6 +1,5 @@
 <script type="text/javascript">
 const centinela = function(){
-	console.log("Si entro");
 	let email = localStorage.getItem("email");
 	let nombreCompleto = localStorage.getItem("nombreCompleto");
 	let token = localStorage.getItem("token");

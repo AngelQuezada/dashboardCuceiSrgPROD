@@ -103,12 +103,9 @@ const getModulo = function(){
   url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos', 
   dataType: "json",
   success: function(data){
-  //$select.html('');
    $.each(data,function(key, registro) {
       $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
     });
-    //console.log(options);
-    //$select.append(options);
     localStorage.setItem("getModulo","1");
   },
   error: function(data) {
