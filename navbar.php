@@ -25,10 +25,7 @@
                 </div>
               </li>
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="mi-perfil.php" class="btn btn-secondary btn-flat">Mi Perfil</a>
-                </div>
-                <div class="pull-right">
+                <div style="text-align: center">
                   <a href="logout.php" class="btn btn-danger btn-flat">Salir</a>
                 </div>
               </li>
