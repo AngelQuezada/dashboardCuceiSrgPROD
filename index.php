@@ -83,6 +83,7 @@ const userLogIn = function(){
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
     window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
+    return;
   }
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -90,13 +91,13 @@ firebase.auth().onAuthStateChanged(function(user) {
       if (emailVerificado === false) {
         validatedEmail(emailVerificado);
         return;
-      }else{
+      }
             let email = localStorage.getItem("email");
             $.ajax({
               type: "GET",
               url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
               dataType: "json",
-              async: false,
+              async: true,
               success: function(data){
                   let idUsuario = data.id;
                   let nombre = data.nombre;
@@ -107,7 +108,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                 localStorage.setItem("idUsuario", idUsuario);
               },
               error: function(data) {
-                window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
               }
             });
             localStorage.setItem("email", user.email);
@@ -118,6 +118,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
     data: JSON.stringify(datos),
+    async: true,
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(data){
@@ -135,7 +136,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     error: function(data) {
     }
   });
-      }
   } else {
     window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
   }
