@@ -29,11 +29,9 @@ const reenviar = function(){
       case "OK":
       redirect();
       break;
-
       case "Cerrar_Sesion":
       cerrarSesion();
       break;
-
       case "reenviar":
       reenviar();
       break;
@@ -64,15 +62,12 @@ const validatedEmail = function(){
       })
       .then((value) => {
       switch (value) {
-
       case "verify":
       redirect();
       break;
-
       case "Cerrar_Sesion":
       cerrarSesion();
       break;
-
       case "reenviar":
       reenviar();
       break;
@@ -83,22 +78,21 @@ const userLogIn = function(){
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
     window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
-    return;
   }
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       let emailVerificado = user.emailVerified;
       if (emailVerificado === false) {
         validatedEmail(emailVerificado);
-        return;
-      }
-            let email = localStorage.getItem("email");
+      }else{
+            let email = user.email;
             $.ajax({
               type: "GET",
               url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
               dataType: "json",
               async: true,
               success: function(data){
+                console.log(data)
                   let idUsuario = data.id;
                   let nombre = data.nombre;
                   let aPaterno = data.a_paterno;
@@ -106,11 +100,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                   let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
                 localStorage.setItem("nombreCompleto", nombreCompleto);
                 localStorage.setItem("idUsuario", idUsuario);
+                localStorage.setItem("email", user.email);
               },
               error: function(data) {
               }
             });
-            localStorage.setItem("email", user.email);
     var datos = {
       "correo": user.email
     }
@@ -118,7 +112,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
     data: JSON.stringify(datos),
-    async: true,
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(data){
@@ -136,6 +129,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     error: function(data) {
     }
   });
+      }
   } else {
     window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
   }

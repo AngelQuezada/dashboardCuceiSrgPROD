@@ -115,7 +115,6 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
 }
     $(document).ready(function(){
       $("button").click(function(){
-        console.log("Howdy");
         //$("#tablaResultados").empty();
         document.getElementById("tablaResultados").innerHTML = "";
         document.getElementById("tablaResultados").innerHTML = "<div id=\"container\"></div>";

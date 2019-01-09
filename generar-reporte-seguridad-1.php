@@ -20,7 +20,6 @@
     ?>
     <div class="content-wrapper">
       <div class="jumbotron">
-        <p>Howdy</p>
       </div>
     	<section class="content">
         
