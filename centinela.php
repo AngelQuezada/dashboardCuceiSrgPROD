@@ -9,7 +9,7 @@ const centinela = function(){
 	console.log(token);
 	console.log(idUsuario);
 	if (email === null || nombreCompleto === null || token === null ) {
-        //window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+        window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
         return;
 	}
 	return;

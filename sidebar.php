@@ -31,6 +31,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="generar-reporte.php"><i class="fa fa-circle-o"></i> Nuevo reporte</a></li>
+            <li><a href="buscar-reporte.php"><i class="fa fa-circle-o"></i> Buscar Reportes</a></li>
             <li><a href="reportes-nuevos.php"><i class="fa fa-circle-o"></i> Ver nuevos reportes</a></li>
             <li><a href="reportes-asignados.php"><i class="fa fa-circle-o"></i>Ver reportes asignados</a></li>
             <li><a href="reportes-finalizados.php"><i class="fa fa-circle-o"></i>Ver reportes finalizados</a></li>

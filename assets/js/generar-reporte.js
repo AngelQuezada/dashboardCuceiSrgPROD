@@ -43,6 +43,7 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
     "option" : option,
     "descripcionProblema": descripcionProblema
   }
+  console.log(datos);
   $.ajax({
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevo',
