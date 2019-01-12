@@ -92,7 +92,6 @@ firebase.auth().onAuthStateChanged(function(user) {
               dataType: "json",
               async: true,
               success: function(data){
-                console.log(data)
                   let idUsuario = data.id;
                   let nombre = data.nombre;
                   let aPaterno = data.a_paterno;

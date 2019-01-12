@@ -50,12 +50,11 @@
         </div>
         <div class="col-sm-2">
           <button class="btn btn-primary" onclick="nuevaBusqueda()">Buscar</button>
-        </div>			
+        </div>
       </fieldset>
 			</div>
 		</div>
-    <div id="tablaResultados">
-    </div>
+    <span id="tablaResultados"></span>
     <span id="modal"></span>
     	</section>
     </div>

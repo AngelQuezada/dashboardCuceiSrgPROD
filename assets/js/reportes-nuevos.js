@@ -3,9 +3,6 @@ const nuevaBusqueda = function(){
   let aMaterno = document.getElementById('txtAmaterno').value;
   let nombre = document.getElementById('txtNombre').value;
   let folio = document.getElementById('txtFolio').value;
-  console.log(aPaterno);
-  console.log(aMaterno);
-  console.log(nombre);
   if(aPaterno === ''){
     aPaterno = '""';
   }
@@ -21,7 +18,6 @@ const nuevaBusqueda = function(){
   reporte(aPaterno,aMaterno,nombre,folio);
 }
 const reporte = function(aPaterno,aMaterno,nombre,folio){
-  console.log('Entro aqui');
   $("#tablaResultados").empty();
   $("#tablaResultados").append(`<br><table class='table'>
   <thead>
@@ -52,7 +48,6 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
         <td><button class='btn btn-primary' id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="regSel('`+registro.folio+`','`+this+`')">Ver</button></td>
         </tr>
         `);
-        console.log(registro.folio);
       });
       $("#container").append(`</tbody>
         </table>`);
@@ -64,7 +59,6 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
 }
 function regSel(value,object){
     let selectedFolio = object.innerHTML = value;
-    console.log(selectedFolio);
     generateModal(selectedFolio);
 }
 function generateModal(selectedFolio){
@@ -72,78 +66,170 @@ $("#modal").empty();
 $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
-    <div class="modal-header" style="background-color: #58ACFA">
+    <div class="modal-header" style="background-color: #FAAC58">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h4 class="modal-title" id="myModalLabel">Datos del Reporte:</h4>
     </div>
-    <div class="modal-body" style="background-color: #F5ECCE">
-    <div class="row">
-        <div class="col-sm-2" style="background-color:gray;">
-            <input class="form-control" id="txtFolio" value="`+selectedFolio+`" disabled style="color: white;">
-            <label for="txtFolio" style="color: black;">Folio</label>
+    <div class="modal-body" style="background-color: #F5ECCE" id="bodyModal">`);
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteindpp/'+selectedFolio,
+      dataType: "json",
+      success: function(data){
+        $.each(data,function(key, registro) {
+          let ds;
+          if (registro.descripcion_servicio === '1') {
+            ds = "Aire Acondicionado";
+          }else
+          if (registro.descripcion_servicio === '2') {
+            ds = "Carpinteria";
+          }else
+          if (registro.descripcion_servicio === '3') {
+            ds = "Cristales y/o estructura de aluminio";
+          }else
+          if (registro.descripcion_servicio === '4') {
+            ds = "Eléctrico";
+          }else
+          if (registro.descripcion_servicio === '5') {
+            ds = "Herrería";
+          }else
+          if (registro.descripcion_servicio === '6') {
+            ds = "Hidráulico";
+          }else
+          if (registro.descripcion_servicio === '7') {
+            ds = "Infraestructura";
+          }else
+          if (registro.descripcion_servicio === '8') {
+            ds = "Jardinería";
+          }else
+          if (registro.descripcion_servicio === '9') {
+            ds = "Limpieza";
+          }else
+          if (registro.descripcion_servicio === '10') {
+            ds = "Pintura";
+          }else {
+            ds = registro.descripcion_servicio;
+          }
+          $("#modal").find(".modal-body").append(`<div class="row">
+            <div class="col-sm-2" style="background-color:gray;">
+              <input class="form-control" id="txtFolio" value="`+registro.folio+`" disabled style="color: white;">
+              <label for="txtFolio" style="color: black;">Folio</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtFecha" value="`+registro.fecha_elaboracion+`" disabled>
+              <label for="txtFecha" style="color: black;">Fecha de Elaboracion</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtRecibe" value="`+registro.recibe+`" disabled>
+              <label for="txtRecibe" style="color: black;">Recibe</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" id="txtFechaRecepcion" value="`+registro.fecha_recepcion+`">
+                <label for="txtFechaRecepcion" style="color: black;"><small style="color: blue">*</small>Fecha de Recepcion</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" id="txtFechaAsignacion" value="`+registro.fecha_asignacion+`">
+              <label for="txtFechaAsignacion" style="color: black;"><small style="color: blue">*</small>Fecha de Asignacion</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" id="txtFechaReparacion" value="`+registro.fecha_reparacion+`">
+              <label for="txtFechaReparacion" style="color: black;"><small style="color: blue">*</small>Fecha de Reparacion</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtNombre" value="`+registro.nombre+`" disabled>
+              <label for="txtNombre" style="color: black;">Nombre</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtApaterno" value="`+registro.a_paterno+`" disabled>
+              <label for="txtApaterno" style="color: black;">Apellido Paterno</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtAmaterno" value="`+registro.a_materno+`" disabled>
+              <label for="txtAmaterno" style="color: black;">Apellido Materno</label>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control" id="txtTelefono" value="`+registro.telefono+`" disabled>
+              <label for="txtTelefono" style="color: black;">Teléfono</label>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control" id="txtAreaSolicitante" value="`+registro.area_solicitante+`" disabled>
+              <label for="txtAreaSolicitante" style="color: black;">Área Solicitante</label>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" id="txtUbicacionServicio" value="`+registro.ubicacion_servicio+`" disabled>
+              <label for="txtUbicacionServicio" style="color: black;">Ubicación del Servicio</label>
+            </div>
+            <div class="col-sm-12">
+              <hr style="color: black; border: 1px dotted;">
+            </div>
+            <div class="col-sm-6">
+<textarea rows="4" cols="50" id="txtAnotacionExtra" style="background-color: #F7D358;" disabled>`+registro.anotacion_extra+`</textarea>
+              <label for="txtAnotacionExtra" style="color: black;">Anotación extra</label>
+            </div>
+            <div class="col-sm-6">
+<textarea rows="4" cols="50" id="txtAnotacionExtra" style="background-color: #F7D358;" disabled>`+registro.descripcion_problema+`</textarea>
+              <label for="txtDescripcionProblema" style="color: black;">Descripcion del Problema</label>
+            </div>
+            <div class="col-sm-12">
+              <input class="form-control" id="txtDescripcionServicio" value="`+ds+`" disabled>
+              <label for="txtDescripcionServicio" style="color: black;">Descripcion del Servicio</label>
+            </div>
+            `);
+        });
+        let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
+        let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
+        let fechaReparacion = document.getElementById('txtFechaReparacion').value;
+        let fer = new Date(fechaRecepcion);
+        let fa = new Date(fechaAsignacion);
+        let fr = new Date(fechaReparacion);
+        if (!isNaN(fer)) {
+          document.getElementById("txtFechaRecepcion").disabled = true;
+        }
+        if (!isNaN(fa)) {
+          document.getElementById("txtFechaAsignacion").disabled = true;
+        }
+        if (!isNaN(fr)) {
+          document.getElementById("txtFechaReparacion").disabled = true;
+        }
+        $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
+          <button type="button" class="btn btn-danger">Cancelar Reporte</button>
+          <button type="button" class="btn btn-secondary">Asignar Encargado</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()">Guardar Cambios</button>
         </div>
-        <div class="col-sm-4">
-            <input class="form-control" id="txtFecha" value="2019-01-10 11:07:49" disabled>
-            <label for="txtFecha" style="color: black;">Fecha de Elaboracion</label>
         </div>
-        <div class="col-sm-4">
-            <input class="form-control" id="txtRecibe" value="Miguel Angel Quezada Galvan" disabled>
-            <label for="txtRecibe" style="color: black;">Recibe</label>
         </div>
-        <div class="col-sm-4">
-            <input type="date" class="form-control" id="txtFechaRecepcion">
-            <label for="txtFechaRecepcion" style="color: black;"><small style="color: blue">*</small>Fecha de Recepcion</label>
-        </div>
-        <div class="col-sm-4">
-            <input type="date" class="form-control" id="txtFechaAsignacion">
-            <label for="txtFechaAsignacion" style="color: black;"><small style="color: blue">*</small>Fecha de Asignacion</label>
-        </div>
-        <div class="col-sm-4">
-            <input type="date" class="form-control" id="txtFechaReparacion">
-            <label for="txtFechaReparacion" style="color: black;"><small style="color: blue">*</small>Fecha de Reparacion</label>
-        </div>
-        <div class="col-sm-4">
-            <input class="form-control" id="txtNombre" value="Miguel Angel" disabled>
-            <label for="txtNombre" style="color: black;">Nombre</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtApaterno" value="Quezada" disabled>
-            <label for="txtApaterno" style="color: black;">Apellido Paterno</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtAmaterno" value="Galvan" disabled>
-            <label for="txtAmaterno" style="color: black;">Apellido Materno</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtTelefono" value="3316716930" disabled>
-            <label for="txtTelefono" style="color: black;">Teléfono</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtAreaSolicitante" value="Coordinacion" disabled>
-            <label for="txtAreaSolicitante" style="color: black;">Área Solicitante</label>
-        </div>
-        <div class="col-sm-6">
-            <input class="form-control" id="txtUbicacionServicio" value="MODULO: B PISO: 1 AULA: Aula 2" disabled>
-            <label for="txtUbicacionServicio" style="color: black;">Ubicación del Servicio</label>
-        </div>
-        <div class="col-sm-6">
-            <input class="form-control" id="txtAnotacionExtra" value="Anotacion Extra Ejemplo" disabled>
-            <label for="txtAnotacionExtra" style="color: black;">Anotación extra</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtDescripcionServicio" value="2" disabled>
-            <label for="txtDescripcionServicio" style="color: black;">Descripcion del Servicio</label>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" id="txtDescripcionProblema" value="dsdsdsd" disabled>
-            <label for="txtDescripcionProblema" style="color: black;">Descripcion del Problema</label>
-        </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-primary">Guardar Cambios</button>
-    </div>
-  </div>
-</div>
-</div>`);    
+        </div>`);
+      },
+      error: function(data) {
+      }
+    });
+}
+function guardarReporte(){
+  let token = localStorage.getItem("token");
+  let folio = document.getElementById('txtFolio').value;
+  let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
+  let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
+  let fechaReparacion = document.getElementById('txtFechaReparacion').value;
+  let datos = {
+    "token" : token,
+    "folio" : folio,
+    "fecha-recepcion" : fechaRecepcion,
+    "fecha-asignacion" : fechaAsignacion,
+    "fecha-reparacion" : fechaReparacion
+  }
+  $.ajax({
+    type: 'POST',
+    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
+    data: JSON.stringify(datos),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function(data){
+      swal("¡Registro Modificado!", "Se ha Modificado correctamente el reporte.", "success");
+      $('#myModal').modal('hide');
+    },
+    error: function(data) {
+      swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+    }
+  });
 }

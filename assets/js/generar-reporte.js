@@ -62,7 +62,7 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
 const ereaseItems = function(){
   ereaseLC();
   $("#divPiso").show();
-  $("#divAula").show();  
+  $("#divAula").show();
   $("#modulo").empty();
   $("#piso").empty();
   $("#aula").empty();
@@ -89,7 +89,7 @@ const ereaseFloor = function(){
 }
 const ereaseAula = function(){
   localStorage.removeItem("getAula");
-  document.getElementById("aula").disabled = false;   
+  document.getElementById("aula").disabled = false;
   $("#aula").empty();
   $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
@@ -101,7 +101,7 @@ const getModulo = function(){
   }
   $.ajax({
   type: "GET",
-  url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos', 
+  url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',
   dataType: "json",
   success: function(data){
    $.each(data,function(key, registro) {
@@ -118,8 +118,8 @@ const getPiso = function(){
   var id_module = document.getElementById('modulo').value;
   if (id_module === '1') {
       swal("Reporte de Mantenimiento", "Describe la ubicacion en el siguiente campo.", "info");
-  	$("#divPiso").hide();
-  	$("#divAula").hide();
+  	$("#divPiso").remove();
+  	$("#divAula").remove();
   }
   let lcP = localStorage.getItem("getPiso");
   if(lcP !== null){
@@ -134,7 +134,7 @@ const getPiso = function(){
         $("#piso").append('<option value='+registro.floor_id+'>PISO: '+registro.floor_id+'</option>');
       });
       localStorage.setItem("getPiso","1");
-      //document.getElementById("piso").disabled = true;       
+      //document.getElementById("piso").disabled = true;
     },
     error: function(data) {
       alert('Debe seleccionar un módulo primero.');
@@ -157,7 +157,7 @@ const getAula = function(){
         $("#aula").append('<option value='+registro.aula_name+'>AULA: '+registro.aula_name+'</option>');
       });
       localStorage.setItem("getAula","1");
-      //document.getElementById("aula").disabled = true;       
+      //document.getElementById("aula").disabled = true;
     },
     error: function(data) {
       alert('Debe seleccionar un módulo o piso primero.');
