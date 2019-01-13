@@ -53,6 +53,7 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
         </table>`);
     },
     error: function(data) {
+      console.log(data);
       $("#bodyTable").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
     }
   });
@@ -112,8 +113,8 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
           }
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
-              <input class="form-control" id="txtFolio" value="`+registro.folio+`" disabled style="color: white;">
-              <label for="txtFolio" style="color: black;">Folio</label>
+              <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
+              <label for="txtFolioR" style="color: black;">Folio</label>
             </div>
             <div class="col-sm-4">
               <input class="form-control" id="txtFecha" value="`+registro.fecha_elaboracion+`" disabled>
@@ -192,10 +193,11 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-danger">Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary">Asignar Encargado</button>
+          <button type="button" class="btn btn-secondary" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
+          <button type="button" class="btn btn-danger" style="background-color: red; color: white;" onclick="cancelarReporte()"><i class="fa fa-ban" aria-hidden="true"></i>Cancelar Reporte</button>
+          <button type="button" class="btn btn-secondary" style="background-color: orange; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="guardarReporte()">Guardar Cambios</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: blue; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Cambios</button>
         </div>
         </div>
         </div>
@@ -207,7 +209,7 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
 }
 function guardarReporte(){
   let token = localStorage.getItem("token");
-  let folio = document.getElementById('txtFolio').value;
+  let folio = document.getElementById('txtFolioR').value;
   let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
   let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
   let fechaReparacion = document.getElementById('txtFechaReparacion').value;
@@ -218,6 +220,7 @@ function guardarReporte(){
     "fecha-asignacion" : fechaAsignacion,
     "fecha-reparacion" : fechaReparacion
   }
+  console.log(JSON.stringify(datos));
   $.ajax({
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
@@ -232,4 +235,44 @@ function guardarReporte(){
       swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
     }
   });
+}
+const cancelarReporte = function(){
+  swal("¿Estás Seguro de Cancelar el reporte?", {
+    buttons: {
+    catch: {
+      text: "SI",
+      value: "OK",
+      },
+      no: true,
+    },
+  }).then((value) => {
+  switch (value) {
+    case "OK":
+      let token = localStorage.getItem("token");
+      let folio = document.getElementById('txtFolioR').value;
+      let datos = {
+        "token" : token,
+        "folio" : folio
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
+        data: JSON.stringify(datos),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function(data){
+          console.log(data);
+          swal("¡Registro Modificado!", "Se ha Cancelado correctamente el reporte.", "success");
+          $('#myModal').modal('hide');
+        },
+        error: function(data) {
+          swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+        }
+      });
+    break;
+    case "no":
+    swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+    break;
+  }
+ });
 }

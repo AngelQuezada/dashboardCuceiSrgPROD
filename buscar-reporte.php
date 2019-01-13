@@ -19,6 +19,7 @@
     		<h1>
 		        Búsqueda de Reportes
 		        <small>Sistema de Reportes Generales</small>
+							<h4 style="background-color: #F7D358; border-radius: 4px 4px 4px 4px;"><b>Apellidos y/o Nombres con la primer letra Mayúscula. || Ingresar al menos 1 Apellido para realizar la búsqueda.</b></h4>
       		</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
