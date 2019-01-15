@@ -19,20 +19,20 @@
     <p style="text-align: center;">Completa el registro antes de poder ingresar al sistema.</p>
     <form autocomplete="off">
       <div class="form-group">
-        <label for="correo" style="color: blue;">Correo electrónico registrado</label>
-        <i class="fa fa-envelope"></i><input type="email" class="form-control" id="correo">
+        <label for="txtCorreo" style="color: blue;">Correo electrónico registrado</label>
+        <i class="fa fa-envelope"></i><input type="email" class="form-control" id="txtCorreo">
       </div>
       <div class="form-group">
-        <label for="nombre" style="color: blue;">Nombre</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Nombre" id="nombre">
+        <label for="txtNombre" style="color: blue;">Nombre</label>
+        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Nombre" id="txtNombre">
       </div>
       <div class="form-group">
-        <label for="aPaterno" style="color: blue;">Apellido Paterno</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Paterno" id="aPaterno">
+        <label for="txtApaterno" style="color: blue;">Apellido Paterno</label>
+        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Paterno" id="txtApaterno">
       </div>
       <div class="form-group">
-        <label for="aMaterno" style="color: blue;">Apellido Materno</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Materno" id="aMaterno">
+        <label for="txtAmaterno" style="color: blue;">Apellido Materno</label>
+        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Materno" id="txtAmaterno">
       </div>
     </form>
       <div class="row">

@@ -1,55 +1,53 @@
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
-    authDomain: "cucei-srg.firebaseapp.com",
-    databaseURL: "https://cucei-srg.firebaseio.com",
-    projectId: "cucei-srg",
-    storageBucket: "cucei-srg.appspot.com",
-    messagingSenderId: "56958534713"
-  };
-  firebase.initializeApp(config);
-const registrar = function(){
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
-      firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
-          verificar();
-      }).catch(function(error){
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          $('#email').val('');
-          $('#password').val('');
-
-          if (errorCode == 'auth/invalid-email' && errorMessage == 'The email address is badly formatted.') {
-            swal("¡Oops!", "El correo electronico es invalido", "error");
-            return;
-          }
-          if (errorCode == 'The email address is badly formatted.' && errorMessage == 'auth/invalid-email') {
-            swal("¡Oops!", "El correo electronico es invalido", "error");
-            return;
-          }
-          if (errorCode == 'auth/weak-password' && errorMessage == 'Password should be at least 6 characters') {
-            swal("¡Oops!", "La Contraseña debe tener al menos 6 caracteres", "error");
-            return;
-          }
-          if (errorCode == 'auth/email-already-in-use' && errorMessage == 'The email address is already in use by another account.') {
-            swal("¡Oops!", "El correo electronico ya esta registrado en el sistema", "error");
-            return;
-          }
-      });
-  }
-const verificar = function(){
-      var user = firebase.auth().currentUser;
-      user.sendEmailVerification().then(function(){
-          swal("¡Registro Completado!", "Revisa tu bandeja de correo electrónico para verificar tu cuenta", "info");
-          $('#email').val('');
-          $('#password').val('');
-      }).catch(function(error){
-          alert("Ha ocurrido un error al intentar registrarse");
-          $('#email').val('');
-          $('#password').val('');
-      });
+const config = {
+  apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
+  authDomain: "cucei-srg.firebaseapp.com",
+  databaseURL: "https://cucei-srg.firebaseio.com",
+  projectId: "cucei-srg",
+  storageBucket: "cucei-srg.appspot.com",
+  messagingSenderId: "56958534713"
+};
+firebase.initializeApp(config);
+let registrar = () => {
+  let correo = document.getElementById('txtCorreo').value;
+  let password = document.getElementById('txtPassword').value;
+  firebase.auth().createUserWithEmailAndPassword(correo,password).then(function(){
+    verificar();
+  }).catch(function(error){
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    $('#txtCorreo').val('');
+    $('#txtPassword').val('');
+    if (errorCode == 'auth/invalid-email' && errorMessage == 'The email address is badly formatted.') {
+      swal("¡Oops!", "El correo electronico es invalido", "error");
+      return;
+    }
+    if (errorCode == 'The email address is badly formatted.' && errorMessage == 'auth/invalid-email') {
+      swal("¡Oops!", "El correo electronico es invalido", "error");
+      return;
+    }
+    if (errorCode == 'auth/weak-password' && errorMessage == 'Password should be at least 6 characters') {
+      swal("¡Oops!", "La Contraseña debe tener al menos 6 caracteres", "error");
+      return;
+    }
+    if (errorCode == 'auth/email-already-in-use' && errorMessage == 'The email address is already in use by another account.') {
+      swal("¡Oops!", "El correo electronico ya esta registrado en el sistema", "error");
+      return;
+    }
+  });
 }
-const resetPassword = function(){
+let verificar = () => {
+  let user = firebase.auth().currentUser;
+  user.sendEmailVerification().then(function(){
+    swal("¡Registro Completado!", "Revisa tu bandeja de correo electrónico para verificar tu cuenta", "info");
+    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+  }).catch(function(error){
+    let errorCode = error.code;
+    alert("Ha ocurrido un error al intentar registrarse. error code: "+errorCode);
+    $('#email').val('');
+    $('#password').val('');
+  });
+}
+let resetPassword = () => {
   let auth = firebase.auth();
   let email = document.getElementById('email').value;
   auth.sendPasswordResetEmail(email).then(function(){
@@ -67,41 +65,38 @@ const resetPassword = function(){
     });
     window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
       } else {
-        swal("Has cancelado");
+          swal("Has cancelado");
       }
   });
   }).catch(function(error){
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente", "error");
-          $('#email').val('');
-      });
+    let errorCode = error.code;
+    swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente. error code: "+errorCode, "error");
+    $('#email').val('');
+  });
 }
-const login = function(){
-  var email = document.getElementById('correo').value;
-  var password = document.getElementById('password').value;
-  firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+let login = () => {
+  let correo = document.getElementById('txtCorreo').value;
+  let password = document.getElementById('txtPassword').value;
+  firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
     window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
   }).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  swal("¡Oops!", "Verifica tu correo/contraseña e inténtalo nuevamente", "error");
-});
+    let errorCode = error.code;
+    swal("¡Oops!", "Verifica tu correo/contraseña e inténtalo nuevamente. error code: "+errorCode, "error");
+  });
 }
-const resetPwPage = function(){
+let resetPwPage = () => {
     window.location.replace("http://localhost/DashboardCuceiSrg/reset-password.php");
 }
-const regresar = function(){
+let regresar = () => {
     window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
     //window.history.go(-1);
 }
-const finalizarRegistro = function(){
+let finalizarRegistro = () => {
   let correo = localStorage.getItem("email");
-  let nombre = document.getElementById('nombre').value;
-  let aPaterno = document.getElementById('aPaterno').value;
-  let aMaterno = document.getElementById('aMaterno').value;
-  var datos = {
+  let nombre = document.getElementById('txtNombre').value;
+  let aPaterno = document.getElementById('txtApaterno').value;
+  let aMaterno = document.getElementById('txtAmaterno').value;
+  let datos = {
     "nombre" : nombre,
     "aPaterno" : aPaterno,
     "aMaterno" : aMaterno,

@@ -65,6 +65,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="administrar-usuarios.php"><i class="fa fa-circle-o"></i>Administrar Usuarios</a></li>
+            <li><a href="administrar-personal.php"><i class="fa fa-circle-o"></i>Administrar Personal</a></li>
           </ul>
         </li>
 
@@ -80,16 +81,16 @@
       </ul>
     </section>
   </aside>
-  <script type="text/javascript">
-  function setNameSideBar() {
-    return new Promise(resolve => {
-      setTimeout(() => {
-      $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
+<script type="text/javascript">
+let setNameSideBar = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+    $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
     }, 1000);
-   });
-  }
-  async function inicio(){
-    var result = await setNameSideBar();
-  }
-    inicio();
-  </script>
+  });
+}
+async function inicio(){
+  let result = await setNameSideBar();
+}
+inicio();
+</script>

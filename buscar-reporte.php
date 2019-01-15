@@ -3,17 +3,17 @@
 <head>
 	<title>CUCEI-SRG | Administración de Gráficas</title>
 	<?php
-    	include('header.php');
-  	?>
+    include('header.php');
+  ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 	<?php
-      include("navbar.php");
-    ?>
-    <?php
-      include("sidebar.php");
-    ?>
+    include("navbar.php");
+  ?>
+  <?php
+    include("sidebar.php");
+  ?>
     <div class="content-wrapper">
     	<section class="content-header">
     		<h1>
@@ -26,9 +26,7 @@
 				<li class="active">Reportes</li>
 			</ol>
     	</section>
-    	<!-- END Content Header (Page header) -->
-    	<!-- Contenedor principal -->
-    	<section class="content">
+  	<section class="content">
 		<div class="row">
 			<div class="input-field col-sm-12">
 			<fieldset style="border: 1px solid gray;">
@@ -57,14 +55,14 @@
 		</div>
     <span id="tablaResultados"></span>
     <span id="modal"></span>
-    	</section>
+  	</section>
     </div>
     <?php
     	include("control-sidebar.php");
   	?>
 	</div>
 	<?php
-  		include('footer.php');
+  	include('footer.php');
 	?>
   <script type="text/javascript" src="assets/js/reportes-nuevos.js"></script>
 </body>

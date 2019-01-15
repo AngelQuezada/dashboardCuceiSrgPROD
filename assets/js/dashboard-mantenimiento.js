@@ -1,4 +1,4 @@
-const getReportesNuevo = function(){
+let getReportesNuevo = () => {
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevos',
@@ -10,7 +10,7 @@ const getReportesNuevo = function(){
     }
   });
 }
-const getReportesAtender = function(){
+let getReportesAtender = () => {
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/atender',
@@ -22,7 +22,7 @@ const getReportesAtender = function(){
     }
   });
 }
-const getReportesCancelado = function(){
+let getReportesCancelado = () => {
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelados',
@@ -34,7 +34,7 @@ const getReportesCancelado = function(){
     }
   });
 }
-const getComunidadRegistrada = function(){
+let getComunidadRegistrada = () => {
   $.ajax({
     type: "GET",
     url: 'http://localhost/API-CUCEI-SRG/index.php/usuario/totalusuarios',
@@ -46,14 +46,10 @@ const getComunidadRegistrada = function(){
     }
   });
 }
-const fechaActual = function(){
-  let d = new Date();
-  $('#fechaActual').append('Hoy es: '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear());
+let fechaActual = () => {
+  let date = new Date();
+  $('#fechaActual').append('Hoy es: '+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear());
 }
-
-
-
-//obtainName();
 getReportesNuevo();
 getReportesAtender();
 getReportesCancelado();

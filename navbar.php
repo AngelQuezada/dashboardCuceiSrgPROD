@@ -38,17 +38,17 @@
       </div>
     </nav>
   </header>
-  <script type="text/javascript">
-  function setNameNavBar() {
-    return new Promise(resolve => {
-      setTimeout(() => {
-      $('#correoNavbar').append('<span>'+localStorage.getItem("email")+'</span>');
-      $('#nombrePersonal').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
-    }, 1000);
-   });
-  }
-    async function inicio(){
-      var result = await setNameNavBar();
-    }
-    inicio();
-  </script>
+<script type="text/javascript">
+let setNameNavBar = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+    $('#correoNavbar').append('<span>'+localStorage.getItem("email")+'</span>');
+    $('#nombrePersonal').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
+  }, 1000);
+  });
+}
+async function inicio(){
+  let result = await setNameNavBar();
+}
+inicio();
+</script>

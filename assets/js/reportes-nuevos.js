@@ -1,23 +1,15 @@
-const nuevaBusqueda = function(){
+let nuevaBusqueda = () => {
   let aPaterno = document.getElementById('txtApaterno').value;
   let aMaterno = document.getElementById('txtAmaterno').value;
   let nombre = document.getElementById('txtNombre').value;
   let folio = document.getElementById('txtFolio').value;
-  if(aPaterno === ''){
-    aPaterno = '""';
-  }
-  if(aMaterno === ''){
-    aMaterno = '""';
-  }
-  if(nombre === ''){
-    nombre = '""';
-  }
-  if(folio === ''){
-    folio = '""';
-  }
+  aPaterno === '' ? aPaterno = '""' : aPaterno;
+  aMaterno === '' ? aMaterno = '""' : aMaterno;
+  nombre === '' ? nombre = '""' : nombre;
+  folio === '' ? folio = '""' : folio;
   reporte(aPaterno,aMaterno,nombre,folio);
 }
-const reporte = function(aPaterno,aMaterno,nombre,folio){
+let reporte = (aPaterno,aMaterno,nombre,folio) => {
   $("#tablaResultados").empty();
   $("#tablaResultados").append(`<br><table class='table'>
   <thead>
@@ -36,7 +28,7 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reportenpp/'+aPaterno+'/'+aMaterno+'/'+nombre+'/'+folio,
     dataType: "json",
     success: function(data){
-      $.each(data,function(key, registro) {
+      $.each(data,function(_key, registro) {
         $("#bodyTable").append(`
         <tr>
         <input type="hidden" id="folioId" value="`+registro.folio+`"/>
@@ -52,20 +44,19 @@ const reporte = function(aPaterno,aMaterno,nombre,folio){
       $("#container").append(`</tbody>
         </table>`);
     },
-    error: function(data) {
-      console.log(data);
+    error: function() {
       $("#bodyTable").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
     }
   });
 }
-function regSel(value,object){
-    let selectedFolio = object.innerHTML = value;
-    generateModal(selectedFolio);
+let regSel = (value,object) => {
+  let selectedFolio = object.innerHTML = value;
+  generateModal(selectedFolio);
 }
-function generateModal(selectedFolio){
-$("#modal").empty();
-$("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog modal-lg" role="document">
+let generateModal = (selectedFolio) => {
+  $("#modal").empty();
+  $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header" style="background-color: #FAAC58">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -77,40 +68,19 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
       url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteindpp/'+selectedFolio,
       dataType: "json",
       success: function(data){
-        $.each(data,function(key, registro) {
+        $.each(data,function(_key, registro) {
           let ds;
-          if (registro.descripcion_servicio === '1') {
-            ds = "Aire Acondicionado";
-          }else
-          if (registro.descripcion_servicio === '2') {
-            ds = "Carpinteria";
-          }else
-          if (registro.descripcion_servicio === '3') {
-            ds = "Cristales y/o estructura de aluminio";
-          }else
-          if (registro.descripcion_servicio === '4') {
-            ds = "Eléctrico";
-          }else
-          if (registro.descripcion_servicio === '5') {
-            ds = "Herrería";
-          }else
-          if (registro.descripcion_servicio === '6') {
-            ds = "Hidráulico";
-          }else
-          if (registro.descripcion_servicio === '7') {
-            ds = "Infraestructura";
-          }else
-          if (registro.descripcion_servicio === '8') {
-            ds = "Jardinería";
-          }else
-          if (registro.descripcion_servicio === '9') {
-            ds = "Limpieza";
-          }else
-          if (registro.descripcion_servicio === '10') {
-            ds = "Pintura";
-          }else {
-            ds = registro.descripcion_servicio;
-          }
+          registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" : 
+          registro.descripcion_servicio === '2' ? ds = "Carpinteria" :
+          registro.descripcion_servicio === '3' ? ds = "Cristales y/o estructura de aluminio" :
+          registro.descripcion_servicio === '4' ? ds = "Eléctrico" :
+          registro.descripcion_servicio === '5' ? ds = "Herrería" :
+          registro.descripcion_servicio === '6' ? ds = "Hidráulico" :
+          registro.descripcion_servicio === '7' ? ds = "Infraestructura" :
+          registro.descripcion_servicio === '8' ? ds = "Jardinería" :
+          registro.descripcion_servicio === '9' ? ds = "Limpieza" :
+          registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
+          
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
               <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
@@ -175,7 +145,7 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
               <input class="form-control" id="txtDescripcionServicio" value="`+ds+`" disabled>
               <label for="txtDescripcionServicio" style="color: black;">Descripcion del Servicio</label>
             </div>
-            `);
+          `);
         });
         let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
         let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
@@ -203,11 +173,11 @@ $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dia
         </div>
         </div>`);
       },
-      error: function(data) {
-      }
-    });
+      error: function() {
+    }
+  });
 }
-function guardarReporte(){
+let guardarReporte = () => {
   let token = localStorage.getItem("token");
   let folio = document.getElementById('txtFolioR').value;
   let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
@@ -228,7 +198,7 @@ function guardarReporte(){
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(data){
-      swal("¡Registro Modificado!", "Se ha Modificado correctamente el reporte.", "success");
+      swal("¡Registro Modificado!",data.mensaje, "success");
       $('#myModal').modal('hide');
     },
     error: function(data) {
@@ -236,7 +206,7 @@ function guardarReporte(){
     }
   });
 }
-const cancelarReporte = function(){
+let cancelarReporte = () =>{
   swal("¿Estás Seguro de Cancelar el reporte?", {
     buttons: {
     catch: {
@@ -261,8 +231,7 @@ const cancelarReporte = function(){
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(data){
-          console.log(data);
-          swal("¡Registro Modificado!", "Se ha Cancelado correctamente el reporte.", "success");
+          swal("¡Registro Modificado!",data.mensaje, "success");
           $('#myModal').modal('hide');
         },
         error: function(data) {

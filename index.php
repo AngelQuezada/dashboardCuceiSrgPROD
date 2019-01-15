@@ -2,8 +2,7 @@
   include('footer.php');
 ?>
 <script type="text/javascript">
-// Initialize Firebase
-  var config = {
+  const config = {
     apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
     authDomain: "cucei-srg.firebaseapp.com",
     databaseURL: "https://cucei-srg.firebaseio.com",
@@ -12,8 +11,8 @@
     messagingSenderId: "56958534713"
   };
   firebase.initializeApp(config);
-const reenviar = function(){
-  var user = firebase.auth().currentUser;
+let reenviar = () => {
+  let user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function(){
       swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
       buttons: {
@@ -37,104 +36,105 @@ const reenviar = function(){
       break;
     }
    });
-    }).catch(function(error){
-      });
+    }).catch(function(){
+  });
 }
-const cerrarSesion = function(){
+let cerrarSesion = () => {
   firebase.auth().signOut().then(function() {
     redirect();
-    }).catch(function(error) {
-    });
+    }).catch(function() {
+  });
 }
-const redirect = function(){
-    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+let redirect = () => {
+  window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
 }
-const validatedEmail = function(){
-      swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
-        buttons: {
-        catch: {
-          text: "Verificar",
-          value: "verify",
-          },
-          Cerrar_Sesion: true,
-          reenviar: true,
-        },
-      })
-      .then((value) => {
-      switch (value) {
+let validatedEmail = () => {
+  swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
+    buttons: {
+    catch: {
+      text: "Verificar",
+      value: "verify",
+      },
+      Cerrar_Sesion: true,
+      reenviar: true,
+    },
+  }).then((value) => {
+    switch (value) {
       case "verify":
-      redirect();
+        redirect();
       break;
       case "Cerrar_Sesion":
-      cerrarSesion();
+        cerrarSesion();
       break;
       case "reenviar":
-      reenviar();
+        reenviar();
       break;
-      }
-    });
+    }
+  });
 }
-const userLogIn = function(){
+let userLogIn = () => {
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
     window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
   }
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      let email = user.email;
+      localStorage.setItem("email", user.email);
       let emailVerificado = user.emailVerified;
       if (emailVerificado === false) {
         validatedEmail(emailVerificado);
-      }else{
-            let email = user.email;
-            $.ajax({
-              type: "GET",
-              url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
-              dataType: "json",
-              async: true,
-              success: function(data){
-                  let idUsuario = data.id;
-                  let nombre = data.nombre;
-                  let aPaterno = data.a_paterno;
-                  let aMaterno = data.a_materno;
-                  let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
-                localStorage.setItem("nombreCompleto", nombreCompleto);
-                localStorage.setItem("idUsuario", idUsuario);
-                localStorage.setItem("email", user.email);
-              },
-              error: function(data) {
+      } else {
+          //let email = user.email;
+          $.ajax({
+            type: "GET",
+            url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
+            dataType: "json",
+            async: true,
+            success: function(data){
+              let idUsuario = data.id;
+              let nombre = data.nombre;
+              let aPaterno = data.a_paterno;
+              let aMaterno = data.a_materno;
+              let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
+              localStorage.setItem("nombreCompleto", nombreCompleto);
+              localStorage.setItem("idUsuario", idUsuario);
+              //localStorage.setItem("email", user.email);
+            },
+            error: function(data) {
+            }
+          });
+          let datos = {
+            "correo": user.email
+          }
+          $.ajax({
+          type: 'POST',
+          url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
+          data: JSON.stringify(datos),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          success: function(data){
+            $.each(data,function(key, registro) {
+              let codigo = data.code;
+              if (codigo == 1) {
+                window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
+              }else{
+                let token = data.token;
+                localStorage.setItem("token",token);
+                window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
               }
             });
-    var datos = {
-      "correo": user.email
-    }
-    $.ajax({
-    type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
-    data: JSON.stringify(datos),
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    success: function(data){
-      $.each(data,function(key, registro) {
-        let codigo = data.code;
-        if (codigo == 1) {
-           window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
-        }else{
-          let token = data.token;
-          localStorage.setItem("token",token);
-          window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
-        }
-      });
-    },
-    error: function(data) {
-    }
-  });
+          },
+          error: function(data) {
+          }
+        });
       }
   } else {
-    window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
-  }
-});
+      window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
+    }
+  });
 }
-window.onload = function(){
+window.onload = () => {
   userLogIn();
 }
 </script>

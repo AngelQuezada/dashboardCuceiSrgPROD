@@ -17,12 +17,12 @@
     <div class="content-wrapper">
     	<section class="content-header">
     		<h1>
-		        Reportes Atendidos-Mantenimiento
+		        Reportes Asignados-Mantenimiento
 		        <small>Sistema de Reportes Generales</small>
       		</h1>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
-				<li class="active">Reportes Atendidos</li>
+				<li class="active">Reportes Asignados</li>
 			</ol>
     	</section>
     	<!-- END Content Header (Page header) -->

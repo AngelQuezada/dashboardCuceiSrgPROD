@@ -1,14 +1,14 @@
-const cleanReport = function(){
-    ereaseLC();
-    ereaseModule();
-    $("#anotacionExtra").val('');
-    $('#correo').val('');
-    $('#telefono').val('');
-    $('#area').val('');
-    $('textarea#descripcionProblema').val('');
-    $('input:radio[name=descripcionServicio]').each(function () { $(this).prop('checked', false); });
+let cleanReport = () => {
+  ereaseLC();
+  ereaseModule();
+  $("#anotacionExtra").val('');
+  $('#correo').val('');
+  $('#telefono').val('');
+  $('#area').val('');
+  $('textarea#descripcionProblema').val('');
+  $('input:radio[name=descripcionServicio]').each(function () { $(this).prop('checked', false); });
 }
-const nuevoReporte = function(){
+let nuevoReporte = () => {
   let token = localStorage.getItem("token");
   let idUsuario = localStorage.getItem("idUsuario");
   let recibe = document.getElementById('recibe').value;
@@ -21,15 +21,14 @@ const nuevoReporte = function(){
   let anotacionExtra = document.getElementById('anotacionExtra').value;
   let option = document.querySelector('input[name="descripcionServicio"]:checked').value;
   let descripcionProblema = $("textarea#descripcionProblema").val();
-  //Si se selecciona la opcion otro
   if (option == 'otro') {
      option = document.getElementById('otro').value;
   }
   registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema);
 }
 
-const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema){
-  var datos = {
+let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema) => {
+  let datos = {
     "token" : token,
     "idUsuario" : idUsuario,
     "recibe" : recibe,
@@ -43,7 +42,6 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
     "option" : option,
     "descripcionProblema": descripcionProblema
   }
-  console.log(datos);
   $.ajax({
     type: 'POST',
     url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevo',
@@ -55,11 +53,11 @@ const registrarReporte = function(token,idUsuario,recibe,correo,telefono,area,mo
       cleanReport();
     },
     error: function(data) {
-        swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+JSON.stringify(data.responseJSON.mensaje), "error");
+      swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");
     }
   });
 }
-const ereaseItems = function(){
+let ereaseItems = () => {
   ereaseLC();
   $("#divPiso").show();
   $("#divAula").show();
@@ -70,7 +68,7 @@ const ereaseItems = function(){
   $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
   $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
-const ereaseModule = function(){
+let ereaseModule = () => {
   localStorage.removeItem("getModulo");
   ereaseFloor();
   ereaseAula();
@@ -80,49 +78,49 @@ const ereaseModule = function(){
   $("#modulo").empty();
   $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
 }
-const ereaseFloor = function(){
+let ereaseFloor = () => {
   localStorage.removeItem("getPiso");
   ereaseAula();
   document.getElementById("piso").disabled = false;
   $("#piso").empty();
   $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
 }
-const ereaseAula = function(){
+let ereaseAula = () => {
   localStorage.removeItem("getAula");
   document.getElementById("aula").disabled = false;
   $("#aula").empty();
   $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
-const getModulo = function(){
-  var $select = $('#modulo');
+let getModulo = () => {
+  let $select = $('#modulo');
   let lcM = localStorage.getItem("getModulo");
   if(lcM !== null){
     return;
   }
   $.ajax({
-  type: "GET",
-  url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',
-  dataType: "json",
-  success: function(data){
-   $.each(data,function(key, registro) {
-      $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
-    });
-    localStorage.setItem("getModulo","1");
-  },
-  error: function(data) {
-    alert('Error al cargar lista de Modulos');
-  }
-});
+    type: "GET",
+    url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',
+    dataType: "json",
+    success: function(data){
+    $.each(data,function(key, registro) {
+        $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
+      });
+      localStorage.setItem("getModulo","1");
+    },
+    error: function(data) {
+      alert('Error al cargar lista de Modulos');
+    }
+  });
 }
-const getPiso = function(){
+let getPiso = () => {
   var id_module = document.getElementById('modulo').value;
   if (id_module === '1') {
       swal("Reporte de Mantenimiento", "Describe la ubicacion en el siguiente campo.", "info");
   	$("#divPiso").remove();
   	$("#divAula").remove();
   }
-  let lcP = localStorage.getItem("getPiso");
-  if(lcP !== null){
+  let piso = localStorage.getItem("getPiso");
+  if(piso !== null){
     return;
   }
   $.ajax({
@@ -134,37 +132,35 @@ const getPiso = function(){
         $("#piso").append('<option value='+registro.floor_id+'>PISO: '+registro.floor_id+'</option>');
       });
       localStorage.setItem("getPiso","1");
-      //document.getElementById("piso").disabled = true;
     },
     error: function(data) {
       alert('Debe seleccionar un módulo primero.');
     }
   });
 }
-const getAula = function(){
-  var id_module = document.getElementById('modulo').value;
-  var floor_id = document.getElementById('piso').value;
-  let lcA = localStorage.getItem("getAula");
-  if(lcA !== null){
+let getAula = () => {
+  let idModulo = document.getElementById('modulo').value;
+  let idPiso = document.getElementById('piso').value;
+  let aula = localStorage.getItem("getAula");
+  if(aula !== null){
     return;
   }
   $.ajax({
     type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+id_module+'/'+floor_id,
+    url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+idModulo+'/'+idPiso,
     dataType: "json",
     success: function(data){
       $.each(data,function(key, registro) {
         $("#aula").append('<option value='+registro.aula_name+'>AULA: '+registro.aula_name+'</option>');
       });
       localStorage.setItem("getAula","1");
-      //document.getElementById("aula").disabled = true;
     },
     error: function(data) {
       alert('Debe seleccionar un módulo o piso primero.');
     }
   });
 }
-const ereaseLC = function(){
+let ereaseLC = () => {
   localStorage.removeItem("getModulo");
   localStorage.removeItem("getPiso");
   localStorage.removeItem("getAula");
