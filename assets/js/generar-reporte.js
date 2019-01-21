@@ -59,35 +59,43 @@ let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,
 }
 let ereaseItems = () => {
   ereaseLC();
-  $("#divPiso").show();
-  $("#divAula").show();
-  $("#modulo").empty();
-  $("#piso").empty();
-  $("#aula").empty();
-  $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
-  $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
-  $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
+  $("#divSeleccion").empty();
+  $("#divSeleccion").append(`<fieldset>
+  <legend>Ubicación del servicio</legend>
+  <div id="divModulo">
+    <label for="modulo" style="color: black;"><small style="color: red">*</small>Módulo:</label>
+    <select class="form-control" id="modulo" onclick="getModulo()" required><option value="" disabled selected>Seleccione un Módulo.</option></select>
+    <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
+  </div>
+  <div id="divPiso">
+    <label for="piso" style="color: black;"><small style="color: red">*</small>Piso:</label>
+    <select class="form-control" id="piso" 
+    onclick="getPiso()" required><option value="" disabled selected>Seleccione un Piso.</option></select>
+    <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
+  </div>
+  <div id="divAula">
+    <label for="aula" style="color: black;"><small style="color: red">*</small>Aula:</label>
+    <select class="form-control" id="aula"
+    onclick="getAula()" 
+    required><option value="" disabled selected>Seleccione un Aula.</option></select>
+    <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
+  </div>
+  <button class="btn btn-warning" onclick="ereaseItems()">Reiniciar</button>
+  <input class="form-control" id="anotacionExtra" type="text" name="anotacionExtra" placeholder="Escriba aqui si necesita hacer una descripción sobre el lugar.">
+  <label for="recibe" style="color: black;">Anotación Extra sobre el sitio</label>
+</fieldset>`);
 }
 let ereaseModule = () => {
-  localStorage.removeItem("getModulo");
-  ereaseFloor();
-  ereaseAula();
-  document.getElementById("modulo").disabled = false;
-  $("#divPiso").show();
-  $("#divAula").show();
-  $("#modulo").empty();
-  $("#modulo").append('<option value="" disabled selected>Seleccione un Módulo.</option>');
+  ereaseItems();
 }
 let ereaseFloor = () => {
   localStorage.removeItem("getPiso");
   ereaseAula();
-  document.getElementById("piso").disabled = false;
   $("#piso").empty();
   $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
 }
 let ereaseAula = () => {
   localStorage.removeItem("getAula");
-  document.getElementById("aula").disabled = false;
   $("#aula").empty();
   $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
@@ -102,12 +110,12 @@ let getModulo = () => {
     url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',
     dataType: "json",
     success: function(data){
-    $.each(data,function(key, registro) {
+    $.each(data,function(_key, registro) {
         $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
       });
       localStorage.setItem("getModulo","1");
     },
-    error: function(data) {
+    error: function() {
       alert('Error al cargar lista de Modulos');
     }
   });
@@ -128,12 +136,12 @@ let getPiso = () => {
     url: 'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,
     dataType: "json",
     success: function(data){
-      $.each(data,function(key, registro) {
+      $.each(data,function(_key, registro) {
         $("#piso").append('<option value='+registro.floor_id+'>PISO: '+registro.floor_id+'</option>');
       });
       localStorage.setItem("getPiso","1");
     },
-    error: function(data) {
+    error: function() {
       alert('Debe seleccionar un módulo primero.');
     }
   });
@@ -150,12 +158,12 @@ let getAula = () => {
     url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+idModulo+'/'+idPiso,
     dataType: "json",
     success: function(data){
-      $.each(data,function(key, registro) {
+      $.each(data,function(_key, registro) {
         $("#aula").append('<option value='+registro.aula_name+'>AULA: '+registro.aula_name+'</option>');
       });
       localStorage.setItem("getAula","1");
     },
-    error: function(data) {
+    error: function() {
       alert('Debe seleccionar un módulo o piso primero.');
     }
   });

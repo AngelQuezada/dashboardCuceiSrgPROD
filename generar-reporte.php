@@ -45,7 +45,7 @@
                   <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Área es requerido.<br/></span>
                   <label for="area" style="color: black;"><small style="color: red">*</small>Área solicitante</label>
                 </div>
-                <div class="input-field col-sm-12">
+                <div class="input-field col-sm-12" id="divSeleccion">
                   <fieldset>
                     <legend>Ubicación del servicio</legend>
                     <div id="divModulo">

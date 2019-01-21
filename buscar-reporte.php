@@ -56,7 +56,7 @@
     <span id="tablaResultados"></span>
     <span id="modal"></span>
   	</section>
-    </div>
+  </div>
     <?php
     	include("control-sidebar.php");
   	?>
@@ -64,6 +64,6 @@
 	<?php
   	include('footer.php');
 	?>
-  <script type="text/javascript" src="assets/js/reportes-nuevos.js"></script>
+  <script type="text/javascript" src="assets/js/reportes-busqueda.js"></script>
 </body>
 </html>
