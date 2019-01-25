@@ -1,3 +1,7 @@
+/*
+* Se obtiene la cantidad de registros de reportes nuevos
+* @return JSON del response del REST Web Service
+*/
 let getReportesNuevo = () => {
   $.ajax({
     type: "GET",
@@ -10,6 +14,10 @@ let getReportesNuevo = () => {
     }
   });
 }
+/*
+* Se obtiene la cantidad de registros de reportes por atender
+* @return JSON del response del REST Web Service
+*/
 let getReportesAtender = () => {
   $.ajax({
     type: "GET",
@@ -22,6 +30,10 @@ let getReportesAtender = () => {
     }
   });
 }
+/*
+* Se obtiene la cantidad de registros de reportes Cancelados
+* @return JSON del response del REST Web Service
+*/
 let getReportesCancelado = () => {
   $.ajax({
     type: "GET",
@@ -34,6 +46,10 @@ let getReportesCancelado = () => {
     }
   });
 }
+/*
+* Se obtiene la cantidad de registros de usuarios registrados
+* @return JSON del response del REST Web Service
+*/
 let getComunidadRegistrada = () => {
   $.ajax({
     type: "GET",
@@ -46,6 +62,9 @@ let getComunidadRegistrada = () => {
     }
   });
 }
+/*
+* Se obtiene la fecha Actual-
+*/
 let fechaActual = () => {
   let date = new Date();
   $('#fechaActual').append('Hoy es: '+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear());

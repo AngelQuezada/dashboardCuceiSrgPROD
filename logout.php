@@ -5,6 +5,9 @@
   require_once('centinela.php');
 ?>
 <script type="text/javascript">
+/*
+* Variables de configuracion de Firebase
+*/
 const config = {
     apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
     authDomain: "cucei-srg.firebaseapp.com",
@@ -14,7 +17,9 @@ const config = {
     messagingSenderId: "56958534713"
 };
 firebase.initializeApp(config);
-
+/*
+* Cierra sesion en firebase del usuario logeado
+*/
 let logout = () => {
   firebase.auth().signOut().then(function() {
     deleteToken();
@@ -23,6 +28,9 @@ let logout = () => {
     return;
   });
 }
+/*
+* Se elimina el token de base de datos con referencia al correo
+*/
 let deleteToken = () => {
   let correo = localStorage.getItem("email");
   let token = localStorage.getItem("token");
@@ -45,6 +53,9 @@ let deleteToken = () => {
     }
   });
 }
+/*
+* Se llama la funcion cuando la pagina carga
+*/
 window.onload = () => {
   logout();
 }

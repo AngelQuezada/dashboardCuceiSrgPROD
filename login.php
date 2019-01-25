@@ -55,21 +55,30 @@
   <?php
       include('footer.php');
   ?>
-  <script type="text/javascript">
-  const userLogIn = function(){
+<script type="text/javascript">
+/*
+* Funcion rdireccionar index si el usuario esta logeado
+*/
+let userLogIn = () => {
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
            window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
         }
     });
   }
-  const registroPage = function(){
-    window.location.replace("http://localhost/DashboardCuceiSrg/registro.php");
+/*
+* Redirecciona a la pagina de registro
+*/
+let registroPage = () => {
+  window.location.replace("http://localhost/DashboardCuceiSrg/registro.php");
 }
-  window.onload = function(){
-    userLogIn();
-  }
-  </script>
-  <script type="text/javascript" src="assets/js/registro.js"></script>
+/*
+* Se llama la funcion cuando la pagina carga
+*/
+window.onload = () => {
+  userLogIn();
+}
+</script>
+<script type="text/javascript" src="assets/js/registro.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+/*
+* Variables de configuracion de Firebase
+*/
 const config = {
   apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
   authDomain: "cucei-srg.firebaseapp.com",
@@ -7,6 +10,10 @@ const config = {
   messagingSenderId: "56958534713"
 };
 firebase.initializeApp(config);
+/*
+* Dar de alta a usuario en firebase
+* @return Promise
+*/
 let registrar = () => {
   let correo = document.getElementById('txtCorreo').value;
   let password = document.getElementById('txtPassword').value;
@@ -35,6 +42,10 @@ let registrar = () => {
     }
   });
 }
+/*
+* Manda correo electronico de verificacion de cuenta
+* @return promise
+*/
 let verificar = () => {
   let user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function(){
@@ -47,6 +58,10 @@ let verificar = () => {
     $('#password').val('');
   });
 }
+/*
+* Manda correo electronico para restablecer contraseña a la cuenta actual
+* @return Promise
+*/
 let resetPassword = () => {
   let auth = firebase.auth();
   let email = document.getElementById('email').value;
@@ -74,6 +89,10 @@ let resetPassword = () => {
     $('#email').val('');
   });
 }
+/*
+* Inicia Sesión con el Correo/Contraseña de Firebase
+* @return Promise
+*/
 let login = () => {
   let correo = document.getElementById('txtCorreo').value;
   let password = document.getElementById('txtPassword').value;
@@ -84,13 +103,24 @@ let login = () => {
     swal("¡Oops!", "Verifica tu correo/contraseña e inténtalo nuevamente. error code: "+errorCode, "error");
   });
 }
+/*
+* Redirige a la pagina a restablecer contraseña
+*/
 let resetPwPage = () => {
     window.location.replace("http://localhost/DashboardCuceiSrg/reset-password.php");
 }
+/*
+* Redirige hacia la pagina index
+*/
 let regresar = () => {
     window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
     //window.history.go(-1);
 }
+/*
+* Registro de datos hacia la Base de datos del usuario
+* dado de alta en Firebase por primera vez
+* @return Promise
+*/
 let finalizarRegistro = () => {
   let correo = localStorage.getItem("email");
   let nombre = document.getElementById('txtNombre').value;

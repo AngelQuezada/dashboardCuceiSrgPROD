@@ -1,3 +1,6 @@
+/*
+* Se Obtienen los datos del formulario
+*/
 let nuevaBusqueda = () => {
   let aPaterno = document.getElementById('txtApaterno').value;
   let aMaterno = document.getElementById('txtAmaterno').value;
@@ -9,6 +12,13 @@ let nuevaBusqueda = () => {
   folio === '' ? folio = '""' : folio;
   reporte(aPaterno,aMaterno,nombre,folio);
 }
+/*
+* Regresa un JSON con el response del REST Web Service
+* @param aPaterno String
+* @param aMaterno String
+* @param nombre String
+* @param folio String 
+*/
 let reporte = (aPaterno,aMaterno,nombre,folio) => {
   $("#tablaResultados").empty();
   $("#tablaResultados").append(`<br><table class='table'>
@@ -49,10 +59,18 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
     }
   });
 }
+/*
+* Obtener el id de la fila seleccionada
+* @param value
+*/
 let regSel = (value,object) => {
   let selectedFolio = object.innerHTML = value;
   generateModal(selectedFolio);
 }
+/*
+* Generar un Modal con el folio seleccionado
+* @param selectedFolio Integer
+*/
 let generateModal = (selectedFolio) => {
   $("#modal").empty();
   $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -177,6 +195,10 @@ let generateModal = (selectedFolio) => {
     }
   });
 }
+/*
+* Guardar el reporte modificado
+* @return JSON del response del REST Web Service
+*/
 let guardarReporte = () => {
   let token = localStorage.getItem("token");
   let folio = document.getElementById('txtFolioR').value;
@@ -206,6 +228,10 @@ let guardarReporte = () => {
     }
   });
 }
+/*
+* Cancelar el reporte seleccionado
+* @return JSON del response del REST Web Service
+*/
 let cancelarReporte = () =>{
   swal("¿Estás Seguro de Cancelar el reporte?", {
     buttons: {

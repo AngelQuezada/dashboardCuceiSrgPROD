@@ -2,6 +2,9 @@
   include('footer.php');
 ?>
 <script type="text/javascript">
+/*
+* Variables de configuracion de Firebase
+*/
   const config = {
     apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
     authDomain: "cucei-srg.firebaseapp.com",
@@ -11,6 +14,9 @@
     messagingSenderId: "56958534713"
   };
   firebase.initializeApp(config);
+/*
+* Reenviar correo de confirmacion al usuario actualmente logeado
+*/
 let reenviar = () => {
   let user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function(){
@@ -39,15 +45,25 @@ let reenviar = () => {
     }).catch(function(){
   });
 }
+/*
+* Cerrar sesion del usuario actualmente logeado
+* @return promise
+*/
 let cerrarSesion = () => {
   firebase.auth().signOut().then(function() {
     redirect();
     }).catch(function() {
   });
 }
+/*
+* Redirecciona al index
+*/
 let redirect = () => {
   window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
 }
+/*
+* Se activa esta funcion si el correo del usuario no esta validado
+*/
 let validatedEmail = () => {
   swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
     buttons: {
@@ -72,6 +88,9 @@ let validatedEmail = () => {
     }
   });
 }
+/*
+* Funcion base donde se realizan las validaciones pertinentes del usuario logeado
+*/
 let userLogIn = () => {
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
@@ -134,6 +153,9 @@ let userLogIn = () => {
     }
   });
 }
+/*
+* Funcion que se ejecuta al cargar esta pagina
+*/
 window.onload = () => {
   userLogIn();
 }

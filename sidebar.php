@@ -82,6 +82,10 @@
     </section>
   </aside>
 <script type="text/javascript">
+/*
+* Funcion obtener el nombre completo del usuario logeado
+* @return promise
+*/
 let setNameSideBar = () => {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -89,6 +93,9 @@ let setNameSideBar = () => {
     }, 1000);
   });
 }
+/*
+* Funcion asincrona llamando a otra funcion
+*/
 async function inicio(){
   let result = await setNameSideBar();
 }

@@ -1,3 +1,6 @@
+/*
+* Limpia los campos del Formulario de Reporte de Mantenimiento
+*/
 let cleanReport = () => {
   ereaseLC();
   ereaseModule();
@@ -8,6 +11,9 @@ let cleanReport = () => {
   $('textarea#descripcionProblema').val('');
   $('input:radio[name=descripcionServicio]').each(function () { $(this).prop('checked', false); });
 }
+/*
+* Se obtienen los datos de los campos del formulario
+*/
 let nuevoReporte = () => {
   let token = localStorage.getItem("token");
   let idUsuario = localStorage.getItem("idUsuario");
@@ -26,7 +32,22 @@ let nuevoReporte = () => {
   }
   registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema);
 }
-
+/*
+* Se Registra reporte de Mantenimiento
+* @param token String
+* @param idUsuario Integer
+* @param recibe String
+* @param correo String
+* @param telefono Integer
+* @param area String
+* @param modulo String
+* @param piso String
+* @param aula String
+* @param anotacionExtra String
+* @param option Integer
+* @Param descripcionProblema String
+* @return JSON del response del REST Web Service
+*/
 let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema) => {
   let datos = {
     "token" : token,
@@ -57,6 +78,9 @@ let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,
     }
   });
 }
+/*
+* Se Elimina el elemento del DOM divSeleccion y se crea nuevamente
+*/
 let ereaseItems = () => {
   ereaseLC();
   $("#divSeleccion").empty();
@@ -85,20 +109,34 @@ let ereaseItems = () => {
   <label for="recibe" style="color: black;">Anotación Extra sobre el sitio</label>
 </fieldset>`);
 }
+/*
+* Se elimina valor actual del campo Modulo
+*/
 let ereaseModule = () => {
   ereaseItems();
 }
+/*
+* Se elimina valor actual del campo Piso
+*/
 let ereaseFloor = () => {
   localStorage.removeItem("getPiso");
   ereaseAula();
   $("#piso").empty();
   $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
 }
+/*
+* Se elimina valor actul del campo Aula
+*/
 let ereaseAula = () => {
   localStorage.removeItem("getAula");
   $("#aula").empty();
   $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
 }
+
+/*
+* Se obtiene el listado de Modulos
+* @return JSON del response del REST Web Service
+*/
 let getModulo = () => {
   let $select = $('#modulo');
   let lcM = localStorage.getItem("getModulo");
@@ -120,6 +158,10 @@ let getModulo = () => {
     }
   });
 }
+/*
+* Se obtiene el listado de Pisos por el modulo Seleccionado
+* @return JSON del response del REST Web Service
+*/
 let getPiso = () => {
   var id_module = document.getElementById('modulo').value;
   if (id_module === '1') {
@@ -146,6 +188,10 @@ let getPiso = () => {
     }
   });
 }
+/*
+* Se obtiene el listado de Aulas por el modulo y piso seleccionado
+* @return JSON del response del REST Web Service
+*/
 let getAula = () => {
   let idModulo = document.getElementById('modulo').value;
   let idPiso = document.getElementById('piso').value;
@@ -168,13 +214,20 @@ let getAula = () => {
     }
   });
 }
+/*
+* Se eliminan las variables del LocalStorage del Navegador
+*/
 let ereaseLC = () => {
   localStorage.removeItem("getModulo");
   localStorage.removeItem("getPiso");
   localStorage.removeItem("getAula");
 }
-//Elimino del LocalStorage para manipular los selects nuevamente
+/*
+* Elimino del LocalStorage para manipular los selects nuevamente
+*/
 ereaseLC();
-//Seteo el campo recibe y lo deshabilito
+/*
+*Seteo el campo recibe y lo deshabilito
+*/
 $('#recibe').val(localStorage.getItem("nombreCompleto"));
 document.getElementById("recibe").disabled = true;
