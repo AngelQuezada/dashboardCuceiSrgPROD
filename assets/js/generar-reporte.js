@@ -143,20 +143,20 @@ let getModulo = () => {
   if(lcM !== null){
     return;
   }
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',
-    dataType: "json",
-    success: function(data){
-    $.each(data,function(_key, registro) {
-        $select.append('<option value='+registro.id+'>MODULO: '+registro.module_name+'</option>');
-      });
-      localStorage.setItem("getModulo","1");
-    },
-    error: function() {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
       alert('Error al cargar lista de Modulos');
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+    response.forEach(element => {
+      $select.append('<option value='+element.id+'>MODULO: '+element.module_name+'</option>');
+    });
+    localStorage.setItem("getModulo","1");         
+  }
+  request.send();
 }
 /*
 * Se obtiene el listado de Pisos por el modulo Seleccionado
@@ -173,20 +173,20 @@ let getPiso = () => {
   if(piso !== null){
     return;
   }
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,
-    dataType: "json",
-    success: function(data){
-      $.each(data,function(_key, registro) {
-        $("#piso").append('<option value='+registro.floor_id+'>PISO: '+registro.floor_id+'</option>');
-      });
-      localStorage.setItem("getPiso","1");
-    },
-    error: function() {
-      alert('Debe seleccionar un módulo primero.');
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      alert('Debe Seleccionar un módulo primero.') 
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+    response.forEach(element => {
+      $("#piso").append('<option value='+element.floor_id+'>PISO: '+element.floor_id+'</option>');      
+    });
+    localStorage.setItem("getPiso","1");         
+  }
+  request.send();
 }
 /*
 * Se obtiene el listado de Aulas por el modulo y piso seleccionado
@@ -199,20 +199,20 @@ let getAula = () => {
   if(aula !== null){
     return;
   }
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+idModulo+'/'+idPiso,
-    dataType: "json",
-    success: function(data){
-      $.each(data,function(_key, registro) {
-        $("#aula").append('<option value='+registro.aula_name+'>AULA: '+registro.aula_name+'</option>');
-      });
-      localStorage.setItem("getAula","1");
-    },
-    error: function() {
-      alert('Debe seleccionar un módulo o piso primero.');
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+idModulo+'/'+idPiso,false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      alert('Debe Seleccionar un módulo o piso primero.') 
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+    response.forEach(element => {
+      $("#aula").append('<option value='+element.aula_name+'>AULA: '+element.aula_name+'</option>');
+    });
+    localStorage.setItem("getAula","1");      
+  }
+  request.send();
 }
 /*
 * Se eliminan las variables del LocalStorage del Navegador

@@ -1,6 +1,6 @@
 <footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: white;">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 0.5
+    <div class="hidden-xs" style="text-align: center">
+    ©2018-2019. Universidad de Guadalajara. Sitio desarrollado por el equipo de CUCEI-SRG Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>
     </div>
   </footer>
 <script src="assets/js/libs/jquery.min.js"></script>
