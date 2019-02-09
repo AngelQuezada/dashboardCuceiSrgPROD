@@ -18,10 +18,9 @@ let reportesTodos = () => {
     </tr>
     </thead>
     <tbody id="bodyTable">`);
-
     $.ajax({
         type: "GET",
-        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reportenuevos/'+token,
+        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteasignados/'+token,
         dataType: "json",
         success: function(data){
           $.each(data,function(_key, registro) {
@@ -29,7 +28,6 @@ let reportesTodos = () => {
               registro.idStatus === '1' ? status = "En Solicitud" :
               registro.idStatus === '2' ? status = "Asignado" :
               registro.idStatus === '3' ? status = "Finalizado" : status = "Cancelado";
-
               registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
               $("#bodyTable").append(`
               <tr>
@@ -51,120 +49,12 @@ let reportesTodos = () => {
       });
 }
 /*
-* Agregar Observacion al reporte seleccionado
-* @return JSON del response del REST Web Service
-*/
-let agregarObservacion = (value,object) => {
-  let folio = object.innerHTML = value;
-  let observacion = object;
-  if(observacion === 'Sin Observaciones'){
-    swal("Teclea una nueva Observación:", {
-      content: "input",
-    })
-    .then((observacion) => {
-      if(observacion.replace(/\s/g,"") == ""){
-        swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
-        return;
-      }
-      swal(`Has escrito: ${observacion}`+' ¿Es Correcto?',{
-        buttons: {
-          catch: {
-            text: "SI",
-            value: "OK",
-            },
-            no: true,
-          },
-        }).then((value) => {
-        switch (value) {
-          case "OK":
-            let token = localStorage.getItem("token");
-            let idUsuario = localStorage.getItem("idUsuario");
-            let datos = {
-              "token" : token,
-              "idUsuario" : idUsuario,
-              "observacion" : observacion,
-              "folio" : folio
-            }
-            $.ajax({
-              type: 'POST',
-              url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/genobservacion',
-              data: JSON.stringify(datos),
-              contentType: 'application/json; charset=utf-8',
-              dataType: 'json',
-              success: function(data){
-                swal("¡Registro Modificado!",data.mensaje, "success");
-                reportesTodos();
-              },
-              error: function(data) {
-                swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
-              }
-            });
-          break;
-          case "no":
-          swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
-          break;
-        }
-      });
-      
-    }); 
-  }
-  else{
-    swal("Reporte de Mantenimiento","Ya cuenta con observación el Estatus", "info");
-    return;
-  }
-}
-/*
-* Cancelar el reporte seleccionado
-* @return JSON del response del REST Web Service
-*/
-let cancelarReporte = (value,object) => {
-    let token = localStorage.getItem("token");
-    let folio = object.innerHTML = value;
-    swal("¿Estás Seguro de Cancelar el reporte?", {
-      buttons: {
-      catch: {
-        text: "SI",
-        value: "OK",
-        },
-        no: true,
-      },
-    }).then((value) => {
-    switch (value) {
-      case "OK":
-        let datos = {
-          "token" : token,
-          "folio" : folio
-        }
-        $.ajax({
-          type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
-          data: JSON.stringify(datos),
-          contentType: 'application/json; charset=utf-8',
-          dataType: 'json',
-          success: function(data){
-            swal("¡Reporte Cancelado!",data.mensaje, "success");
-            reportesTodos();
-          },
-          error: function(data) {
-            swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
-          }
-        });
-      break;
-      case "no":
-      swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
-      break;
-    }
-   });
-  }
-
-
-/*
 * Ver el reporte seleccionado
 * @param value
 */
-let verReporte = (value,object) => {
-  let selectedFolio = object.innerHTML = value;
-  $("#modal").empty();
+let verReporte = (value,object) =>{
+    let selectedFolio = object.innerHTML = value;
+    $("#modal").empty();
   $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
@@ -287,75 +177,185 @@ let verReporte = (value,object) => {
   });
 }
 /*
+* Cancelar el reporte seleccionado
+* @return JSON del response del REST Web Service
+*/
+let cancelarReporte = (value,object) => {
+    let token = localStorage.getItem("token");
+    let folio = object.innerHTML = value;
+    swal("¿Estás Seguro de Cancelar el reporte?", {
+      buttons: {
+      catch: {
+        text: "SI",
+        value: "OK",
+        },
+        no: true,
+      },
+    }).then((value) => {
+    switch (value) {
+      case "OK":
+        let datos = {
+          "token" : token,
+          "folio" : folio
+        }
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
+          data: JSON.stringify(datos),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          success: function(data){
+            swal("¡Reporte Cancelado!",data.mensaje, "success");
+            reportesTodos();
+          },
+          error: function(data) {
+            swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+          }
+        });
+      break;
+      case "no":
+      swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+      break;
+    }
+   });
+  }
+/*
+* Agregar Observacion al reporte seleccionado
+* @return JSON del response del REST Web Service
+*/
+let agregarObservacion = (value,object) => {
+  let folio = object.innerHTML = value;
+  let observacion = object;
+  if(observacion === "Sin Observaciones"){
+    swal("Teclea una nueva Observación:", {
+      content: "input",
+    })
+    .then((observacion) => {
+      if(observacion.replace(/\s/g,"") == ""){
+        swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+        return;
+      }
+      swal(`Has escrito: ${observacion}`+' ¿Es Correcto?',{
+        buttons: {
+          catch: {
+            text: "SI",
+            value: "OK",
+            },
+            no: true,
+          },
+        }).then((value) => {
+        switch (value) {
+          case "OK":
+            let token = localStorage.getItem("token");
+            let idUsuario = localStorage.getItem("idUsuario");
+            let datos = {
+              "token" : token,
+              "idUsuario" : idUsuario,
+              "observacion" : observacion,
+              "folio" : folio
+            }
+            $.ajax({
+              type: 'POST',
+              url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/genobservacion',
+              data: JSON.stringify(datos),
+              contentType: 'application/json; charset=utf-8',
+              dataType: 'json',
+              success: function(data){
+                swal("¡Registro Modificado!",data.mensaje, "success");
+                reportesTodos();
+              },
+              error: function(data) {
+                swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+              }
+            });
+          break;
+          case "no":
+          swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+          break;
+        }
+      });
+      
+    }); 
+  }
+  else{
+    swal("Reporte de Mantenimiento","Ya cuenta con observación el Estatus", "info");
+    return;
+  }
+}
+/*
 * Guardar el reporte modificado
 * @return JSON del response del REST Web Service
 */
 let guardarReporte = () => {
-  let token = localStorage.getItem("token");
-  let folio = document.getElementById('txtFolioR').value;
-  let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
-  let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
-  let fechaReparacion = document.getElementById('txtFechaReparacion').value;
-  let datos = {
-    "token" : token,
-    "folio" : folio,
-    "fecha-recepcion" : fechaRecepcion,
-    "fecha-asignacion" : fechaAsignacion,
-    "fecha-reparacion" : fechaReparacion
-  }
-  $.ajax({
-    type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
-    data: JSON.stringify(datos),
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    success: function(data){
-      swal("¡Registro Modificado!",data.mensaje, "success");
-      $('#myModal').modal('hide');
-    },
-    error: function(data) {
-      swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+    let token = localStorage.getItem("token");
+    let folio = document.getElementById('txtFolioR').value;
+    let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
+    let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
+    let fechaReparacion = document.getElementById('txtFechaReparacion').value;
+    let datos = {
+      "token" : token,
+      "folio" : folio,
+      "fecha-recepcion" : fechaRecepcion,
+      "fecha-asignacion" : fechaAsignacion,
+      "fecha-reparacion" : fechaReparacion
     }
-  });
-}
-let cancelarReportem = () =>{
-  swal("¿Estás Seguro de Cancelar el reporte?", {
-    buttons: {
-    catch: {
-      text: "SI",
-      value: "OK",
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
+      data: JSON.stringify(datos),
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      success: function(data){
+        swal("¡Registro Modificado!",data.mensaje, "success");
+        $('#myModal').modal('hide');
       },
-      no: true,
-    },
-  }).then((value) => {
-  switch (value) {
-    case "OK":
-      let token = localStorage.getItem("token");
-      let folio = document.getElementById('txtFolioR').value;
-      let datos = {
-        "token" : token,
-        "folio" : folio
+      error: function(data) {
+        swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
       }
-      $.ajax({
-        type: 'POST',
-        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
-        data: JSON.stringify(datos),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        success: function(data){
-          swal("¡Registro Modificado!",data.mensaje, "success");
-          $('#myModal').modal('hide');
-        },
-        error: function(data) {
-          swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
-        }
-      });
-    break;
-    case "no":
-    swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
-    break;
+    });
   }
- });
+/*
+* Cancelar el reporte seleccionado
+* @return JSON del response del REST Web Service
+*/
+let cancelarReportem = () =>{
+    swal("¿Estás Seguro de Cancelar el reporte?", {
+        buttons: {
+        catch: {
+          text: "SI",
+          value: "OK",
+          },
+          no: true,
+        },
+      }).then((value) => {
+      switch (value) {
+        case "OK":
+          let token = localStorage.getItem("token");
+          let folio = document.getElementById('txtFolioR').value;
+          let datos = {
+            "token" : token,
+            "folio" : folio
+          }
+          $.ajax({
+            type: 'POST',
+            url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
+            data: JSON.stringify(datos),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(data){
+              swal("¡Registro Modificado!",data.mensaje, "success");
+              $('#myModal').modal('hide');
+            },
+            error: function(data) {
+              swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+            }
+          });
+        break;
+        case "no":
+        swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+        break;
+      }
+     });
 }
 /*
 * Se ejecuta al cargar la pagina

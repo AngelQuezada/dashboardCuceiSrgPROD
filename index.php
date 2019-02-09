@@ -109,7 +109,7 @@ let userLogIn = () => {
             type: "GET",
             url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
             dataType: "json",
-            async: true,
+            async: false,
             success: function(data){
               let idUsuario = data.id;
               let nombre = data.nombre;
@@ -126,12 +126,32 @@ let userLogIn = () => {
           let datos = {
             "correo": user.email
           }
+/*
+          let request = new XMLHttpRequest();
+          request.open("POST",'http://localhost/API-CUCEI-SRG/index.php/personal/login',false);
+          request.onreadystatechange = () => {
+            let response = JSON.parse(request.response);
+            
+              let codigo = response.code;
+              console.log(codigo);
+              if(codigo === 1){
+                window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
+              }else{
+                let token = element.token;
+                localStorage.setItem("token",token);
+                window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
+              }
+          
+          }
+          request.send(JSON.stringify(datos));
+*/
           $.ajax({
           type: 'POST',
           url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
+          async: false,
           success: function(data){
             $.each(data,function(key, registro) {
               let codigo = data.code;
@@ -147,6 +167,7 @@ let userLogIn = () => {
           error: function(data) {
           }
         });
+
       }
   } else {
       window.location.replace("http://localhost/DashboardCuceiSrg/login.php");

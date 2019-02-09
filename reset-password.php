@@ -11,7 +11,6 @@
   <div class="register-logo">
     <b>Admin</b>CUCEI-SRG
   </div>
-  <form autocomplete="off">
     <div class="register-box-body">
       <div class="login-logo">
         Restablecer Contraseña
@@ -20,7 +19,7 @@
           <div class="form-group">
             <label for="correo" style="color: blue;">Ingrese su correo eletrónico actual</label>
             <i class="fa fa-envelope"></i>
-            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="email" required>
+            <input type="email" id="txtCorreoReset" class="form-control" placeholder="correo@cucei.udg.mx" required>
           </div>
           <div class="row">
             <div class="col-sm-12">
@@ -31,11 +30,78 @@
             </div>
           </div>
     </div> 
-  </form>
 </div>
  <?php
       include('footer.php');
  ?>
-<script src="assets/js/registro.js" type="text/javascript"></script>
 </body>
+<!-- <script type="text/javascript" src="assets/js/registro.js"></script> -->
+<script>
+$(function() {
+  $('#txtCorreoReset').keypress(function(e) {
+      if(e.which == 13) {
+        resetPassword();
+      }
+  });
+});
+/*
+* C O R R E G I R  O  A G R E G A R   F I C H E R O  JS  N U E V O
+*/
+/*
+* Redirige hacia la pagina index
+*/
+let regresar = () => {
+    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+    //window.history.go(-1);
+}
+/*
+* Variables de configuracion de Firebase
+*/
+const config = {
+  apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
+  authDomain: "cucei-srg.firebaseapp.com",
+  databaseURL: "https://cucei-srg.firebaseio.com",
+  projectId: "cucei-srg",
+  storageBucket: "cucei-srg.appspot.com",
+  messagingSenderId: "56958534713"
+};
+firebase.initializeApp(config);
+/*
+* Manda correo electronico para restablecer contraseña a la cuenta actual
+* @return Promise
+*/
+let resetPassword = () => {
+  let auth = firebase.auth();
+  let email = document.getElementById("txtCorreoReset").value;
+  console.log(email);
+  if(email.replace(/\s/g,"") == ""){
+        swal("ADMIN CUCEI-SRG","Ingrese su Correo Electrónico Primero", "info");
+        return;
+      }
+    swal("¿Estás Seguro de Restablecer su Contraseña?", {
+    buttons: {
+    catch: {
+      text: "Restablecer",
+      value: "restablecer",
+      },
+      cancelar: true,
+    },
+  }).then((value) => {
+    switch (value) {
+      case "restablecer":
+        auth.sendPasswordResetEmail(email).then(function(){
+          swal("ADMIN CUCEI-SRG", "¡Correo Enviado!, Verifica tu correo electrónico.","success");
+          $('#txtCorreoReset').val('');
+          }).catch(function(error){
+            let errorCode = error.code;
+            swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente. error code: "+errorCode, "error");
+        });
+      break;
+      case "cancelar":
+      swal("Has cancelado");
+      break;
+    }
+  });
+}
+</script>
 </html>

@@ -78,6 +78,18 @@ let registroPage = () => {
 window.onload = () => {
   userLogIn();
 }
+$(function() {
+    $('#txtPassword').keypress(function(e) {
+        if(e.which == 13) {
+            login();
+        }
+    });
+    $('#txtCorreo').keypress(function(e) {
+        if(e.which == 13) {
+            login();
+        }
+    });
+});
 </script>
 <script type="text/javascript" src="assets/js/registro.js"></script>
 </body>

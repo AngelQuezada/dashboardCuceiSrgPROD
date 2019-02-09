@@ -1,14 +1,16 @@
-<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: white;">
+<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: black; color: white;">
     <div class="hidden-xs" style="text-align: center">
     ©2018-2019. Universidad de Guadalajara. Sitio desarrollado por el equipo de CUCEI-SRG Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>
     </div>
   </footer>
-<script src="assets/js/libs/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="assets/js/libs/jquery.min.js"></script> -->
 <script src="assets/js/libs/jquery-ui.min.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="assets/js/libs/bootstrap.min.js"></script>
+<!-- <script src="assets/js/libs/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="assets/js/libs/material.min.js"></script>
 <script src="assets/js/libs/ripples.min.js"></script>
 <script>

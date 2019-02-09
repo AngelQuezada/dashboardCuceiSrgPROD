@@ -59,37 +59,6 @@ let verificar = () => {
   });
 }
 /*
-* Manda correo electronico para restablecer contraseña a la cuenta actual
-* @return Promise
-*/
-let resetPassword = () => {
-  let auth = firebase.auth();
-  let email = document.getElementById('email').value;
-  auth.sendPasswordResetEmail(email).then(function(){
-  swal({
-    title: "Restablecer Contraseña",
-    text: "¿Estás Seguro de restablecer tu contraseña?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Revisa tu bandeja de correo electrónico", {
-      icon: "success",
-    });
-    window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
-      } else {
-          swal("Has cancelado");
-      }
-  });
-  }).catch(function(error){
-    let errorCode = error.code;
-    swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente. error code: "+errorCode, "error");
-    $('#email').val('');
-  });
-}
-/*
 * Inicia Sesión con el Correo/Contraseña de Firebase
 * @return Promise
 */
@@ -106,6 +75,7 @@ let login = () => {
 /*
 * Redirige a la pagina a restablecer contraseña
 */
+
 let resetPwPage = () => {
     window.location.replace("http://localhost/DashboardCuceiSrg/reset-password.php");
 }
@@ -146,4 +116,7 @@ let finalizarRegistro = () => {
     swal("¡Oops!", "Hemos tenido un error: "+data.mensaje, "error");
     }
   });
+}
+window.onload = () => {
+
 }

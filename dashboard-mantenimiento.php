@@ -43,6 +43,7 @@
             <a href="reportes-nuevos.php" class="small-box-footer">Ver nuevos reportes <i class="fa fa-arrow-circle-right" style="color: green"></i></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-black">
             <div class="inner">
@@ -50,11 +51,25 @@
               <p>Reportes Asignados</p>
             </div>
             <div class="icon">
-              <i class="fa fa-check-square-o" style="color: blue"></i>
+              <i class="fa fa-check-square-o" style="color: yellow"></i>
             </div>
-            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
+            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: yellow"></i></a>
           </div>
         </div>
+
+        <div class="col-lg-3 col-xs-6">
+          <div class="small-box bg-black">
+            <div class="inner">
+              <h3><span id="reporteFinalizado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <p>Reportes Finalizados</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-list-alt" style="color: blue"></i>
+            </div>
+            <a href="reportes-finalizados.php" class="small-box-footer">Ver reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
+          </div>
+        </div>
+
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-black">
             <div class="inner">

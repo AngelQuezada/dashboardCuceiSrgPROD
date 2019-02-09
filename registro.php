@@ -41,5 +41,19 @@
       include('footer.php');
  ?>
 <script src="assets/js/registro.js" type="text/javascript"></script>
+<script>
+$(function() {
+  $('#txtPassword').keypress(function(e) {
+      if(e.which == 13) {
+        registrar();
+      }
+  });
+  $('#txtCorreo').keypress(function(e) {
+      if(e.which == 13) {
+        registrar();
+      }
+  });
+});
+</script>
 </body>
 </html>

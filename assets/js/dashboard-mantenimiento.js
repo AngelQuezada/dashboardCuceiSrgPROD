@@ -3,64 +3,84 @@
 * @return JSON del response del REST Web Service
 */
 let getReportesNuevo = () => {
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevos',
-    dataType: "json",
-    success: function(data){
-      document.getElementById("reporteSolicitud").innerHTML = data;
-    },
-    error: function(data) {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevos',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+  document.getElementById("reporteSolicitud").innerHTML = response;
+  }
+  request.send();
 }
 /*
 * Se obtiene la cantidad de registros de reportes por atender
 * @return JSON del response del REST Web Service
 */
 let getReportesAtender = () => {
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/atender',
-    dataType: "json",
-    success: function(data){
-      document.getElementById("reporteAsignado").innerHTML = data;
-    },
-    error: function(data) {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/reporte/atender',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+  document.getElementById("reporteAsignado").innerHTML = response;
+    
+  }
+  request.send();
+}
+/*
+* Se obtiene la cantidad de registros de reportes finalizados
+* @return JSON del response del REST Web Service
+*/
+let getReportesFinalizado = () => {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/reporte/finalizado',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      document.getElementById("reporteFinalizado").innerHTML = "ERROR";
+      return;
+    }
+  let response = JSON.parse(request.response);
+  document.getElementById("reporteFinalizado").innerHTML = response;
+    
+  }
+  request.send();
 }
 /*
 * Se obtiene la cantidad de registros de reportes Cancelados
 * @return JSON del response del REST Web Service
 */
 let getReportesCancelado = () => {
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelados',
-    dataType: "json",
-    success: function(data){
-      document.getElementById("reporteCancelado").innerHTML = data;
-    },
-    error: function(data) {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelados',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+  document.getElementById("reporteCancelado").innerHTML = response;
+  }
+  request.send();
 }
 /*
 * Se obtiene la cantidad de registros de usuarios registrados
 * @return JSON del response del REST Web Service
 */
 let getComunidadRegistrada = () => {
-  $.ajax({
-    type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/usuario/totalusuarios',
-    dataType: "json",
-    success: function(data){
-      document.getElementById("comunidadRegistrada").innerHTML = data;
-    },
-    error: function(data) {
+  let request = new XMLHttpRequest();
+  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/usuario/totalusuarios',false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      console.log("ERROR");
+      return;
     }
-  });
+  let response = JSON.parse(request.response);
+  document.getElementById("comunidadRegistrada").innerHTML = response;
+  }
+  request.send();
 }
 /*
 * Se obtiene la fecha Actual-
@@ -71,6 +91,7 @@ let fechaActual = () => {
 }
 getReportesNuevo();
 getReportesAtender();
+getReportesFinalizado();
 getReportesCancelado();
 getComunidadRegistrada();
 fechaActual();

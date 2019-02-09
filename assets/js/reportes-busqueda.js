@@ -98,7 +98,9 @@ let generateModal = (selectedFolio) => {
           registro.descripcion_servicio === '8' ? ds = "Jardinería" :
           registro.descripcion_servicio === '9' ? ds = "Limpieza" :
           registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
-          
+          //registro.fecha_recepcion === null ? registro.fecha_recepcion =  new Date(0) : registro.fecha_recepcion;
+         // registro.fecha_asignacion === null ? registro.fecha_asignacion = new Date(0) : registro.fecha_asignacion;
+          //registro.fecha_reparacion === null ? registro.fecha_reparacion = new Date(0) : registro.fecha_repa;
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
               <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
