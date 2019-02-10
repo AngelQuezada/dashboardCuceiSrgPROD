@@ -1,6 +1,6 @@
 .jumbotron{
 	text-align: center; 
-	background: gray; color: white;
+	background: #01579b; color: white;
 }
 .row#principal{
 	margin: 2%;
@@ -12,7 +12,7 @@
 	text-align: center;
 }
 #recibe{
-	background-color: gray;
+	background-color: #01579b;
 	color: white;
 }
 #descripcionProblema{

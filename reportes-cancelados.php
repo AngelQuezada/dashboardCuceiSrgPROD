@@ -37,7 +37,7 @@
 					<fieldset style="border: 1px solid gray;">
 						<kbd>Listado de Reportes</kbd>
 						<div class="col-sm-12">
-							<button class="btn btn-primary" onclick="reportesTodos()">Refrescar</button>
+							<button class="btn btn-primary" onclick="reportesTodos()" style="background-color: #00c853; color: white;">Refrescar</button>
 						</div>
 					</fieldset>
 				</div>

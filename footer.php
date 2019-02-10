@@ -1,4 +1,4 @@
-<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: black; color: white;">
+<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: #263238; color: white;">
     <div class="hidden-xs" style="text-align: center">
     ©2018-2019. Universidad de Guadalajara. Sitio desarrollado por el equipo de CUCEI-SRG Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>
     </div>
@@ -18,7 +18,7 @@
 </script>
 
 <!--<script src="assets/js/libs/raphael.min.js"></script>-->
-<!--<script src="assets/js/libs/morris.min.js"></script>-->
+<!-- <script src="assets/js/libs/morris.min.js"></script> -->
 <script src="assets/js/libs/jquery.sparkline.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-world-mill-en.js"></script>

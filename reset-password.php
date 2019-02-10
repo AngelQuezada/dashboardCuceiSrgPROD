@@ -16,17 +16,16 @@
         Restablecer Contraseña
         <hr style="background-color: gray">
       </div>
-          <div class="form-group">
+          <div class="form-group" style="text-align: center;">
             <label for="correo" style="color: blue;">Ingrese su correo eletrónico actual</label>
-            <i class="fa fa-envelope"></i>
             <input type="email" id="txtCorreoReset" class="form-control" placeholder="correo@cucei.udg.mx" required>
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary btn-block btn-flat" onclick="resetPassword();">Enviar solicitud</button>
+              <button type="button" class="btn btn-primary btn-block btn-flat" style="background-color: #1565c0; color: white;" onclick="resetPassword();">Enviar solicitud</button>
             </div>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-danger btn-block btn-flat" onclick="regresar();">Regresar</button>
+              <button type="button" class="btn btn-danger btn-block btn-flat" style="background-color: #f44336; color: white;" onclick="regresar();">Regresar</button>
             </div>
           </div>
     </div> 

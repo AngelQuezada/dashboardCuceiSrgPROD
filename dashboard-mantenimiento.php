@@ -32,63 +32,63 @@
       <p id="fechaActual"></p>
       <div class="row">
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-black">
+          <div class="small-box" style="background-color: #00c853">
             <div class="inner">
               <h3><span id="reporteSolicitud">...</span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes en solicitud</p>
             </div>
             <div class="icon">
-              <i class="ion ion-checkmark-round" style="color: green"></i>
+              <i class="ion ion-checkmark-round" style="color: #64dd17"></i>
             </div>
             <a href="reportes-nuevos.php" class="small-box-footer">Ver nuevos reportes <i class="fa fa-arrow-circle-right" style="color: green"></i></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-black">
+          <div class="small-box" style="background-color: #01579b">
             <div class="inner">
               <h3><span id="reporteAsignado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes Asignados</p>
             </div>
             <div class="icon">
-              <i class="fa fa-check-square-o" style="color: yellow"></i>
+              <i class="fa fa-check-square-o" style="color: #039be5"></i>
             </div>
-            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: yellow"></i></a>
+            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: #039be5"></i></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-black">
+          <div class="small-box" style="background-color: #f50057">
             <div class="inner">
               <h3><span id="reporteFinalizado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes Finalizados</p>
             </div>
             <div class="icon">
-              <i class="fa fa-list-alt" style="color: blue"></i>
+              <i class="fa fa-list-alt" style="color: #ff4081"></i>
             </div>
-            <a href="reportes-finalizados.php" class="small-box-footer">Ver reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: blue"></i></a>
+            <a href="reportes-finalizados.php" class="small-box-footer">Ver reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: #ff80ab"></i></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-black">
+          <div class="small-box" style="background-color: #b71c1c">
             <div class="inner">
               <h3><span id="reporteCancelado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes cancelados</p>
             </div>
             <div class="icon">
-              <i class="ion-close-round" style="color: red"></i>
+              <i class="ion-close-round" style="color: #e53935"></i>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-black">
+          <div class="small-box" style="background-color: #e65100">
             <div class="inner">
               <h3><span id="comunidadRegistrada">...</span><sup style="font-size: 20px">Usuarios</sup></h3>
               <p>Comunidad registrada</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add" style="color: orange"></i>
+              <i class="ion ion-person-add" style="color: #f57c00"></i>
             </div>
           </div>
         </div>

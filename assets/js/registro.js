@@ -59,27 +59,6 @@ let verificar = () => {
   });
 }
 /*
-* Inicia Sesión con el Correo/Contraseña de Firebase
-* @return Promise
-*/
-let login = () => {
-  let correo = document.getElementById('txtCorreo').value;
-  let password = document.getElementById('txtPassword').value;
-  firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
-    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
-  }).catch(function(error) {
-    let errorCode = error.code;
-    swal("¡Oops!", "Verifica tu correo/contraseña e inténtalo nuevamente. error code: "+errorCode, "error");
-  });
-}
-/*
-* Redirige a la pagina a restablecer contraseña
-*/
-
-let resetPwPage = () => {
-    window.location.replace("http://localhost/DashboardCuceiSrg/reset-password.php");
-}
-/*
 * Redirige hacia la pagina index
 */
 let regresar = () => {
@@ -108,15 +87,12 @@ let finalizarRegistro = () => {
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
-    success: function(data){
-    swal("¡Hemos terminado!", "Se ha registrado correctamente tus datos, redirigiendo al Dashboard...", "success");
+    success: function(){
+    //swal("¡Hemos terminado!", "Se ha registrado correctamente tus datos, redirigiendo al Dashboard...", "success");
     window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
     },
     error: function(data) {
     swal("¡Oops!", "Hemos tenido un error: "+data.mensaje, "error");
     }
   });
-}
-window.onload = () => {
-
 }

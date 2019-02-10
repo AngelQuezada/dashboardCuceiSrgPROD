@@ -121,30 +121,25 @@ let userLogIn = () => {
               //localStorage.setItem("email", user.email);
             },
             error: function(data) {
+              swal(data.mensaje, {
+                buttons: {
+                catch: {
+                  text: "Verificar",
+                  value: "verify",
+                  }
+                },
+              }).then((value) => {
+                switch (value) {
+                  case "verify":
+                    cerrarSesion();
+                  break;
+                }
+              });
             }
           });
           let datos = {
             "correo": user.email
           }
-/*
-          let request = new XMLHttpRequest();
-          request.open("POST",'http://localhost/API-CUCEI-SRG/index.php/personal/login',false);
-          request.onreadystatechange = () => {
-            let response = JSON.parse(request.response);
-            
-              let codigo = response.code;
-              console.log(codigo);
-              if(codigo === 1){
-                window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
-              }else{
-                let token = element.token;
-                localStorage.setItem("token",token);
-                window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
-              }
-          
-          }
-          request.send(JSON.stringify(datos));
-*/
           $.ajax({
           type: 'POST',
           url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
@@ -165,9 +160,22 @@ let userLogIn = () => {
             });
           },
           error: function(data) {
+            swal(data.responseJSON.mensaje, {
+                buttons: {
+                catch: {
+                  text: "Regresar",
+                  value: "salir",
+                  }
+                },
+              }).then((value) => {
+                switch (value) {
+                  case "salir":
+                    cerrarSesion();
+                  break;
+                }
+              });
           }
         });
-
       }
   } else {
       window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
@@ -177,7 +185,5 @@ let userLogIn = () => {
 /*
 * Funcion que se ejecuta al cargar esta pagina
 */
-window.onload = () => {
-  userLogIn();
-}
+userLogIn();
 </script>
