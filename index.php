@@ -21,7 +21,9 @@ let reenviar = () => {
   let user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function(){
       swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
-      buttons: {
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+        buttons: {
       catch: {
         text: "OK",
         value: "OK",
@@ -66,6 +68,8 @@ let redirect = () => {
 */
 let validatedEmail = () => {
   swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
+    closeOnClickOutside: false,
+    closeOnEsc: false,
     buttons: {
     catch: {
       text: "Verificar",
@@ -122,6 +126,8 @@ let userLogIn = () => {
             },
             error: function(data) {
               swal(data.mensaje, {
+                closeOnClickOutside: false,
+                closeOnEsc: false,
                 buttons: {
                 catch: {
                   text: "Verificar",
@@ -161,6 +167,8 @@ let userLogIn = () => {
           },
           error: function(data) {
             swal(data.responseJSON.mensaje, {
+              closeOnClickOutside: false,
+              closeOnEsc: false,
                 buttons: {
                 catch: {
                   text: "Regresar",

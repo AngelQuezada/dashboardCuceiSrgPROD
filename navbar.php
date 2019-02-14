@@ -27,6 +27,7 @@
               <li class="user-footer">
                 <div style="text-align: center">
                   <a href="logout.php" class="btn btn-danger btn-flat" style="background-color: #f44336; color:white;">Salir</a>
+                  <button class="btn btn-danger btn-flat" style="background-color: #0091ea; color:white;">Mi Perfil</button>
                 </div>
               </li>
             </ul>

@@ -54,7 +54,7 @@ let reportesTodos = () => {
 */
 let verReporte = (value,object) =>{
     let selectedFolio = object.innerHTML = value;
-    $("#modal").empty();
+  $("#modal").empty();
   $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">

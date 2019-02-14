@@ -72,18 +72,20 @@ firebase.initializeApp(config);
 let resetPassword = () => {
   let auth = firebase.auth();
   let email = document.getElementById("txtCorreoReset").value;
-  console.log(email);
   if(email.replace(/\s/g,"") == ""){
         swal("ADMIN CUCEI-SRG","Ingrese su Correo Electrónico Primero", "info");
         return;
       }
     swal("¿Estás Seguro de Restablecer su Contraseña?", {
+    icon: 'info',
+    title: 'ADMIN CUCEI-SRG',
+    closeOnClickOutside: false,
+    closeOnEsc: false,
     buttons: {
     catch: {
       text: "Restablecer",
       value: "restablecer",
-      },
-      cancelar: true,
+      }
     },
   }).then((value) => {
     switch (value) {
@@ -95,9 +97,6 @@ let resetPassword = () => {
             let errorCode = error.code;
             swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente. error code: "+errorCode, "error");
         });
-      break;
-      case "cancelar":
-      swal("Has cancelado");
       break;
     }
   });
