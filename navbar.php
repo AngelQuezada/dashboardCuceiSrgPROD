@@ -27,7 +27,7 @@
               <li class="user-footer">
                 <div style="text-align: center">
                   <a href="logout.php" class="btn btn-danger btn-flat" style="background-color: #f44336; color:white;">Salir</a>
-                  <button class="btn btn-danger btn-flat" style="background-color: #0091ea; color:white;">Mi Perfil</button>
+                  <button class="btn btn-danger btn-flat" style="background-color: #0091ea; color:white;" id="btnVerPerfil">Mi Perfil</button>
                 </div>
               </li>
             </ul>
@@ -39,24 +39,5 @@
       </div>
     </nav>
   </header>
-<script type="text/javascript">
-/*
-* Funcion obtener el nombre completo del usuario logeado
-* @return promise
-*/
-let setNameNavBar = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-    $('#correoNavbar').append('<span>'+localStorage.getItem("email")+'</span>');
-    $('#nombrePersonal').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
-  }, 1000);
-  });
-}
-/*
-* Funcion asincrona llamando a otra funcion
-*/
-async function inicio(){
-  let result = await setNameNavBar();
-}
-inicio();
-</script>
+  <script type="module" src="assets/js/navbar.js"></script>
+  
