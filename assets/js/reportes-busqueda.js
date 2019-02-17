@@ -1,3 +1,7 @@
+const URI = localStorage.getItem('uri');
+document.getElementById('btnBuscarReporte').addEventListener('click',function(){
+  nuevaBusqueda();
+});
 /*
 * Se Obtienen los datos del formulario
 */
@@ -17,7 +21,7 @@ let nuevaBusqueda = () => {
 * @param aPaterno String
 * @param aMaterno String
 * @param nombre String
-* @param folio String 
+* @param folio String
 */
 let reporte = (aPaterno,aMaterno,nombre,folio) => {
   $("#tablaResultados").empty();
@@ -35,7 +39,7 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
   <tbody id="bodyTable">`);
   $.ajax({
     type: "GET",
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reportenpp/'+aPaterno+'/'+aMaterno+'/'+nombre+'/'+folio,
+    url: `${URI}/reporte/reportenpp/`+aPaterno+'/'+aMaterno+'/'+nombre+'/'+folio,
     dataType: "json",
     success: function(data){
       $.each(data,function(_key, registro) {
@@ -83,12 +87,12 @@ let generateModal = (selectedFolio) => {
     <div class="modal-body" style="background-color: #F5ECCE" id="bodyModal">`);
     $.ajax({
       type: "GET",
-      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteindpp/'+selectedFolio,
+      url: `${URI}/reporte/reporteindpp/`+selectedFolio,
       dataType: "json",
       success: function(data){
         $.each(data,function(_key, registro) {
           let ds;
-          registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" : 
+          registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" :
           registro.descripcion_servicio === '2' ? ds = "Carpinteria" :
           registro.descripcion_servicio === '3' ? ds = "Cristales y/o estructura de aluminio" :
           registro.descripcion_servicio === '4' ? ds = "Eléctrico" :
@@ -98,9 +102,6 @@ let generateModal = (selectedFolio) => {
           registro.descripcion_servicio === '8' ? ds = "Jardinería" :
           registro.descripcion_servicio === '9' ? ds = "Limpieza" :
           registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
-          //registro.fecha_recepcion === null ? registro.fecha_recepcion =  new Date(0) : registro.fecha_recepcion;
-         // registro.fecha_asignacion === null ? registro.fecha_asignacion = new Date(0) : registro.fecha_asignacion;
-          //registro.fecha_reparacion === null ? registro.fecha_reparacion = new Date(0) : registro.fecha_repa;
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
               <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
@@ -214,10 +215,9 @@ let guardarReporte = () => {
     "fecha-asignacion" : fechaAsignacion,
     "fecha-reparacion" : fechaReparacion
   }
-  console.log(JSON.stringify(datos));
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
+    url: `${URI}/reporte/modreporte`,
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
@@ -254,7 +254,7 @@ let cancelarReporte = () =>{
       }
       $.ajax({
         type: 'POST',
-        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
+        url: `${URI}/reporte/cancelar`,
         data: JSON.stringify(datos),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',

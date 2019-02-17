@@ -1,3 +1,4 @@
+var URI = localStorage.getItem('uri');
 /*
 * Variables de configuracion de Firebase
 */
@@ -10,7 +11,7 @@ const config = {
     messagingSenderId: "56958534713"
   };
 firebase.initializeApp(config);
-let altaPersonal = () =>{ 
+let altaPersonal = () =>{
 const config2 = {
     apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
     authDomain: "cucei-srg.firebaseapp.com",
@@ -117,7 +118,6 @@ let habilitarPersonal = () => {
     "token" : token,
     "idUsuario" : idUsuario
   }
-  console.log(JSON.stringify(datos));
   swal(`¿Está seguro de habilitar el correo: ${correo}?`, {
     icon: 'info',
     title: 'ADMIN CUCEI-SRG',
@@ -250,7 +250,7 @@ let datosPersonales = () =>{
                           </div>
                   </div>
               </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
@@ -284,7 +284,7 @@ let cambiarContraseña = () => {
             user.updatePassword(passwordNuevo).then(function() {
               swal("ADMIN CUCEI-SRG","Se ha Cambiado la contraseña correctamente.", "success");
               }).catch(function(error) {
-              swal("ADMIN CUCEI-SRG",`Ha ocurrido un error: ${error.code}`, "error");           
+              swal("ADMIN CUCEI-SRG",`Ha ocurrido un error: ${error.code}`, "error");
             });
           } else {
           }
@@ -295,5 +295,5 @@ let cambiarContraseña = () => {
       break;
     }
   });
-}); 
+});
 }

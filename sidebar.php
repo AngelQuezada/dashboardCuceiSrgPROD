@@ -2,8 +2,12 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel" id="user-panel"></div>
-     
+      <div class="user-panel" id="user-panel" style="text-align: center;">
+        <img src="assets/img/cucei-srg-logo.png" width="50%"><br/>
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br>
+        <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
+      </div>
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">PANEL NAVEGACION</li>
@@ -69,7 +73,7 @@
           </ul>
         </li>
 
-       
+
         <li>
           <a href="administracion-graficas.php">
             <i class="fa fa-pie-chart"></i> <span>Graficas</span>
@@ -81,7 +85,11 @@
       </ul>
     </section>
   </aside>
-<script type="text/javascript">
+<script defer type="text/javascript">
+const URL = localStorage.getItem('url');
+document.getElementById('btnCerrarSesion').addEventListener('click',function(){
+  window.location.replace(`${URL}/logout.php`);
+});
 /*
 * Funcion obtener el nombre completo del usuario logeado
 * @return promise
@@ -89,8 +97,10 @@
 let setNameSideBar = () => {
   return new Promise(resolve => {
     setTimeout(() => {
-    $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>');
-    }, 1000);
+    $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span><br/>');
+    $("#spinerEmail").remove();
+    $('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
+  }, 2000);
   });
 }
 /*
@@ -100,4 +110,5 @@ async function inicio(){
   let result = await setNameSideBar();
 }
 inicio();
+
 </script>

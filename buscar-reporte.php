@@ -48,7 +48,7 @@
           <label for="txtFolio" style="color: black;">Folio</label>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-primary" onclick="nuevaBusqueda()">Buscar</button>
+          <button class="btn btn-primary" id="btnBuscarReporte">Buscar</button>
         </div>
       </fieldset>
 			</div>
@@ -64,6 +64,6 @@
 	<?php
   	include('footer.php');
 	?>
-  <script type="text/javascript" src="assets/js/reportes-busqueda.js"></script>
+<script type="text/javascript" src="assets/js/reportes-busqueda.js"></script>
 </body>
 </html>

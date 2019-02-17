@@ -1,7 +1,18 @@
 <?php
   include('footer.php');
 ?>
-<script type="text/javascript">
+<script type="module">
+import {baseURI,baseURL} from './assets/js/baseURL.js';
+
+let uri = localStorage.getItem("uri");
+let url = localStorage.getItem("url");
+
+if (uri === null && url === null) {
+  let URI = baseURI();
+  let URL = baseURL();
+  localStorage.setItem("uri", URI);
+  localStorage.setItem("url", URL);
+}
 /*
 * Variables de configuracion de Firebase
 */

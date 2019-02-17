@@ -50,23 +50,16 @@
                     <legend>Ubicación del servicio</legend>
                     <div id="divModulo">
                       <label for="modulo" style="color: black;"><small style="color: red">*</small>Módulo:</label>
-                      <select class="form-control" id="modulo" onclick="getModulo()" required><option value="" disabled selected>Seleccione un Módulo.</option></select>
-                      <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
+                      <select class="form-control" id="modulo" required><option></option></select>
                     </div>
                     <div id="divPiso">
                       <label for="piso" style="color: black;"><small style="color: red">*</small>Piso:</label>
-                      <select class="form-control" id="piso" 
-                      onclick="getPiso()" required><option value="" disabled selected>Seleccione un Piso.</option></select>
-                      <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
+                      <select class="form-control" id="piso" required><option></option></select>
                     </div>
                     <div id="divAula">
                       <label for="aula" style="color: black;"><small style="color: red">*</small>Aula:</label>
-                      <select class="form-control" id="aula"
-                      onclick="getAula()" 
-                      required><option value="" disabled selected>Seleccione un Aula.</option></select>
-                      <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
+                      <select class="form-control" id="aula" required><option></option></select>
                     </div>
-                    <button class="btn btn-warning" onclick="ereaseItems()">Reiniciar</button>
                     <input class="form-control" id="anotacionExtra" type="text" name="anotacionExtra" placeholder="Escriba aqui si necesita hacer una descripción sobre el lugar.">
                     <label for="recibe" style="color: black;">Anotación Extra sobre el sitio</label>
                   </fieldset>
@@ -152,10 +145,10 @@
                   </fieldset>
                 </div>
                 <div class="col-sm-12" id="divButton">
-                  <button class="btn btn-primary" onclick="nuevoReporte()" id="btnNuevoReporte" ng-disabled="formulario.$invalid">Registrar Reporte
+                  <button class="btn btn-primary" id="btnNuevoReporte" ng-disabled="formulario.$invalid">Registrar Reporte
                   </button>
                 </div>
-      </form>       
+      </form>
     </div>
   <?php
     include("control-sidebar.php");
@@ -166,6 +159,6 @@
   require('footer.php');
 ?>
 <script src="assets/js/libs/angular.min.js" type="text/javascript"></script>
-<script src="assets/js/generar-reporte.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/js/generar-reporte.js"></script>
 </body>
 </html>

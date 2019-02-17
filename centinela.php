@@ -3,14 +3,16 @@
 * Funcion donde se valida si existe el localStorage en el navegador
 * Esta cabecera se utiliza en todas las paginas dentro del sistema ADMIN CUCEI-SRG
 */
-const centinela = function(){
+let centinela = () => {
 	let email = localStorage.getItem("email");
 	let nombreCompleto = localStorage.getItem("nombreCompleto");
 	let token = localStorage.getItem("token");
 	let idUsuario = localStorage.getItem("idUsuario");
-	if (email === null || nombreCompleto === null || token === null ) {
-	window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
-	return;
+	let uri = localStorage.getItem("uri");
+	let url = localStorage.getItem("url");
+	if (email === null || nombreCompleto === null || token === null || uri === null || url === null ) {
+		window.location.replace(`${URL}/index.php`);
+		return;
 	}
 	return;
 }

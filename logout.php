@@ -4,7 +4,7 @@
 <?php
   require_once('centinela.php');
 ?>
-<script type="text/javascript">
+<script type="module">
 /*
 * Variables de configuracion de Firebase
 */

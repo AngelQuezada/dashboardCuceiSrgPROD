@@ -19,8 +19,8 @@
     <p style="text-align: center;">Completa el registro antes de poder ingresar al sistema.</p>
     <form autocomplete="off">
       <div class="form-group">
-        <label for="txtCorreo" style="color: blue;">Correo electrónico registrado</label>
-        <i class="fa fa-envelope"></i><input type="email" class="form-control" id="txtCorreo">
+        <label for="txtCorreoRegistrado" style="color: blue;">Correo electrónico registrado</label>
+        <i class="fa fa-envelope"></i><input type="email" class="form-control" id="txtCorreoRegistrado">
       </div>
       <div class="form-group">
         <label for="txtNombre" style="color: blue;">Nombre</label>
@@ -46,12 +46,9 @@
       include('footer.php');
   ?>
   <script type="text/javascript">
-    const getCorreo = function(){
-        document.getElementById("correo").disabled = true;
-        $("#correo").val(localStorage.getItem("email"));
-    }
     window.onload = function(){
-      getCorreo();
+      $('#txtCorreoRegistrado').val(localStorage.getItem("email"));
+      document.getElementById("txtCorreoRegistrado").disabled = true;
     }
   </script>
   <script type="text/javascript" src="assets/js/registro.js"></script>

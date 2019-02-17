@@ -28,9 +28,9 @@
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-			<ol class="breadcrumb" style="background-color: black; color: white;">
+			<ol class="breadcrumb" style="background-color: black;">
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Reportes Nuevos</li>
+				<li class="active" style="color: white;">Reportes Nuevos</li>
 			</ol>
 			<div class="row">
 				<div class="input-field col-sm-12">
@@ -53,6 +53,6 @@
 	<?php
   		include('footer.php');
 	?>
-<script type="text/javascript" src="assets/js/reportes-nuevos.js"></script>
 </body>
+<script type="text/javascript" src="assets/js/reportes-nuevos.js"></script>
 </html>

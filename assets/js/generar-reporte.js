@@ -1,18 +1,49 @@
+var URI = localStorage.getItem('uri');
+$(document).ready(function() {
+  getModulo();
+  $('#modulo').on("select2:select", function(e) {
+    $("#divPiso").show();
+    $("#divAula").show();
+    getPiso();
+  });
+  $("#piso").on("select2:select", function(e){
+    $('#aula').html('').select2({data: {id:null, text: null}});
+    getAula();
+  });
+});
+document.getElementById('btnNuevoReporte').addEventListener('click',function(){
+  nuevoReporte();
+})
 /*
 * Limpia los campos del Formulario de Reporte de Mantenimiento
 */
 let cleanReport = () => {
-  ereaseLC();
-  ereaseModule();
   $("#anotacionExtra").val('');
   $('#correo').val('');
   $('#telefono').val('');
   $('#area').val('');
   $('textarea#descripcionProblema').val('');
   $('input:radio[name=descripcionServicio]').each(function () { $(this).prop('checked', false); });
+  $('#modulo').html('').select2({data: {id:null, text: null}});
+  $('#piso').html('').select2({data: {id:null, text: null}});
+  $('#aula').html('').select2({data: {id:null, text: null}});
 }
 /*
 * Se obtienen los datos de los campos del formulario
+* Se Registra reporte de Mantenimiento
+* @param token String
+* @param idUsuario Integer
+* @param recibe String
+* @param correo String
+* @param telefono Integer
+* @param area String
+* @param modulo String
+* @param piso String
+* @param aula String
+* @param anotacionExtra String
+* @param option Integer
+* @Param descripcionProblema String
+* @return JSON del response del REST Web Service
 */
 let nuevoReporte = () => {
   let token = localStorage.getItem("token");
@@ -30,25 +61,6 @@ let nuevoReporte = () => {
   if (option == 'otro') {
      option = document.getElementById('otro').value;
   }
-  registrarReporte(token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema);
-}
-/*
-* Se Registra reporte de Mantenimiento
-* @param token String
-* @param idUsuario Integer
-* @param recibe String
-* @param correo String
-* @param telefono Integer
-* @param area String
-* @param modulo String
-* @param piso String
-* @param aula String
-* @param anotacionExtra String
-* @param option Integer
-* @Param descripcionProblema String
-* @return JSON del response del REST Web Service
-*/
-let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,aula,anotacionExtra,option,descripcionProblema) => {
   let datos = {
     "token" : token,
     "idUsuario" : idUsuario,
@@ -65,7 +77,7 @@ let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,
   }
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/nuevo',
+    url: `${URI}/reporte/nuevo`,
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
@@ -79,114 +91,60 @@ let registrarReporte = (token,idUsuario,recibe,correo,telefono,area,modulo,piso,
   });
 }
 /*
-* Se Elimina el elemento del DOM divSeleccion y se crea nuevamente
-*/
-let ereaseItems = () => {
-  ereaseLC();
-  $("#divSeleccion").empty();
-  $("#divSeleccion").append(`<fieldset>
-  <legend>Ubicación del servicio</legend>
-  <div id="divModulo">
-    <label for="modulo" style="color: black;"><small style="color: red">*</small>Módulo:</label>
-    <select class="form-control" id="modulo" onclick="getModulo()" required><option value="" disabled selected>Seleccione un Módulo.</option></select>
-    <button class="btn btn-danger" onclick="ereaseModule()">Cambiar</button><br>
-  </div>
-  <div id="divPiso">
-    <label for="piso" style="color: black;"><small style="color: red">*</small>Piso:</label>
-    <select class="form-control" id="piso" 
-    onclick="getPiso()" required><option value="" disabled selected>Seleccione un Piso.</option></select>
-    <button class="btn btn-danger" onclick="ereaseFloor()">Cambiar</button><br>
-  </div>
-  <div id="divAula">
-    <label for="aula" style="color: black;"><small style="color: red">*</small>Aula:</label>
-    <select class="form-control" id="aula"
-    onclick="getAula()" 
-    required><option value="" disabled selected>Seleccione un Aula.</option></select>
-    <button class="btn btn-danger" onclick="ereaseAula()">Cambiar</btn><br>
-  </div>
-  <button class="btn btn-warning" onclick="ereaseItems()">Reiniciar</button>
-  <input class="form-control" id="anotacionExtra" type="text" name="anotacionExtra" placeholder="Escriba aqui si necesita hacer una descripción sobre el lugar.">
-  <label for="recibe" style="color: black;">Anotación Extra sobre el sitio</label>
-</fieldset>`);
-}
-/*
-* Se elimina valor actual del campo Modulo
-*/
-let ereaseModule = () => {
-  ereaseItems();
-}
-/*
-* Se elimina valor actual del campo Piso
-*/
-let ereaseFloor = () => {
-  localStorage.removeItem("getPiso");
-  ereaseAula();
-  $("#piso").empty();
-  $("#piso").append('<option value="" disabled selected>Seleccione un Piso.</option>');
-}
-/*
-* Se elimina valor actul del campo Aula
-*/
-let ereaseAula = () => {
-  localStorage.removeItem("getAula");
-  $("#aula").empty();
-  $("#aula").append('<option value="" disabled selected>Seleccione un Aula.</option>');
-}
-
-/*
 * Se obtiene el listado de Modulos
 * @return JSON del response del REST Web Service
 */
 let getModulo = () => {
-  let $select = $('#modulo');
-  let lcM = localStorage.getItem("getModulo");
-  if(lcM !== null){
-    return;
-  }
-  let request = new XMLHttpRequest();
-  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/modulo/modulos',false);
-  request.onreadystatechange = () => {
-    if (request.status !== 200){
-      alert('Error al cargar lista de Modulos');
-      return;
-    }
-  let response = JSON.parse(request.response);
-    response.forEach(element => {
-      $select.append('<option value='+element.id+'>MODULO: '+element.module_name+'</option>');
+  $('#modulo').select2({
+    width: 'resolve',
+    placeholder: 'Selecciona un Módulo.',
+    allowClear: true
+  });
+  var moduleSelect = $('#modulo');
+  $.ajax({
+    type: 'GET',
+    url: `${URI}/modulo/modulos`
+  }).then(function (data) {
+    $.each(data,function(_key, registro) {
+    let option = new Option(registro.module_name, registro.id, true, true);
+    moduleSelect.append(option).trigger('change');
     });
-    localStorage.setItem("getModulo","1");         
-  }
-  request.send();
+    moduleSelect.trigger({
+        type: 'select2:select',
+        params: {
+            data: data
+        }
+    });
+});
 }
 /*
 * Se obtiene el listado de Pisos por el modulo Seleccionado
 * @return JSON del response del REST Web Service
 */
 let getPiso = () => {
-  var id_module = document.getElementById('modulo').value;
-  if (id_module === '1') {
-      swal("Reporte de Mantenimiento", "Describe la ubicacion en el siguiente campo.", "info");
-  	$("#divPiso").remove();
-  	$("#divAula").remove();
-  }
-  let piso = localStorage.getItem("getPiso");
-  if(piso !== null){
-    return;
-  }
-  let request = new XMLHttpRequest();
-  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/piso/pisos/'+id_module,false);
-  request.onreadystatechange = () => {
-    if (request.status !== 200){
-      alert('Debe Seleccionar un módulo primero.') 
-      return;
-    }
-  let response = JSON.parse(request.response);
-    response.forEach(element => {
-      $("#piso").append('<option value='+element.floor_id+'>PISO: '+element.floor_id+'</option>');      
-    });
-    localStorage.setItem("getPiso","1");         
-  }
-  request.send();
+  $('#piso').select2({
+    width: 'resolve',
+    placeholder: 'Selecciona un Piso.',
+    allowClear: true
+  });
+    var id_module = document.getElementById('modulo').value;
+    let $select = $('#piso');
+    var pisoSelect = $('#piso');
+    $.ajax({
+      type: 'GET',
+      url: `${URI}/piso/pisos/`+id_module
+    }).then(function (data) {
+      $.each(data,function(_key, registro) {
+      let option = new Option(registro.floor_id, registro.floor_id, true, true);
+      pisoSelect.append(option).trigger('change');
+      });
+      pisoSelect.trigger({
+          type: 'select2:select',
+          params: {
+              data: data
+          }
+      });
+  });
 }
 /*
 * Se obtiene el listado de Aulas por el modulo y piso seleccionado
@@ -195,37 +153,29 @@ let getPiso = () => {
 let getAula = () => {
   let idModulo = document.getElementById('modulo').value;
   let idPiso = document.getElementById('piso').value;
-  let aula = localStorage.getItem("getAula");
-  if(aula !== null){
-    return;
-  }
-  let request = new XMLHttpRequest();
-  request.open("GET",'http://localhost/API-CUCEI-SRG/index.php/aula/aulas/'+idModulo+'/'+idPiso,false);
-  request.onreadystatechange = () => {
-    if (request.status !== 200){
-      alert('Debe Seleccionar un módulo o piso primero.') 
-      return;
-    }
-  let response = JSON.parse(request.response);
-    response.forEach(element => {
-      $("#aula").append('<option value='+element.aula_name+'>AULA: '+element.aula_name+'</option>');
+  let $select = $('#aula');
+  $('#aula').select2({
+    width: 'resolve',
+    placeholder: 'Selecciona un Aula.',
+    allowClear: true
+  });
+  var aulaSelect = $('#aula');
+  $.ajax({
+    type: 'GET',
+    url: `${URI}/aula/aulas/`+idModulo+'/'+idPiso
+  }).then(function (data) {
+    $.each(data,function(_key, registro) {
+    let option = new Option(registro.aula_name, registro.aula_name, true, true);
+    aulaSelect.append(option).trigger('change');
     });
-    localStorage.setItem("getAula","1");      
-  }
-  request.send();
+    aulaSelect.trigger({
+        type: 'select2:select',
+        params: {
+            data: data
+        }
+    });
+});
 }
-/*
-* Se eliminan las variables del LocalStorage del Navegador
-*/
-let ereaseLC = () => {
-  localStorage.removeItem("getModulo");
-  localStorage.removeItem("getPiso");
-  localStorage.removeItem("getAula");
-}
-/*
-* Elimino del LocalStorage para manipular los selects nuevamente
-*/
-ereaseLC();
 /*
 *Seteo el campo recibe y lo deshabilito
 */

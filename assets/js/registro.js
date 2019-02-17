@@ -1,3 +1,5 @@
+var URI = localStorage.getItem('uri');
+var URL = localStorage.getItem('url');
 /*
 * Variables de configuracion de Firebase
 */
@@ -62,7 +64,7 @@ let verificar = () => {
 * Redirige hacia la pagina index
 */
 let regresar = () => {
-    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+    window.location.replace(`${URL}/index.php`);
     //window.history.go(-1);
 }
 /*
@@ -71,7 +73,6 @@ let regresar = () => {
 * @return Promise
 */
 let finalizarRegistro = () => {
-  let correo = localStorage.getItem("email");
   let nombre = document.getElementById('txtNombre').value;
   let aPaterno = document.getElementById('txtApaterno').value;
   let aMaterno = document.getElementById('txtAmaterno').value;
@@ -83,13 +84,13 @@ let finalizarRegistro = () => {
   }
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/personal/nuevo',
+    url: `${URI}/personal/nuevo`,
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(){
     //swal("¡Hemos terminado!", "Se ha registrado correctamente tus datos, redirigiendo al Dashboard...", "success");
-    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+    window.location.replace(`${URL}/index.php`);
     },
     error: function(data) {
     swal("¡Oops!", "Hemos tenido un error: "+data.mensaje, "error");

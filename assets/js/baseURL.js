@@ -1,4 +1,7 @@
-let baseURL = () =>{
+let baseURL = () => {
     return baseURL = 'http://localhost/DashboardCuceiSrg';
 }
-export {baseURL};
+let baseURI = () => {
+  return baseURI = 'http://localhost/API-CUCEI-SRG/index.php';
+}
+export {baseURL,baseURI};

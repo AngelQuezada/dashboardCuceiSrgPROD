@@ -34,7 +34,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box" style="background-color: #00c853">
             <div class="inner">
-              <h3><span id="reporteSolicitud">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteN"></span><span id="reporteSolicitud"></span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes en solicitud</p>
             </div>
             <div class="icon">
@@ -47,7 +47,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box" style="background-color: #01579b">
             <div class="inner">
-              <h3><span id="reporteAsignado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteA"></span><span id="reporteAsignado"></span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes Asignados</p>
             </div>
             <div class="icon">
@@ -60,7 +60,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box" style="background-color: #f50057">
             <div class="inner">
-              <h3><span id="reporteFinalizado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteF"></span><span id="reporteFinalizado"></span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes Finalizados</p>
             </div>
             <div class="icon">
@@ -73,7 +73,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box" style="background-color: #b71c1c">
             <div class="inner">
-              <h3><span id="reporteCancelado">...</span><sup style="font-size: 20px">Reportes</sup></h3>
+              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteC"></span><span id="reporteCancelado"></span><sup style="font-size: 20px">Reportes</sup></h3>
               <p>Reportes cancelados</p>
             </div>
             <div class="icon">
@@ -84,7 +84,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box" style="background-color: #e65100">
             <div class="inner">
-              <h3><span id="comunidadRegistrada">...</span><sup style="font-size: 20px">Usuarios</sup></h3>
+              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteCR"></span><span id="comunidadRegistrada"></span><sup style="font-size: 20px">Usuarios</sup></h3>
               <p>Comunidad registrada</p>
             </div>
             <div class="icon">
@@ -104,4 +104,5 @@
 ?>
 <script src="assets/js/dashboard-mantenimiento.js" type="text/javascript"></script>
 </body>
+<button class="night-trigger" style="background: rgb(255, 255, 255); color: rgb(253, 208, 23);"></button>
 </html>

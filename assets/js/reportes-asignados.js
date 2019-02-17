@@ -1,3 +1,4 @@
+const URI = localStorage.getItem('uri');
 /*
 * Obtener Todos los reportes
 */
@@ -18,35 +19,34 @@ let reportesTodos = () => {
     </tr>
     </thead>
     <tbody id="bodyTable">`);
-    $.ajax({
-        type: "GET",
-        url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteasignados/'+token,
-        dataType: "json",
-        success: function(data){
-          $.each(data,function(_key, registro) {
-              let status;
-              registro.idStatus === '1' ? status = "En Solicitud" :
-              registro.idStatus === '2' ? status = "Asignado" :
-              registro.idStatus === '3' ? status = "Finalizado" : status = "Cancelado";
-              registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
-              $("#bodyTable").append(`
-              <tr>
-              <input type="hidden" id="folioId" value="`+registro.folio+`"/>
-              <td>`+registro.folio+`</td>
-              <td>`+status+`</td>
-              <td>`+obs+`</td>
-              <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-external-link" aria-hidden="true"></i></button></td>
-              <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')"><i class="fa fa-bullhorn" aria-hidden="true"></i></button></td>
-              <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
-              </tr>
-              `);
-          });
-          $("#tablaResultados").append(`</tbody>
-          </table>`);
-        },
-        error: function() {
-        }
+$.ajax({
+    type: "GET",
+    url: `${URI}/reporte/reporteasignados/`+token,
+    dataType: "json",
+    success: function(data){
+      $.each(data,function(_key, registro) {
+          let status;
+          registro.idStatus === '1' ? status = "En Solicitud" :
+          registro.idStatus === '2' ? status = "Asignado" :
+          registro.idStatus === '3' ? status = "Finalizado" : status = "Cancelado";
+          registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
+          $("#bodyTable").append(`
+          <tr>
+          <input type="hidden" id="folioId" value="`+registro.folio+`"/>
+          <td>`+registro.folio+`</td>
+          <td>`+status+`</td>
+          <td>`+obs+`</td>
+          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-external-link" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')"><i class="fa fa-bullhorn" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+          </tr>
+          `);
       });
+      $("#tablaResultados").append(`</tbody>
+      </table>`);
+    },
+    error: function() {}
+  });
 }
 /*
 * Ver el reporte seleccionado
@@ -70,7 +70,7 @@ let verReporte = (value,object) =>{
       success: function(data){
         $.each(data,function(_key, registro) {
           let ds;
-          registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" : 
+          registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" :
           registro.descripcion_servicio === '2' ? ds = "Carpinteria" :
           registro.descripcion_servicio === '3' ? ds = "Cristales y/o estructura de aluminio" :
           registro.descripcion_servicio === '4' ? ds = "Eléctrico" :
@@ -172,8 +172,7 @@ let verReporte = (value,object) =>{
         </div>
         </div>`);
       },
-      error: function() {
-    }
+      error: function() {}
   });
 }
 /*
@@ -200,7 +199,7 @@ let cancelarReporte = (value,object) => {
         }
         $.ajax({
           type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
+          url: `${URI}/reporte/cancelar`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -256,7 +255,7 @@ let agregarObservacion = (value,object) => {
             }
             $.ajax({
               type: 'POST',
-              url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/genobservacion',
+              url: `${URI}/reporte/genobservacion`,
               data: JSON.stringify(datos),
               contentType: 'application/json; charset=utf-8',
               dataType: 'json',
@@ -274,8 +273,7 @@ let agregarObservacion = (value,object) => {
           break;
         }
       });
-      
-    }); 
+    });
   }
   else{
     swal("Reporte de Mantenimiento","Ya cuenta con observación el Estatus", "info");
@@ -301,7 +299,7 @@ let guardarReporte = () => {
     }
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/modreporte',
+      url: `${URI}/reporte/modreporte`,
       data: JSON.stringify(datos),
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
@@ -336,28 +334,30 @@ let cancelarReportem = () =>{
             "token" : token,
             "folio" : folio
           }
-          $.ajax({
-            type: 'POST',
-            url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/cancelar',
-            data: JSON.stringify(datos),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function(data){
-              swal("¡Registro Modificado!",data.mensaje, "success");
-              $('#myModal').modal('hide');
-            },
-            error: function(data) {
-              swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
-            }
-          });
-        break;
-        case "no":
-        swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
-        break;
-      }
-     });
+      $.ajax({
+        type: 'POST',
+        url: `${URI}/reporte/cancelar`,
+        data: JSON.stringify(datos),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function(data){
+          swal("¡Registro Modificado!",data.mensaje, "success");
+          $('#myModal').modal('hide');
+        },
+        error: function(data) {
+          swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
+        }
+      });
+    break;
+    case "no":
+    swal("Reporte de Mantenimiento","No se realizó ningun cambio", "info");
+    break;
+  }
+ });
 }
 /*
 * Se ejecuta al cargar la pagina
 */
-reportesTodos();
+$(function(){
+  reportesTodos();
+});
