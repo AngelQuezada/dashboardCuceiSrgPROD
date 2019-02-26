@@ -56,7 +56,7 @@ let verReporte = (value,object) =>{
     <div class="modal-body" style="background-color: #F5ECCE" id="bodyModal">`);
     $.ajax({
       type: "GET",
-      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteindpp/'+selectedFolio,
+      url: `${URI}/reporte/reporteindpp/`+selectedFolio,
       dataType: "json",
       success: function(data){
         $.each(data,function(_key, registro) {

@@ -4,7 +4,7 @@ const URI = localStorage.getItem('uri');
 */
 //Variable global para guardar la observacion del reporte
 var obs;
-let reportesTodos = () => {
+let reportesTodos = async () => {
     let token = localStorage.getItem("token");
     $("#tablaResultados").empty();
     $("#tablaResultados").append(`<br><table class='table'>
@@ -52,7 +52,7 @@ $.ajax({
 * Ver el reporte seleccionado
 * @param value
 */
-let verReporte = (value,object) =>{
+let verReporte = (value,object) => {
     let selectedFolio = object.innerHTML = value;
   $("#modal").empty();
   $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -65,7 +65,7 @@ let verReporte = (value,object) =>{
     <div class="modal-body" style="background-color: #F5ECCE" id="bodyModal">`);
     $.ajax({
       type: "GET",
-      url: 'http://localhost/API-CUCEI-SRG/index.php/reporte/reporteindpp/'+selectedFolio,
+      url: `${URI}/reporte/reporteindpp/`+selectedFolio,
       dataType: "json",
       success: function(data){
         $.each(data,function(_key, registro) {
@@ -80,6 +80,24 @@ let verReporte = (value,object) =>{
           registro.descripcion_servicio === '8' ? ds = "Jardinería" :
           registro.descripcion_servicio === '9' ? ds = "Limpieza" :
           registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
+
+          //ASIGNAN localStorage PARA IMPRIMIR PDF
+          localStorage.setItem("folio", registro.folio);
+          localStorage.setItem("fechaElaboracion", registro.fecha_elaboracion);
+          localStorage.setItem("recibe", registro.recibe);
+          localStorage.setItem("fechaRecepcion", registro.fecha_recepcion);
+          localStorage.setItem("fechaAsignacion", registro.fecha_asignacion);
+          localStorage.setItem("fechaReparacion", registro.fecha_reparacion);
+          localStorage.setItem("nombre", registro.nombre);
+          localStorage.setItem("aPaterno", registro.a_paterno);
+          localStorage.setItem("aMaterno", registro.a_materno);
+          localStorage.setItem("telefono", registro.telefono);
+          localStorage.setItem("areaSolicitante", registro.area_solicitante);
+          localStorage.setItem("ubicacionServicio", registro.ubicacion_servicio);
+          localStorage.setItem("anotacionExtra", registro.anotacion_extra);
+          localStorage.setItem("descripcionProblema", registro.descripcion_problema);
+          localStorage.setItem("descripcionServicio", ds);
+
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
               <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
@@ -162,7 +180,7 @@ let verReporte = (value,object) =>{
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
+          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
           <button type="button" class="btn btn-danger" style="background-color: red; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i>Cancelar Reporte</button>
           <button type="button" class="btn btn-secondary" style="background-color: orange; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -355,9 +373,45 @@ let cancelarReportem = () =>{
   }
  });
 }
+let imprimir = () => {
+  //ASIGNAN localStorage PARA IMPRIMIR PDF
+  let folio = localStorage.getItem("folio");
+  let fechaElaboracion = localStorage.getItem("fechaElaboracion");
+  let recibe = localStorage.getItem("recibe");
+  let fechaRecepcion = localStorage.getItem("fechaRecepcion");
+  let fechaAsignacion = localStorage.getItem("fechaAsignacion");
+  let fechaReparacion = localStorage.getItem("fechaReparacion");
+  let nombre = localStorage.getItem("nombre");
+  let aPaterno = localStorage.getItem("aPaterno");
+  let aMaterno = localStorage.getItem("aMaterno");
+  let telefono = localStorage.getItem("telefono");
+  let areaSolicitante = localStorage.getItem("areaSolicitante");
+  let ubicacionServicio = localStorage.getItem("ubicacionServicio");
+  let anotacionExtra = localStorage.getItem("anotacionExtra");
+  let descripcionProblema = localStorage.getItem("descripcionProblema");
+  let descripcionServicio = localStorage.getItem("descripcionServicio");
+
+  var doc = new jsPDF()
+  doc.text(20, 20, 'Reporte de Mantenimiento')
+  doc.text(20, 30, `folio ${folio}`)
+  doc.text(20, 40, `fecha de elaboracion ${fechaElaboracion}`)
+  doc.text(20, 50, `recibe ${recibe}`)
+  doc.text(20, 60, `fecha de recepcion ${fechaRecepcion}`)
+  doc.text(20, 70, `fecha de Asignacion ${fechaAsignacion}`)
+  doc.text(20, 80, `fecha de reparación ${fechaReparacion}`)
+  doc.text(20, 90, `nombre ${nombre}`)
+  doc.text(20, 100, `apellido paterno ${aPaterno}`)
+  doc.text(20, 110, `apellido materno ${aMaterno}`)
+  doc.text(20, 120, `telefono ${telefono}`)
+  doc.text(20, 240, `area solicitante ${areaSolicitante}`)
+  doc.text(20, 260, `ubicacion Servicio ${ubicacionServicio}`)
+  doc.text(20, 280, `anotacion extra ${anotacionExtra}`)
+  doc.text(20, 300, `descripcion servicio ${descripcionServicio}`)
+  doc.save('reporte-mantenimiento-TEST.pdf')
+}
 /*
 * Se ejecuta al cargar la pagina
 */
 $(function(){
-  reportesTodos();
+ reportesTodos();
 });

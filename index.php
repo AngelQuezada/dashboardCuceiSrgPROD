@@ -3,11 +3,9 @@
 ?>
 <script type="module">
 import {baseURI,baseURL} from './assets/js/baseURL.js';
-
-let uri = localStorage.getItem("uri");
-let url = localStorage.getItem("url");
-
-if (uri === null && url === null) {
+var URI = localStorage.getItem("uri");
+var URL = localStorage.getItem("url");
+if (URI === null && URL === null) {
   let URI = baseURI();
   let URL = baseURL();
   localStorage.setItem("uri", URI);
@@ -72,7 +70,7 @@ let cerrarSesion = () => {
 * Redirecciona al index
 */
 let redirect = () => {
-  window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+  window.location.replace(`${URL}/index.php`);
 }
 /*
 * Se activa esta funcion si el correo del usuario no esta validado
@@ -109,7 +107,7 @@ let validatedEmail = () => {
 let userLogIn = () => {
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
-    window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
+    window.location.replace(`${URI}/dashboard-mantenimiento.php`);
   }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -122,7 +120,7 @@ let userLogIn = () => {
           //let email = user.email;
           $.ajax({
             type: "GET",
-            url: 'http://localhost/API-CUCEI-SRG/index.php/personal/empleado/'+email,
+            url: `${URI}/personal/empleado/`+email,
             dataType: "json",
             async: false,
             success: function(data){
@@ -159,7 +157,7 @@ let userLogIn = () => {
           }
           $.ajax({
           type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/personal/login',
+          url: `${URI}/personal/login`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -168,11 +166,11 @@ let userLogIn = () => {
             $.each(data,function(key, registro) {
               let codigo = data.code;
               if (codigo == 1) {
-                window.location.replace("http://localhost/DashboardCuceiSrg/registro-datos.php");
+                window.location.replace(`${URL}/registro-datos.php`);
               }else{
                 let token = data.token;
                 localStorage.setItem("token",token);
-                window.location.replace("http://localhost/DashboardCuceiSrg/dashboard-mantenimiento.php");
+                window.location.replace(`${URL}/dashboard-mantenimiento.php`);
               }
             });
           },
@@ -197,12 +195,14 @@ let userLogIn = () => {
         });
       }
   } else {
-      window.location.replace("http://localhost/DashboardCuceiSrg/login.php");
+      window.location.replace(`${URL}/login.php`);
     }
   });
 }
 /*
 * Funcion que se ejecuta al cargar esta pagina
 */
-userLogIn();
+window.onload = () =>{
+  userLogIn();
+}
 </script>

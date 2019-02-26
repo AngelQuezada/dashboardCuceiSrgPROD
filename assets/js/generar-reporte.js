@@ -1,4 +1,5 @@
 var URI = localStorage.getItem('uri');
+
 $(document).ready(function() {
   getModulo();
   $('#modulo').on("select2:select", function(e) {
@@ -27,6 +28,9 @@ let cleanReport = () => {
   $('#modulo').html('').select2({data: {id:null, text: null}});
   $('#piso').html('').select2({data: {id:null, text: null}});
   $('#aula').html('').select2({data: {id:null, text: null}});
+  getModulo();
+  getPiso();
+  getAula();
 }
 /*
 * Se obtienen los datos de los campos del formulario

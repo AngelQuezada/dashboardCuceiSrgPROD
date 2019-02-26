@@ -4,7 +4,9 @@
 <?php
   require_once('centinela.php');
 ?>
-<script type="module">
+<script type="text/javascript">
+var URI = localStorage.getItem('uri');
+var URL = localStorage.getItem('url');
 /*
 * Variables de configuracion de Firebase
 */
@@ -40,13 +42,13 @@ let deleteToken = () => {
   }
   $.ajax({
     type: 'POST',
-    url: 'http://localhost/API-CUCEI-SRG/index.php/personal/deletetoken',
+    url: `${URI}/personal/deletetoken`,
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(){
       localStorage.clear();
-      window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+      window.location.replace(`${URL}/index.php`);
     },
     error: function() {
       alert('Ha ocurrido un error al intentar registrarse: ');

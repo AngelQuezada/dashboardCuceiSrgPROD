@@ -52,7 +52,7 @@ let verificar = () => {
   let user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function(){
     swal("¡Registro Completado!", "Revisa tu bandeja de correo electrónico para verificar tu cuenta", "info");
-    window.location.replace("http://localhost/DashboardCuceiSrg/index.php");
+    window.location.replace(`${URL}/index.php`);
   }).catch(function(error){
     let errorCode = error.code;
     alert("Ha ocurrido un error al intentar registrarse. error code: "+errorCode);

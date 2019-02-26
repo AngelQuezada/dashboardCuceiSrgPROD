@@ -84,7 +84,7 @@ let bajaPersonal = () =>{
       case "baja":
         $.ajax({
           type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/personal/revokepersonal',
+          url: `${URI}/personal/revokepersonal`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -135,7 +135,7 @@ let habilitarPersonal = () => {
       case "alta":
         $.ajax({
           type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/personal/unrevokepersonal',
+          url: `${URI}/personal/unrevokepersonal`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -186,7 +186,7 @@ let asignarAdministrador = () => {
       case "admin":
         $.ajax({
           type: 'POST',
-          url: 'http://localhost/API-CUCEI-SRG/index.php/personal/asignaradmin',
+          url: `${URI}/personal/asignaradmin`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
