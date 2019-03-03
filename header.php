@@ -13,10 +13,11 @@
   <link rel="stylesheet" href="assets/css/libs/ripples.min.css">
   <link rel="stylesheet" href="assets/css/libs/MaterialAdminLTE.min.css">
   <link rel="stylesheet" href="assets/css/libs/all-md-skins.min.css">
-  <link rel="stylesheet" href="assets/css/libs/morris.js/morris.css">
+  <!-- <link rel="stylesheet" href="assets/css/libs/morris.js/morris.css"> -->
   <link rel="stylesheet" href="assets/css/libs/jquery-jvectormap.css">
   <link rel="stylesheet" href="assets/css/libs/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="assets/css/libs/daterangepicker.css">
   <link rel="stylesheet" href="assets/css/libs/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="assets/css/libs/pace.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

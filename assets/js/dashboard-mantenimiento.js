@@ -20,6 +20,7 @@ let getReportesNuevo = () => {
     }
   let response = JSON.parse(request.response);
   $("#spinnerReporteN").hide();
+  $('.overlay').remove();
   document.getElementById('reporteSolicitud').innerHTML = response;
   }
   request.send();
@@ -102,3 +103,6 @@ let fechaActual = () => {
   let date = new Date();
   $('#fechaActual').append('Hoy es: '+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear());
 }
+$(document).ajaxStart(function () {
+  Pace.restart();
+})

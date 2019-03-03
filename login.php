@@ -5,6 +5,7 @@
   <?php
       include('header.php');
   ?>
+<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box" style="margin-top: 0px;margin-bottom: 0px;">

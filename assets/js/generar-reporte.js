@@ -1,5 +1,7 @@
+$(document).ajaxStart(function () {
+  Pace.restart();
+})
 var URI = localStorage.getItem('uri');
-
 $(document).ready(function() {
   getModulo();
   $('#modulo').on("select2:select", function(e) {
@@ -126,6 +128,12 @@ let getModulo = () => {
 * @return JSON del response del REST Web Service
 */
 let getPiso = () => {
+    $('#piso').html('').select2({
+      data: {
+        id: null,
+        text: null
+      }
+    });
   $('#piso').select2({
     width: 'resolve',
     placeholder: 'Selecciona un Piso.',

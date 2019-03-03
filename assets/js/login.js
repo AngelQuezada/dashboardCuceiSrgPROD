@@ -1,4 +1,7 @@
 var URL = localStorage.getItem('url');
+$(document).ajaxStart(function () {
+  Pace.restart();
+})
 /*
 * Variables de configuracion de Firebase
 */
@@ -38,10 +41,8 @@ let userLogIn = () => {
 /*
 * Se llama la funcion cuando la pagina carga
 */
-window.onload = () => {
-  userLogIn();
-}
 $(function() {
+  userLogIn();
     $('#txtPassword').keypress(function(e) {
         if(e.which == 13) {
           login();

@@ -6,7 +6,7 @@
     	include('header.php');
   	?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 	<?php
       include("navbar.php");

@@ -1,7 +1,12 @@
+<link rel="stylesheet" type="text/css" href="assets/css/index.css">
 <?php
   include('footer.php');
 ?>
+
 <script type="module">
+$(document).ajaxStart(function () {
+  Pace.restart();
+})
 import {baseURI,baseURL} from './assets/js/baseURL.js';
 var _URI_ = baseURI();
 var _URL_ = baseURL();
@@ -107,7 +112,7 @@ let validatedEmail = () => {
 let userLogIn = () => {
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
-    window.location.replace(`${_URI_}/dashboard-mantenimiento.php`);
+    window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
   }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {

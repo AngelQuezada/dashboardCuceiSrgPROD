@@ -415,3 +415,6 @@ let imprimir = () => {
 $(function(){
  reportesTodos();
 });
+$(document).ajaxStart(function () {
+  Pace.restart();
+})

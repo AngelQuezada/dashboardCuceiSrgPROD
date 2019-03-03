@@ -313,6 +313,7 @@ let guardarReporte = () => {
     success: function(data){
       swal("¡Registro Modificado!",data.mensaje, "success");
       $('#myModal').modal('hide');
+      reportesTodos();
     },
     error: function(data) {
       swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
@@ -347,6 +348,7 @@ let cancelarReportem = () =>{
         success: function(data){
           swal("¡Registro Modificado!",data.mensaje, "success");
           $('#myModal').modal('hide');
+          reportesTodos();
         },
         error: function(data) {
           swal("Reporte de Mantenimiento",data.responseJSON.mensaje, "info");
@@ -365,3 +367,6 @@ let cancelarReportem = () =>{
 $(function(){
   reportesTodos();
 });
+$(document).ajaxStart(function () {
+  Pace.restart();
+})

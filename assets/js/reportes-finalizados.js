@@ -158,3 +158,6 @@ let verReporte = (value,object) =>{
 $(function(){
   reportesTodos();
 });
+$(document).ajaxStart(function () {
+  Pace.restart();
+})

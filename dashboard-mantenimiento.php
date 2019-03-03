@@ -9,7 +9,7 @@
     include('header.php');
   ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
     <?php
       include("navbar.php");
@@ -29,69 +29,91 @@
       </ol>
     </section>
     <section class="content">
-      <p id="fechaActual"></p>
+      <h4 id="fechaActual"></h3>
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box" style="background-color: #81d4fa">
-            <div class="inner">
-              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteN"></span><span id="reporteSolicitud"></span><sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Reportes en solicitud</p>
+
+        <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header" style="background-color: #4d82cb">
+              <h3 class="box-title">Reportes en Solicitud</h3>
             </div>
-            <div class="icon">
-              <i class="ion ion-checkmark-round" style="color: #64dd17"></i>
+            <div class="box-body" style="background-color: #eceff1">
+              <h3><span id="reporteSolicitud"></span> Reportes</h3>
             </div>
-            <a href="reportes-nuevos.php" class="small-box-footer">Ver nuevos reportes <i class="fa fa-arrow-circle-right" style="color: green"></i></a>
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin" id="spinnerReporteN"></i>
+            </div>
+            <div style="background-color: #82b1ff">
+            <a href="reportes-nuevos.php" class="small-box-footer" style="color: white">Ver Reportes Nuevos <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box" style="background-color: #bdbdbd">
-            <div class="inner">
-              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteA"></span><span id="reporteAsignado"></span><sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Reportes Asignados</p>
+        <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header" style="background-color: #0069c0">
+              <h3 class="box-title">Reportes Asignados</h3>
             </div>
-            <div class="icon">
-              <i class="fa fa-check-square-o" style="color: #039be5"></i>
+            <div class="box-body" style="background-color: #eceff1">
+              <h3><span id="reporteAsignado"></span> Reportes</h3>
             </div>
-            <a href="reportes-asignados.php" class="small-box-footer">Ver reportes Asignados <i class="fa fa-arrow-circle-right" style="color: #039be5"></i></a>
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin" id="spinnerReporteA"></i>
+            </div>
+            <div style="background-color: #2196f3">
+            <a href="reportes-asignados.php" class="small-box-footer" style="color: white">Ver Reportes Asignados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box" style="background-color: #81d4fa">
-            <div class="inner">
-              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteF"></span><span id="reporteFinalizado"></span><sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Reportes Finalizados</p>
+        <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header" style="background-color: #4d82cb">
+              <h3 class="box-title">Reportes Finalizados</h3>
             </div>
-            <div class="icon">
-              <i class="fa fa-list-alt" style="color: #ff4081"></i>
+            <div class="box-body">
+              <h3><span id="reporteFinalizado"></span> Reportes</h3>
             </div>
-            <a href="reportes-finalizados.php" class="small-box-footer">Ver reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: #ff80ab"></i></a>
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin" id="spinnerReporteF"></i>
+            </div>
+            <div style="background-color: #82b1ff">
+            <a href="reportes-finalizados.php" class="small-box-footer" style="color: white">Ver Reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box" style="background-color: #bdbdbd">
-            <div class="inner">
-              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteC"></span><span id="reporteCancelado"></span><sup style="font-size: 20px">Reportes</sup></h3>
-              <p>Reportes cancelados</p>
+        <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header" style="background-color: #0069c0">
+              <h3 class="box-title">Reportes Cancelados</h3>
             </div>
-            <div class="icon">
-              <i class="ion-close-round" style="color: #e53935"></i>
+            <div class="box-body">
+              <h3><span id="reporteCancelado"></span> Reportes</h3>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box" style="background-color: #81d4fa">
-            <div class="inner">
-              <h3><span class="fa fa-spinner fa-spin" style="font-size:24px" id="spinnerReporteCR"></span><span id="comunidadRegistrada"></span><sup style="font-size: 20px">Usuarios</sup></h3>
-              <p>Comunidad registrada</p>
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin" id="spinnerReporteC"></i>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add" style="color: #f57c00"></i>
+            <div style="background-color: #2196f3">
+            <a href="reportes-finalizados.php" class="small-box-footer" style="color: white">Ver Reportes Cancelados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
         </div>
+
+        <div class="col-md-3">
+          <div class="box box-primary box-solid">
+            <div class="box-header" style="background-color: #4d82cb">
+              <h3 class="box-title">Comunidad Registrada</h3>
+            </div>
+            <div class="box-body">
+              <h3><span id="comunidadRegistrada"></span> Usuarios</h3>
+            </div>
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin" id="spinnerReporteCR"></i>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </div>

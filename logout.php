@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="assets/css/logout.css">
 <?php
   include('footer.php');
 ?>
@@ -5,6 +6,9 @@
   require_once('centinela.php');
 ?>
 <script type="text/javascript">
+$(document).ajaxStart(function () {
+  Pace.restart();
+})
 var URI = localStorage.getItem('uri');
 var URL = localStorage.getItem('url');
 /*

@@ -35,5 +35,7 @@
 <script src="assets/js/libs/adminlte.min.js"></script>
 <script src="assets/js/libs/dashboard.js"></script>
 <script src="assets/js/libs/demo.js"></script>
+<script src="assets/js/libs/pace.min.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Reportes Finalizados</title>
+	<title>CUCEI-SRG | Reportes Cancelados</title>
 	<?php
     	include('header.php');
   	?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
-	  <?php
+	<?php
       include("navbar.php");
     ?>
     <?php
@@ -17,20 +17,20 @@
     <div class="content-wrapper">
     	<section class="content-header">
     		<h1>
-		        Reportes Finalizados-Mantenimiento
+		        Encargados por Reporte
 		        <small>Sistema de Reportes Generales</small>
       		</h1>
 			<ol class="breadcrumb">
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
-				<li class="active">Reportes Finalizados</li>
+				<li class="active">Encargados</li>
 			</ol>
     	</section>
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-			<ol class="breadcrumb" style="background-color: black; color: white;">
+		<ol class="breadcrumb" style="background-color: black; color: white;">
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard Mantenimiento</a></li>
-				<li class="active">Reportes Finalizados</li>
+				<li class="active">Encargados por Reporte</li>
 			</ol>
 			<div class="row">
 				<div class="input-field col-sm-12">
@@ -53,6 +53,6 @@
 	<?php
   		include('footer.php');
 	?>
-<script type="text/javascript" src="assets/js/reportes-finalizados.js"></script>
+<script type="text/javascript" src="assets/js/reportes-encargado.js"></script>
 </body>
 </html>

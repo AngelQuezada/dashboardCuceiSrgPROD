@@ -10,7 +10,7 @@
   ?>
 <link rel="stylesheet" type="text/css" href="assets/css/generar-graficas.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
 	<?php
       include("navbar.php");
