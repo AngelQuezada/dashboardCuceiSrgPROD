@@ -44,5 +44,4 @@
   ?>
 <script type="text/javascript" src="assets/js/login.js"></script>
 </body>
-<button class="night-trigger" style="background: rgb(255, 255, 255); color: rgb(253, 208, 23);"></button>
 </html>

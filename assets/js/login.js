@@ -42,11 +42,6 @@ window.onload = () => {
   userLogIn();
 }
 $(function() {
-  $("body").nightMode({
-    keepNormal: "button",
-    successText: "¡Modo Oscuro Activado Correctamente!",
-    adjustText: "Ajusta el Brillo a tu gusto <kbd>FASE BETA</kbd>",
-  });
     $('#txtPassword').keypress(function(e) {
         if(e.which == 13) {
           login();

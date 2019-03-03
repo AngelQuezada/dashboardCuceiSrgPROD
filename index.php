@@ -3,13 +3,13 @@
 ?>
 <script type="module">
 import {baseURI,baseURL} from './assets/js/baseURL.js';
+var _URI_ = baseURI();
+var _URL_ = baseURL();
 var URI = localStorage.getItem("uri");
 var URL = localStorage.getItem("url");
 if (URI === null && URL === null) {
-  let URI = baseURI();
-  let URL = baseURL();
-  localStorage.setItem("uri", URI);
-  localStorage.setItem("url", URL);
+  localStorage.setItem("uri", _URI_);
+  localStorage.setItem("url", _URL_);
 }
 /*
 * Variables de configuracion de Firebase
@@ -70,7 +70,7 @@ let cerrarSesion = () => {
 * Redirecciona al index
 */
 let redirect = () => {
-  window.location.replace(`${URL}/index.php`);
+  window.location.replace(`${_URL_}/index.php`);
 }
 /*
 * Se activa esta funcion si el correo del usuario no esta validado
@@ -107,7 +107,7 @@ let validatedEmail = () => {
 let userLogIn = () => {
   let existToken = localStorage.getItem("token");
   if (existToken !== null) {
-    window.location.replace(`${URI}/dashboard-mantenimiento.php`);
+    window.location.replace(`${_URI_}/dashboard-mantenimiento.php`);
   }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -120,7 +120,7 @@ let userLogIn = () => {
           //let email = user.email;
           $.ajax({
             type: "GET",
-            url: `${URI}/personal/empleado/`+email,
+            url: `${_URI_}/personal/empleado/`+email,
             dataType: "json",
             async: false,
             success: function(data){
@@ -157,7 +157,7 @@ let userLogIn = () => {
           }
           $.ajax({
           type: 'POST',
-          url: `${URI}/personal/login`,
+          url: `${_URI_}/personal/login`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -166,11 +166,11 @@ let userLogIn = () => {
             $.each(data,function(key, registro) {
               let codigo = data.code;
               if (codigo == 1) {
-                window.location.replace(`${URL}/registro-datos.php`);
+                window.location.replace(`${_URL_}/registro-datos.php`);
               }else{
                 let token = data.token;
                 localStorage.setItem("token",token);
-                window.location.replace(`${URL}/dashboard-mantenimiento.php`);
+                window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
               }
             });
           },
@@ -195,7 +195,7 @@ let userLogIn = () => {
         });
       }
   } else {
-      window.location.replace(`${URL}/login.php`);
+      window.location.replace(`${_URL_}/login.php`);
     }
   });
 }

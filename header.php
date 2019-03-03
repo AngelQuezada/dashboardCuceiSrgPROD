@@ -20,4 +20,3 @@
   <link rel="stylesheet" href="assets/css/libs/bootstrap3-wysihtml5.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <link rel="stylesheet" href="assets/css/libs/night-mode.css">

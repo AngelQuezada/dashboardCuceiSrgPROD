@@ -7,7 +7,8 @@
 	<title>CUCEI-SRG | Administración de Gráficas</title>
 	<?php
     	include('header.php');
-  	?>
+  ?>
+<link rel="stylesheet" type="text/css" href="assets/css/generar-graficas.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -31,7 +32,8 @@
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-
+				<h1>EJEMPLO GRAFICA A PARTIR DE UN JSON </h1>
+				<div id="containerChart"></div>
     	</section>
     </div>
     <?php
@@ -41,5 +43,7 @@
 	<?php
   		include('footer.php');
 	?>
+<script src="https://d3js.org/d3.v2.min.js"></script>
+<script type="text/javascript" src="assets/js/administrar-graficas.js"></script>
 </body>
 </html>

@@ -1,10 +1,5 @@
 var URI = localStorage.getItem('uri');
 $(function() {
-  $("body").nightMode({
-    keepNormal: "button",
-    successText: "¡Modo Oscuro Activado Correctamente!",
-    adjustText: "Ajusta el Brillo a tu gusto <kbd>FASE BETA</kbd>",
-  });
   getReportesNuevo();
   getReportesAtender();
   getReportesFinalizado();
