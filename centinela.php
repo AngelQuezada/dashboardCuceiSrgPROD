@@ -11,7 +11,7 @@ let centinela = () => {
 	let uri = localStorage.getItem("uri");
 	let url = localStorage.getItem("url");
 	if (email === null || nombreCompleto === null || token === null || uri === null || url === null ) {
-		window.location.replace(`${URL}/index.php`);
+		window.location.replace(`${URL}/401.php`);
 		return;
 	}
 	return;

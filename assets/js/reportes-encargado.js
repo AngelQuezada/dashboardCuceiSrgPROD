@@ -8,10 +8,10 @@ let reportesTodos = () => {
     $("#tablaResultados").append(`<br><table class='table'>
     <thead>
     <tr class='bg-primary'>
-    <th>Nombre</th>
-    <th>Apellido Paterno</th>
-    <th>Apellido Materno</th>
-    <th>Folio del Reporte</th>
+    <th>Nombre Encargado</th>
+    <th>Apellido Paterno Encargado</th>
+    <th>Apellido Materno Encargado</th>
+    <th>Folio del Reporte Asignado</th>
     <th>Ver</th>
     </tr>
     </thead>

@@ -24,6 +24,12 @@
         <p>SOLICITUD MANTENIMIENTO PREVENTIVO / CORRECTIVO</p>
         <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
     </div>
+    <div class="alert alert-info alert-dismissible" style="background: green;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-info"></i>Ayuda</h4>
+      <h3>Asegurese de conocer el correo electrónico del usuario que reportó el incidente.</h3>
+      <h3>Agregue una anotación extra si solo no existe un Piso ni Aula del Módulo Seleccionado.</h3>
+    </div>
     <div class="row" id="principal">
       <form name="formulario" autocomplete="off" required>
                 <div class="col-sm-3">

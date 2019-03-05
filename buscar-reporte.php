@@ -19,14 +19,22 @@
     		<h1>
 		        Búsqueda de Reportes
 		        <small>Sistema de Reportes Generales</small>
-							<h4 style="background-color: #F7D358; border-radius: 4px 4px 4px 4px;"><b>Apellidos y/o Nombres con la primer letra Mayúscula. || Ingresar al menos 1 Apellido para realizar la búsqueda.</b></h4>
       		</h1>
+          <div class="alert alert-info alert-dismissible" style="background: green;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-info"></i>Ayuda</h4>
+            Apellidos y/o Nombres con la primer letra Mayúscula. || Ingresar al menos 1 Apellido para realizar la búsqueda.
+          </div>
 			<ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
 				<li class="active">Reportes</li>
 			</ol>
     	</section>
   	<section class="content">
+    <ol class="breadcrumb" style="background-color: black;">
+				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active" style="color: white;">Buscar Reportes</li>
+			</ol>
 		<div class="row">
 			<div class="input-field col-sm-12">
 			<fieldset style="border: 1px solid gray;">

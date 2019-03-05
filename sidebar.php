@@ -15,6 +15,7 @@
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
+            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -28,8 +29,9 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cog"></i>
-            <span>Reportes Mantenimiento</span>
+            <span>Mantenimiento</span>
             <span class="pull-right-container">
+            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -47,8 +49,9 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-plus-square"></i>
-            <span>Reportes Seguridad</span>
+            <span>Seguridad</span>
             <span class="pull-right-container">
+            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -62,8 +65,9 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-user-circle"></i>
-            <span>Administrar Usuarios</span>
+            <span>Usuarios</span>
             <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right">
               </i>
             </span>
@@ -77,7 +81,8 @@
 
         <li>
           <a href="administracion-graficas.php">
-            <i class="fa fa-pie-chart"></i> <span>Graficas</span>
+            <small class="label pull-right bg-green">new</small>
+            <i class="fa fa-pie-chart"></i><span>Graficas</span>
             <span class="pull-right-container">
             </span>
           </a>

@@ -30,8 +30,13 @@
     </section>
     <section class="content">
       <h4 id="fechaActual"></h3>
+      <div class="alert alert-info alert-dismissible" style="background: green;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-info"></i>¡BIENVENID@!</h4>
+        Este es su Dashboard, donde podrá ver el conteo de los reportes de Mantenimiento por cada estatus.<br/>
+        En la barra lateral derecha tiene los accesos a cada módulo del sistema para la administración.
+      </div>
       <div class="row">
-
         <div class="col-md-3">
           <div class="box box-primary box-solid">
             <div class="box-header" style="background-color: #4d82cb">

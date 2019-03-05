@@ -37,12 +37,12 @@
 				<h3><b>Usuarios comprende de: Alumnos,Académicos y personal del CUCEI (a excepción del CSG).</b></h3>
 				<div class="row">
 					<div class="col-sm-6" data-toggle="modal" data-target="#modalBanearUsuario" style="text-align: center; background-color: #b71c1c; color: white;">
-							<h2>Banear Usuario</h2><br/>
+							<h2>Dar de Baja Usuario</h2><br/>
 							<h4>Utilizar cuando un usuario infrinja una regla</h4>
 					</div>
 					<div class="col-sm-6" data-toggle="modal" data-target="#modalHabilitarUsuario" style="text-align: center; background-color: #1b5e20; color: white;">
-						<h2>Habilitar Usuario Baneado</h2><br/>
-						<h4>Quitar Baneo de un usuario del sistema</h4>
+						<h2>Habilitar Usuario dado de Baja</h2><br/>
+						<h4>Habilitar un usuario del sistema</h4>
 					</div>
 				</div>
     	</section>

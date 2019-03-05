@@ -32,6 +32,11 @@
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard Mantenimiento</a></li>
 				<li class="active">Reportes Finalizados</li>
 			</ol>
+			<div class="alert alert-info alert-dismissible" style="background: green;">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h4><i class="icon fa fa-info"></i>Ayuda</h4>
+				De click sobre el ícono: <i class="fa fa-external-link" aria-hidden="true"></i> para ver el reporte.<br/>
+			</div>
 			<div class="row">
 				<div class="input-field col-sm-12">
 					<fieldset style="border: 1px solid gray;">
