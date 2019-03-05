@@ -1,0 +1,104 @@
+#breadcrumbContent{
+    background-color: black;
+    color: white;
+}
+#liContent{
+    color: white;
+}
+#divAltaPersonal{
+    text-align: center;
+    background-color: #0d47a1;
+    color: white;
+}
+#divBajaPersonal{
+    text-align: center;
+    background-color: #b71c1c;
+    color: white;
+}
+#divHabilitarPersonal{
+    text-align: center;
+    background-color: #1a237e;
+    color: white;
+}
+#divAsignarAdministrador{
+    text-align: center;
+    background-color: #1b5e20;
+    color: white;
+}
+#divAsignarRol{
+    text-align: center;
+    background-color: #311b92;
+    color: white;
+}
+#divConsultaDatosP{
+    text-align: center;
+    background-color: #e65100;
+    color: white;
+}
+#divAltaPersonal:hover {
+    background: #18ffff !important;
+}
+#divBajaPersonal:hover {
+    background: #ff5252 !important;
+}
+#divHabilitarPersonal:hover {
+    background: #aa00ff !important;
+}
+#divAsignarAdministrador:hover {
+    background: #76ff03 !important;
+}
+#divAsignarRol:hover {
+    background: #e040fb !important;
+}
+#divConsultaDatosP:hover {
+    background: #ffc107 !important;
+}
+#headerModalAltaPersonal{
+    background-color: #1565c0;
+}
+#modalBodyAltaPersonal{
+    background-color: #cfd8dc;
+}
+#registerboxAltaPersonal{
+    background-color: #eceff1;
+}
+#hrAltaPersonal{
+    background-color: gray;
+}
+#txtCorreoAltaPersonal{
+    color: blue;
+}
+#txtPasswordAltaPersonal{
+    color: blue;
+}
+#pNotaPasswordAltaPersonal{
+    color: red;
+    text-align: center;
+}
+#btnAltaPersonal{
+    background-color: #304ffe;
+    color: white;
+}
+#headerBajaPersonal{
+    background-color: #b71c1c;
+}
+#bodyBajaPersonal{
+    background-color: #cfd8dc;
+}
+#registerboxBajaPersonal{
+    background-color: #eceff1;
+}
+#hrBajaPersonal{
+    background-color: gray;
+}
+#hAlertaBajaPersonal{
+    background-color: #d32f2f;
+    color: white;
+}
+#txtCorreoBaja{
+    color: blue;
+}
+#btnBajaPersonal{
+    background-color: #f44336;
+    color: white;
+}

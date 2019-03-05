@@ -6,7 +6,8 @@
 	<title>CUCEI-SRG | Administración de Gráficas</title>
 	<?php
     	include('header.php');
-  	?>
+      ?>
+<link rel="stylesheet" type="text/css" href="assets/css/administrar-personal.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">
@@ -30,30 +31,30 @@
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-            <ol class="breadcrumb" style="background-color: black; color: white;">
+            <ol class="breadcrumb" id="breadcrumbContent">
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Administrar Personal</li>
+				<li class="active" id="liContent">Administrar Personal</li>
 			</ol>
             <h1>¿Qué Desea Hacer?</h1>
             <h4>Seleccione la opción:</h4>
                 <div class="row">
-                    <div class="col-sm-6" data-toggle="modal" data-target="#modalAltaPersonal" style="text-align: center; background-color: #0d47a1; color: white;">
+                    <div class="col-sm-6" id="divAltaPersonal" data-toggle="modal" data-target="#modalAltaPersonal">
                         <h2>Dar de Alta Nuevo Personal</h2>
                     </div>
-                    <div class="col-sm-6" data-toggle="modal" data-target="#modalBajaPersonal" style="text-align: center; background-color: #b71c1c; color: white;">
+                    <div class="col-sm-6" id="divBajaPersonal" data-toggle="modal" data-target="#modalBajaPersonal">
                         <h2>Dar de Baja Personal</h2>
                     </div>
                     <br/>
-                    <div class="col-sm-12" data-toggle="modal" data-target="#modalHabilitarPersonal" style="text-align: center; background-color: #1a237e; color: white;">
+                    <div class="col-sm-12" id="divHabilitarPersonal" data-toggle="modal" data-target="#modalHabilitarPersonal">
                         <h2>Habilitar Personal dado de Baja</h2>
                     </div>
-                    <div class="col-sm-12" data-toggle="modal" data-target="#modalAsignarAdministrador" style="text-align: center; background-color: #1b5e20; color: white;">
+                    <div class="col-sm-12" id="divAsignarAdministrador" data-toggle="modal" data-target="#modalAsignarAdministrador">
                         <h2>Asignar Administradores</h2>
                     </div>
-                    <div class="col-sm-6" style="text-align: center; background-color: #311b92; color: white;">
+                    <div class="col-sm-6" id="divAsignarRol">
                         <h2>Asignar Roles de Personal</h2>
                     </div>
-                    <div class="col-sm-6" data-toggle="modal" data-target="#modalConsultarUsuarioActual" onclick="datosPersonales()" style="text-align: center; background-color: #e65100; color: white;">
+                    <div class="col-sm-6" id="divConsultaDatosP" data-toggle="modal" data-target="#modalConsultarUsuarioActual" onclick="datosPersonales()">
                         <h2>Consultar Mis Datos Personales</h2>
                     </div>
                 </div>
@@ -63,32 +64,32 @@
         <div id="modalAltaPersonal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header" style="background-color: #1565c0;">
+            <div class="modal-header" id="headerModalAltaPersonal">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body" style="background-color: #cfd8dc;">
+            <div class="modal-body" id="modalBodyAltaPersonal">
                 <div class="register-box">
                     <div class="register-logo">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" style="background-color: #eceff1;">
+                <div class="register-box-body" id="registerboxAltaPersonal">
                     <div class="login-logo">
                         Registro de Personal
                     </div>
-                    <hr style="background-color: gray">
+                    <hr id="hrAltaPersonal">
                     <form autocomplete="off">
                         <div class="form-group">
-                            <label for="txtCorreo" style="color: blue;">Correo electrónico:</label>
+                            <label for="txtCorreo" id="txtCorreoAltaPersonal">Correo electrónico:</label>
                             </i><input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreo" required>
                         </div>
                         <div class="form-group">
-                            <label for="txtPassword" style="color: blue;">Contraseña:</label>
+                            <label for="txtPassword" id="txtPasswordAltaPersonal">Contraseña:</label>
                             </i><input type="password" class="form-control" placeholder="Escribe tu password" id="txtPassword" required>
-                            <p style="color: red; text-align: center;">La contraseña debe contener al menos 6 carácteres.</p>
+                            <p id="pNotaPasswordAltaPersonal">La contraseña debe contener al menos 6 carácteres.</p>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="altaPersonal();" style="background-color: #304ffe; color: white;">Registrar</button>
+                                <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" onclick="altaPersonal();">Registrar</button>
                             </div>
                         </div>
                     </form>
@@ -104,28 +105,28 @@
  <div id="modalBajaPersonal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header" style="background-color: #b71c1c;">
+            <div class="modal-header" id="headerBajaPersonal">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body" style="background-color: #cfd8dc;">
+            <div class="modal-body" id="bodyBajaPersonal">
                 <div class="register-box">
                     <div class="register-logo">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" style="background-color: #eceff1;">
+                <div class="register-box-body" id="registerboxBajaPersonal">
                     <div class="login-logo">
                         Baja de Personal
                     </div>
-                    <hr style="background-color: gray">
+                    <hr id="hrBajaPersonal">
                     <form autocomplete="off" id="formulario">
-                        <h5 style="background-color: #d32f2f; color: white;">Cuidado: El usuario dado de baja NO podrá acceder al Sistema hasta que sea habilitado nuevamente.</h5>
+                        <h5 id="hAlertaBajaPersonal">Cuidado: El usuario dado de baja NO podrá acceder al Sistema hasta que sea habilitado nuevamente.</h5>
                         <div class="form-group">
-                            <label for="txtCorreoBaja" style="color: blue;">Ingresa el Correo Electrónico a dar de Baja</label>
+                            <label for="txtCorreoBaja" id="txtCorreoBaja">Ingresa el Correo Electrónico a dar de Baja</label>
                             <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoBaja" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="bajaPersonal();" style="background-color: #f44336; color: white;">Dar de Baja</button>
+                                <button type="button" id="btnBajaPersonal" class="btn btn-primary btn-block btn-flat" onclick="bajaPersonal();">Dar de Baja</button>
                             </div>
                         </div>
                     </form>
