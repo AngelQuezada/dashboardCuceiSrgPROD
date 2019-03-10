@@ -7,7 +7,7 @@ var obs;
 let reportesTodos = async () => {
     let token = localStorage.getItem("token");
     $("#tablaResultados").empty();
-    $("#tablaResultados").append(`<br><table class='table'>
+    $("#tablaResultados").append(`<br><table class='table' id="tablaAsignados">
     <thead>
     <tr class='bg-primary'>
     <th>Folio</th>
@@ -36,14 +36,41 @@ $.ajax({
           <td>`+registro.folio+`</td>
           <td>`+status+`</td>
           <td>`+obs+`</td>
-          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-external-link" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')"><i class="fa fa-bullhorn" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')" style="background-color: #ef6c00"><i class="fa fa-bullhorn" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')" style="background-color: #f44336"><i class="fa fa-ban" aria-hidden="true" style="color: white"></i></button></td>
           </tr>
           `);
       });
       $("#tablaResultados").append(`</tbody>
       </table>`);
+      $("#tablaAsignados").DataTable({
+        "order": false,
+        "language": {
+          "sProcessing": "Procesando...",
+          "sLengthMenu": "Mostrar _MENU_ registros",
+          "sZeroRecords": "No se encontraron resultados",
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+          "sInfoPostFix": "",
+          "sSearch": "Buscar:",
+          "sUrl": "",
+          "sInfoThousands": ",",
+          "sLoadingRecords": "Cargando...",
+          "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+          },
+          "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+          }
+        }
+      })
     },
     error: function() {}
   });
@@ -180,12 +207,11 @@ let verReporte = (value,object) => {
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
-          <button type="button" class="btn btn-danger" style="background-color: red; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i>Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary" style="background-color: orange; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: blue; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Cambios</button>
-        </div>
+          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"> Imprimir Reporte</i></button>
+          <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>        
+          </div>
         </div>
         </div>
         </div>`);
@@ -245,6 +271,8 @@ let agregarObservacion = (value,object) => {
   let observacion = object;
   if(observacion === "Sin Observaciones"){
     swal("Teclea una nueva Observación:", {
+      icon: "info",
+      buttons: true,
       content: "input",
     })
     .then((observacion) => {
@@ -375,6 +403,8 @@ let cancelarReportem = () =>{
 }
 let imprimir = () => {
   //ASIGNAN localStorage PARA IMPRIMIR PDF
+  var date = new Date();
+  var fechaActual = date.toLocaleString();
   let folio = localStorage.getItem("folio");
   let fechaElaboracion = localStorage.getItem("fechaElaboracion");
   let recibe = localStorage.getItem("recibe");
@@ -407,7 +437,9 @@ let imprimir = () => {
   doc.text(20, 260, `ubicacion Servicio ${ubicacionServicio}`)
   doc.text(20, 280, `anotacion extra ${anotacionExtra}`)
   doc.text(20, 300, `descripcion servicio ${descripcionServicio}`)
-  doc.save('reporte-mantenimiento-TEST.pdf')
+  doc.text(20, 320, `descripcion problema ${descripcionProblema}`)
+
+  doc.save('reporte-mantenimiento-' + fechaActual + '.pdf')
 }
 /*
 * Se ejecuta al cargar la pagina
@@ -415,6 +447,7 @@ let imprimir = () => {
 $(function(){
  reportesTodos();
 });
+
 $(document).ajaxStart(function () {
   Pace.restart();
 })

@@ -32,7 +32,7 @@
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-				<h1>EJEMPLO GRAFICA A PARTIR DE UN JSON </h1>
+				<h2>Gráfica de los Estatus del Reporte de Mantenimiento.</h2>
 				<div id="containerChart"></div>
     	</section>
     </div>

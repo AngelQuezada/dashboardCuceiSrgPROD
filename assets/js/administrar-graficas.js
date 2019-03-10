@@ -1,21 +1,19 @@
  $(document).ready(function () {
-     var jsonData = [{
-             "Reporte": "Solicitud",
-             "Cantidad": 26
+     var URI = localStorage.getItem('uri');
+     var jsonData;
+     $.ajax({
+         type: 'GET',
+         async: false,
+         url: `${URI}/reporte/grafico`,
+         contentType: 'application/json; charset=utf-8',
+         dataType: 'json',
+         success: function (data) {
+            jsonData = data;
          },
-         {
-             "Reporte": "Asignados",
-             "Cantidad": 12
-         },
-         {
-             "Reporte": "Finalizados",
-             "Cantidad": 10
-         },
-         {
-             "Reporte": "Cancelados",
-             "Cantidad": 6
+         error: function () {
+             swal("ADMIN CUCEI-SRG", "Ha ocurrido un error", "error");
          }
-     ];
+     });
 
      var svgWidth = 600;
      var svgHeight = 300;
@@ -38,7 +36,7 @@
          .rangeRoundBands([0, svgWidth], .1);
 
      var yScale = d3.scale.linear()
-         .domain([0, 26])
+         .domain([0, 200])
          .range([svgHeight, 0]);
 
      // Create bars

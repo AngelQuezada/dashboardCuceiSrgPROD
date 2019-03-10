@@ -19,6 +19,11 @@ firebase.initializeApp(config);
 let registrar = () => {
   let correo = document.getElementById('txtCorreo').value;
   let password = document.getElementById('txtPassword').value;
+  let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex.test(correo)) {
+    swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
+    return;
+  }
   firebase.auth().createUserWithEmailAndPassword(correo,password).then(function(){
     verificar();
   }).catch(function(error){
@@ -80,7 +85,7 @@ let finalizarRegistro = () => {
     "nombre" : nombre,
     "aPaterno" : aPaterno,
     "aMaterno" : aMaterno,
-    "correo" : correo
+    "correo" : localStorage.getItem("email")
   }
   $.ajax({
     type: 'POST',

@@ -1,5 +1,5 @@
 let baseURL = () => {
-    //return baseURL = 'http://localhost/DashboardCuceiSrg';
+  //return baseURL = 'http://localhost/DashboardCuceiSrgPROD';
   return baseURL = 'http://srg.cucei.udg.mx';
 }
 let baseURI = () => {

@@ -6,7 +6,7 @@
       include('header.php');
   ?>
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" ng-app="">
 <div class="login-box">
   <div class="login-logo">
     <b>Admin</b>CUCEI-SRG
@@ -17,18 +17,21 @@
     </div>
     <hr style="background-color: black">
     <p style="text-align: center;">Completa el registro antes de poder ingresar al sistema.</p>
-    <form autocomplete="off">
+    <form name="formulario" autocomplete="off" required>
       <div class="form-group">
         <label for="txtCorreoRegistrado" style="color: blue;">Correo electrónico registrado</label>
-        <i class="fa fa-envelope"></i><input type="email" class="form-control" id="txtCorreoRegistrado">
+        <i class="fa fa-envelope"></i><input type="email" class="form-control" class="validate" id="txtCorreoRegistrado" required>
       </div>
       <div class="form-group">
-        <label for="txtNombre" style="color: blue;">Nombre</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Nombre" id="txtNombre">
+        <small style="color: red">*<label for="txtNombre" style="color: blue;">Nombre</label>
+        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="5" required>
+        <span style="color: crimson;" ng-show="formulario.txtNombre.$touched && formulario.txtNombre.$invalid">Nombre es requerido.<br/></span>
+
       </div>
       <div class="form-group">
-        <label for="txtApaterno" style="color: blue;">Apellido Paterno</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Paterno" id="txtApaterno">
+        <small style="color: red">*<label for="txtApaterno" style="color: blue;">Apellido Paterno</label>
+        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Paterno" name="txtApaterno" id="txtApaterno" ng-model="txtApaterno" ng-minlength="4" required>
+        <span style="color: crimson;" ng-show="formulario.txtApaterno.$touched && formulario.txtApaterno.$invalid">Apellido Paterno es requerido.<br/></span>
       </div>
       <div class="form-group">
         <label for="txtAmaterno" style="color: blue;">Apellido Materno</label>
@@ -37,7 +40,7 @@
     </form>
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-primary btn-block btn-flat" onclick="finalizarRegistro()">Finalizar Registro</button>
+          <button class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" onclick="finalizarRegistro()">Finalizar Registro</button>
         </div>
       </div>
   </div>
@@ -51,6 +54,7 @@
       document.getElementById("txtCorreoRegistrado").disabled = true;
     }
   </script>
+  <script async src="assets/js/libs/angular.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="assets/js/registro.js"></script>
 </body>
 </html>

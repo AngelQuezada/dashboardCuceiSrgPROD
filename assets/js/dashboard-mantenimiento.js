@@ -22,8 +22,11 @@ let getReportesNuevo = () => {
   $("#spinnerReporteN").hide();
   $('.overlay').remove();
   document.getElementById('reporteSolicitud').innerHTML = response;
+  //localStorage.setItem("actual", nuevo);
   }
   request.send();
+  //alert(localStorage.getItem("actual"));
+
 }
 /*
 * Se obtiene la cantidad de registros de reportes por atender

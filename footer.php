@@ -1,8 +1,8 @@
-<footer style="position: fixed;left:0px;bottom:0px;height:30px;width:100%; background-color: #263238; color: white;">
+<footer style="position: fixed;left:0px;bottom:0px;height:20px;width:100%; background-color: #263238; color: white;">
     <div class="hidden-xs" style="text-align: center">
     ©2018-2019. Universidad de Guadalajara. Sitio desarrollado por el equipo de CUCEI-SRG Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>
     </div>
-  </footer>
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
@@ -39,3 +39,5 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>

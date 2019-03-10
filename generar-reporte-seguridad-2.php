@@ -29,12 +29,13 @@
     	<!-- Contenedor principal -->
     	<section class="content">
       <div style="text-align: center;">
-         <p>UNIVERSIDAD DE GUADALAJARA 
-         <P>COORDINACION DE SEGURIDAD UNIVERSITARIA</P> 
+         <b> UNIVERSIDAD DE GUADALAJARA </b>
+         <P>COORDINACION DE SEGURIDAD UNIVERSITARIA</P>
          </p>
-         <p><b>Formato 2</b> Reporte de incidencias</p>
+        <p> <b>Reporte de incidencias</b> </p>
+				  <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
      </div>
-     
+
      <fieldset>
      <legend style="text-align: center;">DATOS DE IDENTIFICACION DEL AFECTADO</legend>
 
@@ -42,159 +43,159 @@
           <form action="" method="POST">
             <div class="col-sm-3">
               <input class="form-control" id="escuela" name="escuela" type="text" class="validate">
-              <label for="escuela">escuela/institucion</label>
+              <label for="escuela" style="color: black;"> <small style="color: red">*</small>escuela/institucion</label>
             </div>
-            
+
             <div class="col-sm-3">
                     <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker">
-                    <label for="fecha">Fecha</label>
+                    <label for="fecha" style="color: black;">Fecha</label>
                   </div>
-                  
+
                   <div class="col-sm-3">
                         <input class="form-control" name="nombre" id="nombre" type="text" class="validate">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre" style="color: black;"> <small style="color: red">*</small>Nombre</label>
                       </div>
 
                   <div class="col-sm-1">
                        <input class="form-control" name="edad" id="edad" type="TINYINT" class="validate">
-                       <label for="edad">Edad</label>
+                       <label for="edad" style="color: black;">Edad</label>
                      </div>
 
                    <div class="col-sm-3">
                        <input class="form-control" name="codigo" id="codigo" type="text" class="validate">
-                       <label for="codigo">Codigo</label>
+                       <label for="codigo" style="color: black;"> <small style="color: red">*</small>Codigo</label>
                      </div>
 
                      <div class="col-sm-3">
                        <input class="form-control" name="carrera" id="carrera" type="text" class="validate">
-                       <label for="carrera">Carrera</label>
+                       <label for="carrera" style="color: black;">Carrera</label>
                      </div>
 
                      <div class="col-sm-3">
                        <input class="form-control" name="email" id="email" type="email" class="validate">
-                       <label for="email">Email</label>
+                       <label for="email" style="color: black;"> <small style="color: red">*</small>Email</label>
                      </div>
 
                      <div class="col-sm-3">
                       <input class="form-control" name="telefono" id="telefono" type="tel" class="validate">
-                      <label for="telefono">Teléfono de contacto</label>
+                      <label for="telefono" style="color: black;"> <small style="color: red">*</small>Teléfono de contacto</label>
                     </div>
                   </fieldset>
-                    
-          
-  
+
+
+
                 <fieldset>
                     <legend style="text-align: center;">DATOS DEL INCIDENTE</legend>
                     <div class="col-sm-3">
                       <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker">
-                      <label for="fecha">Fecha</label>
+                      <label for="fecha" style="color: black;"> <small style="color: red">*</small>Fecha</label>
                      </div>
 
                     <div class="col-sm-3">
                      <input class="form-control" name="tiempo" id="tiempo" type="time" class="timepicker">
-                     <label for="tiempo">Hora</label>
+                     <label for="tiempo" style="color: black;">Hora</label>
                     </div>
-                 
+
                     <div class="col-sm-4">
                      <input class="form-control" name="lugar" id="lugar" type="text" class="validate">
-                     <label for="lugar">Lugar (calle y cruces) Frente a (casa,oficina,baldios,edificios,etc)</label>
+                     <label for="lugar" style="color: black;">Lugar (calle y cruces) Frente a (casa,oficina,baldios,edificios,etc)</label>
                     </div>
                   </fieldset>
-                  
+
                   <fieldset>
                     <div class="input-field col-sm-6" style="text-align:center">
-                        <legend>Descripcion el suceso</legend><br>
+                        <legend> <small style="color: red">*</small>Descripcion del suceso</legend><br>
                           <textarea rows="4" cols="50">
                           </textarea>
                       </div>
 
                       <div class="input-field col-sm-6" style="text-align:center">
-                            <legend>Descripcion de lo robado</legend><br>
+                            <legend> <small style="color: red">*</small> Descripcion de lo robado</legend><br>
                               <textarea rows="4" cols="50">
                               </textarea>
                       </div>
                    </fieldset>
-                   
+
             <fieldset>
             <legend style="text-align: center;">MEDIDA FILIACION DEL AGRESOR</legend>
 
                   <div class="col-sm-3">
                     <input class="form-control" name="estatura" id="estatura" type="text" class="validate">
-                    <label for="estatura">Estatura</label>
+                    <label for="estatura" style="color: black;">Estatura</label>
                    </div>
 
                     <div class="col-sm-3">
                       <input class="form-control" name="apariencia" id="apariencia" type="text" class="validate">
-                      <label for="apariencia">Apariencia</label>
+                      <label for="apariencia" style="color: black;">Apariencia</label>
                      </div>
 
                      <div class="col-sm-3">
                        <input class="form-control" name="tez" id="tez" type="text" class="validate">
-                       <label for="tez">Tez</label>
+                       <label for="tez" style="color: black;">Tez</label>
                       </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="cabello" id="cabello" type="text" class="validate">
-                        <label for="cabello">Cabello</label>
+                        <label for="cabello" style="color: black;">Cabello</label>
                       </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="ojos" id="ojos" type="text" class="validate">
-                        <label for="ojos">Ojos</label>
+                        <label for="ojos" style="color: black;">Ojos</label>
                       </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="cara" id="cara" type="text" class="validate">
-                        <label for="cara">Cara</label>
+                        <label for="cara" style="color: black;">Cara</label>
                       </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="boca" id="boca" type="text" class="validate">
-                        <label for="boca">Boca</label>
+                        <label for="boca" style="color: black;">Boca</label>
                       </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="ropa" id="ropa" type="text" class="validate">
-                        <label for="ropa">Tipo de ropa</label>
+                        <label for="ropa" style="color: black;">Tipo de ropa</label>
                       </div>
 
                       <div class="col-sm-3">
                          <input class="form-control" name="uso" id="uso" type="text" class="validate">
-                         <label for="uso">Uso,gorra</label>
+                         <label for="uso" style="color: black;">Uso,gorra</label>
                        </div>
 
                       <div class="col-sm-3">
                         <input class="form-control" name="edad" id="edad" type="TINYINT" class="validate">
-                        <label for="edad">Edad Aprox</label>
+                        <label for="edad" style="color: black;">Edad Aprox</label>
                       </div>
 
                        <div class="col-sm-3">
                         <input class="form-control" name="cicatrices" id="cicatrices" type="text" class="validate">
-                        <label for="cicatrices">Cicatrices</label>
+                        <label for="cicatrices" style="color: black;">Cicatrices</label>
                        </div>
 
                        <div class="col-sm-3">
                          <input class="form-control" name="tatuajes" id="tatuajes" type="text" class="validate">
-                         <label for="tatuajes">Tatuajes</label>
+                         <label for="tatuajes" style="color: black;">Tatuajes</label>
                        </div>
-                                                             
+
                        <div class="col-sm-3">
                         <input class="form-control" name="percing" id="percing" type="text" class="validate">
-                        <label for="percing">Percing</label>
+                        <label for="percing" style="color: black;">Percing</label>
                        </div>
 
                        <div class="col-sm-3">
                          <input class="form-control" name="otras" id="otras" type="text" class="validate">
-                         <label for="otras">Otra seña particular</label>
+                         <label for="otras" style="color: black;">Otra seña particular</label>
                         </div>
                       </fieldset>
-                      
+
                       <fieldset>
                         <div style="text-align: center;" class="col-sm-50">
                         <input class="form-control" name="caracteristicasvehiculo" id="caracteristicasvehiculo" type="text" class="validate">
-                        <label for="caracteristicasvehiculo">Medio utilizado para huir (caracteristicas del vehiculo en su caso)</label>
+                        <label for="caracteristicasvehiculo" style="color: black;">Medio utilizado para huir (caracteristicas del vehiculo en su caso)</label>
                        </div>
-                        
+
                        <div class="col-sm-12">
                         <p>Observaciones</p>
                       <textarea rows="4" cols="150">

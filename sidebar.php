@@ -4,7 +4,8 @@
       <!-- Sidebar user panel -->
       <div class="user-panel" id="user-panel" style="text-align: center;">
         <img src="assets/img/cucei-srg-logo.png" width="50%"><br/>
-        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br>
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
+        <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
         <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
       </div>
 
@@ -21,12 +22,12 @@
           </a>
           <!--Bloque Dashboard Mantenimiento-Seguridad -->
           <ul class="treeview-menu">
-            <li class="active"><a href="dashboard-mantenimiento.php"><i class="fa fa-circle-o"></i> Dashboard Mantenimiento</a></li>
-            <li><a href="dashboard-seguridad.php"><i class="fa fa-circle-o"></i> Dashboard Seguridad</a></li>
+            <li id="dsMantenimiento"><a href="dashboard-mantenimiento.php"><i class="fa fa-circle-o"></i> Dashboard Mantenimiento</a></li>
+            <li id="dsSeguridad"><a href="dashboard-seguridad.php"><i class="fa fa-circle-o"></i> Dashboard Seguridad</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="treeViewMantenimiento">
           <a href="#">
             <i class="fa fa-cog"></i>
             <span>Mantenimiento</span>
@@ -35,18 +36,17 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="generar-reporte.php"><i class="fa fa-circle-o"></i> Nuevo reporte</a></li>
-            <li><a href="buscar-reporte.php"><i class="fa fa-circle-o"></i> Buscar Reportes</a></li>
-            <li><a href="reportes-nuevos.php"><i class="fa fa-circle-o"></i> Ver nuevos reportes</a></li>
-            <li><a href="reportes-encargado.php"><i class="fa fa-circle-o"></i> Encargados C/Reporte</a></li>
-            <li><a href="reportes-asignados.php"><i class="fa fa-circle-o"></i>Ver reportes asignados</a></li>
-            <li><a href="reportes-finalizados.php"><i class="fa fa-circle-o"></i>Ver reportes finalizados</a></li>
-            <li><a href="reportes-cancelados.php"><i class="fa fa-circle-o"></i>Ver reportes cancelados</a></li>
-          </ul>
+            <ul class="treeview-menu" id="opcionesMantenimiento"><li><a href="generar-reporte.php"><i class="fa fa-circle-o"></i> Nuevo reporte</a></li>
+              <li><a href="buscar-reporte.php"><i class="fa fa-circle-o"></i> Buscar Reportes</a></li>
+              <li><a href="reportes-nuevos.php"><i class="fa fa-circle-o"></i> Ver nuevos reportes</a></li>
+              <li><a href="reportes-encargado.php"><i class="fa fa-circle-o"></i> Encargados C/Reporte</a></li>
+              <li><a href="reportes-asignados.php"><i class="fa fa-circle-o"></i>Ver reportes asignados</a></li>
+              <li><a href="reportes-finalizados.php"><i class="fa fa-circle-o"></i>Ver reportes finalizados</a></li>
+              <li><a href="reportes-cancelados.php"><i class="fa fa-circle-o"></i>Ver reportes cancelados</a></li>
+              </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id=treeViewSeguridad>
           <a href="#">
             <i class="fa fa-plus-square"></i>
             <span>Seguridad</span>
@@ -103,10 +103,35 @@ document.getElementById('btnCerrarSesion').addEventListener('click',function(){
 let setNameSideBar = () => {
   return new Promise(resolve => {
     setTimeout(() => {
+      let status = localStorage.getItem("status");
+      let st;
+      if(status === '3'){
+        st = 'ADMIN MANTENIMIENTO';
+      }else if(status === '4'){
+        st = 'PERSONAL CSG';
+      }else if(status === '5'){
+        st = 'SERVICIO SOCIAL';
+      }else if(status === '6'){
+        st = 'ADMIN SEGURIDAD';
+      }
+    $("#txtRol").text(st);
     $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span><br/>');
     $("#spinerEmail").remove();
     $('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
-  }, 2000);
+    //OCULTA PANEL SI NO ES DE SEGURIDAD
+    /*
+    let status = localStorage.getItem("status");
+    if(status === '6'){
+      $("#treeViewMantenimiento").hide();
+      $("#dsMantenimiento").hide();
+    }
+    //OCULTA PANEL SI NO ES DE MANTENIMIENTO
+    if(status === '3'){
+      $("#treeViewSeguridad").hide();
+      $("#dsSeguridad").hide();
+    }
+    */
+  }, 3000);
   });
 }
 /*

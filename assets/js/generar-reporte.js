@@ -2,6 +2,7 @@ $(document).ajaxStart(function () {
   Pace.restart();
 })
 var URI = localStorage.getItem('uri');
+
 $(document).ready(function() {
   getModulo();
   $('#modulo').on("select2:select", function(e) {
@@ -67,6 +68,11 @@ let nuevoReporte = () => {
   if (option == 'otro') {
      option = document.getElementById('otro').value;
   }
+  let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex.test(correo)) {
+    swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
+    return;
+  }
   let datos = {
     "token" : token,
     "idUsuario" : idUsuario,
@@ -90,11 +96,35 @@ let nuevoReporte = () => {
     success: function(data){
       swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
       cleanReport();
+      notification();
     },
     error: function(data) {
       swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");
     }
   });
+}
+let notification = () => {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    let notification = new Notification("¡Tienes un Nuevo Reporte de Mantenimiento!");
+  }
+}
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+Notification.requestPermission().then(function (result) {
+  console.log(result);
+}); function spawnNotification(theBody, theIcon, theTitle) {
+  var options = {
+    body: theBody,
+    icon: theIcon
+  }
+  var n = new Notification(theTitle, options);
 }
 /*
 * Se obtiene el listado de Modulos

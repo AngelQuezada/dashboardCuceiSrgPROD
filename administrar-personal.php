@@ -3,13 +3,13 @@
 ?>
 <!DOCTYPE html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>CUCEI-SRG | Administrar Personal</title>
 	<?php
     	include('header.php');
       ?>
 <link rel="stylesheet" type="text/css" href="assets/css/administrar-personal.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">
 	<div class="wrapper">
 	<?php
       include("navbar.php");
@@ -37,6 +37,12 @@
 			</ol>
             <h1>¿Qué Desea Hacer?</h1>
             <h4>Seleccione la opción:</h4>
+            <div class="alert alert-info alert-dismissible" style="background: green;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-info"></i>Ayuda [PARA ADMINISTRADORES DEL SISTEMA]</h4>
+                <h4>Para Personal de Servicio Social de click sobre el recuadro "Dar de Alta Nuevo Personal" y despúes asigne su rol.</h4>
+                <h4>Cuando termine su Servicio Social se debe dar de baja.</h4>
+            </div>
                 <div class="row">
                     <div class="col-sm-6" id="divAltaPersonal" data-toggle="modal" data-target="#modalAltaPersonal">
                         <h2>Dar de Alta Nuevo Personal</h2>
@@ -48,10 +54,7 @@
                     <div class="col-sm-12" id="divHabilitarPersonal" data-toggle="modal" data-target="#modalHabilitarPersonal">
                         <h2>Habilitar Personal dado de Baja</h2>
                     </div>
-                    <div class="col-sm-12" id="divAsignarAdministrador" data-toggle="modal" data-target="#modalAsignarAdministrador">
-                        <h2>Asignar Administradores</h2>
-                    </div>
-                    <div class="col-sm-6" id="divAsignarRol">
+                    <div class="col-sm-6" id="divAsignarRol" data-toggle="modal" data-target="#modalRolPersonal">
                         <h2>Asignar Roles de Personal</h2>
                     </div>
                     <div class="col-sm-6" id="divConsultaDatosP" data-toggle="modal" data-target="#modalConsultarUsuarioActual" onclick="datosPersonales()">
@@ -77,19 +80,20 @@
                         Registro de Personal
                     </div>
                     <hr id="hrAltaPersonal">
-                    <form autocomplete="off">
+                    <form name="formularioAlta" autocomplete="off" required>
                         <div class="form-group">
                             <label for="txtCorreo" id="txtCorreoAltaPersonal">Correo electrónico:</label>
-                            </i><input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreo" required>
+                            </i><input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" ng-minlength="5" required>
+                            <span style="color: crimson;" ng-show="formularioAlta.txtCorreo.$touched && formularioAlta.txtCorreo.$invalid">Correo es requerido.<br/></span>
                         </div>
                         <div class="form-group">
                             <label for="txtPassword" id="txtPasswordAltaPersonal">Contraseña:</label>
-                            </i><input type="password" class="form-control" placeholder="Escribe tu password" id="txtPassword" required>
+                            </i><input type="password" class="form-control" placeholder="Escribe tu password" id="txtPassword" name="txtPassword" ng-model="txtPassword" ng-minlength="6" required>
                             <p id="pNotaPasswordAltaPersonal">La contraseña debe contener al menos 6 carácteres.</p>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" onclick="altaPersonal();">Registrar</button>
+                                <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioAlta.$invalid" onclick="altaPersonal();">Registrar</button>
                             </div>
                         </div>
                     </form>
@@ -174,11 +178,11 @@
   </div>
 </div>
 
-<!-- Modal Asignar Administrador -->
- <div id="modalAsignarAdministrador" class="modal fade" role="dialog">
+ <!-- Modal Asignar Rol Personal -->
+ <div id="modalRolPersonal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header" style="background-color: #1b5e20;">
+            <div class="modal-header" style="background-color: #c51162">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="background-color: #cfd8dc;">
@@ -188,18 +192,47 @@
                     </div>
                 <div class="register-box-body" style="background-color: #eceff1;">
                     <div class="login-logo">
-                        Asignar Administrador
+                        Asignar Rol de Personal
                     </div>
                     <hr style="background-color: gray">
                     <form autocomplete="off" id="formulario">
                         <div class="form-group">
-                            <label for="txtCorreoHabilitar" style="color: blue;">Ingresa el Correo Electrónico</label>
-                            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoAdmin" required>
+                            <label for="txtCorreoPersonal" style="color: blue">Ingresa el Correo Electrónico del Personal a Asignar</label>
+                            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoPersonal" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="asignarAdministrador();" style="background-color: #00c853; color: black;">Asignar Administrador</button>
+                                <legend>Elige el Rol a Asignar</legend>
                             </div>
+
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rol" id="rol" type="radio" value="3" required/>
+                                <span>Admin. Mantenimiento</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rol" id="rol" type="radio" value="6" required/>
+                                <span>Admin. Seguridad</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rol" id="rol" type="radio" value="4" required/>
+                                <span>Personal</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rol" id="rol" type="radio" value="5" required/>
+                                <span>Servicio Social</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button" id="btnRolPersonal" class="btn btn-primary btn-block btn-flat" onclick="asignarRolPersonal();" style="background-color: #f50057; color: white">Asignar Rol</button>
+                            </div>
+
                         </div>
                     </form>
                 </div>
@@ -217,6 +250,7 @@
 <?php
     include('footer.php');
 ?>
+<script async src="assets/js/libs/angular.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="assets/js/administrar-personal.js"></script>
 </body>
 </html>

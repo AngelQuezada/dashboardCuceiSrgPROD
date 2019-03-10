@@ -1,177 +1,129 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
-	<?php
-    	include('header.php');
-  	?>
+	<title>CUCEI-SRG | Nuevo Reporte</title>
+<?php
+    include('header.php');
+?>
+	<link rel="stylesheet" type="text/css" href="assets/css/generar-reporte.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="">
 	<div class="wrapper">
-	<?php
-      include("navbar.php");
-    ?>
-    <?php
-      include("sidebar.php");
-    ?>
-    <div class="content-wrapper">
-    	<section class="content-header">
-    		<h1>
-		        Nuevo Reporte de Seguridad FORMATO 1
-		        <small>Sistema de Reportes Generales</small>
-      		</h1>
-			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Seguridad</a></li>
-				<li class="active">Nuevo Reporte</li>
-			</ol>
-    	</section>
-    	<!-- END Content Header (Page header) -->
-    	<!-- Contenedor principal -->
-    	<section class="content">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte 1 Seguridad</title>
-</head>
-<body>
-
-    <div style="text-align: center;">
-         <p>UNIVERSIDAD DE GUADALAJARA
-         <P>CENTRO UNIVERITARIO DE CIENCIAS EXACTAS E INGENIERIAS</P>
-         <p>COORDINACION DE SERVICIOS GENERALES</p>
-         <p>UNIDAD DE SEGURIDAD</p>
-         </p>
-         <p><b>Formato 1</b> Hoja de Reporte</p>
-     </div>
-
-      <div class="row" style="margin: 2%">
-        <form action="" method="POST">
-            <div class="col-sm-6">
-              <input class="form-control" id="tipoS" name="tipoS" type="text" class="validate">
-              <label for="escuela">Tipo de servicio</label>
-            </div>
-
-            <div  class="col-sm-2">
-                    <input class="form-control" name="NumeroReporte" id="NumeroReporte" type="text" class="validate">
-                    <label for="fecha">No.Reporte</label>
-            </div>
-
-            <div class="col-sm-6">
-                <input class="form-control" name="afectado" id="afectado" type="text" class="validate">
-                <label for="afectado">Afectado</label>
-            </div>
-
-            <div class="col-sm-3">
-                <input class="form-control" name="edad" id="edad" type="TINYINT" class="validate">
-                <label for="edad">Edad</label>
-            </div>
-
-            <div class="col-sm-3">
-                <input class="form-control" name="carrera" id="carrera" type="text" class="validate">
-                <label for="carrera">Carrera</label>
-            </div>
-
-            <div class="col-sm-3">
-                <input class="form-control" name="codigo" id="codigo" type="text" class="validate">
-                <label for="codigo">Codigo</label>
-            </div>
-
-            <div class="col-sm-3">
-                <input class="form-control" name="telefono" id="telefono" type="text" class="validate">
-                <label for="telefono">Teléfono</label>
-            </div>
-<div class="col-sm-12">
-  <legend style="text-align: center;">REPORTE</legend>
-</div>
-<div class="col-sm-5">
-            <fieldset>
-
-
-              <div class="col-sm-4">
-                <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker">
-                <label for="fecha">Fecha</label>
-              </div>
-
-              <div class="col-sm-3">
-                <input class="form-control" name="tiempo" id="tiempo" type="time" class="timepicker">
-                <label for="tiempo">Hora</label>
-            </div>
-            </fieldset>
-</div>
-            <div class="col-sm-6">
-                <input class="form-control" name="lugar" id="lugar" type="text" class="validate">
-                <label for="lugar">Lugar</label>
-            </div>
-
-            <div class="input-field col-sm-12" style="text-align:center">
-                <p>Hechos</p><br>
-                <textarea rows="4" cols="50">
-                </textarea>
-            </div>
-          <!--  <fieldset>-->
-          <div class="col-sm-12">
-          <legend style="text-align: center;">DESCRIPCION DE OBJETOS</legend>
+<?php
+  include("navbar.php");
+?>
+<?php
+  include("sidebar.php");
+?>
+  <div class="content-wrapper">
+    <div class="jumbotron">
+        <p>COORDINACIÓN DE SERVICIOS GENERALES / UNIDAD DE SEGURIDAD</p>
+        <p>NUEVO REPORTE DE SEGURIDAD FORMATO 1 / NUEVO REPORTE</p>
+        <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
+    </div>
+  <div class="row" id = "principal" style="margin: 2%">
+      <form name="formularioseguridad" autocomplete="off" required>
+        <div class="col-sm-12">
+          <legend><small style="color: red">*</small>DATOS DEL AFECTADO</legend>
         </div>
-          <div class="col-sm-12">
-            <div class="col-sm-3">
-            <input class="form-control" name="modelo" id="modelo" type="text" class="validate">
-            <label for="modelo">Modelo</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" type="email" class="validate" required>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtCorreo.$touched && formularioseguridad.txtCorreo.$invalid">Correo es requerido.<br/></span>
+          <label for="txtTipoServicio" style="color: black;"><small style="color: red">*</small>Correo Registrado del Afectado</label>
+        </div>
+        <div class="col-sm-6">
+          <input class="form-control" id="txtTipoServicio" name="txtTipoServicio" ng-model="txtTipoServicio" type="text" class="validate" required>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtTipoServicio.$touched && formularioseguridad.txtTipoServicio.$invalid">Tipo de Servicio es requerido.<br/></span>
+          <label for="txtTipoServicio" style="color: black;"><small style="color: red">*</small>Tipo de Servicio</label>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control" name="txtEdad" id="txtEdad" ng-model="txtEdad" type="TINYINT" class="validate" maxlength="3"  pattern="[0-9]{2}" required>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtEdad.$touched && formularioseguridad.txtEdad.$invalid">Edad es requerido.<br/></span>          
+          <label for="txtEdad" style="color: black;"><small style="color: red">*</small>Edad</label>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control" name="txtCarrera" id="txtCarrera" ng-model="txtCarrera" type="text" class="validate" required>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtCarrera.$touched && formularioseguridad.txtCarrera.$invalid">Carrera es requerido.<br/></span>                    
+          <label for="txtCarrera" style="color: black;"><small style="color: red">*</small>Carrera </label>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control" name="txtCodigo" id="txtCodigo" type="text" class="validate"  maxlength="9" minlength="9" pattern="[0-9]{9}" ng-model="txtCodigo" placeholder="215258004" required >
+          <span style="color: crimson;" ng-show="formularioseguridad.txtCodigo.$touched && formularioseguridad.txtCodigo.$invalid">Codigo es requerido.<br/></span>
+          <label for="codigo" style="color: black;"><small style="color: red">*</small>Código</label>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control" name="txtTelefono" id="txtTelefono"  maxlength="10" minlength="10" pattern="[0-9]{10}" type="tel" ng-model="txtTelefono" placeholder="3312345678" required >
+          <span style="color: crimson;" ng-show="formularioseguridad.txtTelefono.$touched && formularioseguridad.txtTelefono.$invalid">Teléfono es requerido.<br/></span>
+          <label for="txtTelefono" style="color: black;"><small style="color: red">*</small>Teléfono</label>
+        </div>
+        <div class="col-sm-12">
+          <legend><small style="color: red">*</small>REPORTE</legend>
+        </div>
+        <div class="col-sm-5">
+          <fieldset>
+            <div class="col-sm-4">
+              <input class="form-control" name="txtFecha" id="txtFecha" type="date" class="datepicker" ng-model="txtFecha" required>
+              <label for="txtFecha" style="color: black;"> <small style="color: red">*</small> Fecha</label>
             </div>
-
-            <div class="col-sm-3">
-            <input class="form-control" name="marca" id="marca" type="text" class="validate">
-            <label for="marca">Marca</label>
+            <div class="col-sm-4">
+              <input class="form-control" name="txtHora" id="txtHora" type="time" class="timepicker">
+              <label for="txtHora" style="color: black;">Hora</label>
             </div>
-
-            <div class="col-sm-3">
-            <input class="form-control" name="tipo" id="tipo" type="text" class="validate">
-            <label for="tipo">Tipo</label>
-            </div>
-
-            <div class="col-sm-3">
-            <input class="form-control" name="año" id="año" type="date" class="validate">
-            <label for="año">Año</label>
-            </div>
-
-            <div class="col-sm-3">
-            <input class="form-control" name="color" id="color" type="text" class="validate">
-            <label for="color">Color</label>
-            </div>
-
-            <div class="col-sm-3">
-            <input class="form-control" name="rodado" id="rodado" type="text" class="validate">
-            <label for="rodado">Rodado</label>
-            </div>
+          </fieldset>
+        </div>
+        <div class="col-sm-6">
+          <input class="form-control" name="txtLugar" id="txtLugar" type="text" class="validate" ng-model="txtLugar" required>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtLugar.$touched && formularioseguridad.txtLugar.$invalid">Lugar es requerido.<br/></span>
+          <label for="txtLugar" style="color: black;"><small style="color: red">*</small>Lugar</label>
+        </div>
+        <div class="input-field col-sm-12" style="text-align:center">
+          <legend style="text-align: center"><small style="color: red">*</small>Hechos</legend>
+          <textarea rows="4" cols="50" name="txtHechos" id="txtHechos" class="validate" ng-model="txtHechos" required></textarea><br/>
+          <span style="color: crimson;" ng-show="formularioseguridad.txtHechos.$touched && formularioseguridad.txtHechos.$invalid">Hechos es requerido.<br/></span>
+        </div>
+        <div class="col-sm-12">
+          <legend>DESCRIPCIÓN DE OBJETOS</legend>
+        </div>    
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <input class="form-control" name="txtModelo" id="txtModelo" type="text" class="validate">
+            <label for="txtModelo" style="color: black;">Modelo</label>
           </div>
-          <!--</fieldset>-->
-            <div class="col-sm-12" style="text-align: center;"><button class="btn waves-effect waves-light" type="submit" name="action" id="btn-reset" style="background-color: rgb(62, 88, 233);">Registrar Reporte</button>
-            </div>
+          <div class="col-sm-3">
+            <input class="form-control" name="txtMarca" id="txtMarca" type="text" class="validate">
+            <label for="txtMarca" style="color: black;">Marca</label>
+          </div>
+          <div class="col-sm-3">
+            <input class="form-control" name="txtTipo" id="txtTipo" type="text" class="validate">
+            <label for="txtTipo" style="color: black;">Tipo</label>
+          </div>
+          <div class="col-sm-2">
+            <input class="form-control" name="dtAño" id="dtAño" type="date" class="validate">
+            <label for="dtAño" style="color: black;">Año</label>
+          </div>
+          <div class="col-sm-3">
+            <input class="form-control" name="txtColor" id="txtColor" type="text" class="validate">
+            <label for="txtColor" style="color: black;">Color</label>
+          </div>
+          <div class="col-sm-3">
+            <input class="form-control" name="txtRodado" id="txtRodado" type="text" class="validate">
+            <label for="txtRodado" style="color: black;">Rodado</label>
+          </div>
+        </div>
+        <div class="col-sm-12" style="text-align: center;" id="divBoton">
+          <button class="btn btn-primary" onclick="nuevoReporteSeg()"  id="btnNuevoReporteSeg" ng-disabled="formularioseguridad.$invalid">Registrar Reporte</button>
+        </div>
     </form>
 </div>
-</body>
-<script type="text/javascript">
-    $(document).ready(function(){
-    $('.datepicker').datepicker();
-  });
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</html>
-
-    	</section>
-    </div>
-    <?php
-    	include("control-sidebar.php");
-  	?>
-	</div>
-	<?php
-  		include('footer.php');
-	?>
+<?php
+	include("control-sidebar.php");
+?>
+  </div>
+</div>
+<?php
+    require('footer.php');
+?>
+<script src="assets/js/libs/angular.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/js/generar-reporte-seguridad1.js"></script>
 </body>
 </html>

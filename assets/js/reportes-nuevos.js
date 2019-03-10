@@ -7,7 +7,7 @@ var obs;
 let reportesTodos = () => {
     let token = localStorage.getItem("token");
     $("#tablaResultados").empty();
-    $("#tablaResultados").append(`<br><table class='table'>
+    $("#tablaResultados").append(`<br><table class='table' id="tablaNuevos">
     <thead>
     <tr class='bg-primary'>
     <th>Folio</th>
@@ -37,14 +37,41 @@ $.ajax({
           <td>`+registro.folio+`</td>
           <td>`+status+`</td>
           <td>`+obs+`</td>
-          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-external-link" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')"><i class="fa fa-bullhorn" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')" style="background-color: #ef6c00"><i class="fa fa-bullhorn" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')" style="background-color: #f44336"><i class="fa fa-ban" aria-hidden="true" style="color: white"></i></button></td>
           </tr>
           `);
       });
       $("#tablaResultados").append(`</tbody>
       </table>`);
+      $("#tablaNuevos").DataTable({
+        "order": false,
+        "language": {
+          "sProcessing": "Procesando...",
+          "sLengthMenu": "Mostrar _MENU_ registros",
+          "sZeroRecords": "No se encontraron resultados",
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+          "sInfoPostFix": "",
+          "sSearch": "Buscar:",
+          "sUrl": "",
+          "sInfoThousands": ",",
+          "sLoadingRecords": "Cargando...",
+          "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+          },
+          "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+          }
+        }
+      })
     },
     error: function() {
     }
@@ -59,6 +86,8 @@ let agregarObservacion = (value,object) => {
   let observacion = object;
   if(observacion === 'Sin Observaciones'){
     swal("Teclea una nueva Observación:", {
+      icon: "info",
+      buttons: true,
       content: "input",
     })
     .then((observacion) => {
@@ -71,6 +100,8 @@ let agregarObservacion = (value,object) => {
           catch: {
             text: "SI",
             value: "OK",
+            showCancelButton: true,
+            cancelButtonColor: "#d33"
             },
             no: true,
           },
@@ -164,7 +195,7 @@ let cancelarReporte = (value,object) => {
 let verReporte = (value,object) => {
   let selectedFolio = object.innerHTML = value;
   $("#modal").empty();
-  $("#modal").append(`<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  $("#modal").append(`<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header" style="background-color: #FAAC58">
@@ -272,11 +303,11 @@ let verReporte = (value,object) => {
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
-          <button type="button" class="btn btn-danger" style="background-color: red; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i>Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary" style="background-color: orange; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
+          <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white;" onclick="asignarEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: blue; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Cambios</button>
         </div>
         </div>
         </div>
@@ -286,6 +317,74 @@ let verReporte = (value,object) => {
     }
   });
 }
+let asignarEncargado = (selectedFolio) => {
+  idEncargado = null;
+  swal("Escribe el correo del encargado a asignar:", {
+    content: "input"
+  }).then((correotxt) => {
+    if (correotxt.replace(/\s/g, "") == "") {
+      swal("Reporte de Mantenimiento", "No se realizó ningun cambio", "info");
+      return;
+    }
+    let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(correotxt)) {
+      swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
+      return;
+    }
+    swal(`Has escrito: ${correotxt}` + ' ¿Es Correcto?', {
+      buttons: {
+        catch: {
+          text: "SI",
+          value: "OK",
+        },
+        no: true,
+      },
+    }).then((value) => {
+      switch (value) {
+        case "OK":
+          $.ajax({
+            type: 'GET',
+            url: `${URI}/personal/getidempleado/` + correotxt,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+              idEncargado = data.id;
+            },
+            error: function (data) {
+              swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
+              return;
+            }
+          });
+          let datos = {
+            "token": localStorage.getItem("token"),
+            "folio": selectedFolio,
+            "idPersonal": idEncargado,
+            "idUsuario": localStorage.getItem("idUsuario")
+          }
+          console.log(JSON.stringify(datos));
+          $.ajax({
+            type: 'POST',
+            url: `${URI}/reporte/asignarencargado`,
+            data: JSON.stringify(datos),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+              swal("Reporte de Mantenimiento", data.mensaje, "success");
+            },
+            error: function (data) {
+              swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
+            }
+          });
+          break;
+        case "no":
+          swal("Reporte de Mantenimiento", "No se realizó ningun cambio", "info");
+          break;
+      }
+    });
+  });
+}
+
 /*
 * Guardar el reporte modificado
 * @return JSON del response del REST Web Service

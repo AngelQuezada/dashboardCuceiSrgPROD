@@ -58,8 +58,9 @@ let bajaPersonal = () =>{
   let correo = document.getElementById('txtCorreoBaja').value;
   let token = localStorage.getItem("token");
 	let idUsuario = localStorage.getItem("idUsuario");
-  if(correo.replace(/\s/g,"") == ""){
-    swal("ADMIN CUCEI-SRG","Escribe un correo electrónico primero.", "info");
+  let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex.test(correo)) {
+    swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
     return;
   }
   let datos = {
@@ -109,8 +110,9 @@ let habilitarPersonal = () => {
   let correo = document.getElementById('txtCorreoHabilitar').value;
   let token = localStorage.getItem("token");
 	let idUsuario = localStorage.getItem("idUsuario");
-  if(correo.replace(/\s/g,"") == ""){
-    swal("ADMIN CUCEI-SRG","Escribe un correo electrónico primero.", "info");
+  let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex.test(correo)) {
+    swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
     return;
   }
   let datos = {
@@ -156,60 +158,20 @@ let habilitarPersonal = () => {
     }
   });
 }
-let asignarAdministrador = () => {
-  let correo = document.getElementById('txtCorreoAdmin').value;
-  let token = localStorage.getItem("token");
-	let idUsuario = localStorage.getItem("idUsuario");
-  if(correo.replace(/\s/g,"") == ""){
-    swal("ADMIN CUCEI-SRG","Escribe un correo electrónico primero.", "info");
-    return;
-  }
-  let datos = {
-    "correo" : correo,
-    "token" : token,
-    "idUsuario" : idUsuario
-  }
-  swal(`¿Está seguro de asignar como ADMINISTRADOR el correo: ${correo}?`, {
-    icon: 'info',
-    title: 'ADMIN CUCEI-SRG',
-    closeOnClickOutside: false,
-    closeOnEsc: false,
-    buttons: {
-    catch: {
-      text: "ASIGNAR COMO ADMINISTRADOR",
-      value: "admin"
-      },
-      cancelar: true,
-    },
-  }).then((value) => {
-    switch (value) {
-      case "admin":
-        $.ajax({
-          type: 'POST',
-          url: `${URI}/personal/asignaradmin`,
-          data: JSON.stringify(datos),
-          contentType: 'application/json; charset=utf-8',
-          dataType: 'json',
-          success: function(data){
-            swal("ADMIN CUCEI-SRG", data.mensaje, "info");
-            $("#txtCorreoAdmin").val('');
-          },
-          error: function(data) {
-            swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
-            $("#txtCorreoAdmin").val('');
-            return;
-          }
-        });
-      break;
-      case "cancelar" :
-      swal("ADMIN CUCEI-SRG", "No se realizó ninguna acción.","info");
-      break;
-    }
-  });
-}
 let datosPersonales = () =>{
   let email = localStorage.getItem("email");
-	let nombreCompleto = localStorage.getItem("nombreCompleto");
+  let nombreCompleto = localStorage.getItem("nombreCompleto");
+  let status = localStorage.getItem("status");
+  let st;
+  if(status === '3'){
+    st = 'ADMIN MANTENIMIENTO';
+  }else if(status === '4'){
+    st = 'PERSONAL CSG';
+  }else if(status === '5'){
+    st = 'SERVICIO SOCIAL';
+  }else if(status === '6'){
+    st = 'ADMIN SEGURIDAD';
+  }
   $("#modalPersonal").empty();
   $("#modalPersonal").append(`<div id="modalConsultarUsuarioActual" class="modal fade" role="dialog">
           <div class="modal-dialog">
@@ -231,7 +193,7 @@ let datosPersonales = () =>{
                               <div class="row">
                                   <div class="col-sm-12">
                                       <label for="txtRol" style="color: blue;">Privilegios</label><br/>
-                                      <b id="txtRol" style="background-color: purple; color: white;">ADMIN</b>
+                                      <b id="txtRol" style="background-color: purple; color: white;">${st}</b>
                                   </div>
                                   <div class="col-sm-12">
                                       <label for="txtCorreoAdmin" style="color: blue;">Correo Electrónico</label><br/>
@@ -297,3 +259,37 @@ let cambiarContraseña = () => {
   });
 });
 }
+let asignarRolPersonal = () => {
+  let correoPersonal = document.getElementById('txtCorreoPersonal').value;
+  let option = document.querySelector('input[name="rol"]:checked').value;
+  let token = localStorage.getItem("token");
+  let idUsuario = localStorage.getItem("idUsuario");
+  let datos = {
+    "correo" : correoPersonal,
+    "rol" : option,
+    "token" : token,
+    "idUsuario" : idUsuario
+  }
+  $.ajax({
+    type: 'POST',
+    url: `${URI}/personal/asignarrol`,
+    data: JSON.stringify(datos),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function (data) {
+      swal("ADMIN CUCEI-SRG", data.mensaje, "success");
+    },
+    error: function (data) {
+      swal("ADMIN CUCEI-SRG", "Ha ocurrido un error: " + data.responseJSON.mensaje, "error");
+    }
+  });
+}
+$(function(){
+  let status = localStorage.getItem("status");
+  if(status === '4' || status === '5'){
+    $("#divAltaPersonal").hide();
+    $("#divBajaPersonal").hide();
+    $("#divHabilitarPersonal").hide();
+    $("#divAsignarRol").hide();
+  }
+})

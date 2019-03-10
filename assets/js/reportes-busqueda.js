@@ -36,7 +36,7 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
   <th>Nombre</th>
   <th>Apellido Paterno</th>
   <th>Apellido Materno</th>
-  <th>Fecha Elaboracion</th>
+  <th>Fecha de Recepción</th>
   <th>Detalles</th>
   </tr>
   </thead>
@@ -47,6 +47,8 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
     dataType: "json",
     success: function(data){
       $.each(data,function(_key, registro) {
+        let fr;
+         registro.fecha_recepcion === null ? fr = "Sin Fecha de Recepción" : fr = registro.fecha_recepcion;
         $("#bodyTable").append(`
         <tr>
         <input type="hidden" id="folioId" value="`+registro.folio+`"/>
@@ -54,8 +56,8 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
         <td>`+registro.nombre+`</td>
         <td>`+registro.a_paterno+`</td>
         <td>`+registro.a_materno+`</td>
-        <td>`+registro.fecha_elaboracion+`</td>
-        <td><button class='btn btn-primary' id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="regSel('`+registro.folio+`','`+this+`')">Ver</button></td>
+        <td>`+fr+`</td>
+        <td><button class='btn btn-primary' id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="regSel('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1; color: white">Ver</button></td>
         </tr>
         `);
       });
@@ -188,11 +190,11 @@ let generateModal = (selectedFolio) => {
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" style="background-color: green; color: white;"><i class="fa fa-print" aria-hidden="true">Imprimir</i></button>
-          <button type="button" class="btn btn-danger" style="background-color: red; color: white;" onclick="cancelarReporte()"><i class="fa fa-ban" aria-hidden="true"></i>Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary" onclick="asignarEncargado(`+selectedFolio+`)" style="background-color: orange; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"> Imprimir Reporte</i></button>
+          <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReporte()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
+          <button type="button" class="btn btn-secondary" onclick="asignarEncargado(`+selectedFolio+`)" style="background-color: #e65100; color: white;"><i class="fa fa-user" aria-hidden="true"></i>Asignar Encargado</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: blue; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar Cambios</button>
         </div>
         </div>
         </div>
