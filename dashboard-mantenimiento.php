@@ -100,7 +100,7 @@
               <i class="fa fa-refresh fa-spin" id="spinnerReporteC"></i>
             </div>
             <div style="background-color: #2196f3">
-            <a href="reportes-finalizados.php" class="small-box-footer" style="color: white">Ver Reportes Cancelados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
+            <a href="reportes-cancelados.php" class="small-box-footer" style="color: white">Ver Reportes Cancelados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
         </div>
