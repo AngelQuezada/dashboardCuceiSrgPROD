@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Usuarios</title>
+	<title>SRG | Usuarios</title>
 	<?php
     	include('header.php');
   ?>

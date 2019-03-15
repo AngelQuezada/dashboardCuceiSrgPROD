@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Reportes Asignados</title>
+	<title>SRG | Asignados</title>
 	<?php
     	include('header.php');
   	?>

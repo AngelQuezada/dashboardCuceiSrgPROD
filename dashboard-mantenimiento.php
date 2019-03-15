@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CUCEI-SRG | Dashboard - Mantenimiento</title>
+  <title>SRG | Mantenimiento</title>
   <?php
     include('header.php');
   ?>

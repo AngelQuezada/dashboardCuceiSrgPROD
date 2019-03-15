@@ -1,4 +1,8 @@
 const URI = localStorage.getItem('uri');
+
+//Variable global para guardar el folio del reporte seleccionado del modal para usarlo en la
+//asignacion de materiales
+var folio;
 /*
 * Obtener Todos los reportes
 */
@@ -96,6 +100,7 @@ let verReporte = (value,object) => {
       dataType: "json",
       success: function(data){
         $.each(data,function(_key, registro) {
+          folio = registro.folio;
           let ds;
           registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" :
           registro.descripcion_servicio === '2' ? ds = "Carpinteria" :
@@ -208,6 +213,7 @@ let verReporte = (value,object) => {
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
           <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"> Imprimir Reporte</i></button>
+          <button class="btn btn-primary" id="btnAgregarMateriales" data-toggle="modal" data-target="#materialesModal" onclick="agregarMateriales('`+folio+`','`+this+`')" style="background-color: #3e2723"><i class="fa fa-external-link" aria-hidden="true" style="color: white"> Agregar Materiales</i></button>          
           <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
           <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>        
@@ -402,44 +408,12 @@ let cancelarReportem = () =>{
  });
 }
 let imprimir = () => {
-  //ASIGNAN localStorage PARA IMPRIMIR PDF
-  var date = new Date();
-  var fechaActual = date.toLocaleString();
-  let folio = localStorage.getItem("folio");
-  let fechaElaboracion = localStorage.getItem("fechaElaboracion");
-  let recibe = localStorage.getItem("recibe");
-  let fechaRecepcion = localStorage.getItem("fechaRecepcion");
-  let fechaAsignacion = localStorage.getItem("fechaAsignacion");
-  let fechaReparacion = localStorage.getItem("fechaReparacion");
-  let nombre = localStorage.getItem("nombre");
-  let aPaterno = localStorage.getItem("aPaterno");
-  let aMaterno = localStorage.getItem("aMaterno");
-  let telefono = localStorage.getItem("telefono");
-  let areaSolicitante = localStorage.getItem("areaSolicitante");
-  let ubicacionServicio = localStorage.getItem("ubicacionServicio");
-  let anotacionExtra = localStorage.getItem("anotacionExtra");
-  let descripcionProblema = localStorage.getItem("descripcionProblema");
-  let descripcionServicio = localStorage.getItem("descripcionServicio");
+  const URL = localStorage.getItem('url');
+  window.open(`${URL}/print.html`, '_blank');
+}
 
-  var doc = new jsPDF()
-  doc.text(20, 20, 'Reporte de Mantenimiento')
-  doc.text(20, 30, `folio ${folio}`)
-  doc.text(20, 40, `fecha de elaboracion ${fechaElaboracion}`)
-  doc.text(20, 50, `recibe ${recibe}`)
-  doc.text(20, 60, `fecha de recepcion ${fechaRecepcion}`)
-  doc.text(20, 70, `fecha de Asignacion ${fechaAsignacion}`)
-  doc.text(20, 80, `fecha de reparación ${fechaReparacion}`)
-  doc.text(20, 90, `nombre ${nombre}`)
-  doc.text(20, 100, `apellido paterno ${aPaterno}`)
-  doc.text(20, 110, `apellido materno ${aMaterno}`)
-  doc.text(20, 120, `telefono ${telefono}`)
-  doc.text(20, 240, `area solicitante ${areaSolicitante}`)
-  doc.text(20, 260, `ubicacion Servicio ${ubicacionServicio}`)
-  doc.text(20, 280, `anotacion extra ${anotacionExtra}`)
-  doc.text(20, 300, `descripcion servicio ${descripcionServicio}`)
-  doc.text(20, 320, `descripcion problema ${descripcionProblema}`)
-
-  doc.save('reporte-mantenimiento-' + fechaActual + '.pdf')
+let agregarMateriales = (folio) => {
+  alert(folio);
 }
 /*
 * Se ejecuta al cargar la pagina

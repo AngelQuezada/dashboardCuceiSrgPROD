@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Nuevo Reporte</title>
+	<title>SRG | Nuevo Reporte</title>
 <?php
     include('header.php');
 ?>

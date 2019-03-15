@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>SRG | Gráficas</title>
 	<?php
     	include('header.php');
   ?>

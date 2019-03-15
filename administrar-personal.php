@@ -3,7 +3,7 @@
 ?>
 <!DOCTYPE html>
 <head>
-	<title>CUCEI-SRG | Administrar Personal</title>
+	<title>SRG | Personal</title>
 	<?php
     	include('header.php');
       ?>

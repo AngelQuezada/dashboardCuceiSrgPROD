@@ -1,7 +1,10 @@
+<?php
+  require('centinela.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>SRG | Buscar Reporte</title>
 	<?php
     include('header.php');
   ?>

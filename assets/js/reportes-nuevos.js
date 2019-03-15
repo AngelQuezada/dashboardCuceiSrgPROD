@@ -221,6 +221,24 @@ let verReporte = (value,object) => {
           registro.descripcion_servicio === '8' ? ds = "Jardinería" :
           registro.descripcion_servicio === '9' ? ds = "Limpieza" :
           registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
+
+           //ASIGNAN localStorage PARA IMPRIMIR PDF
+           localStorage.setItem("folio", registro.folio);
+           localStorage.setItem("fechaElaboracion", registro.fecha_elaboracion);
+           localStorage.setItem("recibe", registro.recibe);
+           localStorage.setItem("fechaRecepcion", registro.fecha_recepcion);
+           localStorage.setItem("fechaAsignacion", registro.fecha_asignacion);
+           localStorage.setItem("fechaReparacion", registro.fecha_reparacion);
+           localStorage.setItem("nombre", registro.nombre);
+           localStorage.setItem("aPaterno", registro.a_paterno);
+           localStorage.setItem("aMaterno", registro.a_materno);
+           localStorage.setItem("telefono", registro.telefono);
+           localStorage.setItem("areaSolicitante", registro.area_solicitante);
+           localStorage.setItem("ubicacionServicio", registro.ubicacion_servicio);
+           localStorage.setItem("anotacionExtra", registro.anotacion_extra);
+           localStorage.setItem("descripcionProblema", registro.descripcion_problema);
+           localStorage.setItem("descripcionServicio", ds);
+           
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
               <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
@@ -303,7 +321,7 @@ let verReporte = (value,object) => {
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
+          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
           <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
           <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white;" onclick="asignarEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
           <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
@@ -459,6 +477,10 @@ let cancelarReportem = () =>{
     break;
   }
  });
+}
+let imprimir = () => {
+  const URL = localStorage.getItem('url');
+  window.open(`${URL}/print.html`, '_blank');
 }
 /*
 * Se ejecuta al cargar la pagina

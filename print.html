@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" type="text/css" href="assets/css/404.css">
+      <title>FORMATO MANTENIMIENTO</title>
+<style type="text/css" media="print">
+      @media print {
+            @page{
+                  size: auto;
+                  /* auto is the current printer page size */
+                  margin: 1%;
+                  /* this affects the margin in the printer settings */
+            }
+      }
+      body {
+            background-color: #FFFFFF;
+            margin: 10px;
+            /* the margin on the content before printing */
+      }
+</style>
+</head>
+<body>
+<div id="printableArea" style="margin: 1%;">
+      <div style="text-align: center">
+            <img src="assets/img/logo_cucei.png" style="width: 3%; height: 3%;">
+            <p>COORDINACION DE SERVICIOS GENERALES/UNIDAD DE MANTENIMIENTO</p>
+            <b>SOLICITUD MATENIMIENTO PREVENTIVO/CORRECTIVO</b>
+      </div>
+      <p><b>Fecha de Elaboracion:</b> <span id="fechaElaboracion"></span></p>
+<p style="position: relative; left: 80%; bottom: 14%;"><b>Folio:</b><span id="folio" style="text-decoration: underline black;"></span></p>
+      <p style="position: relative; left: 7%; bottom: 17%;"><b>Recibe:</b><span id="recibe" style="text-decoration: underline black;"></span></p>
+      <p style="position: relative; left: 68%; bottom: 30%;"><b>Fecha de Recepcion:</b><span id="fechaRecepcion"></span></p>
+      <legend>Nombre,Firma y Teléfono de contacto del Solicitante</legend>
+      <div style="border: 2px solid black; padding: 1%">
+            <span id="datosSolicitante"></span>
+      </div>
+      <legend>Area Solicitante</legend>
+      <div style="border: 2px solid black; padding: 1%"">
+            <span id="areaSolicitante"></span>
+      </div>
+      <legend>Ubicación del Servicio</legend>
+      <div class="col-xs-12" style="border: 2px solid black; padding: 1%"">
+            <span id="ubicacion"></span>
+      </div>
+      <div class="input-field col-xs-12">
+            <fieldset>
+                  <legend>Descripción del servicio solicitado o falla a reparar</legend>
+                  <div class="row">
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="aireAcondicionado" type="radio" disabled/>
+                                    <span>Aire Acondicionado</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="carpinteria" type="radio" disabled/>
+                                    <span>Carpinteria</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="cristales" type="radio" disabled/>
+                                    <span>Cristales y/o estructura de aluminio</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="electrico" type="radio" disabled/>
+                                    <span>Eléctrico</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="herreria" type="radio" disabled/>
+                                    <span>Herrería</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="hidraulico" type="radio" disabled/>
+                                    <span>Hidráulico</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="infraestructura" type="radio" disabled/>
+                                    <span>Infraestructura</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="jardineria" type="radio" disabled/>
+                                    <span>Jardinería</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="limpieza" type="radio" disabled/>
+                                    <span>Limpieza</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <input name="descripcionServicio" id="pintura" type="radio" disabled/>
+                                    <span>Pintura</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
+                                    <span id="inputOtro"></span>
+                                    <input name="descripcionServicio" id="otro" type="radio" disabled>
+                                    <span>Otro: <span id="otrotext"></span></span>
+                              </label>
+                        </div>
+                  </div>
+            </fieldset>
+      </div>
+<div class="col-xs-12" style="border: 2px solid black; padding: 1%">
+      <span id="descripcionProblema"></span>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+      //ASIGNAN localStorage PARA IMPRIMIR PDF
+      let folio = localStorage.getItem("folio");
+      let fechaElaboracion = localStorage.getItem("fechaElaboracion");
+      let recibe = localStorage.getItem("recibe");
+      let fechaRecepcion = localStorage.getItem("fechaRecepcion");
+      let fechaAsignacion = localStorage.getItem("fechaAsignacion");
+      let fechaReparacion = localStorage.getItem("fechaReparacion");
+      let nombre = localStorage.getItem("nombre");
+      let aPaterno = localStorage.getItem("aPaterno");
+      let aMaterno = localStorage.getItem("aMaterno");
+      let telefono = localStorage.getItem("telefono");
+      let areaSolicitante = localStorage.getItem("areaSolicitante");
+      let ubicacionServicio = localStorage.getItem("ubicacionServicio");
+      let anotacionExtra = localStorage.getItem("anotacionExtra");
+      let descripcionProblema = localStorage.getItem("descripcionProblema");
+      let descripcionServicio = localStorage.getItem("descripcionServicio");
+      $("#fechaElaboracion").html(fechaElaboracion);
+      var str = "" + folio
+      var pad = "0000"
+      var ans = pad.substring(0, pad.length - str.length) + str
+      $("#folio").html(ans);
+      $("#recibe").html(recibe);
+      fechaRecepcion === 'null' ? $("#fechaRecepcion").append('') : $("#fechaRecepcion").html(fechaRecepcion);
+      
+      let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno+' TELEFONO: '+telefono;
+      $("#datosSolicitante").html(nombreCompleto);
+      $("#areaSolicitante").html(areaSolicitante);
+      $("#ubicacion").html('<b>Ubicación:</b> '+ubicacionServicio+' '+' <b>Anotacion Extra:</b>'+anotacionExtra);
+      if(descripcionServicio === 'Aire Acondicionado'){
+            $("#aireAcondicionado").prop("disabled", false);
+            $("#aireAcondicionado").prop("checked", true);
+      }else
+      if (descripcionServicio === 'Carpinteria') {
+            $("#carpinteria").prop("checked", true);
+            $("#carpinteria").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Cristales y/o estructura de aluminio') {
+            $("#cristales").prop("checked", true);
+            $("#cristales").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Eléctrico') {
+            $("#electrico").prop("checked", true);
+            $("#electrico").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Hidráulico') {
+            $("#hidraulico").prop("checked", true);
+            $("#hidraulico").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Infraestructura') {
+            $("#infraestructura").prop("checked", true);
+            $("#infraestructura").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Jardinería') {
+            $("#jardineria").prop("checked", true);
+            $("#jardineria").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Limpieza') {
+            $("#limpieza").prop("checked", true);
+            $("#limpieza").prop("disabled", false);
+      }else
+      if (descripcionServicio === 'Pintura') {
+            $("#pintura").prop("checked", true);
+            $("#pintura").prop("disabled", false);
+      }else{
+            $("#otro").prop("checked", true);
+            $("#otro").prop("disabled", false);
+            $("#otrotext").html('<i>'+descripcionServicio+'</i>');
+      }
+      $("#descripcionProblema").html(descripcionProblema);
+})
+</script>
+</body>
+</html>

@@ -5,14 +5,12 @@
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 
 <!-- <script src="assets/js/libs/jquery.min.js"></script> -->
 <script src="assets/js/libs/jquery-ui.min.js"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- <script src="assets/js/libs/bootstrap.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="assets/js/libs/material.min.js"></script>
 <script src="assets/js/libs/ripples.min.js"></script>
@@ -20,8 +18,6 @@
     $.material.init();
 </script>
 
-<!--<script src="assets/js/libs/raphael.min.js"></script>-->
-<!-- <script src="assets/js/libs/morris.min.js"></script> -->
 <script src="assets/js/libs/jquery.sparkline.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="assets/js/libs/jquery-jvectormap-world-mill-en.js"></script>
@@ -33,7 +29,6 @@
 <script src="assets/js/libs/jquery.slimscroll.min.js"></script>
 <script src="assets/js/libs/fastclick.js"></script>
 <script src="assets/js/libs/adminlte.min.js"></script>
-<script src="assets/js/libs/dashboard.js"></script>
 <script src="assets/js/libs/demo.js"></script>
 <script src="assets/js/libs/pace.min.js"></script>
 

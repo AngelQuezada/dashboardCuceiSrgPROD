@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin-CUCEI-SRG | Registro</title>
+  <title>SRG | Restablecer</title>
   <?php
       include('header.php');
   ?>

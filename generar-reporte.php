@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Nuevo Reporte - Mantenimiento</title>
+  <title>SRG | Nuevo Reporte</title>
 <?php
   include('header.php');
 ?>

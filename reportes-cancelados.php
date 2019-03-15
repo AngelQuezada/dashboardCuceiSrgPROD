@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Reportes Cancelados</title>
+	<title>SRG | Cancelados</title>
 	<?php
     	include('header.php');
   	?>

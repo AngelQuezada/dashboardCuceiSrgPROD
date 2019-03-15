@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin-CUCEI-SRG | Ingreso</title>
+  <title>SRG | Ingreso</title>
   <?php
       include('header.php');
   ?>
