@@ -37,7 +37,8 @@
 				<h4><i class="icon fa fa-info"></i>Ayuda</h4>
 				De click sobre el ícono: <i class="fa fa-external-link" aria-hidden="true"></i> para ver el reporte.<br/>
 				De click sobre el ícono: <i class="fa fa-bullhorn" aria-hidden="true"></i> para agregar una observación.<br/>
-				De click sobre el ícono: <i class="fa fa-ban" aria-hidden="true"></i> para cancelar un reporte.
+				De click sobre el ícono: <i class="fa fa-ban" aria-hidden="true"></i> para cancelar un reporte.<br/>
+				De click sobre el ícono: <i class="fa fa-envelope" aria-hidden="true" style="color: white"></i> Para enviar un correo a la persona quien reportó.
 			</div>
 			<div class="row">
 				<div class="input-field col-sm-12">

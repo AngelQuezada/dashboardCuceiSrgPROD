@@ -20,6 +20,7 @@ let reportesTodos = async () => {
     <th>Ver</th>
     <th>Agregar Observación</th>
     <th>Cancelar</th>
+    <th>Enviar Correo</th>
     </tr>
     </thead>
     <tbody id="bodyTable">`);
@@ -35,7 +36,7 @@ $.ajax({
           registro.idStatus === '3' ? status = "Finalizado" : status = "Cancelado";
           registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
           $("#bodyTable").append(`
-          <tr>
+          <tr style="text-align: center">
           <input type="hidden" id="folioId" value="`+registro.folio+`"/>
           <td>`+registro.folio+`</td>
           <td>`+status+`</td>
@@ -43,6 +44,7 @@ $.ajax({
           <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
           <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')" style="background-color: #ef6c00"><i class="fa fa-bullhorn" aria-hidden="true" style="color: white"></i></button></td>
           <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')" style="background-color: #f44336"><i class="fa fa-ban" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-success" onclick="enviarCorreo('`+registro.folio+`','`+this+`')" style="background-color: green"><i class="fa fa-envelope" aria-hidden="true" style="color: white"></i></button></td>          
           </tr>
           `);
       });
@@ -411,7 +413,22 @@ let imprimir = () => {
   const URL = localStorage.getItem('url');
   window.open(`${URL}/print.html`, '_blank');
 }
-
+let enviarCorreo = (value, object) => {
+  let folio = object.innerHTML = value;
+  $.ajax({
+    type: 'GET',
+    url: `${URI}/reporte/getemail/`+folio,
+    async: false,
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function(data){
+      $.each(data, function (_key, registro) {
+      window.open(`mailto:${registro.correo}?Subject=Agregue un Asunto`, '_blank');
+      });
+    },
+    error: function() {}
+  });
+}
 let agregarMateriales = (folio) => {
   alert(folio);
 }
