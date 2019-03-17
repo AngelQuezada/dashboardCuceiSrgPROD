@@ -25,7 +25,19 @@ let login = () => {
     window.location.replace(`${URL}/index.php`);
   }).catch(function(error) {
     let errorCode = error.code;
-    swal("¡Oops!", "Verifica tu correo/contraseña e inténtalo nuevamente. error code: "+errorCode, "error");
+    let errorMessage = error.message;
+    if (errorCode == 'auth/wrong-password' && errorMessage == 'The password is invalid or the user does not have a password.') {
+      swal("¡Oops!", "El Correo Electrónico o Contraseña es Inválido.", "error");
+      return;
+    }
+    if (errorCode == 'auth/user-not-found' && errorMessage == 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+      swal("¡Oops!", "La Cuenta No Existe.", "error");
+      return;
+    }
+    if (errorCode == 'auth/invalid-email' && errorMessage == 'The email address is badly formatted.') {
+      swal("¡Oops!", "El Correo Electrónico es Inválido.", "error");
+      return;
+    }
   });
 }
 /*

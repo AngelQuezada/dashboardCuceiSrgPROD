@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2><strong>Correo electrónico de Soporte:</strong></h2><h4>firebase.cuceisrg001@gmail.com</h4>
-                        <button class="btn btn-primary" onclick="messageEmail()" style="background-color: white"><a href="mailto:firebase.cuceisrg001@gmail.com?Subject=AyudaCuceiSrg" target="_top" style="color: black">Enviar Correo</a></button>
+                        <button class="btn btn-primary" onclick="messageEmail()" style="background-color: white; color: black;">Enviar Correo</button>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
     ?>
 <script>
 let messageEmail = () =>{
-    swal("CUCEI-SRG", "Se abrió una nueva ventana o pestaña del navegador a su correo.", "info");
+    window.open('mailto:firebase.cuceisrg001@gmail.com?Subject=Agregue un Asunto', '_blank');
 }
 </script>
 </body>

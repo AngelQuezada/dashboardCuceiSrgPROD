@@ -13,6 +13,7 @@ let reportesTodos = () => {
     <th>Apellido Materno Encargado</th>
     <th>Folio del Reporte Asignado</th>
     <th>Ver</th>
+    <th>Enviar Correo</th>
     </tr>
     </thead>
     <tbody id="bodyTable">`);
@@ -22,7 +23,7 @@ let reportesTodos = () => {
         success: function (data) {
             $.each(data, function (_key, registro) {
           $("#bodyTable").append(`
-          <tr>
+          <tr style="text-align: center">
           <input type="hidden" id="folioId" value="` + registro.folioReporte + `"/>
           <input type="hidden" id="registroId" value="` + registro.id + `"/>
           <td>` + registro.nombre + `</td>
@@ -30,6 +31,7 @@ let reportesTodos = () => {
           <td>` + registro.a_materno + `</td>
           <td>` + registro.folioReporte + `</td>
           <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('` + registro.folioReporte + `','` + this + `')"style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+          <td><button class="btn btn-success" onclick="enviarCorreo('`+registro.id+`','`+this+`')" style="background-color: green"><i class="fa fa-envelope" aria-hidden="true" style="color: white"></i></button></td>
           </tr>
           `);
             });
@@ -176,6 +178,22 @@ let verReporte = (value, object) => {
         },
         error: function () {}
     });
+}
+let enviarCorreo = (value, object) => {
+  let folio = object.innerHTML = value;
+  $.ajax({
+    type: 'GET',
+    url: `${URI}/reporte/getemail/`+folio,
+    async: false,
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function(data){
+      $.each(data, function (_key, registro) {
+      window.open(`mailto:${registro.correo}?Subject=Agregue un Asunto`, '_blank');
+      });
+    },
+    error: function() {}
+  });
 }
 /*
  * Se ejecuta al cargar la pagina

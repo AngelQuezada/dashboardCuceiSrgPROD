@@ -7,7 +7,7 @@
 ?>
 	<link rel="stylesheet" type="text/css" href="assets/css/generar-reporte.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-app="">
+<body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">
 	<div class="wrapper">
 <?php
   include("navbar.php");

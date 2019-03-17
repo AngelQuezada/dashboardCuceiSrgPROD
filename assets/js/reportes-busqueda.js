@@ -38,6 +38,7 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
   <th>Apellido Materno</th>
   <th>Fecha de Recepción</th>
   <th>Detalles</th>
+  <th>Enviar Correo</th>
   </tr>
   </thead>
   <tbody id="bodyTable">`);
@@ -50,14 +51,15 @@ let reporte = (aPaterno,aMaterno,nombre,folio) => {
         let fr;
          registro.fecha_recepcion === null ? fr = "Sin Fecha de Recepción" : fr = registro.fecha_recepcion;
         $("#bodyTable").append(`
-        <tr>
+        <tr style="text-align: center">
         <input type="hidden" id="folioId" value="`+registro.folio+`"/>
         <td>`+registro.folio+`</td>
         <td>`+registro.nombre+`</td>
         <td>`+registro.a_paterno+`</td>
         <td>`+registro.a_materno+`</td>
         <td>`+fr+`</td>
-        <td><button class='btn btn-primary' id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="regSel('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1; color: white">Ver</button></td>
+        <td><button class='btn btn-primary' id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="regSel('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1; color: white"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+        <td><button class="btn btn-success" onclick="enviarCorreo('`+registro.folio+`','`+this+`')" style="background-color: green"><i class="fa fa-envelope" aria-hidden="true" style="color: white"></i></button></td>        
         </tr>
         `);
       });
@@ -363,6 +365,22 @@ let asignarEncargado = (selectedFolio) => {
         }
       });
     });
+}
+let enviarCorreo = (value, object) => {
+  let folio = object.innerHTML = value;
+  $.ajax({
+    type: 'GET',
+    url: `${URI}/reporte/getemail/`+folio,
+    async: false,
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function(data){
+      $.each(data, function (_key, registro) {
+      window.open(`mailto:${registro.correo}?Subject=Agregue un Asunto`, '_blank');
+      });
+    },
+    error: function() {}
+  });
 }
 let imprimir = () => {
   const URL = localStorage.getItem('url');

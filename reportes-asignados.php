@@ -42,12 +42,18 @@
 			</div>
 			<div class="row">
 				<div class="input-field col-sm-12">
-					<fieldset style="border: 1px solid gray;">
-						<kbd>Listado de Reportes</kbd>
-						<div class="col-sm-12">
-							<button class="btn btn-primary" onclick="reportesTodos()" style="background-color: #00c853; color: white;">Refrescar</button>
+
+					<div class="box box-danger">
+						<div class="box-header with-border">
+							<h3 class="box-title">Listado de Reportes</h3>
 						</div>
-					</fieldset>
+						<div class="box-body">
+							<div class="col-sm-12">
+								<button class="btn btn-primary" onclick="reportesTodos()" style="background-color: #00c853; color: white;">Refrescar</button>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 <span id="tablaResultados"></span>

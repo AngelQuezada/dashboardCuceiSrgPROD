@@ -22,26 +22,32 @@
     		<h1>
 		        Búsqueda de Reportes
 		        <small>Sistema de Reportes Generales</small>
-      		</h1>
-          <div class="alert alert-info alert-dismissible" style="background: green;">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-info"></i>Ayuda</h4>
-            Apellidos y/o Nombres con la primer letra Mayúscula. || Ingresar al menos 1 Apellido para realizar la búsqueda.
-          </div>
-			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
-				<li class="active">Reportes</li>
-			</ol>
+          </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
+          <li class="active">Reportes</li>
+        </ol>
     	</section>
   	<section class="content">
     <ol class="breadcrumb" style="background-color: black;">
-				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active" style="color: white;">Buscar Reportes</li>
-			</ol>
+      <li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active" style="color: white;">Buscar Reportes</li>
+    </ol>
+    <div class="alert alert-info alert-dismissible" style="background: green;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-info"></i>Ayuda</h4>
+      <h5>Apellidos y/o Nombres con la primer letra Mayúscula.</h5>
+      <h5>Ingresar al menos 1 Apellido para realizar la búsqueda.</h5>
+      De click sobre el ícono: <i class="fa fa-external-link" aria-hidden="true"></i> para ver el reporte.<br/>
+      De click sobre el ícono: <i class="fa fa-envelope" aria-hidden="true" style="color: white"></i> Para enviar un correo a la persona quien reportó.
+    </div>
 		<div class="row">
 			<div class="input-field col-sm-12">
-			<fieldset style="border: 1px solid gray;">
-        <legend>Datos</legend>
+      <div class="box box-danger">
+          <div class="box-header with-border">
+            <h3 class="box-title">Buscar Reporte</h3>
+          </div>
+			 <div class="box-body">
 				<div class="col-sm-3">
           <input type="text" class="form-control" name="txtApaterno" id="txtApaterno" placeholder="Apellido Paterno">
           <label for="txtApaterno" style="color: black;">Apellido Paterno</label>
@@ -59,10 +65,11 @@
           <label for="txtFolio" style="color: black;">Folio</label>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-primary" id="btnBuscarReporte">Buscar</button>
+          <button class="btn btn-primary" id="btnBuscarReporte" style="background-color: #00695c; color: white;"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
         </div>
-      </fieldset>
-			</div>
+        </div>
+      </div>
+    </div>
 		</div>
     <span id="tablaResultados"></span>
     <span id="modal"></span>

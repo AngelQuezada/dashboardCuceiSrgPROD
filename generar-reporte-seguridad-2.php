@@ -1,68 +1,58 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>CUCEI-SRG | Administración de Gráficas</title>
+	<title>SRG | Nuevo Reporte</title>
 	<?php
     	include('header.php');
   	?>
+		<link rel="stylesheet" type="text/css" href="assets/css/generar-reporte.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">
 	<div class="wrapper">
-	<?php
-      include("navbar.php");
-    ?>
-    <?php
-      include("sidebar.php");
-    ?>
+<?php
+  include("navbar.php");
+?>
+<?php
+  include("sidebar.php");
+?>
     <div class="content-wrapper">
-    	<section class="content-header">
-    		<h1>
-		        Nuevo Reporte de Seguridad FORMATO 2
-		        <small>Sistema de Reportes Generales</small>
-      		</h1>
-			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Seguridad</a></li>
-				<li class="active">Nuevo Reporte</li>
-			</ol>
-    	</section>
+				<div class="jumbotron">
+					<p>COORDINACIÓN DE SERVICIOS GENERALES / UNIDAD DE SEGURIDAD</p>
+    			<p>NUEVO REPORTE DE SEGURIDAD / FORMATO 2</p>
+					 <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
+				</div>
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
-      <div style="text-align: center;">
-         <b> UNIVERSIDAD DE GUADALAJARA </b>
-         <P>COORDINACION DE SEGURIDAD UNIVERSITARIA</P>
-         </p>
-        <p> <b>Reporte de incidencias</b> </p>
-				  <small><small style="color: red">*</small> SON CAMPOS OBLIGATORIOS.</small>
-     </div>
-
      <fieldset>
-     <legend style="text-align: center;">DATOS DE IDENTIFICACION DEL AFECTADO</legend>
+     <legend><small style="color: red">*</small>DATOS DE IDENTIFICACION DEL AFECTADO</legend>
 
       <div class="row" style="margin: 2%">
-          <form action="" method="POST">
+          <form  name="formulariodos" autocomplete="off" required>
+						
             <div class="col-sm-3">
-              <input class="form-control" id="escuela" name="escuela" type="text" class="validate">
+              <input class="form-control" id="escuela" name="escuela" type="text" class="validate" ng-model="escuela" required>
               <label for="escuela" style="color: black;"> <small style="color: red">*</small>escuela/institucion</label>
             </div>
 
             <div class="col-sm-3">
-                    <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker">
+                    <input class="form-control" name="fech" id="fech" type="date" class="datepicker">
                     <label for="fecha" style="color: black;">Fecha</label>
                   </div>
 
                   <div class="col-sm-3">
-                        <input class="form-control" name="nombre" id="nombre" type="text" class="validate">
+                        <input class="form-control" name="nombre" id="nombre" type="text" class="validate" ng-model="nombre" required>
                         <label for="nombre" style="color: black;"> <small style="color: red">*</small>Nombre</label>
                       </div>
 
                   <div class="col-sm-1">
-                       <input class="form-control" name="edad" id="edad" type="TINYINT" class="validate">
+                       <input class="form-control" name="edad" id="edad" type="TINYINT" class="validate" maxlength="3"  pattern="[0-9]{2}">
                        <label for="edad" style="color: black;">Edad</label>
                      </div>
 
                    <div class="col-sm-3">
-                       <input class="form-control" name="codigo" id="codigo" type="text" class="validate">
+                       <input class="form-control" name="codigo" id="codigo" type="text" class="validate"  maxlength="9" minlength="9" pattern="[0-9]{9}" placeholder="223656789" ng-model="codigo" required>
+											 	<span style="color: crimson;" ng-show="formulariodos.codigo.$touched && formulariodos.codigo.$invalid">Codigo es requerido.<br/></span>
                        <label for="codigo" style="color: black;"> <small style="color: red">*</small>Codigo</label>
                      </div>
 
@@ -72,12 +62,13 @@
                      </div>
 
                      <div class="col-sm-3">
-                       <input class="form-control" name="email" id="email" type="email" class="validate">
+                       <input class="form-control" name="email" id="email" type="email" class="validate" ng-model="email" required>
                        <label for="email" style="color: black;"> <small style="color: red">*</small>Email</label>
                      </div>
 
                      <div class="col-sm-3">
-                      <input class="form-control" name="telefono" id="telefono" type="tel" class="validate">
+                      <input class="form-control" name="telefono" id="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" type="tel" class="validate" ng-model="telefono" placeholder="3312345678" required>
+											<span style="color: crimson;" ng-show="formulariodos.telefono.$touched && formulariodos.telefono.$invalid">Teléfono es requerido.<br/></span>
                       <label for="telefono" style="color: black;"> <small style="color: red">*</small>Teléfono de contacto</label>
                     </div>
                   </fieldset>
@@ -87,7 +78,7 @@
                 <fieldset>
                     <legend style="text-align: center;">DATOS DEL INCIDENTE</legend>
                     <div class="col-sm-3">
-                      <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker">
+                      <input class="form-control" name="fecha" id="fecha" type="date" class="datepicker" ng-model="fecha" required>
                       <label for="fecha" style="color: black;"> <small style="color: red">*</small>Fecha</label>
                      </div>
 
@@ -105,13 +96,13 @@
                   <fieldset>
                     <div class="input-field col-sm-6" style="text-align:center">
                         <legend> <small style="color: red">*</small>Descripcion del suceso</legend><br>
-                          <textarea rows="4" cols="50">
+                          <textarea rows="4" cols="50" name="sucesos" id="sucesos" class="validate" ng-model="sucesos" required>
                           </textarea>
                       </div>
 
                       <div class="input-field col-sm-6" style="text-align:center">
                             <legend> <small style="color: red">*</small> Descripcion de lo robado</legend><br>
-                              <textarea rows="4" cols="50">
+                              <textarea rows="4" cols="50" name="robado" id="robado" class="validate" ng-model="robado" required>
                               </textarea>
                       </div>
                    </fieldset>
@@ -198,15 +189,14 @@
 
                        <div class="col-sm-12">
                         <p>Observaciones</p>
-                      <textarea rows="4" cols="150">
-                          </textarea>
+<textarea rows="4" cols="135"></textarea>
                        </div>
 
                       </fieldset>
                        <div style="text-align: center;">
 
-  <button class="btn waves-effect waves-light" type="submit" name="action" id="btn-reset" style="background-color: rgb(62, 88, 233);">Registrar Reporte
-           </button>
+  <button class="btn waves-effect waves-light" id="btnNuevoreportedos" ng-disabled="formulariodos.$invalid">Registrar Reporte
+	</button>
          </div>
         </div>
         </form>
@@ -220,5 +210,7 @@
 	<?php
   		include('footer.php');
 	?>
+
+<script src="assets/js/libs/angular.min.js" type="text/javascript"></script>
 </body>
 </html>

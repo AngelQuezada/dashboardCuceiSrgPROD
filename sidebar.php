@@ -15,7 +15,6 @@
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -27,10 +26,9 @@
         </li>
         <li class="treeview" id="treeViewMantenimiento">
           <a href="#">
-            <i class="fa fa-cog"></i>
+            <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
             <span>Mantenimiento</span>
             <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -45,10 +43,9 @@
         </li>
         <li class="treeview" id=treeViewSeguridad>
           <a href="#">
-            <i class="fa fa-plus-square"></i>
+            <i class="fa fa-shield" aria-hidden="true"></i>
             <span>Seguridad</span>
             <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -60,10 +57,9 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user-circle"></i>
+            <i class="fa fa-users" aria-hidden="true"></i>
             <span>Usuarios</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
               <i class="fa fa-angle-left pull-right">
               </i>
             </span>
@@ -75,7 +71,6 @@
         </li>
         <li>
           <a href="administracion-graficas.php">
-            <small class="label pull-right bg-green">new</small>
             <i class="fa fa-pie-chart"></i><span>Graficas</span>
             <span class="pull-right-container">
             </span>
@@ -84,7 +79,7 @@
         <li>
           <a href="support.php">
             <small class="label pull-right bg-green">new</small>
-            <i class="fa fa-question-circle"></i><span>Soporte</span>
+            <i class="fa fa-life-ring" aria-hidden="true"></i><span>Soporte</span>
             <span class="pull-right-container">
             </span>
           </a>
