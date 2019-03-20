@@ -24,15 +24,6 @@ firebase.initializeApp(config);
 let resetPassword = () => {
     let auth = firebase.auth();
     let email = document.getElementById("txtCorreoReset").value;
-    let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test(email)) {
-        swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
-        return;
-    }
-    if (email.replace(/\s/g, "") == "") {
-        swal("ADMIN CUCEI-SRG", "Ingrese su Correo Electrónico Primero", "info");
-        return;
-    }
     swal("¿Estás Seguro de Restablecer su Contraseña?", {
         icon: 'info',
         title: 'ADMIN CUCEI-SRG',
@@ -52,15 +43,20 @@ let resetPassword = () => {
                     $('#txtCorreoReset').val('');
                 }).catch(function (error) {
                     let errorCode = error.code;
-                    swal("¡Oops!", "Verifica tu correo electrónico e inténtalo nuevamente. error code: " + errorCode, "error");
+                    let errorMessage = error.message;
+                    if (errorCode == 'auth/user-not-found' && errorMessage == 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+                        swal("¡Oops!", "La Cuenta No Existe.", "error");
+                        return;
+                    }
+                    if (errorCode == 'auth/network-request-failed' && errorMessage == 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.') {
+                        swal("¡Oops!", "Compruebe su Conexión a Internet.", "error");
+                        return;
+                    }
                 });
                 break;
         }
     });
 }
-
-
-
 $(function () {
     $('#txtCorreoReset').keypress(function (e) {
         if (e.which == 13) {

@@ -134,7 +134,7 @@ let generateModal = (selectedFolio) => {
               <label for="txtFolioR" style="color: black;">Folio</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtFecha" value="`+registro.fecha_elaboracion+`" disabled>
+              <input class="form-control pull-right" id="txtFecha" value="`+registro.fecha_elaboracion+`" disabled>
               <label for="txtFecha" style="color: black;">Fecha de Elaboracion</label>
             </div>
             <div class="col-sm-4">

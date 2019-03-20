@@ -3,25 +3,25 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel" id="user-panel" style="text-align: center;">
-        <img src="assets/img/cucei-srg-logo.png" width="50%"><br/>
+        <img src="assets/img/cucei-srg-logo.png" width="50%" style="border-radius: 50%;"><br/>
         <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
-        <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
+        <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;border-radius: 10px 10px 10px 10px"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">PANEL NAVEGACION</li>
+        <li class="header">PANEL DE NAVEGACION</li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-ravelry"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <!--Bloque Dashboard Mantenimiento-Seguridad -->
           <ul class="treeview-menu">
-            <li id="dsMantenimiento"><a href="dashboard-mantenimiento.php"><i class="fa fa-circle-o"></i> Dashboard Mantenimiento</a></li>
-            <li id="dsSeguridad"><a href="dashboard-seguridad.php"><i class="fa fa-circle-o"></i> Dashboard Seguridad</a></li>
+            <li id="dsMantenimiento"><a href="dashboard-mantenimiento.php"><i class="fa fa-cogs"></i> Dashboard Mantenimiento</a></li>
+            <li id="dsSeguridad"><a href="dashboard-seguridad.php"><i class="fa fa-shield"></i> Dashboard Seguridad</a></li>
           </ul>
         </li>
         <li class="treeview" id="treeViewMantenimiento">
@@ -32,13 +32,13 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-            <ul class="treeview-menu" id="opcionesMantenimiento"><li><a href="generar-reporte.php"><i class="fa fa-circle-o"></i> Nuevo reporte</a></li>
-              <li><a href="buscar-reporte.php"><i class="fa fa-circle-o"></i> Buscar Reportes</a></li>
-              <li><a href="reportes-nuevos.php"><i class="fa fa-circle-o"></i> Ver nuevos reportes</a></li>
-              <li><a href="reportes-encargado.php"><i class="fa fa-circle-o"></i> Encargados C/Reporte</a></li>
-              <li><a href="reportes-asignados.php"><i class="fa fa-circle-o"></i>Ver reportes asignados</a></li>
-              <li><a href="reportes-finalizados.php"><i class="fa fa-circle-o"></i>Ver reportes finalizados</a></li>
-              <li><a href="reportes-cancelados.php"><i class="fa fa-circle-o"></i>Ver reportes cancelados</a></li>
+            <ul class="treeview-menu" id="opcionesMantenimiento"><li><a href="generar-reporte.php"><i class="fa fa-plus"></i> Nuevo reporte</a></li>
+              <li><a href="buscar-reporte.php"><i class="fa fa-search"></i> Buscar Reportes</a></li>
+              <li><a href="reportes-nuevos.php"><i class="fa fa-list-ul"></i> Ver nuevos reportes</a></li>
+              <li><a href="reportes-encargado.php"><i class="fa fa-list-ul"></i> Encargados C/Reporte</a></li>
+              <li><a href="reportes-asignados.php"><i class="fa fa-list-ul"></i>Ver reportes asignados</a></li>
+              <li><a href="reportes-finalizados.php"><i class="fa fa-check"></i>Ver reportes finalizados</a></li>
+              <li><a href="reportes-cancelados.php"><i class="fa fa-times"></i>Ver reportes cancelados</a></li>
               </ul>
         </li>
         <li class="treeview" id=treeViewSeguridad>
@@ -50,9 +50,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="generar-reporte-seguridad-1.php"><i class="fa fa-circle-o"></i>Nuevo Reporte Formato 1</a></li>
-            <li><a href="generar-reporte-seguridad-2.php"><i class="fa fa-circle-o"></i>Nuevo Reporte Formato 2</a></li>
-            <li><a href="reportes-seguridad.php"><i class="fa fa-circle-o"></i>Ver reportes</a></li>
+            <li><a href="generar-reporte-seguridad-1.php"><i class="fa fa-plus"></i>Nuevo Reporte Formato 1</a></li>
+            <li><a href="generar-reporte-seguridad-2.php"><i class="fa fa-plus"></i>Nuevo Reporte Formato 2</a></li>
+            <li><a href="reportes-seguridad.php"><i class="fa fa-list-ul"></i>Ver reportes</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -65,8 +65,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="administrar-usuarios.php"><i class="fa fa-circle-o"></i>Administrar Usuarios</a></li>
-            <li><a href="administrar-personal.php"><i class="fa fa-circle-o"></i>Administrar Personal</a></li>
+            <li><a href="administrar-encargados.php"><i class="fa fa-cubes"></i>Administrar Encargados</a></li>
+            <li><a href="administrar-usuarios.php"><i class="fa fa-user-o"></i>Administrar Usuarios</a></li>
+            <li><a href="administrar-personal.php"><i class="fa fa-address-card-o"></i>Administrar Personal</a></li>
           </ul>
         </li>
         <li>

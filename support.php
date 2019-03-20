@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2><strong>Correo electrónico de Soporte:</strong></h2><h4>firebase.cuceisrg001@gmail.com</h4>
-                        <button class="btn btn-primary" onclick="messageEmail()" style="background-color: white; color: black;">Enviar Correo</button>
+                        <button class="btn btn-primary" onclick="messageEmail()" style="background-color: white; color: black;"><i class="fa fa-envelope-o" aria-hidden="true"></i> Enviar Correo</button>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,10 @@ let login = () => {
   }).catch(function(error) {
     let errorCode = error.code;
     let errorMessage = error.message;
+    if (errorCode == 'auth/network-request-failed' && errorMessage == 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.') {
+      swal("¡Oops!", "Compruebe su Conexión a Internet.", "error");
+      return;
+    }
     if (errorCode == 'auth/wrong-password' && errorMessage == 'The password is invalid or the user does not have a password.') {
       swal("¡Oops!", "El Correo Electrónico o Contraseña es Inválido.", "error");
       return;
