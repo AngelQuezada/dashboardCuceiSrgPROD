@@ -190,49 +190,9 @@ $(function () {
     + '<div class="form-group">'
     + '<label class="control-sidebar-subheading">'
     + '<input type="checkbox"data-layout="fixed"class="pull-right"/> '
-    + 'Fijar panel'
+    + 'Fijar panel superior'
     + '</label>'
-    + '<p>Activa esta opcion para fijar el panel superior.</p>'
-    + '</div>'
-    // Boxed layout
-    + '<div class="form-group">'
-    + '<label class="control-sidebar-subheading">'
-    + '<input type="checkbox"data-layout="layout-boxed" class="pull-right"/> '
-    + 'Boxed Layout'
-    + '</label>'
-    + '<p>Activate the boxed layout</p>'
-    + '</div>'
-    // Sidebar Toggle
-    + '<div class="form-group">'
-    + '<label class="control-sidebar-subheading">'
-    + '<input type="checkbox"data-layout="sidebar-collapse"class="pull-right"/> '
-    + 'Toggle Sidebar'
-    + '</label>'
-    + '<p>Toggle the left sidebar\'s state (open or collapse)</p>'
-    + '</div>'
-    // Sidebar mini expand on hover toggle
-    + '<div class="form-group">'
-    + '<label class="control-sidebar-subheading">'
-    + '<input type="checkbox"data-enable="expandOnHover"class="pull-right"/> '
-    + 'Sidebar Expand on Hover'
-    + '</label>'
-    + '<p>Let the sidebar mini expand on hover</p>'
-    + '</div>'
-    // Control Sidebar Toggle
-    + '<div class="form-group">'
-    + '<label class="control-sidebar-subheading">'
-    + '<input type="checkbox"data-controlsidebar="control-sidebar-open"class="pull-right"/> '
-    + 'Toggle Right Sidebar Slide'
-    + '</label>'
-    + '<p>Toggle between slide over content and push content effects</p>'
-    + '</div>'
-    // Control Sidebar Skin Toggle
-    + '<div class="form-group">'
-    + '<label class="control-sidebar-subheading">'
-    + '<input type="checkbox"data-sidebarskin="toggle"class="pull-right"/> '
-    + 'Toggle Right Sidebar Skin'
-    + '</label>'
-    + '<p>Toggle between dark and light skins for the right sidebar</p>'
+    + '<p>Activa esta opcion para fijar el panel superior. (Activado por default)</p>'
     + '</div>'
   )
   var $skinsList = $('<ul />', { 'class': 'list-unstyled clearfix' })
@@ -252,7 +212,7 @@ $(function () {
             + '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>'
             + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
             + '</a>'
-            + '<p class="text-center no-margin">Blanco/Negro</p>')
+            + '<p class="text-center no-margin">Blanco</p>')
   $skinsList.append($skinBlack)
   var $skinPurple =
         $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
@@ -284,7 +244,7 @@ $(function () {
             + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
             + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
             + '</a>'
-            + '<p class="text-center no-margin">Yellow</p>')
+            + '<p class="text-center no-margin">Amarillo</p>')
   $skinsList.append($skinYellow)
 
   // Light sidebar skins
@@ -302,7 +262,7 @@ $(function () {
             + '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>'
             + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
             + '</a>'
-            + '<p class="text-center no-margin" style="font-size: 12px">Blanco</p>')
+            + '<p class="text-center no-margin" style="font-size: 12px">Blanco Brillante</p>')
   $skinsList.append($skinBlackLight)
   var $skinPurpleLight =
         $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
@@ -318,7 +278,7 @@ $(function () {
             + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
             + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
             + '</a>'
-            + '<p class="text-center no-margin" style="font-size: 12px">Verder Brillante</p>')
+            + '<p class="text-center no-margin" style="font-size: 12px">Verde Brillante</p>')
   $skinsList.append($skinGreenLight)
   var $skinRedLight =
         $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
@@ -326,7 +286,7 @@ $(function () {
             + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
             + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
             + '</a>'
-            + '<p class="text-center no-margin" style="font-size: 12px">Red Light</p>')
+            + '<p class="text-center no-margin" style="font-size: 12px">Rojo Brillante</p>')
   $skinsList.append($skinRedLight)
   var $skinYellowLight =
         $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })

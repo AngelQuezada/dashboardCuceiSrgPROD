@@ -6,7 +6,7 @@
       include('header.php');
   ?>
 </head>
-<body class="hold-transition register-page" ng-app="">
+<body class="hold-transition register-page" style="background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="register-box" style="margin-top: 0%">
   <div class="register-logo">
     <b>Admin</b>CUCEI-SRG

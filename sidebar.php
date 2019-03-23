@@ -1,9 +1,9 @@
-<aside class="main-sidebar">
+  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel" id="user-panel" style="text-align: center;">
-        <img src="assets/img/cucei-srg-logo.png" width="50%" style="border-radius: 50%;"><br/>
+        <img id="imageSrg" src="assets/img/cucei-srg-logo.png" width="50%" style="border-radius: 50%;"><br/>
         <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
         <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;border-radius: 10px 10px 10px 10px"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>

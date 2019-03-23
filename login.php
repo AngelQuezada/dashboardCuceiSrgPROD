@@ -7,8 +7,8 @@
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
-<body class="hold-transition login-page" ng-app="">
-<div class="login-box" style="margin-top: 0px;margin-bottom: 0px;">
+<body class="hold-transition login-page" style="background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
+<div class="login-box" style="margin-top: 0px;">
   <div class="login-logo">
     <b>Admin</b>CUCEI-SRG
   </div>
