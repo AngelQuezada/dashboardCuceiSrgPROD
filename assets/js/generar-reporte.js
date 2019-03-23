@@ -6,12 +6,27 @@ var URI = localStorage.getItem('uri');
 $(document).ready(function() {
   getModulo();
   $('#modulo').on("select2:select", function(e) {
+    e.preventDefault();
     $("#divPiso").show();
     $("#divAula").show();
+    $('#piso').html('').select2({
+      data: {
+        id: null,
+        text: null
+      }
+    });
+
     getPiso();
   });
   $("#piso").on("select2:select", function(e){
-    $('#aula').html('').select2({data: {id:null, text: null}});
+    $('#aula').trigger('change.select2');
+    //e.preventDefault();
+    $('#aula').html('').select2({
+      data: {
+        id: null,
+        text: null
+      }
+    });
     getAula();
   });
 });
@@ -137,6 +152,7 @@ let getModulo = () => {
     allowClear: true
   });
   var moduleSelect = $('#modulo');
+
   $.ajax({
     type: 'GET',
     url: `${URI}/modulo/modulos`
@@ -158,33 +174,31 @@ let getModulo = () => {
 * @return JSON del response del REST Web Service
 */
 let getPiso = () => {
-    $('#piso').html('').select2({
-      data: {
-        id: null,
-        text: null
-      }
-    });
-  $('#piso').select2({
+  let id_module = document.getElementById('modulo').value;
+  let $select = $('#piso');
+  $select.select2({
     width: 'resolve',
     placeholder: 'Selecciona un Piso.',
     allowClear: true
   });
-    var id_module = document.getElementById('modulo').value;
-    let $select = $('#piso');
-    var pisoSelect = $('#piso');
     $.ajax({
+      dataType: "json",
       type: 'GET',
-      url: `${URI}/piso/pisos/`+id_module
+      url: `${URI}/piso/pisos/`+id_module,
     }).then(function (data) {
       $.each(data,function(_key, registro) {
       let option = new Option(registro.floor_id, registro.floor_id, true, true);
-      pisoSelect.append(option).trigger('change');
+      $select.append(option).trigger('change');
       });
-      pisoSelect.trigger({
+      $select.trigger({
           type: 'select2:select',
           params: {
               data: data
           }
+      });
+      //Prevent Duplicate entries
+      $('select option').each(function() {
+        $(this).prevAll('option[value="' + this.value + '"]').remove();
       });
   });
 }
