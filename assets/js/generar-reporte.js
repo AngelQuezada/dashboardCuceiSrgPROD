@@ -209,7 +209,7 @@ let getPiso = () => {
 let getAula = () => {
   let idModulo = document.getElementById('modulo').value;
   let idPiso = document.getElementById('piso').value;
-  let $select = $('#aula');
+  //let $select = $('#aula');
   $('#aula').select2({
     width: 'resolve',
     placeholder: 'Selecciona un Aula.',
