@@ -382,7 +382,6 @@ let asignarEncargado = (selectedFolio) => {
             "idPersonal": idEncargado,
             "idUsuario": localStorage.getItem("idUsuario")
           }
-          console.log(JSON.stringify(datos));
           $.ajax({
             type: 'POST',
             url: `${URI}/reporte/asignarencargado`,

@@ -278,7 +278,6 @@ let cancelarReporte = () =>{
         "token" : token,
         "folio" : folio
       }
-      console.log(JSON.stringify(datos));
       $.ajax({
         type: 'POST',
         url: `${URI}/reporte/cancelar`,

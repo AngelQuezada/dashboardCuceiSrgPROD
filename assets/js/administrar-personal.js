@@ -203,11 +203,16 @@ let datosPersonales = () =>{
                                       <label for="txtNombreCompleto" style="color: blue;">Nombre</label><br/>
                                       <b id="txtNombreAdmin">`+nombreCompleto+`</b>
                                   </div>
+                                  <div class="col-sm-12">
+                                      <label for="txtCelular" style="color: blue;">Número Celular</label><br/>
+                                      <b id="txtCelular">PROXIMAMENTE</b>
+                                  </div>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-sm-12">
                                   <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarContraseña();" style="background-color: #ff6f00; color: black;">Cambiar Contraseña</button>
+                                  <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarCelular();" style="background-color: #00b248; color: black;">Cambiar/Agregar Celular</button>
                               </div>
                           </div>
                   </div>
@@ -283,6 +288,9 @@ let asignarRolPersonal = () => {
       swal("ADMIN CUCEI-SRG", "Ha ocurrido un error: " + data.responseJSON.mensaje, "error");
     }
   });
+}
+let cambiarCelular = () => {
+  alert("Pendiente");
 }
 $(function(){
   let status = localStorage.getItem("status");
