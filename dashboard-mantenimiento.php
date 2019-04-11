@@ -36,6 +36,12 @@
         Este es su Dashboard, donde podrá ver el conteo de los reportes de Mantenimiento por cada estatus.<br/>
         En la barra lateral derecha tiene los accesos a cada módulo del sistema para la administración.
       </div>
+      <div class="alert alert-error" style="background: red;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-info"></i>Aviso:</h4>
+        <h4><b>En este panel se mostrarán las actualizaciones del sistema.</b></h4></br>
+        <h4>Para cualquier duda y/o problema ir a la sección de soporte.</h4>
+      </div>
       <div class="row">
         <div class="col-md-3">
           <div class="box box-primary box-solid">

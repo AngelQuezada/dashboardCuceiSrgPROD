@@ -140,10 +140,12 @@ let userLogIn = () => {
               let aPaterno = data.a_paterno;
               let aMaterno = data.a_materno;
               let status = data.status;
+              let telefono = data.telefono;
               let nombreCompleto = nombre+' '+aPaterno+' '+aMaterno;
               localStorage.setItem("nombreCompleto", nombreCompleto);
               localStorage.setItem("idUsuario", idUsuario);
               localStorage.setItem("status", status);
+              localStorage.setItem("telefono", telefono);
               //localStorage.setItem("email", user.email);
             },
             error: function(data) {

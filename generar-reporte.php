@@ -28,6 +28,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h4><i class="icon fa fa-info"></i>Ayuda</h4>
     <h3>Asegurese de conocer el correo electrónico del usuario que reportó el incidente.</h3>
+    <h3>Por motivos de pruebas se tiene ya asignado un correo de prueba.</h3>
     <h3>Agregue una anotación extra si solo no existe un Piso ni Aula del Módulo Seleccionado.</h3>
   </div>
   <div class="row" id="principal">
@@ -37,8 +38,8 @@
         <label for="recibe" style="color: black;">Recibe</label>
       </div>
       <div class="col-sm-3">
-        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" ng-model="correo" required>
-        <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span>
+        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" value="prueba@gmail.com" required>
+        <!-- <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span> -->
         <label for="correo" style="color: black;"><small style="color: red">*</small>Correo</label>
       </div>
       <div class="col-sm-2">

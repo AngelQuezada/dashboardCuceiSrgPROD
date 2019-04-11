@@ -111,13 +111,29 @@ let nuevoReporte = () => {
     success: function(data){
       swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
       cleanReport();
-      notification();
+      //notification();
+      //enviarsms();
     },
     error: function(data) {
       swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");
     }
   });
+
 }
+/*
+let enviarsms = () => {
+  $.ajax({
+    type: "GET",
+    url: `${URI}/sms/enviarsms`,
+    dataType: "json",
+    success: function(){
+
+    },
+    error: function() {
+    }
+});
+}
+*/
 let notification = () => {
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
@@ -126,7 +142,7 @@ let notification = () => {
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
-    let notification = new Notification("¡Tienes un Nuevo Reporte de Mantenimiento!");
+    let notification = new Notification("Se ha enviado un SMS");
   }
 }
 
@@ -235,5 +251,6 @@ let getAula = () => {
 /*
 *Seteo el campo recibe y lo deshabilito
 */
+document.getElementById("correo").disabled = true;
 $('#recibe').val(localStorage.getItem("nombreCompleto"));
 document.getElementById("recibe").disabled = true;

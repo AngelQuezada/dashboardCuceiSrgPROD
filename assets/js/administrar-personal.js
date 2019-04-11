@@ -162,6 +162,7 @@ let datosPersonales = () =>{
   let email = localStorage.getItem("email");
   let nombreCompleto = localStorage.getItem("nombreCompleto");
   let status = localStorage.getItem("status");
+  let telefono = localStorage.getItem("telefono");
   let st;
   if(status === '3'){
     st = 'ADMIN MANTENIMIENTO';
@@ -205,7 +206,7 @@ let datosPersonales = () =>{
                                   </div>
                                   <div class="col-sm-12">
                                       <label for="txtCelular" style="color: blue;">Número Celular</label><br/>
-                                      <b id="txtCelular">PROXIMAMENTE</b>
+                                      <b id="txtCelular">`+telefono+`</b>
                                   </div>
                               </div>
                           </div>
@@ -290,7 +291,62 @@ let asignarRolPersonal = () => {
   });
 }
 let cambiarCelular = () => {
-  alert("Pendiente");
+  var tel;
+  swal("Escribe tu número celular a 10 dígitos:", {
+    content: "input",
+  })
+  .then((celular) => {
+    tel = celular;
+    if(celular.replace(/\s/g,"") == ""){
+      swal("ADMIN CUCEI-SRG","No se realizó ningun cambio", "info");
+      return;
+    }
+  swal(`Has escrito: ${celular}`+' ¿Es Correcto?',{
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+    buttons: {
+      catch: {
+        text: "SI",
+        value: "OK",
+        },
+        no: true,
+      },
+    }).then((value) => {
+    switch (value) {
+      case "OK":
+          let token = localStorage.getItem("token");
+          let idUsuario = localStorage.getItem("idUsuario");
+          let datos = {
+            "telefono" : tel,
+            "token" : token,
+            "idUsuario" : idUsuario
+          }
+          console.log(JSON.stringify(datos));
+        $.ajax({
+          type: 'POST',
+          url: `${URI}/sms/registrarnumero`,
+          data: JSON.stringify(datos),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          success: function(data){
+            swal("ADMIN CUCEI-SRG", data.mensaje, "success");
+            localStorage.removeItem("telefono");
+            localStorage.setItem("telefono",tel);
+            $('#txtCelular').empty();
+            $('#txtCelular').append(tel);
+          },
+          error: function(data) {
+            swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
+            return;
+          }
+        });
+      break;
+      case "no":
+        swal("ADMIN CUCEI-SRG","No se realizó ningun cambio", "info");
+      break;
+    }
+  });
+});
 }
 $(function(){
   let status = localStorage.getItem("status");
