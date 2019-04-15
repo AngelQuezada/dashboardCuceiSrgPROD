@@ -39,7 +39,13 @@
       <div class="alert alert-error" style="background: red;">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-info"></i>Aviso:</h4>
-        <h4><b>En este panel se mostrarán las actualizaciones del sistema.</b></h4></br>
+        <h4><b>En este panel se mostrarán las actualizaciones del sistema.</b></h4>
+        <h5>-> + Se ha completado los formularios de Reportes de Seguridad.</h5>
+        <h5>-> + Se ha completado la página del Dashboard de Seguridad.</h5>
+        <h5>-> + Búsqueda de Reportes de Seguridad y vista a impresión.</h5>
+        <h5>-> - Se ha quitado la imagen y el correo del panel de navegación.</h5>
+        <h5>-> + Se ha completado la página de alta de Personal.</h5>
+        <h5>-> * Correcciones de Seguridad y estabilidad.</h5>
         <h4>Para cualquier duda y/o problema ir a la sección de soporte.</h4>
       </div>
       <div class="row">

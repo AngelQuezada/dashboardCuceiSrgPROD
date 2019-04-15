@@ -46,7 +46,6 @@ let nuevoReporteSeg = () => {
      "color" : color,
      "rodado" : rodado
  }
- console.log(JSON.stringify(datos));
  $.ajax({
      type: 'POST',
      url: `${URI}/sreporte/nuevors1`,

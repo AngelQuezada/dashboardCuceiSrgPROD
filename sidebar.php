@@ -3,8 +3,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel" id="user-panel" style="text-align: center;">
-        <img id="imageSrg" src="assets/img/cucei-srg-logo.png" width="50%" style="border-radius: 50%;"><br/>
-        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
+          <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
         <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;border-radius: 10px 10px 10px 10px"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
       </div>
@@ -52,7 +51,8 @@
           <ul class="treeview-menu">
             <li><a href="generar-reporte-seguridad-1.php"><i class="fa fa-plus"></i>Nuevo Reporte Formato 1</a></li>
             <li><a href="generar-reporte-seguridad-2.php"><i class="fa fa-plus"></i>Nuevo Reporte Formato 2</a></li>
-            <li><a href="reportes-seguridad.php"><i class="fa fa-list-ul"></i>Ver reportes</a></li>
+            <li><a href="reportes-seguridad.php"><i class="fa fa-list-ul"></i>Ver reportes Formato 1</a></li>
+            <li><a href="reportes-seguridad2.php"><i class="fa fa-list-ul"></i>Ver reportes Formato 2</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -79,7 +79,6 @@
         </li>
         <li>
           <a href="support.php">
-            <small class="label pull-right bg-green">new</small>
             <i class="fa fa-life-ring" aria-hidden="true"></i><span>Soporte</span>
             <span class="pull-right-container">
             </span>
@@ -115,7 +114,7 @@ let setNameSideBar = () => {
     $("#txtRol").text(st);
     $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span><br/>');
     $("#spinerEmail").remove();
-    $('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
+    //$('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
     //OCULTA PANEL SI NO ES DE SEGURIDAD
     /*
     let status = localStorage.getItem("status");

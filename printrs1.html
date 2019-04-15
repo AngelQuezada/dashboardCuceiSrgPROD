@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" type="text/css" href="assets/css/404.css">
+      <title>FORMATO 1 SEGURIDAD</title>
+<style type="text/css" media="print">
+      @media print {
+            @page{
+                  size: auto;
+                  /* auto is the current printer page size */
+                  margin: 1%;
+                  /* this affects the margin in the printer settings */
+            }
+      }
+      body {
+            background-color: #FFFFFF;
+            margin: 10px;
+            /* the margin on the content before printing */
+      }
+</style>
+</head>
+<body style="margin: 2%">
+<div class="row">
+    <div class="col-xs-2">
+        <img src="assets/img/logo_udg.png" width="60%" style="position: relative; left: 10%">
+    </div>
+    <div class="col-xs-10">
+        <p>UNIVERSIDAD DE GUADALAJARA</p>
+        <p>CENTRO UNIVERSITARIO DE CIENCIAS EXACTAS E INGENIERIAS</p>
+        <p>COORDINACION DE SERVICIOS GENERALES</p>
+        <p>UNIDAD DE SEGURIDAD</p>
+    </div>
+    <div class="col-xs-12" style="text-align: center">
+        <h2>FORMATO 1 HOJA DE REPORTE</h2>
+    </div>
+    <div class="col-xs-12" style="padding: 0; margin: 0;">
+        <div style="text-align: right; padding: 0; margin: 0;">
+            <b><span>No.Reporte: </span></b><span id="folio" style="border-bottom: 2px solid black;"></span>
+        </div>
+    </div>
+    <div class="col-xs-12" style="padding: 0; margin: 0;">
+        <div style="text-align: left; padding: 0; margin: 0;">
+            <b><span>Tipo de Servicio: </span></b><span id="servicio" style="border-bottom: 2px solid black;"></span>
+        </div>
+    </div>
+    <div class="col-xs-12" style="border: 2px solid black; padding: 0; margin: 0%;">
+        <div style="text-align: center; padding: 0; margin: 0;">
+
+            <div class="col-xs-10" style="padding: 0; margin: 0;">
+                <div style="text-align: left; padding: 0; margin: 0; border-bottom: 2px solid black;">
+                    <b><span>Afectado: </span></b><span id="afectado"></span>
+                </div>
+            </div>
+            <div class="col-xs-2" style="padding: 0; margin: 0;">
+                <div style="text-align: left; padding: 0; margin: 0; border-bottom: 2px solid black;">
+                    <b><span>Edad: </span></b><span id="edad"></span>
+                </div>
+            </div>
+            <div class="col-xs-4" style="padding: 0; margin: 0;">
+                <div style="text-align: left; padding: 0; margin: 0;">
+                    <b><span>Carrera: </span></b><span id="carrera"></span>
+                </div>
+            </div>
+            <div class="col-xs-4" style="padding: 0; margin: 0;">
+                <div style="text-align: left; padding: 0; margin: 0;">
+                    <b><span>Código: </span></b><span id="codigo"></span>
+                </div>
+            </div>
+            <div class="col-xs-4" style="padding: 0; margin: 0;">
+                <div style="text-align: left; padding: 0; margin: 0;">
+                    <b><span>Telefono: </span></b><span id="telefono"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12" style="border: 2px solid black; padding: 0; margin: 0;">
+        <div style="text-align: center; padding: 0; margin: 0;">
+            <h3>REPORTE</h3>
+        </div>
+        <div class="col-xs-4" style="padding: 0; margin: 0;">
+            <div style="text-align: left; padding: 0; margin: 0; border-top: 2px solid black;">
+                <b><span>Fecha: </span></b><span id="fecha"></span>
+            </div>
+        </div>
+        <div class="col-xs-4" style="padding: 0; margin: 0;">
+            <div style="text-align: left; padding: 0; margin: 0; border-top: 2px solid black;">
+                <b><span>Hora: </span></b><span id="hora"></span>
+            </div>
+        </div>
+        <div class="col-xs-4" style="padding: 0; margin: 0;">
+            <div style="text-align: left; padding: 0; margin: 0; border-top: 2px solid black;">
+                <b><span>Lugar: </span></b><span id="lugar"></span>
+            </div>
+        </div>
+        <div class="col-xs-12" style="border-top: 2px solid black; padding: 0; margin: 0; padding: 0%">
+            <div style="text-align: top; padding: 0%; margin: 0; left: 0%;">
+                <b><span>HECHOS: </span></b><br/><span id="hechos"></span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Listado de Objetos -->
+<div class="row">
+	<div class="input-field col-sm-12" style="border: 2px solid black; padding: 0; margin: 0;">
+      <div class="box box-solid box-success">
+          <div class="box-header with-border" style="border-bottom: 2px solid black; padding: 0; margin: 0;">
+              <h3 class="box-title" style="text-align: center">DESCRIPCIÓN DE OBJETOS</h3>
+            </div>
+			    <div class="box-body">
+				<div id="tablaObjView"></div> 
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin: 5%">
+    <div class="col-xs-6" style="text-align: center;">
+        <p>_______________________________________</p><br/>
+        <p>Afectado Nombre y Firma</p><br/>
+    </div>
+    <div class="col-xs-6" style="text-align: center;">
+        <p>_______________________________________</p><br/>
+        <p>Elemento Nombre y Firma</p><br/>
+    </div>
+</div>
+
+<!-- Listado de Objetos -->
+<footer>
+    <div class="row" style="text-align: center">
+        <div class="col-xs-12">
+            <p>Blvd. Marcelino García Barragán 1421, Esq. Calzada Olimpica, C.P 44430</p>
+        </div>
+        <div class="col-xs-12">
+            <p>Guadalajara, Jalisco. México Tel. (52) (33) 13 78 5900 Ext (27599) (27448)</p>
+        </div>
+        <div class="col-xs-12">
+            <p>www.cucei.udg.mx</p>
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+    const URI = localStorage.getItem('uri');
+    //OBTENER localStorage PARA IMPRIMIR PDF
+    let selectedFolio = localStorage.getItem("folioS1");
+    let tipoServicio = localStorage.getItem("tipoServicioS1");
+    let afectado = localStorage.getItem("afectadoS1");
+    let edad = localStorage.getItem("edadS1");
+    let carrera = localStorage.getItem("carreraS1");
+    let codigo = localStorage.getItem("codigoS1");
+    let telefono = localStorage.getItem("telefonoS1");
+    let fecha = localStorage.getItem("fechaS1");
+    let hora = localStorage.getItem("horaS1");
+    let lugar = localStorage.getItem("lugarS1");
+    let hechos = localStorage.getItem("hechosS1");
+
+    let str = "" + selectedFolio
+    let pad = "0000"
+    let ans = pad.substring(0, pad.length - str.length) + str
+    $("#folio").html(ans);
+    $("#servicio").html(tipoServicio);
+    $("#afectado").html(afectado);
+    $("#edad").html(edad);
+    $("#carrera").html(carrera);
+    $("#codigo").html(codigo);
+    $("#telefono").html(telefono);
+    $("#fecha").html(fecha);
+    $("#hora").html(hora);
+    $("#lugar").html(lugar);
+    $("#hechos").html(hechos);
+
+    //GENERAR TABLA
+    $("#tablaObjView").empty();
+    $("#tablaObjView").append(`<br><table class='table table-bordered table-hover'>
+    <thead>
+    <tr class='bg-primary' style="background-color: #00c853">
+    <th>Modelo</th>
+    <th>Marca</th>
+    <th>Tipo</th>
+    <th>Año</th>
+    <th>Color</th>
+    <th>Rodado</th>
+    </tr>
+    </thead>
+    <tbody id="bodyTableObj">`);
+    //OBTENER OBJETOS
+    $.ajax({
+        type: "GET",
+        url: `${URI}/sreporte/getobjsreporte/`+selectedFolio,
+        dataType: "json",
+        success: function(data){
+          $.each(data,function(_key, registro) {
+            $("#bodyTableObj").append(`<tr style="text-align: center">
+            <td>`+registro.modelo+`</td>
+            <td>`+registro.marca+`</td>
+            <td>`+registro.tipo+`</td>
+            <td>`+registro.year+`</td>
+            <td>`+registro.color+`</td>
+            <td>`+registro.rodado+`</td>
+            </tr>
+            `);
+          });
+          $("#tablaObjView").append(`</tbody>
+          </table>`);
+        },
+        error: function() {
+        $("#bodyTableObj").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
+      }
+    });
+});
+</script>
+</body>
+</html>

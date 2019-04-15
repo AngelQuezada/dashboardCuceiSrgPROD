@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 <body style="background: linear-gradient(to right, #0f0c29, #302b63, #24243e);">
-<h2 style="text-align: center; color: white"><kbd>ADMIN CUCEI-SRG BETA</kbd></h2>
+<h2 style="text-align: center; color: white"><kbd>ADMIN CUCEI-SRG</kbd></h2>
 </body>
 <?php
   include('footer.php');
