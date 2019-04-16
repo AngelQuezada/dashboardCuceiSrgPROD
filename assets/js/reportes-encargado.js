@@ -19,18 +19,18 @@ let reportesTodos = () => {
     <tbody id="bodyTable">`);
     $.ajax({
         type: "GET",
-        url: `${URI}/reporte/getreporteencargado`,
+        url: `${URI}/encargado/getreporteencargado`,
         success: function (data) {
             $.each(data, function (_key, registro) {
           $("#bodyTable").append(`
           <tr style="text-align: center">
-          <input type="hidden" id="folioId" value="` + registro.folioReporte + `"/>
+          <input type="hidden" id="folioId" value="` + registro.folio + `"/>
           <input type="hidden" id="registroId" value="` + registro.id + `"/>
           <td>` + registro.nombre + `</td>
           <td>` + registro.a_paterno + `</td>
           <td>` + registro.a_materno + `</td>
-          <td>` + registro.folioReporte + `</td>
-          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('` + registro.folioReporte + `','` + this + `')"style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+          <td>` + registro.folio + `</td>
+          <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('` + registro.folio + `','` + this + `')"style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
           <td><button class="btn btn-success" onclick="enviarCorreo('`+registro.id+`','`+this+`')" style="background-color: green"><i class="fa fa-envelope" aria-hidden="true" style="color: white"></i></button></td>
           </tr>
           `);

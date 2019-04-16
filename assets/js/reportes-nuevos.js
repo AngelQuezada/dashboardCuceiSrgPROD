@@ -325,7 +325,7 @@ let verReporte = (value,object) => {
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
           <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
           <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white;" onclick="asignarEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white;" onclick="busquedaEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
           <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
@@ -337,73 +337,14 @@ let verReporte = (value,object) => {
     }
   });
 }
-let asignarEncargado = (selectedFolio) => {
-  idEncargado = null;
-  swal("Escribe el correo del encargado a asignar:", {
-    content: "input"
-  }).then((correotxt) => {
-    if (correotxt.replace(/\s/g, "") == "") {
-      swal("Reporte de Mantenimiento", "No se realizó ningun cambio", "info");
-      return;
-    }
-    let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test(correotxt)) {
-      swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
-      return;
-    }
-    swal(`Has escrito: ${correotxt}` + ' ¿Es Correcto?', {
-      buttons: {
-        catch: {
-          text: "SI",
-          value: "OK",
-        },
-        no: true,
-      },
-    }).then((value) => {
-      switch (value) {
-        case "OK":
-          $.ajax({
-            type: 'GET',
-            url: `${URI}/personal/getidempleado/` + correotxt,
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            async: false,
-            success: function (data) {
-              idEncargado = data.id;
-            },
-            error: function (data) {
-              swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
-              return;
-            }
-          });
-          let datos = {
-            "token": localStorage.getItem("token"),
-            "folio": selectedFolio,
-            "idPersonal": idEncargado,
-            "idUsuario": localStorage.getItem("idUsuario")
-          }
-          $.ajax({
-            type: 'POST',
-            url: `${URI}/reporte/asignarencargado`,
-            data: JSON.stringify(datos),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (data) {
-              swal("Reporte de Mantenimiento", data.mensaje, "success");
-            },
-            error: function (data) {
-              swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
-            }
-          });
-          break;
-        case "no":
-          swal("Reporte de Mantenimiento", "No se realizó ningun cambio", "info");
-          break;
-      }
-    });
-  });
-}
 
+let busquedaEncargado = (selectedFolio) => {
+  let URL = localStorage.getItem("url");
+  localStorage.setItem("selectedFolio",selectedFolio);
+  newwindow=window.open(URL+'/asignar-encargado.php','Asignar Encargado','height=800,width=600');
+       if (window.focus) {newwindow.focus()}
+       return false;
+}
 /*
 * Guardar el reporte modificado
 * @return JSON del response del REST Web Service

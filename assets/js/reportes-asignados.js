@@ -359,6 +359,7 @@ let guardarReporte = () => {
       dataType: 'json',
       success: function(data){
         swal("¡Registro Modificado!",data.mensaje, "success");
+        reportesTodos();
         $('#myModal').modal('hide');
       },
       error: function(data) {

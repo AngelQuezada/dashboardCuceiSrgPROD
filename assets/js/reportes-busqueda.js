@@ -303,64 +303,11 @@ let cancelarReporte = () =>{
 * Se Obtienen los datos del formulario de Busqueda de Encargado
 */
 let busquedaEncargado = (selectedFolio) => {
- 
-
-
-
-  
-  // $('#modal').on('hidden.bs.modal', function () {
-  //   // Load up a new modal...
-  // })
-  //$('#modalEncargado').modal('show');
-  //$('#modalEncargado').modal('show');
-  let aPaterno = document.getElementById('txtApaternoE').value;
-  let aMaterno = document.getElementById('txtAmaternoE').value;
-  let nombre = document.getElementById('txtNombreE').value;
-  aPaterno === '' ? aPaterno = '""' : aPaterno;
-  aMaterno === '' ? aMaterno = '""' : aMaterno;
-  nombre === '' ? nombre = '""' : nombre;
-  folio === '' ? folio = '""' : folio;
-  //asignarEncargado(aPaterno,aMaterno,nombre,selectedFolio);
-}
-let asignarEncargado = (aPaterno,aMaterno,nombre,selectedFolio) => {
-  alert(aPaterno,aMaterno,nombre,selectedFolio);
-    /*
-  idEncargado = null;
-  $.ajax({
-    type: 'GET',
-    url: `${URI}/personal/getidempleado/`+aPaterno+'/'+aMaterno+'/'+nombre,
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    async: false,
-    success: function (data) {
-        idEncargado = data.id;
-    },
-    error: function (data) {
-      swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
-      return;
-    }
-  });
-  let datos = {
-    "token" : localStorage.getItem("token"),
-    "folio" : selectedFolio,
-    "idPersonal": idEncargado,
-    "idUsuario" : localStorage.getItem("idUsuario")
-  }
-  console.log(JSON.stringify(datos));
-  $.ajax({
-    type: 'POST',
-    url: `${URI}/reporte/asignarencargado`,
-    data: JSON.stringify(datos),
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    success: function (data) {
-      swal("Reporte de Mantenimiento", data.mensaje, "success");
-    },
-    error: function (data) {
-      swal("Reporte de Mantenimiento", data.responseJSON.mensaje, "info");
-    }
-  });
-  */
+  let URL = localStorage.getItem("url");
+  localStorage.setItem("selectedFolio",selectedFolio);
+  newwindow=window.open(URL+'/asignar-encargado.php','Asignar Encargado','height=800,width=600');
+       if (window.focus) {newwindow.focus()}
+       return false;
 }
 let enviarCorreo = (value, object) => {
   let folio = object.innerHTML = value;

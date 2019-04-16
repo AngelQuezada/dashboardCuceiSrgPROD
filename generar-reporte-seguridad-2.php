@@ -42,7 +42,7 @@
             </div>
 
             <div class="col-sm-3">
-              <input class="form-control" name="txtCodigo" id="txtCodigo" type="text" class="validate"  maxlength="9" minlength="9" pattern="[0-9]{9}" placeholder="215258004" ng-model="txtCodigo" required>
+              <input class="form-control" name="txtCodigo" id="txtCodigo" type="number" class="validate"  maxlength="9" minlength="9" pattern="[0-9]{9}" placeholder="215258004" ng-model="txtCodigo" required>
               <span style="color: crimson;" ng-show="formularioSeguridad2.txtCodigo.$touched && formularioSeguridad2.txtCodigo.$invalid">Código es requerido.<br/></span>
               <label for="codigo" style="color: black;"><small style="color: red">*</small>Código</label>
             </div>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-sm-4">
-              <input class="form-control" name="txtTelefono" id="txtTelefono" maxlength="10" minlength="10" pattern="[0-9]{10}" type="tel" class="validate" ng-model="txtTelefono" placeholder="3312345678" required>
+              <input class="form-control" name="txtTelefono" id="txtTelefono" max="9999999999" type="number" class="validate" ng-model="txtTelefono" placeholder="3312345678" required>
               <span style="color: crimson;" ng-show="formularioSeguridad2.txtTelefono.$touched && formularioSeguridad2.txtTelefono.$invalid">Teléfono es requerido.<br/></span>
               <label for="txtTelefono" style="color: black;"><small style="color: red">*</small>Teléfono de contacto</label>
             </div>

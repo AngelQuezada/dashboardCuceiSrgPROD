@@ -32,7 +32,7 @@
     	<!-- Contenedor principal -->
     	<section class="content">
             <div class="alert alert-info" style="background: blue">
-                <h2><strong>Querid@ Usuario del Sistema:</strong></h2><h3>Como parte de nuestro compromiso al ofrecerle un sistema de calidad, les otorgamos una forma de comunicarse con el equipo de desarrollo de CUCEI-SRG.</h3>
+                <h4><strong>Querid@ Usuario del Sistema: <span id="user"></span></strong></h4><h5>Como parte de nuestro compromiso al ofrecerle un sistema de calidad, les otorgamos una forma de comunicarse con el equipo de desarrollo de CUCEI-SRG.</h5>
             </div>
             <div class="row">
                 <div class="col-sm-12">
@@ -46,11 +46,36 @@
             <div class="alert alert-success" style="background: green">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h2><strong>Correo electrónico de Soporte:</strong></h2><h4>firebase.cuceisrg001@gmail.com</h4>
+                        <h4>Correo electrónico de Soporte: firebase.cuceisrg001@gmail.com</h4>
                         <button class="btn btn-primary" onclick="messageEmail()" style="background-color: white; color: black;"><i class="fa fa-envelope-o" aria-hidden="true"></i> Enviar Correo</button>
                     </div>
                 </div>
             </div>
+            <div style="text-align: center">
+                <div class="row">
+                    <div class="input-field col-sm-5">
+                        <div class="box box-solid box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Manual de Usuario</h3>
+                            </div>
+                            <div class="box-body">
+                                <button class="btn btn-primary" onclick="manualUsuario()" style="background-color: #64dd17; color: black;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar</button>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col-sm-5">
+                        <div class="box box-solid box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Manual Técnico</h3>
+                            </div>
+                            <div class="box-body">
+                                <button class="btn btn-primary" onclick="manualTecnico()" style="background-color: #64dd17; color: black;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar</button>                            
+                            </div>
+                    </div>
+                </div>
+            </div>
+
     	</section>
     </div>
     <?php
@@ -61,9 +86,18 @@
   		include('footer.php');
     ?>
 <script>
+let manualUsuario = () => {
+    swal("ADMIN CUCEI-SRG", "Disponible Próximamente.", "info");    
+}
+let manualTecnico = () => {
+    swal("ADMIN CUCEI-SRG", "Disponible Próximamente.", "info");
+}
 let messageEmail = () =>{
     window.open('mailto:firebase.cuceisrg001@gmail.com?Subject=Agregue un Asunto', '_blank');
 }
+$(function(){
+    $('#user').append('<span>'+localStorage.getItem("nombreCompleto")+'</span>.<br/>');
+});
 </script>
 </body>
 </html>

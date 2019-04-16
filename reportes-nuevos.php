@@ -58,6 +58,7 @@
 			</div>
 <span id="tablaResultados"></span>
 <span id="modal"></span>
+<span id="modalEncargados"><span id="tablaEncargados"></span></span>
     </section>
 </div>
     <?php
