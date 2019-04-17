@@ -292,6 +292,8 @@ let asignarRolPersonal = () => {
 }
 let cambiarCelular = () => {
   var tel;
+  var telefono;
+  var codNacional = "+52";
   swal("Escribe tu número celular a 10 dígitos:", {
     content: "input",
   })
@@ -316,8 +318,9 @@ let cambiarCelular = () => {
       case "OK":
           let token = localStorage.getItem("token");
           let idUsuario = localStorage.getItem("idUsuario");
+          telefono = codNacional.concat(tel);
           let datos = {
-            "telefono" : tel,
+            "telefono" : telefono,
             "token" : token,
             "idUsuario" : idUsuario
           }
@@ -331,9 +334,9 @@ let cambiarCelular = () => {
           success: function(data){
             swal("ADMIN CUCEI-SRG", data.mensaje, "success");
             localStorage.removeItem("telefono");
-            localStorage.setItem("telefono",tel);
+            localStorage.setItem("telefono",telefono);
             $('#txtCelular').empty();
-            $('#txtCelular').append(tel);
+            $('#txtCelular').append(telefono);
           },
           error: function(data) {
             swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");

@@ -1,6 +1,6 @@
 <footer style="position: fixed;left:0px;bottom:0px;height:20px;width:100%; background-color: #263238; color: white;">
     <div class="hidden-xs" style="text-align: center">
-      CUCEI-SRG: Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>   <a href="aviso-privacidad.html" target="_blank" style="color: white"><b>Aviso de Privacidad</b></a> ©2018-2019. <kbd> Versión 1.0</kbd> 
+      CUCEI-SRG: Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>   <a href="aviso-privacidad.html" target="_blank" style="color: white"><b>Aviso de Privacidad</b></a> ©2018-2019. <kbd> Versión 1.0.1</kbd> 
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -51,6 +51,7 @@
 					<h5>-> + Se ha completado la página de Asignar Encargado de Mantenimiento.</h5>
 					<h5>-> * Correcciones internos del Sistema.</h5>
 					<h5>-> * <b>Liberada Versión 1.0 del Sistema completado.</b></h5>
+					<h5>-> + v.1.0.1 Se ha completado el servicio de SMS. Se activará en futura reunión.</h5>
 					<h4>Para cualquier duda y/o problema ir a la sección de soporte.</h4>
 				</div>
 				<div class="row">
