@@ -5,7 +5,6 @@
       <div class="user-panel" id="user-panel" style="text-align: center;">
           <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
-        <button class="btn btn-danger" id="btnCerrarSesion" style="background-color: #f44336; color: white;border-radius: 10px 10px 10px 10px"><i class="fa fa-sign-out" aria-hidden="true">Salir</i></button><br/>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -89,10 +88,7 @@
     </section>
   </aside>
 <script defer type="text/javascript">
-const URL = localStorage.getItem('url');
-document.getElementById('btnCerrarSesion').addEventListener('click',function(){
-  window.location.replace(`${URL}/logout.php`);
-});
+
 /*
 * Funcion obtener el nombre completo del usuario logeado
 * @return promise
@@ -116,19 +112,18 @@ let setNameSideBar = () => {
     $("#spinerEmail").remove();
     //$('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
     //OCULTA PANEL SI NO ES DE SEGURIDAD
-    /*
-    let status = localStorage.getItem("status");
-    if(status === '6'){
-      $("#treeViewMantenimiento").hide();
-      $("#dsMantenimiento").hide();
-    }
-    //OCULTA PANEL SI NO ES DE MANTENIMIENTO
-    if(status === '3'){
-      $("#treeViewSeguridad").hide();
-      $("#dsSeguridad").hide();
-    }
-    */
-  }, 3000);
+    
+    // if(status === '6'){
+    //   $("#treeViewMantenimiento").hide();
+    //   $("#dsMantenimiento").hide();
+    // }
+    // //OCULTA PANEL SI NO ES DE MANTENIMIENTO
+    // if(status === '3'){
+    //   $("#treeViewSeguridad").hide();
+    //   $("#dsSeguridad").hide();
+    // }
+    
+  }, 1000);
   });
 }
 /*
