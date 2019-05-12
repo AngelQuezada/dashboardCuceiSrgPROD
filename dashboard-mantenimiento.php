@@ -36,22 +36,12 @@
         Este es su Dashboard, donde podrá ver el conteo de los reportes de Mantenimiento por cada estatus.<br/>
         En la barra lateral derecha tiene los accesos a cada módulo del sistema para la administración.
       </div>
-      <div class="alert alert-error" style="background: red;">
+      <!-- <div class="alert alert-error" style="background: red;">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-info"></i>Aviso:</h4>
         <h4><b>En este panel se mostrarán las actualizaciones del sistema.</b></h4>
-        <h5>-> + Se ha completado los formularios de Reportes de Seguridad.</h5>
-        <h5>-> + Se ha completado la página del Dashboard de Seguridad.</h5>
-        <h5>-> + Búsqueda de Reportes de Seguridad y vista a impresión.</h5>
-        <h5>-> - Se ha quitado la imagen y el correo del panel de navegación.</h5>
-        <h5>-> + Se ha completado la página de alta de Encargados.</h5>
-        <h5>-> * Correcciones de Seguridad y estabilidad.</h5>
-        <h5>-> + Se ha completado la página de Asignar Encargado de Mantenimiento.</h5>
-        <h5>-> * Correcciones internos del Sistema.</h5>
-        <h5>-> * <b>Liberada Versión 1.0 del Sistema completado.</b></h5>
-        <h5>-> + v.1.0.1 Se ha completado el servicio de SMS. Se activará en futura reunión.</h5>
         <h4>Para cualquier duda y/o problema ir a la sección de soporte.</h4>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-md-3">
           <div class="box box-primary box-solid">

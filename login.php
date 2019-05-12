@@ -43,7 +43,6 @@
     include('footer.php');
 ?>
 <script async src="assets/js/libs/angular.min.js" type="text/javascript"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LdAtqIUAAAAALECNDrG_W6bcYamuQGArbqqmYxN"></script>
 <script type="text/javascript" src="assets/js/login.js"></script>
 </body>
 </html>

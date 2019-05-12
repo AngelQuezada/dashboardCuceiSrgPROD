@@ -69,11 +69,6 @@ $(function() {
           login();
       }
   });
-  grecaptcha.ready(function() {
-    grecaptcha.execute('6LdAtqIUAAAAALECNDrG_W6bcYamuQGArbqqmYxN', {action: 'homepage'}).then(function(token) {
-      
-    });
-});
 });
 /*
 * Redirige a la pagina a restablecer contraseña
