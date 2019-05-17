@@ -111,8 +111,8 @@ let nuevoReporte = () => {
     success: function(data){
       swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
       cleanReport();
-      //notification();
-      //enviarsms();
+      notification();
+      enviarsms();
     },
     error: function(data) {
       swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");
@@ -120,7 +120,7 @@ let nuevoReporte = () => {
   });
 
 }
-/*
+
 let enviarsms = () => {
   $.ajax({
     type: "GET",
@@ -133,7 +133,7 @@ let enviarsms = () => {
     }
 });
 }
-*/
+
 let notification = () => {
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
