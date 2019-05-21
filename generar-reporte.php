@@ -137,6 +137,12 @@
             </div>
             <div class="input-field col-sm-3">
               <label style="color: black;">
+                <input name="descripcionServicio" id="descripcionServicio" type="radio" value="11"/>
+                <span>Cerrajería</span>
+              </label>
+            </div>
+            <div class="input-field col-sm-3">
+              <label style="color: black;">
                 <span id="inputOtro"></span>
                 <input name="descripcionServicio" id="descripcionServicio" type="radio" value="otro"> <input type="text" name="otro" id="otro" placeholder="Otro">
                 <span>Otro</span>

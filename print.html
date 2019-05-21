@@ -116,6 +116,12 @@
                         </div>
                         <div class="input-field col-xs-3">
                               <label style="color: black;">
+                                    <input name="descripcionServicio" id="cerrajeria" type="radio" disabled/>
+                                    <span>Cerrajería</span>
+                              </label>
+                        </div>
+                        <div class="input-field col-xs-3">
+                              <label style="color: black;">
                                     <span id="inputOtro"></span>
                                     <input name="descripcionServicio" id="otro" type="radio" disabled>
                                     <span>Otro: <span id="otrotext"></span></span>
@@ -195,7 +201,12 @@ $(function(){
       if (descripcionServicio === 'Pintura') {
             $("#pintura").prop("checked", true);
             $("#pintura").prop("disabled", false);
-      }else{
+      }else
+      if(descripcionServicio === 'Cerrajería'){
+            $("#cerrajeria").prop("checked",true);
+            $("#cerrajeria").prop("disabled",false);
+      }
+      else{
             $("#otro").prop("checked", true);
             $("#otro").prop("disabled", false);
             $("#otrotext").html('<i>'+descripcionServicio+'</i>');

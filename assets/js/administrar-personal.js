@@ -324,7 +324,6 @@ let cambiarCelular = () => {
             "token" : token,
             "idUsuario" : idUsuario
           }
-          console.log(JSON.stringify(datos));
         $.ajax({
           type: 'POST',
           url: `${URI}/sms/registrarnumero`,

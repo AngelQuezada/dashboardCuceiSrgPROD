@@ -113,7 +113,8 @@ let verReporte = (value,object) => {
           registro.descripcion_servicio === '7' ? ds = "Infraestructura" :
           registro.descripcion_servicio === '8' ? ds = "Jardinería" :
           registro.descripcion_servicio === '9' ? ds = "Limpieza" :
-          registro.descripcion_servicio === '10' ? ds = "Pintura" : ds = registro.descripcion_servicio;
+          registro.descripcion_servicio === '10' ? ds = "Pintura" : 
+          registro.descripcion_servicio === '11' ? ds = "Cerrajería" : ds = registro.descripcion_servicio;
 
           //ASIGNAN localStorage PARA IMPRIMIR PDF
           localStorage.setItem("folio", registro.folio);
@@ -431,9 +432,13 @@ let enviarCorreo = (value, object) => {
   });
 }
 let agregarMateriales = (folio) => {
-  alert(folio);
+  let URL = localStorage.getItem("url");
+  localStorage.setItem("folioReporteMat",folio);
+  newwindow=window.open(URL+'/asignar-materiales.html','Asignar Materiales','height=800,width=600');
+       if (window.focus) {newwindow.focus()}
+       return false;
 }
-/*
+/*  
 * Se ejecuta al cargar la pagina
 */
 $(function(){

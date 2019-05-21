@@ -37,6 +37,7 @@
               <li><a href="reportes-asignados.php"><i class="fa fa-list-ul"></i>Ver reportes asignados</a></li>
               <li><a href="reportes-finalizados.php"><i class="fa fa-check"></i>Ver reportes finalizados</a></li>
               <li><a href="reportes-cancelados.php"><i class="fa fa-times"></i>Ver reportes cancelados</a></li>
+              <li><a href="requisicion-materiales.php"><i class="fa fa-scissors"></i>Requisición de materiales</a></li>
               </ul>
         </li>
         <li class="treeview" id=treeViewSeguridad>
@@ -112,17 +113,15 @@ let setNameSideBar = () => {
     $("#spinerEmail").remove();
     //$('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
     //OCULTA PANEL SI NO ES DE SEGURIDAD
-    
-    // if(status === '6'){
-    //   $("#treeViewMantenimiento").hide();
-    //   $("#dsMantenimiento").hide();
-    // }
-    // //OCULTA PANEL SI NO ES DE MANTENIMIENTO
-    // if(status === '3'){
-    //   $("#treeViewSeguridad").hide();
-    //   $("#dsSeguridad").hide();
-    // }
-    
+    if(status === '6'){
+      $("#treeViewMantenimiento").hide();
+      $("#dsMantenimiento").hide();
+    }
+    //OCULTA PANEL SI NO ES DE MANTENIMIENTO
+    if(status === '3'){
+      $("#treeViewSeguridad").hide();
+      $("#dsSeguridad").hide();
+    }
   }, 1000);
   });
 }

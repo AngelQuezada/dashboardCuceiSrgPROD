@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ASIGNAR MATERIALES</title>
+</head>
+<body style="background: #b0bec5" ng-app="">
+<form name="formulario" autocomplete="off" required>
+<div class="row">
+  <div class="input-field col-sm-6" style="padding: 0; margin: 3%;">
+    <div class="box box-solid box-success">
+      <div class="box-header with-border" style="border-bottom: 2px solid black; padding: 0; margin: 0;">
+        <h3 class="box-title" style="text-align: center">ASIGNAR MATERIALES</h3>
+        <div class="row">
+            <div class="col-sm-2">
+              <input class="form-control" id="txtFolio" disabled>
+              <label for="txtFolio" style="color: black;">Folio</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="txtReporte" name="txtReporte" ng-model="reporte" placeholder="Reporte/Proyecto">
+              <span style="color: crimson;" ng-show="formulario.reporte.$touched && formulario.reporte.$invalid">Reporte/Proyecto es requerido.<br/></span>
+              <label for="txtReporte" style="color: black;"><small style="color: red">*</small>Reporte/Proyecto</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="txtSolicita" placeholder="Solicita">
+              <label for="txtSolicita" style="color: black;">Solicita</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="txtMaterial" placeholder="Material">
+              <label for="txtMaterial" style="color: black;">Material</label>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="txtCatalogo" placeholder="Catálogo">
+              <label for="txtCatalogo" style="color: black;">Catálogo</label>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control" id="txtUnidad" placeholder="Unidad">
+              <label for="txtUnidad" style="color: black;">Unidad</label>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" id="txtCantidadSolicitada" placeholder="Cantidad Solicitada">
+              <label for="txtCantidadSolicitada" style="color: black;">Cantidad Solicitada</label>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" id="txtCantidadRecibida" placeholder="Cantidad Recibida">
+              <label for="txtCantidadRecibida" style="color: black;">Cantidad Recibida</label>
+            </div>
+            <div class="col-sm-2">
+              <input class="form-control" id="txtPendiente" style="text-transform:uppercase" placeholder="Pendiente">
+              <label for="txtPendiente" style="color: black;">Pendiente</label>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control" type="date" id="dtFecha">
+              <label for="dtFecha" style="color: black;">Fecha</label>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" id="txtDiasSurtido" placeholder="Días Surtido">
+              <label for="txtDiasSurtido" style="color: black;">Dias Surtido</label>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" id="txtEstatus" name="txtEstatus" ng-model="estatus" placeholder="Estatus">
+              <span style="color: crimson;" ng-show="formulario.estatus.$touched && formulario.estatus.$invalid">Estatus es requerido.<br/></span>
+              <label for="txtEstatus" style="color: black;"><small style="color: red">*</small>Estatus</label>
+            </div>
+            <div class="col-sm-12">
+              <hr style="color: black; border: 1px dotted;">
+            </div>
+            <div class="col-sm-12" style="text-align: center">
+<textarea rows="4" cols="50" id="txtObservaciones" style="background-color: #F7D358;" ></textarea>
+            </div>
+            <div class="col-sm-12" style="text-align: center">
+              <label for="txtObservaciones" style="color: black;">Observaciones</label>
+            </div>
+            <div class="col-sm-12" style="text-align: center">
+              <button type="button" id="btnAsignarMateriales" ng-disabled="formulario.$invalid" class="btn btn-primary" onclick="asignarMateriales()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR REPORTE DE REQUISICIÓN DE MATERIAL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+crossorigin="anonymous"></script>
+<script src="assets/js/libs/angular.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+  let folioReporte = localStorage.getItem("folioReporteMat");
+  $("#txtFolio").val(folioReporte);
+});
+const URI = localStorage.getItem('uri');
+let asignarMateriales = () =>{
+  let folioReporte = localStorage.getItem("folioReporteMat");
+  let reporte = document.getElementById('txtReporte').value;
+  let solicita = document.getElementById('txtSolicita').value;
+  let material = document.getElementById('txtMaterial').value;
+  let catalogo = document.getElementById('txtCatalogo').value;
+  let unidad = document.getElementById('txtUnidad').value;
+  let cantidadSolicitada = document.getElementById('txtCantidadSolicitada').value;
+  let cantidadRecibida = document.getElementById('txtCantidadRecibida').value;
+  let pendiente = document.getElementById('txtPendiente').value;
+  let fecha = document.getElementById('dtFecha').value;
+  let diasSurtido = document.getElementById('txtDiasSurtido').value;
+  let estatus = document.getElementById('txtEstatus').value;
+  let observaciones = document.getElementById('txtObservaciones').value;
+
+  let datos = {
+    "token" : localStorage.getItem("token"),
+    "folio" : folioReporte,
+    "idUsuario" : localStorage.getItem("idUsuario"),
+    "reporteProyecto" : reporte,
+    "solicita" : solicita,
+    "material" : material,
+    "catalogo" : catalogo,
+    "unidad" : unidad,
+    "cantidadSolicitada" : cantidadSolicitada,
+    "cantidadRecibida" : cantidadRecibida,
+    "pendiente" : pendiente,
+    "fecha" : fecha,
+    "diasSurtido" : diasSurtido,
+    "estatus" : estatus,
+    "observaciones" : observaciones
+  }
+  $.ajax({
+    type: 'POST',
+    url: `${URI}/material/nuevomaterial`,
+    data: JSON.stringify(datos),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function (data) {
+      swal("Requisición de Materiales", data.mensaje, "success");
+      blockForm();
+    },
+    error: function (data) {
+      swal("Requisición de Materiales", data.responseJSON.mensaje, "error");
+    }
+  });
+}
+let blockForm = () =>{
+  document.getElementById('txtReporte').disabled = true;
+  document.getElementById('txtSolicita').disabled = true;
+  document.getElementById('txtMaterial').disabled = true;
+  document.getElementById('txtCatalogo').disabled = true;
+  document.getElementById('txtUnidad').disabled = true;
+  document.getElementById('txtCantidadSolicitada').disabled = true;
+  document.getElementById('txtCantidadRecibida').disabled = true;
+  document.getElementById('txtPendiente').disabled = true;
+  document.getElementById('dtFecha').disabled = true;
+  document.getElementById('txtDiasSurtido').disabled = true;
+  document.getElementById('txtEstatus').disabled = true;
+  document.getElementById('txtObservaciones').disabled = true;
+  document.getElementById('btnAsignarMateriales').disabled = true;  
+}
+</script>
+</body>
+</html>
