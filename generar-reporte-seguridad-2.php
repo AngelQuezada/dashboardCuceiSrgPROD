@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+  require_once('centinela.php');
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>SRG | Nuevo Reporte</title>

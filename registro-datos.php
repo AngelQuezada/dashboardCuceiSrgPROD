@@ -1,3 +1,6 @@
+<?php
+  require_once('centinela.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +9,7 @@
       include('header.php');
   ?>
 </head>
-<body class="hold-transition login-page" ng-app="">
+<body class="hold-transition login-page" style="background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="login-box">
   <div class="login-logo">
     <b>Admin</b>CUCEI-SRG
@@ -49,7 +52,11 @@
       include('footer.php');
   ?>
   <script type="text/javascript">
+ var URL = localStorage.getItem("url");
     window.onload = function(){
+      if(localStorage.getItem("email") === null){
+        window.location.replace(`${URL}/401.php`);
+      }
       $('#txtCorreoRegistrado').val(localStorage.getItem("email"));
       document.getElementById("txtCorreoRegistrado").disabled = true;
     }
