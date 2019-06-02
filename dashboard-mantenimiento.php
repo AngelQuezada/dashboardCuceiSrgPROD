@@ -8,6 +8,9 @@
   <?php
     include('header.php');
   ?>
+  <?php
+    include('cookiePolicy.php');
+  ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">

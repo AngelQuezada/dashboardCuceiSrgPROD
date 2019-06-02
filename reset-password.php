@@ -5,6 +5,10 @@
   <?php
       include('header.php');
   ?>
+  <?php
+    include('cookiePolicy.php');
+  ?>
+<link rel="stylesheet" type="text/css" href="assets/css/reset-password.css">
 </head>
 <body class="hold-transition register-page" style="overflow: hidden;background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="register-box" style="margin-top: 0%">
@@ -12,25 +16,24 @@
     <b style="color: white">Admin</b><span style="color: white">CUCEI-SRG</span>
   </div>
     <div class="register-box-body" style="border-radius: 20px; background-color: #eeeeee">
-      <div class="login-logo">
+      <div class="login-logo" style="margin: 0px">
         Restablecer Contraseña
-        <hr style="background-color: gray">
+        <hr style="background-color: gray; margin: 0px">
       </div>
       <form name="formulario" autocomplete="off" required>
-        <label for="correo" style="color: blue;">Ingrese su correo eletrónico</label>
-          <div class="input-group margin-bottom-sm">
+          <div class="input-group margin-bottom-sm" style="margin: 0px">
             <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true" style="color: #0064b7"></i></span>
-            <input type="email" id="txtCorreoReset" name="txtCorreoReset" class="form-control" placeholder="Correo Electrónico" ng-model="txtCorreoReset" ng-minlenght="12" required>
+            <input type="email" id="txtCorreoReset" name="txtCorreoReset" class="form-control" placeholder="Ingrese su correo electrónico" ng-model="txtCorreoReset" ng-minlenght="12" required>
             <span style="color: crimson;" ng-show="formulario.txtCorreoReset.$touched && formulario.txtCorreoReset.$invalid"><b>Correo es requerido.</b><br/></span>
           </div>
           <div class="col-sm-12" style="text-align: center" id="captcha"></div>
           <br>
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="background-color: #00c853; color: white; border-radius: 20px" onclick="verifyReCaptcha();">Enviar solicitud</button>
+              <button id="btnReset"  type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha();">Enviar solicitud</button>
             </div>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-danger btn-block btn-flat"  style="background-color: #f44336; color: white; border-radius: 20px" onclick="regresar();">Regresar</button>
+              <button id="btnAtras" type="button" class="btn btn-danger btn-block btn-flat"  style="background-color: #f44336; color: white; border-radius: 20px" onclick="regresar();">Regresar</button>
             </div>
           </div>
     </div> 
