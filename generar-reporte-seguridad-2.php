@@ -5,9 +5,9 @@
 <html>
 <head>
 	<title>SRG | Nuevo Reporte</title>
-	<?php
-    	include('header.php');
-  	?>
+<?php
+    include('header.php');
+?>
 		<link rel="stylesheet" type="text/css" href="assets/css/generar-reporte.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">

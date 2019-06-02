@@ -111,8 +111,8 @@ let nuevoReporte = () => {
     success: function(data){
       swal("Reporte de Mantenimiento", "Se ha registrado correctamente con el folio: "+data.folio, "success");
       cleanReport();
-      notification();
-      enviarsms();
+      //notification();
+      //enviarsms();
     },
     error: function(data) {
       swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");

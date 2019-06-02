@@ -7,7 +7,7 @@
 	<title>SRG | Seguridad</title>
 	<?php
     	include('header.php');
-  	?>
+	?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
 	<div class="wrapper">

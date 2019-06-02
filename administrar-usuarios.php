@@ -5,9 +5,9 @@
 <html>
 <head>
 	<title>SRG | Usuarios</title>
-	<?php
-    	include('header.php');
-  ?>
+    <?php
+        include('header.php');
+    ?>
 <link rel="stylesheet" type="text/css" href="assets/css/administrar-usuarios.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">

@@ -3,7 +3,7 @@ const URL = localStorage.getItem('url');
  * Redirige hacia la pagina index
  */
 let regresar = () => {
-    window.location.replace(`${URL}/index.php`);
+    window.location.replace(`${URL}/login.php`);
 }
 /*
  * Variables de configuracion de Firebase

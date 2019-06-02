@@ -113,15 +113,15 @@ let setNameSideBar = () => {
     $("#spinerEmail").remove();
     //$('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
     //OCULTA PANEL SI NO ES DE SEGURIDAD
-    if(status === '6'){
-      $("#treeViewMantenimiento").hide();
-      $("#dsMantenimiento").hide();
-    }
-    //OCULTA PANEL SI NO ES DE MANTENIMIENTO
-    if(status === '3'){
-      $("#treeViewSeguridad").hide();
-      $("#dsSeguridad").hide();
-    }
+    // if(status === '6'){
+    //   $("#treeViewMantenimiento").hide();
+    //   $("#dsMantenimiento").hide();
+    // }
+    // //OCULTA PANEL SI NO ES DE MANTENIMIENTO
+    // if(status === '3'){
+    //   $("#treeViewSeguridad").hide();
+    //   $("#dsSeguridad").hide();
+    // }
   }, 1000);
   });
 }

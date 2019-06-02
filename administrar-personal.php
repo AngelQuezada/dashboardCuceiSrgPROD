@@ -5,8 +5,8 @@
 <head>
 	<title>SRG | Personal</title>
 	<?php
-    	include('header.php');
-      ?>
+        include('header.php');
+    ?>
 <link rel="stylesheet" type="text/css" href="assets/css/administrar-personal.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">

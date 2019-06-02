@@ -7,7 +7,7 @@
 	<title>SRG | Gráficas</title>
 	<?php
     	include('header.php');
-  ?>
+	?>
 <link rel="stylesheet" type="text/css" href="assets/css/generar-graficas.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini fixed">
