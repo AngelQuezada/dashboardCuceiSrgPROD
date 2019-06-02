@@ -67,7 +67,7 @@ var onloadCallback = function() {
   captcha = grecaptcha.render('captcha', {
     'sitekey' : '6Lfmq6YUAAAAAEANI-3OH-kRXj3gPV4zPa3wsuK8',
     'callback' : verifyCallback,
-    'theme' : 'dark'
+    'theme' : 'light'
   });
 };
 </script>
