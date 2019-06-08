@@ -32,7 +32,6 @@
       </ol>
     </section>
     <section class="content">
-      <h4 id="fechaActual"></h3>
       <div class="alert alert-info alert-dismissible" style="background: green;">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon fa fa-info"></i>¡BIENVENID@!</h4>

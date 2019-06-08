@@ -70,6 +70,21 @@
             <li><a href="administrar-personal.php"><i class="fa fa-address-card-o"></i>Administrar Personal</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-building-o" aria-hidden="true"></i>
+            <span>Infraestructura CUCEI</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right">
+              </i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="administracion-infraestructura-modulos.php"><i class="fa fa-cubes"></i>Administrar Módulos</a></li>
+            <li><a href="administracion-infraestructura-pisos.php"><i class="fa fa-user-o"></i>Administrar Pisos</a></li>
+            <li><a href="administracion-infraestructura-aulas.php"><i class="fa fa-address-card-o"></i>Administrar Aulas</a></li>
+          </ul>
+        </li>
         <li>
           <a href="administracion-graficas.php">
             <i class="fa fa-pie-chart"></i><span>Graficas</span>

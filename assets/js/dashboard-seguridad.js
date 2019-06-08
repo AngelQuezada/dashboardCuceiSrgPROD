@@ -40,14 +40,6 @@ let getReportesS2 = () => {
     }
     request.send();
 }
-
-/*
-* Se obtiene la fecha Actual-
-*/
-let fechaActual = () => {
-    let date = new Date();
-    $('#fechaActual').append('Hoy es: '+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear());
-  }
-  $(document).ajaxStart(function () {
-    Pace.restart();
-  })
+$(document).ajaxStart(function () {
+  Pace.restart();
+})
