@@ -67,7 +67,7 @@ let modulos = () => {
                 $("#bodyTable").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
             }
         });
-}
+};
 let verPisos = (value,object) => {
     let selectedModule = object.innerHTML = value;
     localStorage.setItem("modulo",selectedModule);
@@ -136,7 +136,7 @@ let verPisos = (value,object) => {
             $("#bodyTable").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
         }
     });
-}
+};
 let verAulas = (value,object) => {
     let selectedFloor = object.innerHTML = value;
     localStorage.setItem("piso",selectedFloor);
@@ -209,7 +209,7 @@ let verAulas = (value,object) => {
         }
     });
 
-}
+};
 
 document.getElementById('btnReiniciar').addEventListener('click',function(){
     $("#tablaModulos").empty();

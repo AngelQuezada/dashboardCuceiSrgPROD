@@ -307,7 +307,7 @@ let agregarObservacion = (value,object) => {
               "idUsuario" : idUsuario,
               "observacion" : observacion,
               "folio" : folio
-            }
+            };
             $.ajax({
               type: 'POST',
               url: `${URI}/reporte/genobservacion`,

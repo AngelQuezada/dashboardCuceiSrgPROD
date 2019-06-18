@@ -80,9 +80,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="administracion-infraestructura-modulos.php"><i class="fa fa-cubes"></i>Administrar Módulos</a></li>
-            <li><a href="administracion-infraestructura-pisos.php"><i class="fa fa-user-o"></i>Administrar Pisos</a></li>
-            <li><a href="administracion-infraestructura-aulas.php"><i class="fa fa-address-card-o"></i>Administrar Aulas</a></li>
+            <li><a href="administracion-infraestructura-modulos.php"><i class="fa fa-bandcamp"></i>Administrar Módulos</a></li>
+            <li><a href="administracion-infraestructura-pisos.php"><i class="fa fa-bandcamp"></i>Administrar Pisos</a></li>
+            <li><a href="administracion-infraestructura-aulas.php"><i class="fa fa-bandcamp"></i>Administrar Aulas</a></li>
           </ul>
         </li>
         <li>

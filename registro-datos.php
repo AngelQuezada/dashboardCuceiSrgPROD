@@ -8,42 +8,43 @@
   <?php
       include('header.php');
   ?>
+  <link rel="stylesheet" type="text/css" href="assets/css/registro-datos.css">
 </head>
 <body class="hold-transition login-page" style="background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
-<div class="login-box">
+<div class="login-box" style="margin-top: 0px;">
   <div class="login-logo">
-    <b>Admin</b>CUCEI-SRG
+    <b style="color: white">Admin</b><span style="color: white">CUCEI-SRG</span>
   </div>
-  <div class="login-box-body">
+  <div class="login-box-body" style="border-radius: 20px; background-color: #eeeeee;">
     <div class="login-logo">
       ¡Bienvenid@!
     </div>
-    <hr style="background-color: black">
+    <hr style="background-color: black; margin: 0px">
     <p style="text-align: center;">Completa el registro antes de poder ingresar al sistema.</p>
     <form name="formulario" autocomplete="off" required>
       <div class="form-group">
-        <label for="txtCorreoRegistrado" style="color: blue;">Correo electrónico registrado</label>
+        <label for="txtCorreoRegistrado" style="color: blue;">Correo Electrónico Registrado</label>
         <i class="fa fa-envelope"></i><input type="email" class="form-control" class="validate" id="txtCorreoRegistrado" required>
       </div>
       <div class="form-group">
         <small style="color: red">*<label for="txtNombre" style="color: blue;">Nombre</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="5" required>
+        <input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="5" required>
         <span style="color: crimson;" ng-show="formulario.txtNombre.$touched && formulario.txtNombre.$invalid">Nombre es requerido.<br/></span>
 
       </div>
       <div class="form-group">
         <small style="color: red">*<label for="txtApaterno" style="color: blue;">Apellido Paterno</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Paterno" name="txtApaterno" id="txtApaterno" ng-model="txtApaterno" ng-minlength="4" required>
+        <input type="text" class="form-control" placeholder="Apellido Paterno" name="txtApaterno" id="txtApaterno" ng-model="txtApaterno" ng-minlength="4" required>
         <span style="color: crimson;" ng-show="formulario.txtApaterno.$touched && formulario.txtApaterno.$invalid">Apellido Paterno es requerido.<br/></span>
       </div>
       <div class="form-group">
         <label for="txtAmaterno" style="color: blue;">Apellido Materno</label>
-        <i class="fa fa-key"></i><input type="text" class="form-control" placeholder="Apellido Materno" id="txtAmaterno">
+        <input type="text" class="form-control" placeholder="Apellido Materno" id="txtAmaterno">
       </div>
     </form>
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" onclick="finalizarRegistro()">Finalizar Registro</button>
+          <button class="btn btn-primary btn-block btn-flat" id="btnFinalizarRegistro" ng-disabled="formulario.$invalid" onclick="finalizarRegistro()">Finalizar Registro</button>
         </div>
       </div>
   </div>
