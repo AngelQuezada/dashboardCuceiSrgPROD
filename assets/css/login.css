@@ -21,7 +21,7 @@
     height: 2px;
 }
 button#btnLogin.btn.btn-primary.btn-block.btn-flat{
-background: linear-gradient(to right, #2B32B2, #1488CC);
+    background: linear-gradient(to right, #2B32B2, #1488CC);
 }
 button#btnLogin.btn.btn-primary.btn-block.btn-flat:hover{
     background: linear-gradient(to right, #1488CC, #2B32B2);

@@ -1,4 +1,4 @@
-<footer style="position: fixed;left:0px;bottom:0px;height:20px;width:100%; background-color: #000051; color: white;">
+<footer style="position: fixed;left:0px;bottom:0px;height:20px;width:100%; background-color: #000000; color: white;">
     <div class="hidden-xs" style="text-align: center">
       CUCEI-SRG: Sistema de Reportes General. <b>Powered By:</b> <a href="http://vanilla-js.com/" target="_blank"><img src="assets/img/vanillaBanner.png"></img></a>   <a href="aviso-privacidad.html" target="_blank" style="color: white"><b>Aviso de Privacidad</b></a> ©2018-2019.  <small><i>Versión 1.2.4</i></small>
     </div>

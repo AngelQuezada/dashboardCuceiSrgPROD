@@ -12,7 +12,7 @@
     include('cookiePolicy.php');
   ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-purple sidebar-mini fixed" style="overflow: hidden;">
 <div class="wrapper">
     <?php
       include("navbar.php");
@@ -20,20 +20,20 @@
     <?php
       include("sidebar.php");
     ?>
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background: #212121; !important">
     <section class="content-header">
-      <h1>
+      <h1 style="color: #f5f5f5">
         Dashboard-Mantenimiento
-        <small>Sistema de Reportes Generales</small>
+        <small style="color: #f5f5f5">Sistema de Reportes Generales</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Dashboard Mantenimiento</li>
+        <li><a href="#" style="color: #f5f5f5"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active" style="color: #f5f5f5">Dashboard Mantenimiento</li>
       </ol>
     </section>
     <section class="content">
-      <div class="alert alert-info alert-dismissible" style="background: green;">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="alert alert-default alert-dismissible" style="background: #12005e;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color: white">&times;</button>
         <h4><i class="icon fa fa-info"></i>¡BIENVENID@!</h4>
         Este es su Dashboard, donde podrá ver el conteo de los reportes de Mantenimiento por cada estatus.<br/>
         En la barra lateral derecha tiene los accesos a cada módulo del sistema para la administración.
@@ -47,16 +47,16 @@
       <div class="row">
         <div class="col-md-3">
           <div class="box box-primary box-solid">
-            <div class="box-header" style="background-color: #4d82cb">
+            <div class="box-header" style="background-color: #0026ca">
               <h3 class="box-title">Reportes en Solicitud</h3>
             </div>
-            <div class="box-body" style="background-color: #eceff1">
+            <div class="box-body" style="background-color: #7a7cff">
               <h3><span id="reporteSolicitud"></span> Reportes</h3>
             </div>
             <div class="overlay">
               <i class="fa fa-refresh fa-spin" id="spinnerReporteN"></i>
             </div>
-            <div style="background-color: #82b1ff">
+            <div style="background-color: #0026ca">
             <a href="reportes-nuevos.php" class="small-box-footer" style="color: white">Ver Reportes Nuevos <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
@@ -64,16 +64,16 @@
 
         <div class="col-md-3">
           <div class="box box-primary box-solid">
-            <div class="box-header" style="background-color: #0069c0">
+            <div class="box-header" style="background-color: #0026ca">
               <h3 class="box-title">Reportes Asignados</h3>
             </div>
-            <div class="box-body" style="background-color: #eceff1">
+            <div class="box-body" style="background-color: #7a7cff">
               <h3><span id="reporteAsignado"></span> Reportes</h3>
             </div>
             <div class="overlay">
               <i class="fa fa-refresh fa-spin" id="spinnerReporteA"></i>
             </div>
-            <div style="background-color: #2196f3">
+            <div style="background-color: #0026ca">
             <a href="reportes-asignados.php" class="small-box-footer" style="color: white">Ver Reportes Asignados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
@@ -81,16 +81,16 @@
 
         <div class="col-md-3">
           <div class="box box-primary box-solid">
-            <div class="box-header" style="background-color: #4d82cb">
+            <div class="box-header" style="background-color: #0026ca">
               <h3 class="box-title">Reportes Finalizados</h3>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="background-color: #7a7cff">
               <h3><span id="reporteFinalizado"></span> Reportes</h3>
             </div>
             <div class="overlay">
               <i class="fa fa-refresh fa-spin" id="spinnerReporteF"></i>
             </div>
-            <div style="background-color: #82b1ff">
+            <div style="background-color: #0026ca">
             <a href="reportes-finalizados.php" class="small-box-footer" style="color: white">Ver Reportes Finalizados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
@@ -98,16 +98,16 @@
 
         <div class="col-md-3">
           <div class="box box-primary box-solid">
-            <div class="box-header" style="background-color: #0069c0">
+            <div class="box-header" style="background-color: #0026ca">
               <h3 class="box-title">Reportes Cancelados</h3>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="background-color: #7a7cff">
               <h3><span id="reporteCancelado"></span> Reportes</h3>
             </div>
             <div class="overlay">
               <i class="fa fa-refresh fa-spin" id="spinnerReporteC"></i>
             </div>
-            <div style="background-color: #2196f3">
+            <div style="background-color: #0026ca">
             <a href="reportes-cancelados.php" class="small-box-footer" style="color: white">Ver Reportes Cancelados <i class="fa fa-arrow-circle-right" style="color: white"></i></a>
             </div>
           </div>
@@ -115,10 +115,10 @@
 
         <div class="col-md-3">
           <div class="box box-primary box-solid">
-            <div class="box-header" style="background-color: #4d82cb">
+            <div class="box-header" style="background-color: #0026ca">
               <h3 class="box-title">Comunidad Registrada</h3>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="background-color: #7a7cff">
               <h3><span id="comunidadRegistrada"></span> Usuarios</h3>
             </div>
             <div class="overlay">
