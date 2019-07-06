@@ -26,3 +26,9 @@ button#btnLogin.btn.btn-primary.btn-block.btn-flat{
 button#btnLogin.btn.btn-primary.btn-block.btn-flat:hover{
     background: linear-gradient(to right, #1488CC, #2B32B2);
 }
+button#btnRegistro.btn.btn-primary.btn-block.btn-flat{
+    background: linear-gradient(to right, #32cb00, #b0ff57);
+}
+button#btnRegistro.btn.btn-primary.btn-block.btn-flat:hover{
+    background: linear-gradient(to right, #b0ff57, #32cb00);
+}

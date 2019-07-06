@@ -186,32 +186,35 @@ let userLogIn = () => {
                 let token = data.token;
                 localStorage.setItem("token",token);
                 let status = localStorage.getItem("status");
-                if(status === '1'){
-                  swal("Usuario Inactivo.El Administrador del Sistema le debe Asignar un Rol en el Sistema. SU CORREO ES: " +localStorage.getItem("email")+" Cuando haya sido asignado de click sobre el boton Reintentar", {
-                    closeOnClickOutside: false,
-                    closeOnEsc: false,
-                    buttons: {
-                    catch: {
-                      text: "Reintentar",
-                      value: "Reintentar",
-                    },
-                    Cerrar_Sesion: true,
-                   },
-                  }).then((value) => {
-                    switch (value) {
-                      case "Reintentar":
-                      redirect();
-                      break;
-                      case "Cerrar_Sesion":
-                      cerrarSesion();
-                      break;
-                    }
-                  });
-                }
+                // TODO Usuario Inactivo
+                // if(status === '1'){
+                //   swal("Usuario Inactivo.El Administrador del Sistema le debe Asignar un Rol en el Sistema. SU CORREO ES: " +localStorage.getItem("email")+" Cuando haya sido asignado de click sobre el boton Reintentar", {
+                //     closeOnClickOutside: false,
+                //     closeOnEsc: false,
+                //     buttons: {
+                //     catch: {
+                //       text: "Reintentar",
+                //       value: "Reintentar",
+                //     },
+                //     Cerrar_Sesion: true,
+                //    },
+                //   }).then((value) => {
+                //     switch (value) {
+                //       case "Reintentar":
+                //       redirect();
+                //       break;
+                //       case "Cerrar_Sesion":
+                //       cerrarSesion();
+                //       break;
+                //     }
+                //   });
+                // }
                 if(status === '3' || status === '4' || status === '5'){
                 window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
                 }else if(status === '6'){
                   window.location.replace(`${_URL_}/dashboard-seguridad.php`);
+                }else if (status === '1'){
+                  window.location.replace(`${_URL_}/administrar-personal.php`);
                 }
               }
             });

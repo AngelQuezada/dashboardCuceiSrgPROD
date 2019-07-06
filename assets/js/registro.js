@@ -14,7 +14,7 @@ let finalizarRegistro = () => {
     "aPaterno" : aPaterno,
     "aMaterno" : aMaterno,
     "correo" : localStorage.getItem("email")
-  }
+  };
   $.ajax({
     type: 'POST',
     url: `${URI}/personal/nuevo`,
@@ -28,4 +28,4 @@ let finalizarRegistro = () => {
     swal("¡Oops!", "Hemos tenido un error: "+data.mensaje, "error");
     }
   });
-}
+};

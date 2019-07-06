@@ -53,7 +53,7 @@ const config2 = {
       return;
     }
   });
-}
+};
 let bajaPersonal = () =>{
   let correo = document.getElementById('txtCorreoBaja').value;
   let token = localStorage.getItem("token");
@@ -105,7 +105,7 @@ let bajaPersonal = () =>{
       break;
     }
   });
-}
+};
 let habilitarPersonal = () => {
   let correo = document.getElementById('txtCorreoHabilitar').value;
   let token = localStorage.getItem("token");
@@ -157,13 +157,15 @@ let habilitarPersonal = () => {
       break;
     }
   });
-}
+};
 let datosPersonales = () =>{
   let email = localStorage.getItem("email");
   let nombreCompleto = localStorage.getItem("nombreCompleto");
   let status = localStorage.getItem("status");
   let telefono = localStorage.getItem("telefono");
   let st;
+  let tel;
+  telefono === 'null' ? tel = 'No hay número registrado' : tel = telefono;
   if(status === '3'){
     st = 'ADMIN MANTENIMIENTO';
   }else if(status === '4'){
@@ -172,28 +174,30 @@ let datosPersonales = () =>{
     st = 'SERVICIO SOCIAL';
   }else if(status === '6'){
     st = 'ADMIN SEGURIDAD';
+  }else if(status === '1'){
+    st = 'USUARIO SIN ROL';
   }
   $("#modalPersonal").empty();
   $("#modalPersonal").append(`<div id="modalConsultarUsuarioActual" class="modal fade" role="dialog">
           <div class="modal-dialog">
               <div class="modal-content">
               <div class="modal-header" style="background-color: #e65100;">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" style="color: black;">&times;</button>
               </div>
               <div class="modal-body" style="background-color: #cfd8dc;">
-                  <div class="register-box">
-                      <div class="register-logo">
+                  <div class="register-box" style="margin-top: 0px;">
+                      <div class="register-logo" style="margin: 0px;">
                           <b>Admin</b>CUCEI-SRG
                       </div>
-                  <div class="register-box-body" style="background-color: #eceff1;">
-                      <div class="login-logo">
-                          Mis Datos Personales
+                  <div class="register-box-body" style="background-color: #eeeeee; margin: 0px; border-radius: 20px">
+                      <div class="login-logo" style="margin: 0px;">
+                          Mis Datos
                       </div>
-                      <hr style="background-color: gray">
+                      <hr style="background-color: black; margin: 0px">
                           <div class="form-group">
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <label for="txtRol" style="color: blue;">Privilegios</label><br/>
+                                      <label for="txtRol" style="color: blue;">Rol en el Sistema</label><br/>
                                       <b id="txtRol" style="background-color: purple; color: white;">${st}</b>
                                   </div>
                                   <div class="col-sm-12">
@@ -201,19 +205,19 @@ let datosPersonales = () =>{
                                       <b id="txtCorreoAdmin">`+email+`</b>
                                   </div>
                                   <div class="col-sm-12">
-                                      <label for="txtNombreCompleto" style="color: blue;">Nombre</label><br/>
+                                      <label for="txtNombreCompleto" style="color: blue;">Nombre Completo</label><br/>
                                       <b id="txtNombreAdmin">`+nombreCompleto+`</b>
                                   </div>
                                   <div class="col-sm-12">
                                       <label for="txtCelular" style="color: blue;">Número Celular</label><br/>
-                                      <b id="txtCelular">`+telefono+`</b>
+                                      <b id="txtCelular">`+tel+`</b>
                                   </div>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-sm-12">
-                                  <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarContraseña();" style="background-color: #ff6f00; color: black;">Cambiar Contraseña</button>
-                                  <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarCelular();" style="background-color: #00b248; color: black;">Cambiar/Agregar Celular</button>
+                                  <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarContraseña();" style="background-color: #ff6f00; color: black; border-radius: 20px">Cambiar Contraseña</button>
+                                  <button type="button" class="btn btn-primary btn-block btn-flat" onclick="cambiarCelular();" style="background-color: #00b248; color: black; border-radius: 20px">Cambiar/Agregar Celular</button>
                               </div>
                           </div>
                   </div>
@@ -223,7 +227,7 @@ let datosPersonales = () =>{
       </div>
     </div>
   </div>`);
-}
+};
 let cambiarContraseña = () => {
   swal("Escribe tu nueva Contraseña [6 CARACTERES MINIMO]:", {
     content: "input",
@@ -264,18 +268,23 @@ let cambiarContraseña = () => {
     }
   });
 });
-}
+};
 let asignarRolPersonal = () => {
   let correoPersonal = document.getElementById('txtCorreoPersonal').value;
   let option = document.querySelector('input[name="rol"]:checked').value;
   let token = localStorage.getItem("token");
   let idUsuario = localStorage.getItem("idUsuario");
+  let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex.test(correoPersonal)) {
+    swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
+    return;
+  }
   let datos = {
     "correo" : correoPersonal,
     "rol" : option,
     "token" : token,
     "idUsuario" : idUsuario
-  }
+  };
   $.ajax({
     type: 'POST',
     url: `${URI}/personal/asignarrol`,
@@ -289,7 +298,7 @@ let asignarRolPersonal = () => {
       swal("ADMIN CUCEI-SRG", "Ha ocurrido un error: " + data.responseJSON.mensaje, "error");
     }
   });
-}
+};
 let cambiarCelular = () => {
   var tel;
   var telefono;
@@ -349,13 +358,4 @@ let cambiarCelular = () => {
     }
   });
 });
-}
-$(function(){
-  let status = localStorage.getItem("status");
-  if(status === '4' || status === '5'){
-    $("#divAltaPersonal").hide();
-    $("#divBajaPersonal").hide();
-    $("#divHabilitarPersonal").hide();
-    $("#divAsignarRol").hide();
-  }
-})
+};

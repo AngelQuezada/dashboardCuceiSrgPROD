@@ -7,7 +7,7 @@
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+      <ul class="sidebar-menu" data-widget="tree" id="SideBarMenu">
         <li class="header">PANEL DE NAVEGACION</li>
         <li class="active treeview">
           <a href="#">
@@ -122,6 +122,8 @@ let setNameSideBar = () => {
         st = 'SERVICIO SOCIAL';
       }else if(status === '6'){
         st = 'ADMIN SEGURIDAD';
+      }else if (status === '1'){
+        st = 'USUARIO SIN ROL';
       }
     $("#txtRol").text(st);
     $('#user-panel').append('<span>'+localStorage.getItem("nombreCompleto")+'</span><br/>');
@@ -137,6 +139,10 @@ let setNameSideBar = () => {
     //   $("#treeViewSeguridad").hide();
     //   $("#dsSeguridad").hide();
     // }
+      if(status === '1'){
+        $("#SideBarMenu").hide();
+        
+      }
   }, 1000);
   });
 }

@@ -9,7 +9,7 @@
     ?>
 <link rel="stylesheet" type="text/css" href="assets/css/administrar-personal.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed" ng-app="">
+<body class="hold-transition skin-purple sidebar-mini fixed" style="overflow: hidden;" ng-app="">
 	<div class="wrapper">
 	<?php
       include("navbar.php");
@@ -17,31 +17,31 @@
     <?php
       include("sidebar.php");
     ?>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="background: #212121; !important">
     	<section class="content-header">
-    		<h1>
+    		<h1 style="color: #f5f5f5">
 		        Administración de Personal
-		        <small>Sistema de Reportes Generales</small>
+		        <small style="color: #f5f5f5">Sistema de Reportes Generales</small>
       		</h1>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Personal</li>
+				<li><a href="#"style="color: #f5f5f5"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active" style="color: #f5f5f5">Personal</li>
 			</ol>
     	</section>
     	<!-- END Content Header (Page header) -->
     	<!-- Contenedor principal -->
     	<section class="content">
             <ol class="breadcrumb" id="breadcrumbContent">
-				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active" id="liContent">Administrar Personal</li>
+				<li><a href="dashboard-mantenimiento.php" style="color: #f5f5f5"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active" id="liContent" style="color: #f5f5f5">Administrar Personal</li>
 			</ol>
-            <h1>¿Qué Desea Hacer?</h1>
-            <h4>Seleccione la opción:</h4>
-            <div class="alert alert-info alert-dismissible" style="background: green;">
+            <h1 style="color: #f5f5f5">¿Qué Desea Hacer?</h1>
+            <h4 style="color: #f5f5f5">Seleccione la opción:</h4>
+            <div class="alert alert-default alert-dismissible" style="background: #12005e;" id="alertInfo">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-info"></i>Ayuda [PARA ADMINISTRADORES DEL SISTEMA]</h4>
-                <h4>Para Personal de Servicio Social de click sobre el recuadro "Dar de Alta Nuevo Personal" y despúes asigne su rol.</h4>
-                <h4>Cuando termine su Servicio Social se debe dar de baja.</h4>
+                <h4>Para dar de alta nuevo personal de click sobre el recuadro: "Dar de Alta Nuevo Personal" y despúes asigne su rol.</h4>
+                <h4>Servicio Social: Cuando termine se debe dar de baja.</h4>
             </div>
                 <div class="row">
                     <div class="col-sm-6" id="divAltaPersonal" data-toggle="modal" data-target="#modalAltaPersonal">
@@ -71,19 +71,19 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" id="modalBodyAltaPersonal">
-                <div class="register-box">
-                    <div class="register-logo">
+                <div class="register-box" style="margin-top: 0px;">
+                    <div class="register-logo" style="margin: 0px">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" id="registerboxAltaPersonal">
-                    <div class="login-logo">
+                <div class="register-box-body" id="registerboxAltaPersonal" style="background-color: #eeeeee; margin: 0px; border-radius: 20px">
+                    <div class="login-logo" style="margin: 0px">
                         Registro de Personal
                     </div>
-                    <hr id="hrAltaPersonal">
+                    <hr id="hrAltaPersonal" style="background-color: black; margin: 0px">
                     <form name="formularioAlta" autocomplete="off" required>
-                        <div class="form-group">
+                        <div class="form-group"  style="margin: 5px">
                             <label for="txtCorreo" id="txtCorreoAltaPersonal">Correo electrónico:</label>
-                            </i><input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" ng-minlength="5" required>
+                            </i><input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" ng-minlength="5" required>
                             <span style="color: crimson;" ng-show="formularioAlta.txtCorreo.$touched && formularioAlta.txtCorreo.$invalid">Correo es requerido.<br/></span>
                         </div>
                         <div class="form-group">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioAlta.$invalid" onclick="altaPersonal();">Registrar</button>
+                                <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioAlta.$invalid" style="border-radius: 20px" onclick="altaPersonal();">Registrar</button>
                             </div>
                         </div>
                     </form>
@@ -112,25 +112,25 @@
             <div class="modal-header" id="headerBajaPersonal">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body" id="bodyBajaPersonal">
+            <div class="modal-body" id="bodyBajaPersonal" style="margin: 0px">
                 <div class="register-box">
-                    <div class="register-logo">
+                    <div class="register-logo" style="margin: 0px">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" id="registerboxBajaPersonal">
-                    <div class="login-logo">
+                <div class="register-box-body" id="registerboxBajaPersonal" style="background-color: #eeeeee; margin: 0px; border-radius: 20px">
+                    <div class="login-logo" style="margin: 0px">
                         Baja de Personal
                     </div>
-                    <hr id="hrBajaPersonal">
+                    <hr id="hrBajaPersonal" style="margin: 0px; color: black">
                     <form autocomplete="off" id="formulario">
-                        <h5 id="hAlertaBajaPersonal">Cuidado: El usuario dado de baja NO podrá acceder al Sistema hasta que sea habilitado nuevamente.</h5>
-                        <div class="form-group">
-                            <label for="txtCorreoBaja" id="txtCorreoBaja">Ingresa el Correo Electrónico a dar de Baja</label>
-                            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoBaja" required>
+                        <h5 id="hAlertaBajaPersonal"><b>Cuidado:</b> <i>El usuario dado de baja <b>NO</b> podrá acceder al sistema hasta que sea habilitado nuevamente.</i></h5>
+                        <div class="form-group" style="margin: 0px">
+                            <label for="txtCorreoBaja" id="txtCorreoBaja" style="color: blue">Ingresa el Correo Electrónico</label>
+                            <input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreoBaja" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" id="btnBajaPersonal" class="btn btn-primary btn-block btn-flat" onclick="bajaPersonal();">Dar de Baja</button>
+                                <button type="button" id="btnBajaPersonal" class="btn btn-primary btn-block btn-flat" style="border-radius: 20px" onclick="bajaPersonal();">Dar de Baja</button>
                             </div>
                         </div>
                     </form>
@@ -150,23 +150,23 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="background-color: #cfd8dc;">
-                <div class="register-box">
-                    <div class="register-logo">
+                <div class="register-box" style="margin-top: 0px">
+                    <div class="register-logo" style="margin: 0px">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" style="background-color: #eceff1;">
-                    <div class="login-logo">
+                <div class="register-box-body" style="background-color: #eeeeee; margin: 0px; border-radius: 20px">
+                    <div class="login-logo" style="margin: 0px">
                         Habilitar Personal
                     </div>
-                    <hr style="background-color: gray">
+                    <hr style="background-color: black; margin: 0px">
                     <form autocomplete="off" id="formulario">
-                        <div class="form-group">
+                        <div class="form-group" style="margin: 5px">
                             <label for="txtCorreoHabilitar" style="color: blue;">Ingresa el Correo Electrónico a habilitar</label>
                             <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoHabilitar" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="habilitarPersonal();" style="background-color: #6200ea; color: white;">Habilitar Personal</button>
+                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="habilitarPersonal();" style="background-color: #6200ea; color: white; border-radius: 20px">Habilitar Personal</button>
                             </div>
                         </div>
                     </form>
@@ -187,18 +187,18 @@
             </div>
             <div class="modal-body" style="background-color: #cfd8dc;">
                 <div class="register-box">
-                    <div class="register-logo">
+                    <div class="register-logo" style="margin: 0px">
                         <b>Admin</b>CUCEI-SRG
                     </div>
-                <div class="register-box-body" style="background-color: #eceff1;">
-                    <div class="login-logo">
-                        Asignar Rol de Personal
+                <div class="register-box-body" style="background-color: #eeeeee; margin: 0px; border-radius: 20px">
+                    <div class="login-logo" style="margin: 0px">
+                        Asignar Rol
                     </div>
-                    <hr style="background-color: gray">
+                    <hr style="background-color: gray; margin: 0px">
                     <form autocomplete="off" id="formulario">
-                        <div class="form-group">
+                        <div class="form-group" style="margin: 5px">
                             <label for="txtCorreoPersonal" style="color: blue">Ingresa el Correo Electrónico del Personal a Asignar</label>
-                            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoPersonal" required>
+                            <input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreoPersonal" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -230,7 +230,7 @@
                                 </label>
                             </div>
                             <div class="col-sm-12">
-                                <button type="button" id="btnRolPersonal" class="btn btn-primary btn-block btn-flat" onclick="asignarRolPersonal();" style="background-color: #f50057; color: white">Asignar Rol</button>
+                                <button type="button" id="btnRolPersonal" class="btn btn-primary btn-block btn-flat" onclick="asignarRolPersonal();" style="background-color: #f50057; color: white; border-radius: 20px">Asignar Rol</button>
                             </div>
 
                         </div>
@@ -250,7 +250,21 @@
 <?php
     include('footer.php');
 ?>
+<script>
+$(function(){
+  let status = localStorage.getItem("status");
+  if(status === '1' || status === '4' || status === '5'){
+    swal("ADMIN CUCEI-SRG", "No cuenta con los suficientes privilegios para acceder a los demás menús del Sistema. Contacte con el Administrador.", "info");
+    $("#alertInfo").remove();
+    $("#divAltaPersonal").remove();
+    $("#divBajaPersonal").remove();
+    $("#divHabilitarPersonal").remove();
+    $("#divAsignarRol").remove();
+    $("#breadcrumbContent").remove();
+  }
+});
+</script>
 <script async src="assets/js/libs/angular.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/js/administrar-personal.js"></script>
+<script async type="text/javascript" src="assets/js/administrar-personal.js"></script>
 </body>
 </html>

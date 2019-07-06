@@ -35,7 +35,8 @@
       <br>
       <div class="row">
         <div class="col-sm-12">
-          <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha()" id="btnIngresar">Ingresar</button>
+          <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: black; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
+          <button id="btnRegistro" class="btn btn-primary btn-block btn-flat" style="color: black; border-radius: 20px" onclick="registrarse()">Registrarse</button>
         </div>
          <div class="col-sm-12" style="text-align: center">
           <a href="#" style="color: #f44336;" onclick="resetPwPage()" id="btnResetPassword">Recuperar contraseña</a>
@@ -54,6 +55,7 @@
 <script type="text/javascript" src="assets/js/login.js"></script>
 <!-- Script para recaptcha -->
 <script type="text/javascript">
+var URL = localStorage.getItem('url');
 let verifyReCaptcha = () => {
   let captchaVerify =  grecaptcha.getResponse(captcha);
   if(!captchaVerify){
@@ -75,6 +77,9 @@ var onloadCallback = function() {
     'theme' : 'light'
   });
 };
+let registrarse = () => {
+  window.location.replace(`${URL}/registro.php`);
+}
 </script>
 </body>
 </html>

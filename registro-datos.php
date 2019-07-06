@@ -28,7 +28,7 @@
       </div>
       <div class="form-group">
         <small style="color: red">*<label for="txtNombre" style="color: blue;">Nombre</label>
-        <input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="5" required>
+        <input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="4" required>
         <span style="color: crimson;" ng-show="formulario.txtNombre.$touched && formulario.txtNombre.$invalid">Nombre es requerido.<br/></span>
 
       </div>
@@ -50,7 +50,7 @@
   </div>
 </div>
   <?php
-      include('footer.php');
+    include('footer.php');
   ?>
   <script type="text/javascript">
  var URL = localStorage.getItem("url");
