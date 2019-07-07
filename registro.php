@@ -23,12 +23,12 @@
     <form name="formulario" autocomplete="off" required>
       <div class="input-group margin-bottom-sm" style="margin: 0px">
         <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true" style="color: #0064b7"></i></span>
-        <input type="email" class="form-control" placeholder="Escribe tu correo electrónico" id="txtCorreoRegistro" name="txtCorreoRegistro" ng-model="txtCorreoRegistro" ng-minlenght="12" required>
+        <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico" id="txtCorreoRegistro" name="txtCorreoRegistro" ng-model="txtCorreoRegistro" ng-minlenght="12" required>
         <span style="color: crimson;" ng-show="formulario.txtCorreoRegistro.$touched && formulario.txtCorreoRegistro.$invalid"><b>Correo es requerido.</b><br/></span>
       </div>
       <div class="input-group margin-bottom-sm" style="margin: 0px">
         <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true" style="color: #ffd600"></i></span>
-        <input type="password" class="form-control" placeholder="Escribe tu nueva contraseña" id="txtPasswordRegistro" name="txtPasswordRegistro" ng-model="txtPasswordRegistro" ng-minlenght="6" required>
+        <input type="password" class="form-control" placeholder="Ingresa tu nueva contraseña" id="txtPasswordRegistro" name="txtPasswordRegistro" ng-model="txtPasswordRegistro" ng-minlenght="6" required>
         <span style="color: crimson;" ng-show="formulario.txtPasswordRegistro.$touched && formulario.txtPasswordRegistro.$invalid"><b>Password es requerido.</b><br/></span>
       </div>
       <div class="col-sm-12" style="text-align: center" id="captcha"></div>

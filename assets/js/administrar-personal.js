@@ -23,10 +23,38 @@ const config2 = {
   let secondaryAcc = firebase.initializeApp(config2,"Secondary");
   let email = document.getElementById('txtCorreo').value;
   let password = document.getElementById('txtPassword').value;
+  let nombre = document.getElementById('txtNombreAlta').value;
+  let aPaterno = document.getElementById('txtApellidoPaterno').value;
+  let aMaterno = document.getElementById('txtApellidoMaterno').value;
+  let datos = {
+    "nombre" : nombre,
+    "aPaterno" : aPaterno,
+    "aMaterno" : aMaterno,
+    "correo" : email
+  };
   secondaryAcc.auth().createUserWithEmailAndPassword(email,password).then(function(){
-      swal("ADMIN CUCEI-SRG", "La Cuenta se ha dado de Alta Correctamente", "success");
+    let user = secondaryAcc.auth().currentUser;
+      user.sendEmailVerification().then(function(){
+        $.ajax({
+          type: 'POST',
+          url: `${URI}/personal/nuevo`,
+          data: JSON.stringify(datos),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          success: function(){
+            swal("ADMIN CUCEI-SRG", "La cuenta se ha dado de alta correctamente, se ha enviado un correo de confirmación", "success");
+          },
+          error: function() {
+          }
+        });
+        }).catch(function(){
+          swal("ADMIN CUCEI-SRG", "La cuenta se ha dado de alta correctamente, pero no se envió el correo de confirmación", "info");
+      });
       $('#txtCorreo').val('');
       $('#txtPassword').val('');
+      $('#txtNombreAlta').val('');
+      $('#txtApellidoPaterno').val('');
+      $('#txtApellidoMaterno').val('');
       secondaryAcc.auth().signOut();
       secondaryAcc.delete();
       return;

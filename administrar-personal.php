@@ -9,7 +9,7 @@
     ?>
 <link rel="stylesheet" type="text/css" href="assets/css/administrar-personal.css">
 </head>
-<body class="hold-transition skin-purple sidebar-mini fixed" style="overflow: hidden;" ng-app="">
+<body class="hold-transition skin-purple sidebar-mini fixed" ng-app="">
 	<div class="wrapper">
 	<?php
       include("navbar.php");
@@ -81,15 +81,29 @@
                     </div>
                     <hr id="hrAltaPersonal" style="background-color: black; margin: 0px">
                     <form name="formularioAlta" autocomplete="off" required>
-                        <div class="form-group"  style="margin: 5px">
+                        <div class="form-group" style="margin: 5px">
                             <label for="txtCorreo" id="txtCorreoAltaPersonal">Correo electrónico:</label>
-                            </i><input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" ng-minlength="5" required>
+                            </i><input type="email" class="form-control" placeholder="Ingresa el Correo Electrónico" id="txtCorreo" name="txtCorreo" ng-model="txtCorreo" ng-minlength="5" required>
                             <span style="color: crimson;" ng-show="formularioAlta.txtCorreo.$touched && formularioAlta.txtCorreo.$invalid">Correo es requerido.<br/></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="margin: 5px">
                             <label for="txtPassword" id="txtPasswordAltaPersonal">Contraseña:</label>
-                            </i><input type="password" class="form-control" placeholder="Escribe tu password" id="txtPassword" name="txtPassword" ng-model="txtPassword" ng-minlength="6" required>
+                            </i><input type="password" class="form-control" placeholder="Ingresa la Contraseña" id="txtPassword" name="txtPassword" ng-model="txtPassword" ng-minlength="6" required>
                             <p id="pNotaPasswordAltaPersonal">La contraseña debe contener al menos 6 carácteres.</p>
+                        </div>
+                        <div class="form-group" style="margin: 5px">
+                            <label for="txtNombreAltaPersonal" id="txtNombreAltaPersonal">Nombre(s):</label>
+                            </i><input type="text" class="form-control" placeholder="Ingresa el Nombre" id="txtNombreAlta" name="txtNombreAlta" ng-model="txtNombreAlta" ng-minlength="4" required>
+                            <span style="color: crimson;" ng-show="formularioAlta.txtNombreAlta.$touched && formularioAlta.txtNombreAlta.$invalid">Nombre es requerido.<br/></span>
+                        </div>
+                        <div class="form-group" style="margin: 5px">
+                            <label for="txtApellidoPaternoAltaPersonal" id="txtApellidoPaternoAltaPersonal">Apellido Paterno:</label>
+                            </i><input type="text" class="form-control" placeholder="Ingresa el Apellido Paterno" id="txtApellidoPaterno" name="txtApellidoPaterno" ng-model="txtApellidoPaterno" ng-minlength="4" required>
+                            <span style="color: crimson;" ng-show="formularioAlta.txtApellidoPaterno.$touched && formularioAlta.txtApellidoPaterno.$invalid">Apellido Paterno es requerido.<br/></span>
+                        </div>
+                        <div class="form-group" style="margin: 5px">
+                            <label for="txtApellidoMaternoAltaPersonal" id="txtApellidoMaternoAltaPersonal">Apellido Materno:</label>
+                            </i><input type="text" class="form-control" placeholder="Ingresa el Apellido Materno" id="txtApellidoMaterno">
                         </div>
                         <div class="row">
                             <div class="col-sm-12">

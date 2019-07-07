@@ -71,6 +71,15 @@
 #txtPasswordAltaPersonal{
     color: blue;
 }
+#txtNombreAltaPersonal{
+    color: blue;
+}
+#txtApellidoPaternoAltaPersonal{
+    color: blue;
+}
+#txtApellidoMaternoAltaPersonal{
+    color: blue;
+}
 #pNotaPasswordAltaPersonal{
     color: red;
     text-align: center;
