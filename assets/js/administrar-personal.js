@@ -26,35 +26,42 @@ const config2 = {
   let nombre = document.getElementById('txtNombreAlta').value;
   let aPaterno = document.getElementById('txtApellidoPaterno').value;
   let aMaterno = document.getElementById('txtApellidoMaterno').value;
+
+  let option = document.querySelector('input[name="rolAlta"]:checked').value;
+
   let datos = {
     "nombre" : nombre,
     "aPaterno" : aPaterno,
     "aMaterno" : aMaterno,
-    "correo" : email
+    "correo" : email,
+    "rol" : option
   };
+  console.log(JSON.stringify(datos));
   secondaryAcc.auth().createUserWithEmailAndPassword(email,password).then(function(){
     let user = secondaryAcc.auth().currentUser;
       user.sendEmailVerification().then(function(){
         $.ajax({
           type: 'POST',
-          url: `${URI}/personal/nuevo`,
+          url: `${URI}/personal/nuevopersonal`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
           success: function(){
+            $('#txtCorreo').val('');
+            $('#txtPassword').val('');
+            $('#txtNombreAlta').val('');
+            $('#txtApellidoPaterno').val('');
+            $('#txtApellidoMaterno').val('');
+            $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
             swal("ADMIN CUCEI-SRG", "La cuenta se ha dado de alta correctamente, se ha enviado un correo de confirmación", "success");
           },
           error: function() {
+            swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
           }
         });
         }).catch(function(){
           swal("ADMIN CUCEI-SRG", "La cuenta se ha dado de alta correctamente, pero no se envió el correo de confirmación", "info");
       });
-      $('#txtCorreo').val('');
-      $('#txtPassword').val('');
-      $('#txtNombreAlta').val('');
-      $('#txtApellidoPaterno').val('');
-      $('#txtApellidoMaterno').val('');
       secondaryAcc.auth().signOut();
       secondaryAcc.delete();
       return;
@@ -69,7 +76,7 @@ const config2 = {
       return;
     }
     if (errorCode == 'The email address is badly formatted.' && errorMessage == 'auth/invalid-email') {
-      swal("¡Oops!", "El correo electronico es invalido", "error");
+      swal("¡Oops!", "El correo electronico es inválido", "error");
       return;
     }
     if (errorCode == 'auth/weak-password' && errorMessage == 'Password should be at least 6 characters') {

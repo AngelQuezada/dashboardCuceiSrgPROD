@@ -20,25 +20,26 @@
       ¡Bienvenid@!
     </div>
     <hr style="background-color: black; margin: 0px">
-    <p style="text-align: center;">Completa el registro antes de poder ingresar al sistema.</p>
+    <p style="text-align: center;"><b>Completa el registro antes de poder ingresar al sistema.</b></p>
+    <p><small style="color: red">*</small><b>Campos Obligatorios</b></p>
     <form name="formulario" autocomplete="off" required>
       <div class="form-group">
         <label for="txtCorreoRegistrado" style="color: blue;">Correo Electrónico Registrado</label>
-        <i class="fa fa-envelope"></i><input type="email" class="form-control" class="validate" id="txtCorreoRegistrado" required>
+        <i class="fa fa-envelope"></i><b><input type="email" class="form-control" class="validate" id="txtCorreoRegistrado" required></b>
       </div>
       <div class="form-group">
-        <small style="color: red">*<label for="txtNombre" style="color: blue;">Nombre</label>
-        <input type="text" class="form-control" placeholder="Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="4" required>
+        <small style="color: red">*<label for="txtNombre" style="color: blue;">Nombre(s)</label>
+        <input type="text" class="form-control" placeholder="Ingresa tu Nombre" name="txtNombre" id="txtNombre" ng-model="txtNombre" ng-minlength="4" required>
         <span style="color: crimson;" ng-show="formulario.txtNombre.$touched && formulario.txtNombre.$invalid">Nombre es requerido.<br/></span>
       </div>
       <div class="form-group">
         <small style="color: red">*<label for="txtApaterno" style="color: blue;">Apellido Paterno</label>
-        <input type="text" class="form-control" placeholder="Apellido Paterno" name="txtApaterno" id="txtApaterno" ng-model="txtApaterno" ng-minlength="4" required>
+        <input type="text" class="form-control" placeholder="Ingresa tu Apellido Paterno" name="txtApaterno" id="txtApaterno" ng-model="txtApaterno" ng-minlength="4" required>
         <span style="color: crimson;" ng-show="formulario.txtApaterno.$touched && formulario.txtApaterno.$invalid">Apellido Paterno es requerido.<br/></span>
       </div>
       <div class="form-group">
         <label for="txtAmaterno" style="color: blue;">Apellido Materno</label>
-        <input type="text" class="form-control" placeholder="Apellido Materno" id="txtAmaterno">
+        <input type="text" class="form-control" placeholder="Ingresa tu Apellido Materno" id="txtAmaterno">
       </div>
     </form>
       <div class="row">

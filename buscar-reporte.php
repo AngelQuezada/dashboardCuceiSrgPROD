@@ -8,8 +8,11 @@
 	<?php
     include('header.php');
   ?>
+  <?php
+    include('cookiePolicy.php');
+  ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-purple sidebar-mini fixed">
 	<div class="wrapper">
 	<?php
     include("navbar.php");
@@ -17,15 +20,15 @@
   <?php
     include("sidebar.php");
   ?>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="background: #212121; !important">
     	<section class="content-header">
-    		<h1>
+    		<h1 style="color: #f5f5f5">
 		        Búsqueda de Reportes
-		        <small>Sistema de Reportes Generales</small>
+		        <small style="color: #f5f5f5">Sistema de Reportes Generales</small>
           </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
-          <li class="active">Reportes</li>
+          <li><a href="#" style="color: #f5f5f5"><i class="fa fa-dashboard"></i> Dashboard-Mantenimiento</a></li>
+          <li class="active" style="color: #f5f5f5">Reportes</li>
         </ol>
     	</section>
   	<section class="content">
@@ -33,7 +36,7 @@
       <li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="active" style="color: white;">Buscar Reportes</li>
     </ol>
-    <div class="alert alert-info alert-dismissible" style="background: green;">
+    <div class="alert alert-default alert-dismissible" style="background: #12005e;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <h4><i class="icon fa fa-info"></i>Ayuda</h4>
       <h5>Apellidos y/o Nombres con la primer letra Mayúscula.</h5>
@@ -43,29 +46,29 @@
     </div>
 		<div class="row">
 			<div class="input-field col-sm-12">
-      <div class="box box-danger">
+      <div class="box box-danger" style="background: #484848">
           <div class="box-header with-border">
-            <h3 class="box-title">Buscar Reporte</h3>
+            <h3 class="box-title" style="color: #f5f5f5">Buscar Reporte</h3>
           </div>
 			 <div class="box-body">
 				<div class="col-sm-3">
-          <input type="text" class="form-control" name="txtApaterno" id="txtApaterno" placeholder="Apellido Paterno">
-          <label for="txtApaterno" style="color: black;">Apellido Paterno</label>
+          <input type="text" class="form-control" name="txtApaterno" id="txtApaterno" placeholder="Apellido Paterno" style="color: #f5f5f5">
+          <label for="txtApaterno" style="color: #f5f5f5">Apellido Paterno</label>
 				</div>
         <div class="col-sm-3">
-          <input type="text" class="form-control" name="txtAmaterno" id="txtAmaterno" placeholder="Apellido Materno">
-          <label for="txtAmaterno" style="color: black;">Apellido Materno</label>
+          <input type="text" class="form-control" name="txtAmaterno" id="txtAmaterno" placeholder="Apellido Materno" style="color: #f5f5f5">
+          <label for="txtAmaterno" style="color: #f5f5f5">Apellido Materno</label>
         </div>
         <div class="col-sm-3">
-          <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombre">
-          <label for="txtNombre" style="color: black;">Nombre</label>
+          <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombre" style="color: #f5f5f5">
+          <label for="txtNombre" style="color: #f5f5f5">Nombre</label>
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" name="txtFolio" id="txtFolio" placeholder="Folio">
-          <label for="txtFolio" style="color: black;">Folio</label>
+          <input type="text" class="form-control" name="txtFolio" id="txtFolio" placeholder="Folio" style="color: #f5f5f5">
+          <label for="txtFolio" style="color: #f5f5f5">Folio</label>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-primary" id="btnBuscarReporte" style="background-color: #00695c; color: white;"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+          <button class="btn btn-primary" id="btnBuscarReporte" style="background-color: #00695c; color: white; border-radius: 20px"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
         </div>
         </div>
       </div>

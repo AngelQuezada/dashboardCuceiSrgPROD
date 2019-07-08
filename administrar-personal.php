@@ -89,6 +89,7 @@
                         <div class="form-group" style="margin: 5px">
                             <label for="txtPassword" id="txtPasswordAltaPersonal">Contraseña:</label>
                             </i><input type="password" class="form-control" placeholder="Ingresa la Contraseña" id="txtPassword" name="txtPassword" ng-model="txtPassword" ng-minlength="6" required>
+                            <span style="color: crimson;" ng-show="formularioAlta.txtPassword.$touched && formularioAlta.txtPassword.$invalid">Contraseña es requerido.<br/></span>
                             <p id="pNotaPasswordAltaPersonal">La contraseña debe contener al menos 6 carácteres.</p>
                         </div>
                         <div class="form-group" style="margin: 5px">
@@ -105,6 +106,38 @@
                             <label for="txtApellidoMaternoAltaPersonal" id="txtApellidoMaternoAltaPersonal">Apellido Materno:</label>
                             </i><input type="text" class="form-control" placeholder="Ingresa el Apellido Materno" id="txtApellidoMaterno">
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <legend>Elige el Rol a Asignar</legend>
+                            </div>
+
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rolAlta" id="rolAlta" type="radio" value="3" ng-model="rolAlta" required/>
+                                <span>Admin. Mantenimiento</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rolAlta" id="rolAlta" type="radio" value="6"  ng-model="rolAlta" required/>
+                                <span>Admin. Seguridad</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rolAlta" id="rolAlta" type="radio" value="4"  ng-model="rolAlta" required/>
+                                <span>Personal</span>
+                                </label>
+                            </div>
+                            <div class="input-field col-sm-6">
+                                <label style="color: black;">
+                                <input name="rolAlta" id="rolAlta" type="radio" value="5"  ng-model="rolAlta" required/>
+                                <span>Servicio Social</span>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <button type="button" id="btnAltaPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioAlta.$invalid" style="border-radius: 20px" onclick="altaPersonal();">Registrar</button>
@@ -136,15 +169,16 @@
                         Baja de Personal
                     </div>
                     <hr id="hrBajaPersonal" style="margin: 0px; color: black">
-                    <form autocomplete="off" id="formulario">
+                    <form autocomplete="off" name="formularioBaja" required>
                         <h5 id="hAlertaBajaPersonal"><b>Cuidado:</b> <i>El usuario dado de baja <b>NO</b> podrá acceder al sistema hasta que sea habilitado nuevamente.</i></h5>
                         <div class="form-group" style="margin: 0px">
                             <label for="txtCorreoBaja" id="txtCorreoBaja" style="color: blue">Ingresa el Correo Electrónico</label>
-                            <input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreoBaja" required>
+                            <input type="email" class="form-control" placeholder="Ingresa el Correo Electrónico" id="txtCorreoBaja" name="txtCorreoBaja" ng-model="txtCorreoBaja" ng-minlength="5" required>
+                            <span style="color: crimson;" ng-show="formularioBaja.txtCorreoBaja.$touched && formularioBaja.txtCorreoBaja.$invalid">Correo es requerido.<br/></span>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" id="btnBajaPersonal" class="btn btn-primary btn-block btn-flat" style="border-radius: 20px" onclick="bajaPersonal();">Dar de Baja</button>
+                                <button type="button" id="btnBajaPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioBaja.$invalid" style="border-radius: 20px" onclick="bajaPersonal();">Dar de Baja</button>
                             </div>
                         </div>
                     </form>
@@ -173,14 +207,15 @@
                         Habilitar Personal
                     </div>
                     <hr style="background-color: black; margin: 0px">
-                    <form autocomplete="off" id="formulario">
+                    <form autocomplete="off" name="formularioHabilitar" required>
                         <div class="form-group" style="margin: 5px">
                             <label for="txtCorreoHabilitar" style="color: blue;">Ingresa el Correo Electrónico a habilitar</label>
-                            <input type="email" class="form-control" placeholder="correo@cucei.udg.mx" id="txtCorreoHabilitar" required>
+                            <input type="email" class="form-control" placeholder="Ingresa el Correo Electrónico" id="txtCorreoHabilitar" name="txtCorreoHabilitar" ng-model="txtCorreoHabilitar" ng-minlength="5" required>
+                            <span style="color: crimson;" ng-show="formularioHabilitar.txtCorreoHabilitar.$touched && formularioHabilitar.txtCorreoHabilitar.$invalid">Correo es requerido.<br/></span>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block btn-flat" onclick="habilitarPersonal();" style="background-color: #6200ea; color: white; border-radius: 20px">Habilitar Personal</button>
+                                <button type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioHabilitar.$invalid" onclick="habilitarPersonal();" style="background-color: #6200ea; color: white; border-radius: 20px">Habilitar Personal</button>
                             </div>
                         </div>
                     </form>
@@ -209,10 +244,11 @@
                         Asignar Rol
                     </div>
                     <hr style="background-color: gray; margin: 0px">
-                    <form autocomplete="off" id="formulario">
+                    <form autocomplete="off" name="formularioRol" required>
                         <div class="form-group" style="margin: 5px">
                             <label for="txtCorreoPersonal" style="color: blue">Ingresa el Correo Electrónico del Personal a Asignar</label>
-                            <input type="email" class="form-control" placeholder="correo@dominio.com" id="txtCorreoPersonal" required>
+                            <input type="email" class="form-control" placeholder="Ingresa el Correo Electrónico" id="txtCorreoPersonal" name="txtCorreoPersonal" ng-model="txtCorreoPersonal" ng-minlength="5" required>
+                            <span style="color: crimson;" ng-show="formularioRol.txtCorreoPersonal.$touched && formularioRol.txtCorreoPersonal.$invalid">Correo es requerido.<br/></span>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -221,30 +257,30 @@
 
                             <div class="input-field col-sm-6">
                                 <label style="color: black;">
-                                <input name="rol" id="rol" type="radio" value="3" required/>
+                                <input name="rol" id="rol" type="radio" value="3" name="rol" ng-model="rol" required/>
                                 <span>Admin. Mantenimiento</span>
                                 </label>
                             </div>
                             <div class="input-field col-sm-6">
                                 <label style="color: black;">
-                                <input name="rol" id="rol" type="radio" value="6" required/>
+                                <input name="rol" id="rol" type="radio" value="6" name="rol" ng-model="rol" required/>
                                 <span>Admin. Seguridad</span>
                                 </label>
                             </div>
                             <div class="input-field col-sm-6">
                                 <label style="color: black;">
-                                <input name="rol" id="rol" type="radio" value="4" required/>
+                                <input name="rol" id="rol" type="radio" value="4" name="rol" ng-model="rol" required/>
                                 <span>Personal</span>
                                 </label>
                             </div>
                             <div class="input-field col-sm-6">
                                 <label style="color: black;">
-                                <input name="rol" id="rol" type="radio" value="5" required/>
+                                <input name="rol" id="rol" type="radio" value="5" name="rol" ng-model="rol" required/>
                                 <span>Servicio Social</span>
                                 </label>
                             </div>
                             <div class="col-sm-12">
-                                <button type="button" id="btnRolPersonal" class="btn btn-primary btn-block btn-flat" onclick="asignarRolPersonal();" style="background-color: #f50057; color: white; border-radius: 20px">Asignar Rol</button>
+                                <button type="button" id="btnRolPersonal" class="btn btn-primary btn-block btn-flat" ng-disabled="formularioRol.$invalid" onclick="asignarRolPersonal();" style="background-color: #f50057; color: white; border-radius: 20px">Asignar Rol</button>
                             </div>
 
                         </div>
@@ -268,7 +304,7 @@
 $(function(){
   let status = localStorage.getItem("status");
   if(status === '1' || status === '4' || status === '5'){
-    swal("ADMIN CUCEI-SRG", "No cuenta con los suficientes privilegios para acceder a los demás menús del Sistema. Contacte con el Administrador.", "info");
+    swal("ADMIN CUCEI-SRG", "No cuentas con los suficientes privilegios para acceder a los demás módulos del Sistema. Contacte con el Administrador.", "info");
     $("#alertInfo").remove();
     $("#divAltaPersonal").remove();
     $("#divBajaPersonal").remove();

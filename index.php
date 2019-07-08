@@ -38,6 +38,8 @@ let reenviar = () => {
   let user = firebase.auth().currentUser;
     user.sendEmailVerification().then(function(){
       swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
+        icon: 'success',
+        title: 'ADMIN CUCEI-SRG',
         closeOnClickOutside: false,
         closeOnEsc: false,
         buttons: {
@@ -85,6 +87,8 @@ let redirect = () => {
 */
 let validatedEmail = () => {
   swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
+    icon: 'info',
+    title: 'ADMIN CUCEI-SRG',
     closeOnClickOutside: false,
     closeOnEsc: false,
     buttons: {
@@ -92,7 +96,7 @@ let validatedEmail = () => {
       text: "Verificar",
       value: "verify",
       },
-      Cerrar_Sesion: true,
+      Salir: true,
       reenviar: true,
     },
   }).then((value) => {
@@ -100,7 +104,7 @@ let validatedEmail = () => {
       case "verify":
         redirect();
       break;
-      case "Cerrar_Sesion":
+      case "Salir":
         cerrarSesion();
       break;
       case "reenviar":

@@ -88,6 +88,8 @@ let registroPersonal = () => {
   let email = document.getElementById('txtCorreoRegistro').value;
   let password = document.getElementById('txtPasswordRegistro').value;
   secondaryAcc.auth().createUserWithEmailAndPassword(email,password).then(function(){
+    let user = secondaryAcc.auth().currentUser;
+    user.sendEmailVerification().then(function(){
       $('#txtCorreoRegistro').val('');
       $('#txtPasswordRegistro').val('');
       secondaryAcc.auth().signOut();
@@ -110,6 +112,7 @@ let registroPersonal = () => {
                   break;
                 }
               });
+    });
   }).catch(function(error){
     secondaryAcc.delete();
     let errorCode = error.code;
