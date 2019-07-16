@@ -22,7 +22,7 @@ let finalizarRegistro = () => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: function(){
-    window.location.replace(`${URL}/index.php`);
+    window.location.replace(`${URL}/validator.php`);
     },
     error: function(data) {
     swal("¡Oops!", "Hemos tenido un error: "+data.mensaje, "error");

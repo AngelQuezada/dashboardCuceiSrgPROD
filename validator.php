@@ -80,7 +80,7 @@ let cerrarSesion = () => {
 * Redirecciona al index
 */
 let redirect = () => {
-  window.location.replace(`${_URL_}/index.php`);
+  window.location.replace(`${_URL_}/validator.php`);
 }
 /*
 * Se activa esta funcion si el correo del usuario no esta validado

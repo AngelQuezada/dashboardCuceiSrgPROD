@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CUCEI-SRG HOME PAGE</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+              <a class="navbar-brand" href="#"><img src="assets/img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#banner">Inicio</a></li>
+                <li class=""><a href="#sistema">Sistema</a></li>
+                <li class=""><a href="#about">Acerca</a></li>
+                <li class=""><a href="#desarrollo">Desarrollo</a></li>
+                <li class=""><a href="#contact">Contacto</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>  
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="banner-logo text-center">
+              <img src="assets/img/logo.png" class="img-responsive">
+            </div>
+            <div class="banner-text text-center">
+              <h1 class="white">Sistema de Reportes Generales</h1>
+              <p>Una nueva forma de realizar Reportes de Mantenimiento y Seguridad en CUCEI</p>
+              <a href="#sistema" class="btn btn-appoint">Sistema SRG</a>
+            </div>
+            <div class="overlay-detail text-center">
+              <a href="#sistema"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+  <!--service-->
+  <section id="sistema" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4">
+          <h2 class="ser-title">Sistema SRG</h2>
+          <hr class="botm-line">
+          <p>SRG Cuenta con 3 Módulos de ingreso al sistema  </p>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-cogs"></i>
+            </div>
+            <div class="icon-info">
+              <h4>Sistema Administrativo</h4>
+              <button class="btn btn-appoint" onclick="sistemaAdministrativo()" style="margin: 0px;">Ingresar</button>
+              <p>Área de acceso exclusivo para personal y administrativos de la <b>Coordinación de Servicios Generales.</b></p>
+            </div>
+          </div>
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-shield"></i>
+            </div>
+            <div class="icon-info">
+              <h4>Sistema de Seguridad</h4>
+              <button class="btn btn-appoint" onclick="sistemaSeguridad()" style="margin: 0px;">Ingresar</button>
+              <p>Área de acceso exclusivo para <b>Alumnos</b> de CUCEI</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-4">
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-shield"> <i class="fa fa-cogs"></i></i>
+            </div>
+            <div class="icon-info">
+              <h4>Sistema de Mantenimiento y Seguridad</h4>
+              <button class="btn btn-appoint" onclick="sistemaManSeg()" style="margin: 0px;">Ingresar</button>
+              <p>Área de acceso para <b>Académicos y Personal</b> de CUCEI</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!--about-->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="section-title">
+            <h2 class="head-title lg-line">Acerca de <br>CUCEI-SRG</h2>
+            <hr class="botm-line">
+            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+          </div>
+        </div>
+        <div class="col-md-9 col-sm-8 col-xs-12">
+          <div style="visibility: visible;" class="col-sm-9 more-features-box">
+            <div class="more-features-box-text">
+              <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
+              <div class="more-features-box-text-description">
+                <h3>It's something important you want to know.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+              </div>
+            </div>
+            <div class="more-features-box-text">
+              <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
+              <div class="more-features-box-text-description">
+                <h3>It's something important you want to know.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--desarrollo-->
+  <section id="desarrollo" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">Equipo de Desarrollo</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>Ingeniero en Informática - CUCEI</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="assets/img/victor.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Victor Manuel<span>Rosas</span></h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>Ingeniero en Informática - CUCEI</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="assets/img/miguel.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Miguel Angel<span>Quezada</span></h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>Ingeniero en Informática - CUCEI</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="assets/img/dario.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Darío Daniel<span>Schmid</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ desarollo-->
+  <!--cta 2-->
+  <section id="cta-2" class="section-padding">
+    <div class="container">
+      <div class=" row">
+        <div class="col-md-2"></div>
+        <div class="text-right-md col-md-4 col-sm-4">
+          <h2 class="section-title white lg-line">« Frase<br> del mes »</h2>
+        </div>
+        <div class="col-md-4 col-sm-5">
+          Experience is the name everyone gives to their mistakes.
+          <p class="text-right text-primary"><i>— Oscar Wilde</i></p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </section>
+  <!--cta-->
+  <!--contact-->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">Contáctanos</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <h3>Información de Contacto</h3>
+          <div class="space"></div>
+          <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Módulo Q2 Coordinación de Servicios Generales<br>Centro Universitario de Ciencias Exactas e Ingenierías</p>
+          <div class="space"></div>
+          <p>Correo electrónico del desarrollador:</p>
+          <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i><a href="mailto:firebase.cuceisrg001@gmail.com">firebase.cuceisrg001@gmail.com</a></p>
+        </div>
+        <div class="col-md-8 col-sm-8 marb20">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d933.3269966177741!2d-103.32512357083517!3d20.657045299137565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b2255d6cde63%3A0x619b781a3487181a!2sCoordinaci%C3%B3n+de+Servicios+Generales!5e0!3m2!1ses!2smx!4v1563296108591!5m2!1ses!2smx" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ contact-->
+  <!--footer-->
+  <footer id="footer">
+    <div class="footer-line">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            © 2019 CUCEI-SRG - Coordinación de Servicios Generales | Todos los derechos reservados | <a href="aviso-privacidad.html" target="_blank">Aviso de Privacidad</a> | Diseño base por <a href="https://bootstrapmade.com" target="_blank">Bootstrapmade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ footer-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="assets/js/libs/jquery.easing.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="assets/js/libs/custom.js"></script>
+  <script>
+    let sistemaAdministrativo = () => {
+      window.location.replace(`access.php`);
+    }
+    let sistemaSeguridad = () => {
+      alert("Disponible Próximamente");
+    }
+    let sistemaManSeg = () => {
+      alert("Disponible Próximamente");
+    }
+  </script>
+</body>
+</html>

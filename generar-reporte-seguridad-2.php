@@ -1,4 +1,10 @@
 ﻿<?php
+session_start();
+if (!isset($_SESSION['personal'])){ 
+  echo "<script>window.location.replace(`401.php`);</script>"; 
+  } 
+?>
+<?php
   require_once('centinela.php');
 ?>
 <!DOCTYPE html>

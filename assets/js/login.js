@@ -22,7 +22,7 @@ let login = () => {
   let correo = document.getElementById('txtCorreoLogin').value;
   let password = document.getElementById('txtPassword').value;
   firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
-    window.location.replace(`${URL}/index.php`);
+    window.location.replace(`${URL}/validator.php`);
   }).catch(function(error) {
     let errorCode = error.code;
     let errorMessage = error.message;
@@ -50,7 +50,7 @@ let login = () => {
 let userLogIn = () => {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-         window.location.replace(`${URL}/index.php`);
+         window.location.replace(`${URL}/validator.php`);
       }
   });
 }
