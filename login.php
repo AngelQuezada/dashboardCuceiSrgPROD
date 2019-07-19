@@ -1,8 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['personal'])){ 
-  echo "<script>window.location.replace(`401.php`);</script>"; 
-  } 
+if (!isset($_SESSION['personal'])){
+  echo "<script>window.location.replace(`401.php`);</script>";
+  }
+$correo = $_SESSION['personal'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,8 +30,7 @@ if (!isset($_SESSION['personal'])){
     <form name="formulario" autocomplete="off" required>
       <div class="input-group margin-bottom-sm" style="margin: 0px">
         <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true" style="color: #0064b7"></i></span>
-        <input type="email" class="form-control" placeholder="Correo Electrónico" id="txtCorreoLogin" name="txtCorreoLogin" ng-model="txtCorreoLogin" ng-minlenght="12" required>
-        <span style="color: crimson;" ng-show="formulario.txtCorreoLogin.$touched && formulario.txtCorreoLogin.$invalid"><b>Correo es requerido.</b><br/></span>
+        <b><input type="email" class="form-control" placeholder="Correo Electrónico" id="txtCorreoLogin" name="txtCorreoLogin" value="<?php echo htmlspecialchars($correo); ?>" disabled></b>
       </div>
       <div class="input-group margin-bottom-sm" style="margin: 0px">
         <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true" style="color: #ffd600"></i></span>
@@ -42,7 +42,6 @@ if (!isset($_SESSION['personal'])){
       <div class="row">
         <div class="col-sm-12">
           <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: black; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
-          <button id="btnRegistro" class="btn btn-primary btn-block btn-flat" style="color: black; border-radius: 20px" onclick="registrarse()">Registrarse</button>
         </div>
          <div class="col-sm-12" style="text-align: center">
           <a href="#" style="color: #f44336;" onclick="resetPwPage()" id="btnResetPassword">Recuperar contraseña</a>
