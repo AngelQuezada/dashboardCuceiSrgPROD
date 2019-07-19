@@ -5,7 +5,7 @@ $CURL_PROD = 'http://apisrg.cucei.udg.mx/index.php/personal/verifypersonal/'.$em
 $curl = curl_init();
 curl_setopt_array($curl, [
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => $CURL_DEV,
+    CURLOPT_URL => $CURL_PROD,
 ]);
 // Send the request & save response to $resp
 $resp = curl_exec($curl);

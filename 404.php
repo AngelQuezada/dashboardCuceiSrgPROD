@@ -13,7 +13,7 @@
 <body style="background-color: rgb(139,220,242);">
         <div class="row">
             <div class="col-sm-6">
-                <img src="assets/img/geek-bird.png" style="position: absolute; left: 10%">
+                <img src="assets/img/logo.png" style="position: absolute; left: 10%">
             </div>
             <div class="col-sm-6">
                 <p id="txtCucei" style="font-size: 150px">404</p>
