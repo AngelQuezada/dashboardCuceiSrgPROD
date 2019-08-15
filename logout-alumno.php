@@ -1,22 +1,3 @@
-<?php
-session_start();
-
-// Destruir todas las variables de sesión.
-$_SESSION = array();
-
-// Si se desea destruir la sesión completamente, borre también la cookie de sesión.
-// Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
-}
-
-// Finalmente, destruir la sesión.
-session_destroy();
-?>
 <link rel="stylesheet" type="text/css" href="assets/css/logout.css">
 <body style="background: linear-gradient(to right, #2B32B2, #1488CC);">
 <div style="text-align: center">
@@ -25,9 +6,6 @@ session_destroy();
 </body>
 <?php
   include('footer.php');
-?>
-<?php
-  require_once('centinela.php');
 ?>
 <script type="text/javascript">
 $(document).ajaxStart(function () {
@@ -54,7 +32,7 @@ let logout = () => {
   firebase.auth().signOut().then(function() {
     deleteToken();
   }).catch(function() {
-    swal("Admin CUCEI-SRG", "Has ocurrido un error al intentar cerrar sesión", "error");
+    swal("Alumno CUCEI-SRG", "Has ocurrido un error al intentar cerrar sesión", "error");
     return;
   });
 }
@@ -70,7 +48,7 @@ let deleteToken = () => {
   }
   $.ajax({
     type: 'POST',
-    url: `${URI}/personal/deletetoken`,
+    url: `${URI}/usuario/deletetoken`,
     data: JSON.stringify(datos),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',

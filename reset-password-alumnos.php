@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['personal'])){ 
-  echo "<script>window.location.replace(`401.php`);</script>"; 
-  } 
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +13,7 @@ if (!isset($_SESSION['personal'])){
 <body class="hold-transition register-page" style="overflow: hidden;background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="register-box" style="margin-top: 0%">
   <div class="register-logo">
-    <b style="color: white">Admin</b><img src="assets/img/logo.png" style="width: 60%">
+    <b style="color: white">Alumnos</b><img src="assets/img/logo.png" style="width: 60%">
   </div>
     <div class="register-box-body" style="border-radius: 20px; background-color: #eeeeee">
       <div class="login-logo" style="margin: 0px">
@@ -29,7 +23,7 @@ if (!isset($_SESSION['personal'])){
       <form name="formulario" autocomplete="off" required>
           <div class="input-group margin-bottom-sm" style="margin: 0px">
             <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true" style="color: #0064b7"></i></span>
-            <input type="email" id="txtCorreoReset" name="txtCorreoReset" class="form-control" placeholder="Ingrese su correo electrónico" ng-model="txtCorreoReset" ng-minlenght="12" required>
+            <input type="email" id="txtCorreoReset" name="txtCorreoReset" class="form-control" placeholder="Ingrese su correo institucional" ng-model="txtCorreoReset" ng-minlenght="12" required>
             <span style="color: crimson;" ng-show="formulario.txtCorreoReset.$touched && formulario.txtCorreoReset.$invalid"><b>Correo es requerido.</b><br/></span>
           </div>
           <div class="col-sm-12" style="text-align: center" id="captcha"></div>
@@ -39,7 +33,7 @@ if (!isset($_SESSION['personal'])){
               <button id="btnReset"  type="button" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha();">Enviar solicitud</button>
             </div>
             <div class="col-sm-12">
-              <button id="btnAtras" type="button" class="btn btn-danger btn-block btn-flat"  style="background-color: #f44336; color: white; border-radius: 20px" onclick="regresar();">Regresar</button>
+              <button id="btnAtras" type="button" class="btn btn-danger btn-block btn-flat"  style="background-color: #f44336; color: white; border-radius: 20px" onclick="regresarIndex();">Regresar</button>
             </div>
           </div>
     </div> 
@@ -58,7 +52,7 @@ if (!isset($_SESSION['personal'])){
 let verifyReCaptcha = () => {
   let captchaVerify =  grecaptcha.getResponse(captcha);
   if(!captchaVerify){
-    swal("ADMIN CUCEI-SRG", "Realice el captcha antes de continuar", "error");
+    swal("ALUMNOS CUCEI-SRG", "Realice el captcha antes de continuar", "error");
   }else{
     resetPassword();
   }
@@ -76,6 +70,9 @@ var onloadCallback = function() {
     'theme' : 'light'
   });
 };
+let regresarIndex = () => {
+    window.location.replace('ingreso-alumnos.php');
+}
 </script>
 </body>
 </html>

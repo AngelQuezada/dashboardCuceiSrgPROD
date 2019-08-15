@@ -250,6 +250,5 @@ let getAula = () => {
 /*
 *Seteo el campo recibe y lo deshabilito
 */
-document.getElementById("correo").disabled = true;
 $('#recibe').val(localStorage.getItem("nombreCompleto"));
 document.getElementById("recibe").disabled = true;

@@ -63,17 +63,16 @@
         <div class="col-md-4 col-sm-4">
           <h2 class="ser-title">Sistema SRG</h2>
           <hr class="botm-line">
-          <p>SRG Cuenta con 3 Módulos de ingreso al sistema  </p>
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="service-info">
             <div class="icon">
               <i class="fa fa-cogs"></i>
             </div>
-            <div class="icon-info">
-              <h4>Sistema Administrativo</h4>
+            <div class="icon-info"> 
+              <h4>Sistema SRG</h4>
+              <h5><b>Coordinación de Servicios Generales.</b></h5>
               <button class="btn btn-appoint" onclick="sistemaAdministrativo()" style="margin: 0px;">Ingresar</button>
-              <p>Área de acceso exclusivo para personal y administrativos de la <b>Coordinación de Servicios Generales.</b></p>
             </div>
           </div>
           <div class="service-info">
@@ -81,9 +80,9 @@
               <i class="fa fa-shield"></i>
             </div>
             <div class="icon-info">
-              <h4>Sistema de Seguridad</h4>
+              <h4>¿Eres Alumno?</h4>
+              <p>Consulta aquí tus reportes de Seguridad.</p>
               <button class="btn btn-appoint" onclick="sistemaSeguridad()" style="margin: 0px;">Ingresar</button>
-              <p>Área de acceso exclusivo para <b>Alumnos</b> de CUCEI</p>
             </div>
           </div>
         </div>
@@ -94,9 +93,9 @@
               <i class="fa fa-shield"> <i class="fa fa-cogs"></i></i>
             </div>
             <div class="icon-info">
-              <h4>Sistema de Mantenimiento y Seguridad</h4>
+              <h4>¿Eres Profesor/Personal Administrativo?</h4>
+              <p>Consulta aquí tus reportes de Mantenimiento y Seguridad.</p>
               <button class="btn btn-appoint" onclick="sistemaManSeg()" style="margin: 0px;">Ingresar</button>
-              <p>Área de acceso para <b>Académicos y Personal</b> de CUCEI</p>
             </div>
           </div>
         </div>
@@ -113,7 +112,7 @@
           <div class="section-title">
             <h2 class="head-title lg-line">Acerca de <br>CUCEI-SRG</h2>
             <hr class="botm-line">
-            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+            <p class="sec-para" style="text-align: justify; text-justify: inter-word;">El sistema de Reportes General CUCEI SRG es un sistema administrativo dedicado a la Coordinación de Servicios Generales CSG del plantel CUCEI. Esta herramienta fue construida en base a los requisitos y necesidades de la Coordinación, la cual nos proporcionó toda la información necesaria para llevar a cabo este proyecto, este sistema ayudará a tener un Centro Universitario sustentable reduciendo el consumo de hojas ya que todo se podrá manejar de manera electrónica.</p>
           </div>
         </div>
         <div class="col-md-9 col-sm-8 col-xs-12">
@@ -121,15 +120,15 @@
             <div class="more-features-box-text">
               <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
               <div class="more-features-box-text-description">
-                <h3>It's something important you want to know.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                <h3>Objetivo Principal</h3>
+                <p style="text-align: justify; text-justify: inter-word;">Ofrecer un software de calidad en el cual sea más eficiente para la forma de trabajo de las áreas de Seguridad y Mantenimiento del CSG así tenga un mejor tiempo de respuesta para la mitigación de las incidencias que suceden comunidad de CUCEI.</p>
               </div>
             </div>
             <div class="more-features-box-text">
               <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
               <div class="more-features-box-text-description">
-                <h3>It's something important you want to know.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.</p>
+                <h3>CUCEI <kbd>Tecnológico/></kbd></h3>
+                <p style="text-align: justify; text-justify: inter-word;">Se desarrolló con las herramientas de desarrollo actuales y con su constante actualización se manteniene seguro para toda la comunidad Universitaria.</p>
               </div>
             </div>
           </div>
@@ -192,11 +191,10 @@
       <div class=" row">
         <div class="col-md-2"></div>
         <div class="text-right-md col-md-4 col-sm-4">
-          <h2 class="section-title white lg-line">« Frase<br> del mes »</h2>
+          <h2 class="section-title white lg-line">« Frase<br> Motivacional »</h2>
         </div>
         <div class="col-md-4 col-sm-5">
-          Experience is the name everyone gives to their mistakes.
-          <p class="text-right text-primary"><i>— Oscar Wilde</i></p>
+          <span id="spanFrase"></span>
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -216,7 +214,7 @@
           <div class="space"></div>
           <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Módulo Q2 Coordinación de Servicios Generales<br>Centro Universitario de Ciencias Exactas e Ingenierías</p>
           <div class="space"></div>
-          <p>Correo electrónico del desarrollador:</p>
+          <p>¿Dudas o Problemas con el Sistema?</p>
           <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i><a href="mailto:firebase.cuceisrg001@gmail.com">firebase.cuceisrg001@gmail.com</a></p>
         </div>
         <div class="col-md-8 col-sm-8 marb20">
@@ -248,11 +246,30 @@
       window.location.replace(`access.php`);
     }
     let sistemaSeguridad = () => {
-      alert("Disponible Próximamente");
+      window.location.replace(`ingreso-alumnos.php`);
     }
     let sistemaManSeg = () => {
       alert("Disponible Próximamente");
     }
+    var frases = new Array();
+    frases[0] = `<p style="text-align: justify; text-justify: inter-word;">Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.</p><p class="text-right text-primary"><i>— Steve Jobs</i></p>`;
+    frases[1] = `<p style="text-align: justify; text-justify: inter-word;">Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come.</p><p class="text-right text-primary"><i>— Dwayne Johnson</i></p>`;
+    frases[2] = `<p style="text-align: justify; text-justify: inter-word;">Believe in yourself, and the rest will fall into place. Have faith in your own abilities, work hard, and there is nothing you cannot accomplish.</p><p class="text-right text-primary"><i>— Brad Henry</i></p>`;
+    frases[3] = `<p style="text-align: justify; text-justify: inter-word;">Through hard work, perseverance and a faith in God, you can live your dreams.</p><p class="text-right text-primary"><i>— Ben Carson</i></p>`;
+    frases[4] = `<p style="text-align: justify; text-justify: inter-word;">Look at the sky. We are not alone. The whole universe is friendly to us and conspires only to give the best to those who dream and work.</p><p class="text-right text-primary"><i>— A. P. J. Abdul Kalam</i></p>`;
+    frases[5] = `<p style="text-align: justify; text-justify: inter-word;">With hard work and dedication, anything is possible.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Timothy Weah</i></p>`;
+    frases[6] = `<p style="text-align: justify; text-justify: inter-word;">La mejor manera de predecir el futuro es crearlo.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Alan Kai</i></p>`;
+    frases[7] = `<p style="text-align: justify; text-justify: inter-word;">Intenta y falla, pero nunca falles en intentarlo.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Jared Leto</i></p>`;
+    frases[8] = `<p style="text-align: justify; text-justify: inter-word;">Si esperas a que llegue el momento perfecto, acabarás esperando toda tu vida. Es mejor que cojas lo que tienes y empieces ya.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Les Brown</i></p>`;
+    frases[9] = `<p style="text-align: justify; text-justify: inter-word;">Todos nuestros sueños pueden hacerse realidad si tenemos el coraje de perseguirlos.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Walt Disney</i></p>`;
+    frases[10] = `<p style="text-align: justify; text-justify: inter-word;">La diferencia entre lo posible y lo imposible está en la determinación de una persona.<small> Fuente: <a href="https://frases.top/frases-motivacion-motivadoras/frases-inspiradoras/" target="_blank">Frases Top</a></small></p><p class="text-right text-primary"><i>— Tommy Lasorda</i></p>`;
+    var Q = frases.length;
+    var numAleatorio = Math.round(Math.random()*(Q-1));
+
+    let fraseAleatoria = () => {
+      document.getElementById("spanFrase").innerHTML = frases[numAleatorio];
+    }
+    fraseAleatoria();
   </script>
 </body>
 </html>

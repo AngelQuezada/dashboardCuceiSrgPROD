@@ -34,7 +34,6 @@ if (!isset($_SESSION['personal'])){
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color: white">&times;</button>
     <h4><i class="icon fa fa-info"></i>Ayuda</h4>
     <h5>Asegurese de conocer el correo electrónico del usuario que reportó el incidente.</h5>
-    <h5>Por motivos de pruebas se tiene ya asignado un correo de prueba.</h5>
     <h5>Agregue una anotación extra si solo no existe un Piso ni Aula del Módulo Seleccionado.</h5>
   </div>
   <div class="row" id="principal">
@@ -44,8 +43,8 @@ if (!isset($_SESSION['personal'])){
         <label for="recibe" style="color: #f5f5f5;">Recibe</label>
       </div>
       <div class="col-sm-3">
-        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" value="prueba@gmail.com" style="color: #f5f5f5;" required>
-        <!-- <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span> -->
+        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" style="color: #f5f5f5;" required>
+        <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span>
         <label for="correo" style="color: #f5f5f5;"><small style="color: red">*</small>Correo</label>
       </div>
       <div class="col-sm-2">

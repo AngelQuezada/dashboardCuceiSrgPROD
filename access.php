@@ -10,7 +10,7 @@
 <body class="hold-transition login-page" style="overflow: hidden; background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="login-box" style="margin-top: 0px;">
   <div class="login-logo">
-    <b style="color: white">Admin</b><span style="color: white">CUCEI-SRG</span>
+    <b style="color: white">Admin</b><img src="assets/img/logo.png" style="width: 60%">
   </div>
   <div class="login-box-body" style="border-radius: 20px; background-color: #eeeeee;">
     <div class="login-logo" style="margin: 0px">

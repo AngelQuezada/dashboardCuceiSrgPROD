@@ -43,7 +43,7 @@ let login = () => {
       return;
     }
   });
-}
+};
 /*
 * Funcion rdireccionar index si el usuario esta logeado
 */

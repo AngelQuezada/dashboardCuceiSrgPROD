@@ -41,7 +41,7 @@ let reenviar = () => {
     user.sendEmailVerification().then(function(){
       swal("Correo de verificacion enviado, revisa tu correo para confirmarlo, en caso de no llegar da click sobre el boton reenviar", {
         icon: 'success',
-        title: 'ADMIN CUCEI-SRG',
+        title: 'ALUMNO CUCEI-SRG',
         closeOnClickOutside: false,
         closeOnEsc: false,
         buttons: {
@@ -82,7 +82,7 @@ let cerrarSesion = () => {
 * Redirecciona al index
 */
 let redirect = () => {
-  window.location.replace(`${_URL_}/validator.php`);
+  window.location.replace(`${_URL_}/validator-alumno.php`);
 }
 /*
 * Se activa esta funcion si el correo del usuario no esta validado
@@ -90,7 +90,7 @@ let redirect = () => {
 let validatedEmail = () => {
   swal("Necesitamos que verifiques tu cuenta primero, comprueba tu correo electronico, da click sobre el boton Verificar para intentarlo nuevamente, si no recibiste el correo de verificacion da click sobre el boton reenviar", {
     icon: 'info',
-    title: 'ADMIN CUCEI-SRG',
+    title: 'ALUMNO CUCEI-SRG',
     closeOnClickOutside: false,
     closeOnEsc: false,
     buttons: {
@@ -120,12 +120,6 @@ let validatedEmail = () => {
 */
 let userLogIn = () => {
   let existToken = localStorage.getItem("token");
-  let status = localStorage.getItem("status");
-  if(existToken !== null && status === '3') {
-    window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
-  }else if(existToken !== null && status === '6'){
-    window.location.replace(`${_URL_}/dashboard-seguridad.php`);
-  }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       let email = user.email;
@@ -137,7 +131,7 @@ let userLogIn = () => {
           //let email = user.email;
           $.ajax({
             type: "GET",
-            url: `${_URI_}/personal/empleado/`+email,
+            url: `${_URI_}/usuario/alumno/`+email,
             dataType: "json",
             async: false,
             success: function(data){
@@ -178,7 +172,7 @@ let userLogIn = () => {
           }
           $.ajax({
           type: 'POST',
-          url: `${_URI_}/personal/login`,
+          url: `${_URI_}/usuario/loginalumno`,
           data: JSON.stringify(datos),
           contentType: 'application/json; charset=utf-8',
           dataType: 'json',
@@ -187,7 +181,7 @@ let userLogIn = () => {
             $.each(data,function(key, registro) {
               let codigo = data.code;
               if (codigo == 1) {
-                window.location.replace(`${_URL_}/registro-datos.php`);
+                window.location.replace(`${_URL_}/registro-datos-alumno.php`);
               }else{
                 let token = data.token;
                 localStorage.setItem("token",token);
@@ -215,12 +209,8 @@ let userLogIn = () => {
                 //     }
                 //   });
                 // }
-                if(status === '3' || status === '4' || status === '5'){
-                window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
-                }else if(status === '6'){
-                  window.location.replace(`${_URL_}/dashboard-seguridad.php`);
-                }else if (status === '1'){
-                  window.location.replace(`${_URL_}/administrar-personal.php`);
+                if(status === '3'){
+                    window.location.replace(`${_URL_}/dashboard-alumno.php`);
                 }
               }
             });
@@ -246,7 +236,7 @@ let userLogIn = () => {
         });
       }
   } else {
-      window.location.replace(`${_URL_}/login.php`);
+      window.location.replace(`${_URL_}/ingreso-alumnos.php`);
     }
   });
 }
