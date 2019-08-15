@@ -9,6 +9,7 @@
     include('cookiePolicy.php');
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+<link rel="icon" href="favicon.png">
 </head>
 <body class="hold-transition login-page" style=" background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="login-box" style="margin-top: 0px;">

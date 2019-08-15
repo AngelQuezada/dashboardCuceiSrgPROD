@@ -9,6 +9,7 @@
     include('cookiePolicy.php');
   ?>
 <link rel="stylesheet" type="text/css" href="assets/css/reset-password.css">
+<link rel="icon" href="favicon.png">
 </head>
 <body class="hold-transition register-page" style="overflow: hidden;background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="register-box" style="margin-top: 0%">
