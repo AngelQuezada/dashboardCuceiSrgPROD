@@ -1,23 +1,29 @@
 var URI = localStorage.getItem('uri');
 var response;
 var response2;
+var response3;
 $(function(){
-    getReportesAlumno();
-    getReportes2Alumno();
+    getReportes();
+    getReportes2();
+    getReportes3();
     if(response != 0){
       document.getElementById("divIncidencias").hidden = false;
       tablaReportes();
     }
-    if(response2 !=0){
+    if(response2 != 0){
       document.getElementById("divRobo").hidden = false;
       tablaReportes2();
+    }
+    if(response3 != 0){
+        document.getElementById("divManten").hidden = false;
+        tablaReportes3();
     }
 });
 /*
 * Se obtiene la cantidad de registros de reportes de seguridad formato 1
 * @return JSON del response del REST Web Service
 */
-let getReportesAlumno = () => {
+let getReportes = () => {
     let correo = localStorage.getItem("email");
     let request = new XMLHttpRequest();
     request.open("GET",`${URI}/usuario/reportes/${correo}`,false);
@@ -34,7 +40,7 @@ let getReportesAlumno = () => {
 * Se obtiene la cantidad de registros de reportes de seguridad formato 2
 * @return JSON del response del REST Web Service
 */
-let getReportes2Alumno = () => {
+let getReportes2 = () => {
   let correo = localStorage.getItem("email");
   let request = new XMLHttpRequest();
   request.open("GET",`${URI}/usuario/reportes2/${correo}`,false);
@@ -44,6 +50,19 @@ let getReportes2Alumno = () => {
     }
       response2 = JSON.parse(request.response);
       document.getElementById("cantidadReportesRobo").innerHTML = response2;
+  };
+  request.send();
+};
+let getReportes3 = () => {
+  let idUsuario = localStorage.getItem("idUsuario");
+  let request = new XMLHttpRequest();
+  request.open("GET",`${URI}/usuario/reportes3/${idUsuario}`,false);
+  request.onreadystatechange = () => {
+    if (request.status !== 200){
+      return;
+    }
+      response3 = JSON.parse(request.response);
+      document.getElementById("cantidadReportesManten").innerHTML = response3;
   };
   request.send();
 };
@@ -301,7 +320,6 @@ let verReporte = (value,object) => {
           </div>
         `);
       });
-
       $("#modalReportesRobo").find(".modal-body").append(`</div><div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" style="background: rgba(0, 8, 10, 0.322); color: #ffffff">Cerrar</button>
       </div>
@@ -312,4 +330,175 @@ let verReporte = (value,object) => {
     error: function() {
   }
 });
-}
+};
+let tablaReportes3 = () => {
+    let idUsuario = localStorage.getItem("idUsuario");
+    $("#tablaReportesManten").empty();
+    $("#tablaReportesManten").append(`<br><table class='table'>
+    <thead>
+    <tr class='bg-primary' style="background: rgba(41, 145, 206, 0.342)">
+    <th>Folio del Reporte</th>
+    <th>Observación Estatus</th>
+    <th>Estatus</th>
+    <th>Ver Reporte</th>
+    </tr>
+    </thead>
+    <tbody id="bodyTable3">`);
+    $.ajax({
+      type: "GET",
+      url: `${URI}/usuario/reportemanten/`+idUsuario,
+      dataType: "json",
+      success: function(data){
+        $.each(data,function(_key, registro) {
+          let status;
+          let obs;
+          registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
+          registro.idStatus === '1' ? status = "En Solicitud" : 
+          registro.idStatus === '2' ? status = "Asignado" : 
+          registro.idStatus === '3' ? status = "Finalizado" :
+          registro.idStatus === '4' ? status = "Cancelado" : status = registro.idStatus;
+          $("#bodyTable3").append(`
+          <tr style="text-align: center; background: #4848488a">
+          <input type="hidden" id="folioId" value="`+registro.folio+`"/>
+          <td style="color: #f5f5f5">`+registro.folio+`</td>
+          <td style="color: #f5f5f5">`+obs+`</td>
+          <td style="color: #f5f5f5">`+status+`</td>
+          <td><button class="btn btn-primary" id="btnVerReporte2" data-toggle="modal" data-target="#myModal2" onclick="verReporteManten('` + registro.folio + `','` + this + `')" style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
+          </tr>
+          `);
+        });
+        $("#bodyTable3").append(`</tbody>
+          </table>`);
+      },
+      error: function() {
+        $("#bodyTable3").append(`<p style="color: red;">No Hay Resultados Para Mostrar.</p>`);
+      }
+    });
+  };
+
+  /*
+* Generar un Modal con el folio seleccionado
+* @param Object
+*/
+let verReporteManten = (value,object) => {
+    let selectedFolio = object.innerHTML = value;
+    $("#modalReportesManten").empty();
+    $("#modalReportesManten").append(`<div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #212121">
+        <button type="button" class="close" data-dismiss="modal" style="color: #ffffff" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color: #f5f5f5">Datos del Reporte:</h4>
+      </div>
+      <div class="modal-body" style="background-color: #484848" id="bodyModal">`);
+      $.ajax({
+        type: "GET",
+        url: `${URI}/reporte/reporteindpp/`+selectedFolio,
+        dataType: "json",
+        success: function(data){
+          $.each(data,function(_key, registro) {
+            let ds;
+            registro.descripcion_servicio === '1' ? ds = "Aire Acondicionado" :
+            registro.descripcion_servicio === '2' ? ds = "Carpinteria" :
+            registro.descripcion_servicio === '3' ? ds = "Cristales y/o estructura de aluminio" :
+            registro.descripcion_servicio === '4' ? ds = "Eléctrico" :
+            registro.descripcion_servicio === '5' ? ds = "Herrería" :
+            registro.descripcion_servicio === '6' ? ds = "Hidráulico" :
+            registro.descripcion_servicio === '7' ? ds = "Infraestructura" :
+            registro.descripcion_servicio === '8' ? ds = "Jardinería" :
+            registro.descripcion_servicio === '9' ? ds = "Limpieza" :
+            registro.descripcion_servicio === '10' ? ds = "Pintura" : 
+            registro.descripcion_servicio === '11' ? ds = "Cerrajería" : ds = registro.descripcion_servicio;
+  
+            $("#modalReportesManten").find(".modal-body").append(`<div class="row">
+              <div class="col-sm-2">
+                <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" disabled>
+                <label for="txtFolioR" style="background: rgba(0, 8, 10, 0.322); color: #ffffff">Folio</label>
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control pull-right" id="txtFecha" style="background: rgba(0, 8, 10, 0.322); color: #ffffff"value="`+registro.fecha_elaboracion+`" disabled>
+                <label for="txtFecha" style="color: #ffffff">Fecha de Elaboración</label>
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" id="txtRecibe" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.recibe+`" disabled>
+                <label for="txtRecibe" style="color: #ffffff">Recibe</label>
+              </div>
+              <div class="col-sm-4">
+                  <input type="date" class="form-control" id="txtFechaRecepcion" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.fecha_recepcion+`" disabled>
+                  <label for="txtFechaRecepcion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Recepción</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="date" class="form-control" id="txtFechaAsignacion" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.fecha_asignacion+`" disabled>
+                <label for="txtFechaAsignacion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Asignación</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="date" class="form-control" id="txtFechaReparacion" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.fecha_reparacion+`" disabled>
+                <label for="txtFechaReparacion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Reparación</label>
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" id="txtNombre" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.nombre+`" disabled>
+                <label for="txtNombre" style="color: #ffffff">Nombre</label>
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" id="txtApaterno" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.a_paterno+`" disabled>
+                <label for="txtApaterno" style="color: #ffffff">Apellido Paterno</label>
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control" id="txtAmaterno" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.a_materno+`" disabled>
+                <label for="txtAmaterno" style="color: #ffffff">Apellido Materno</label>
+              </div>
+              <div class="col-sm-3">
+                <input class="form-control" id="txtTelefono" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.telefono+`" disabled>
+                <label for="txtTelefono" style="color: #ffffff">Teléfono</label>
+              </div>
+              <div class="col-sm-3">
+                <input class="form-control" id="txtAreaSolicitante" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.area_solicitante+`" disabled>
+                <label for="txtAreaSolicitante" style="color: #ffffff">Área Solicitante</label>
+              </div>
+              <div class="col-sm-6">
+                <input class="form-control" id="txtUbicacionServicio" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+registro.ubicacion_servicio+`" disabled>
+                <label for="txtUbicacionServicio" style="color: #ffffff">Ubicación del Servicio</label>
+              </div>
+              <div class="col-sm-12">
+                <hr style="color: black; border: 1px dotted;">
+              </div>
+              <div class="col-sm-6">
+  <b><textarea rows="4" cols="50" id="txtAnotacionExtra" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" disabled>`+registro.anotacion_extra+`</textarea></b>
+                <label for="txtAnotacionExtra" style="color: #ffffff">Anotación extra</label>
+              </div>
+              <div class="col-sm-6">
+  <b><textarea rows="4" cols="50" id="txtAnotacionExtra" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" disabled>`+registro.descripcion_problema+`</textarea></b>
+                <label for="txtDescripcionProblema" style="color: #ffffff">Descripción del Problema</label>
+              </div>
+              <div class="col-sm-12">
+                <input class="form-control" id="txtDescripcionServicio" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" value="`+ds+`" disabled>
+                <label for="txtDescripcionServicio" style="color: #ffffff">Descripción del Servicio</label>
+              </div>
+            `);
+          });
+          let fechaRecepcion = document.getElementById('txtFechaRecepcion').value;
+          let fechaAsignacion = document.getElementById('txtFechaAsignacion').value;
+          let fechaReparacion = document.getElementById('txtFechaReparacion').value;
+          let fer = new Date(fechaRecepcion);
+          let fa = new Date(fechaAsignacion);
+          let fr = new Date(fechaReparacion);
+          if (!isNaN(fer)) {
+            document.getElementById("txtFechaRecepcion").disabled = true;
+          }
+          if (!isNaN(fa)) {
+            document.getElementById("txtFechaAsignacion").disabled = true;
+          }
+          if (!isNaN(fr)) {
+            document.getElementById("txtFechaReparacion").disabled = true;
+          }
+          $("#modalReportesManten").find(".modal-body").append(`</div><div class="modal-footer">
+            <button type="button" class="btn btn-default" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" data-dismiss="modal">Cerrar</button>
+          </div>
+          </div>
+          </div>
+          </div>`);
+        },
+        error: function() {
+      }
+    });
+  }

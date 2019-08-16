@@ -9,15 +9,11 @@
     include('cookiePolicy.php');
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/login.css">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-<link rel="manifest" href="favicon_io/site.webmanifest">
 </head>
-<body class="hold-transition login-page" style=" background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
+<body class="hold-transition login-page" style="overflow: hidden; background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="login-box" style="margin-top: 0px;">
   <div class="login-logo">
-    <b style="color: white">Alumnos</b><img src="assets/img/logo.png" style="width: 60%">
+    <img src="assets/img/logo.png" style="width: 60%">
   </div>
   <div class="login-box-body" style="border-radius: 20px; background-color: #eeeeee;">
     <div class="login-logo" style="margin: 0px">
@@ -55,7 +51,6 @@
 <?php
     include('footer.php');
 ?>
-
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script>
@@ -88,7 +83,7 @@
 });
 
   let registrarse = () => {
-    window.location.replace(`alumnos-registro.php`);
+    window.location.replace(`cucei-registro.php`);
   }
 /*
 * Variables de configuracion de Firebase
@@ -109,9 +104,9 @@ firebase.initializeApp(config);
 let login = () => {
     let correo = document.getElementById('txtCorreoLogin').value;
     let password = document.getElementById('txtPassword').value;
-    if(/@alumnos.udg.mx\s*$/.test(correo) === true || /@alumno.udg.mx\s*$/.test(correo)){
+    if(/@cucei.udg.mx\s*$/.test(correo) || /@academicos.udg.mx\s*$/.test(correo)){
       firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
-        window.location.replace('validator-alumno.php');
+        window.location.replace('validator-cucei.php');
     }).catch(function(error) {
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -133,7 +128,7 @@ let login = () => {
         }
     });
     }else{
-      swal("¡Oops!", "El correo electronico debe de ser institucional alumnos.udg.mx o alumno.udg.mx", "error");
+      swal("¡Oops!", "El correo electronico debe de ser institucional cucei.udg.mx o academicos.udg.mx", "error");
       return;
     }
 };
@@ -154,7 +149,7 @@ $(function() {
     });
   });
 let resetPwPage = () => {
-    window.location.replace('reset-password-alumnos.php');
+    window.location.replace('reset-password-cucei.php');
 }
 let regresar = () => {
   window.location.replace('index.html');
@@ -165,7 +160,7 @@ let regresar = () => {
 let userLogIn = () => {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-         window.location.replace('validator-alumno.php');
+         window.location.replace('validator-cucei.php');
       }
   });
 }

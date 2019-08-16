@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>REPORTES SEGURIDAD</title>
+  <title>REPORTES</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li class=""><a href="#reportes">Reportes</a></li>
-                <li class=""><a href="logout-alumno.php">Salir</a></li>
+                <li class=""><a href="logout-cucei.php">Salir</a></li>
               </ul>
             </div>
           </div>
@@ -42,12 +42,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="ser-title" style="color: white">Tus Reportes de Seguridad</h2>
+          <h2 class="ser-title" style="color: white">Tus Reportes de Mantenimiento & Seguridad</h2>
           <hr class="botm-line">
         </div>
         <div class="col-md-12 col-sm-12">
+            <p style="color: white">Usted tiene: <span id="cantidadReportesManten"></span> Reportes de Mantenimiento</p>
           <p style="color: white">Usted tiene: <span id="cantidadReportes"></span> Reportes de Incidencias</p>
           <p style="color: white">Usted tiene: <span id="cantidadReportesRobo"></span> Reportes de Robo</p>
+        </div>
+        <div id="divManten" class="col-md-12 col-sm-12" hidden>
+          <h4 style="color: white;">Tabla de Reportes de Mantenimiento</h4>
+          <span id="tablaReportesManten"></span>
+          <span id="modalReportesManten"></span>
         </div>
         <div id="divIncidencias" class="col-md-12 col-sm-12" hidden>
           <h4 style="color: white;">Tabla de Reportes de Incidencias</h4>
@@ -66,6 +72,6 @@
   <script src="assets/js/libs/jquery.easing.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="assets/js/libs/custom.js"></script>
-  <script src="assets/js/dashboard-alumno.js"></script>
+  <script src="assets/js/dashboard-cucei.js"></script>
 </body>
 </html>

@@ -12,17 +12,17 @@
 <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 <link rel="icon" href="favicon.png">
 </head>
-<body class="hold-transition login-page" style="background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
+<body class="hold-transition login-page" style="overflow: hidden; background: linear-gradient(to right, #2B32B2, #1488CC);" ng-app="">
 <div class="login-box" style="margin-top: 0px;">
   <div class="login-logo">
-    <b style="color: white">Alumnos</b><img src="assets/img/logo.png" style="width: 60%">
+    <img src="assets/img/logo.png" style="width: 60%">
   </div>
   <div class="login-box-body" style="border-radius: 20px; background-color: #eeeeee;">
     <div class="login-logo" style="margin: 0px">
       Registrarse
     </div>
     <div style="text-align: center">
-      <h4>Se acepta tanto correo institucional <img src="https://logodownload.org/wp-content/uploads/2014/09/google-logo-7.png"></img> <img src="https://uploads-ssl.webflow.com/56a1006de9a99a4669bfd05c/56a101432f2ef2655bb9334d_office365.png" width="90px" height="40px"></img></h4>
+      <h4>Se acepta tanto correo académico <img src="https://logodownload.org/wp-content/uploads/2014/09/google-logo-7.png"></img> ó <b>cucei.udg.mx</b></h4>
     </div>
     <hr style="background-color: black; margin: 0px">
     <form name="formulario" autocomplete="off" required>
@@ -32,8 +32,7 @@
         <span style="color: crimson;" ng-show="formulario.txtCorreoRegistro.$touched && formulario.txtCorreoRegistro.$invalid"><b>Correo es requerido.</b><br/></span>
       </div>
                <div class="col-sm-12" style="text-align: center">
-          <p><a href="http://cgti.udg.mx/correo-google" target="_blank" style="color: rgb(23, 12, 184);">Ayuda Correo Institucional Google</a></p>
-          <a href="http://cgti.udg.mx/udglive" target="_blank" style="color: rgb(23, 12, 184);">Ayuda Correo Institucional Office 365</a>
+          <p><a href="http://www.cucs.udg.mx/sites/default/files/google_academico_-_instrucciones_0.pdf" target="_blank" style="color: rgb(23, 12, 184);">Ayuda Correo Académico Google</a></p>
         </div>
       <div class="input-group margin-bottom-sm" style="margin: 0px;">
         <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true" style="color: #ffd600"></i></span>
@@ -47,7 +46,7 @@
           <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha()" id="btnIngresar">Registrarse</button>
         </div>
          <div class="col-sm-12" style="text-align: center">
-          <a href="ingreso-alumnos.php" style="color: #f44336;">Cancelar Registro</a>
+          <a href="ingreso-cucei.php" style="color: #f44336;">Cancelar Registro</a>
         </div>
     </form>
   </div>
@@ -95,7 +94,7 @@ let registroPersonal = () => {
   let secondaryAcc = firebase.initializeApp(config2,"Secondary");
   let email = document.getElementById('txtCorreoRegistro').value;
   let password = document.getElementById('txtPasswordRegistro').value;
-  if(/@alumnos.udg.mx\s*$/.test(email) === true || /@alumno.udg.mx\s*$/.test(email)) {
+  if(/@cucei.udg.mx\s*$/.test(email) || /@academicos.udg.mx\s*$/.test(email)) {
     secondaryAcc.auth().createUserWithEmailAndPassword(email,password).then(function(){
     let user = secondaryAcc.auth().currentUser;
     user.sendEmailVerification().then(function(){
@@ -117,7 +116,7 @@ let registroPersonal = () => {
               }).then((value) => {
                 switch (value) {
                   case "salir":
-                    window.location.replace('ingreso-alumnos.php');
+                    window.location.replace('ingreso-cucei.php');
                   break;
                 }
               });
@@ -147,7 +146,7 @@ let registroPersonal = () => {
   });
 
   }else{
-    swal("¡Oops!", "El correo electronico debe de ser institucional alumnos.udg.mx", "error");
+    swal("¡Oops!", "El correo electronico debe de ser institucional cucei.udg.mx o academicos.udg.mx", "error");
     return;
   }
 };
