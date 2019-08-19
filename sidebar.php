@@ -3,7 +3,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel" id="user-panel" style="text-align: center;">
-          <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" id="spinerEmail"></i><br/>
         <b id="txtRol" style="background-color: purple; color: white;"></b><br/>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -130,18 +130,18 @@ let setNameSideBar = () => {
     $("#spinerEmail").remove();
     //$('#user-panel').append('<small>'+localStorage.getItem("email")+'</small>');
     //OCULTA PANEL SI NO ES DE SEGURIDAD
-    if(status === '6'){
-      $("#treeViewMantenimiento").hide();
-      $("#dsMantenimiento").hide();
-    }
-    //OCULTA PANEL SI NO ES DE MANTENIMIENTO
-    if(status === '3'){
-      $("#treeViewSeguridad").hide();
-      $("#dsSeguridad").hide();
-    }
-      if(status === '1'){
-        $("#SideBarMenu").hide();
-      }
+    // if(status === '6'){
+    //   $("#treeViewMantenimiento").hide();
+    //   $("#dsMantenimiento").hide();
+    // }
+    // //OCULTA PANEL SI NO ES DE MANTENIMIENTO
+    // if(status === '3'){
+    //   $("#treeViewSeguridad").hide();
+    //   $("#dsSeguridad").hide();
+    // }
+    //   if(status === '1'){
+    //     $("#SideBarMenu").hide();
+    //   }
   }, 1000);
   });
 }

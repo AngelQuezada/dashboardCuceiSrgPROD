@@ -15,7 +15,7 @@ if (!isset($_SESSION['personal'])){
     	include('header.php');
   	?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
+<body class="hold-transition skin-purple sidebar-mini fixed">
 	<div class="wrapper">
 	<?php
       include("navbar.php");
@@ -23,15 +23,15 @@ if (!isset($_SESSION['personal'])){
     <?php
       include("sidebar.php");
     ?>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="background: #212121; !important">
     	<section class="content-header">
-    		<h1>
+    		<h1 style="color: #f5f5f5">
 		        Reportes Nuevos
-		        <small>Sistema de Reportes Generales</small>
+		        <small style="color: #f5f5f5">Sistema de Reportes Generales</small>
       		</h1>
 			<ol class="breadcrumb">
-				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Reportes Nuevos</li>
+				<li><a href="dashboard-mantenimiento.php" style="color: #f5f5f5"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li class="active" style="color: #f5f5f5">Reportes Nuevos</li>
 			</ol>
     	</section>
     	<!-- END Content Header (Page header) -->
@@ -41,7 +41,7 @@ if (!isset($_SESSION['personal'])){
 				<li><a href="dashboard-mantenimiento.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li class="active" style="color: white;">Reportes Nuevos</li>
 			</ol>
-			<div class="alert alert-info alert-dismissible" style="background: green;">
+			<div class="alert alert-default alert-dismissible" style="background: #12005e;">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<h4><i class="icon fa fa-info"></i>Ayuda</h4>
 				De click sobre el ícono: <i class="fa fa-external-link" aria-hidden="true"></i> Para ver el reporte.<br/>
@@ -52,13 +52,13 @@ if (!isset($_SESSION['personal'])){
 			<div class="row">
 				<div class="input-field col-sm-12">
 
-					<div class="box box-danger">
+					<div class="box box-danger" style="background: #484848">
 						<div class="box-header with-border">
-							<h3 class="box-title">Listado de Reportes</h3>
+							<h3 class="box-title" style="color: #f5f5f5">Listado de Reportes</h3>
 						</div>
 						<div class="box-body">
 							<div class="col-sm-12">
-								<button class="btn btn-primary" onclick="reportesTodos()" style="background-color: #00c853; color: white;">Refrescar</button>
+								<button class="btn btn-primary" onclick="reportesTodos()" style="background-color: #00695c; color: white; border-radius: 20px">Refrescar</button>
 							</div>
 						</div>
 					</div>

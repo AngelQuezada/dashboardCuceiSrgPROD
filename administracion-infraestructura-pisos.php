@@ -41,13 +41,10 @@ if (!isset($_SESSION['personal'])){
             <div class="alert alert-info alert-dismissible" style="background: green;">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-info"></i>Ayuda</h4>
-                Aquí podrá administrar los pisos de CUCEI
+                Aquí podrá administrar los pisos de cada módulo de CUCEI
             </div>
             <div class="row">
-                <div class="col-sm-3">
-			        <span id="tablaPisos"></span>
-                </div>
-                <div class="col-sm-3">
+                <div class="col-sm-12">
                     <span id="tablaModulos"></span>
                 </div>
             </div>

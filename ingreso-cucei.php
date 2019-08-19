@@ -104,7 +104,7 @@ firebase.initializeApp(config);
 let login = () => {
     let correo = document.getElementById('txtCorreoLogin').value;
     let password = document.getElementById('txtPassword').value;
-    if(/@cucei.udg.mx\s*$/.test(correo) || /@academicos.udg.mx\s*$/.test(correo)){
+    if(/@cucei.udg.mx\s*$/.test(correo) || /@academicos.udg.mx\s*$/.test(correo) || /@alumnos.udg.mx\s*$/.test(correo) ){
       firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
         window.location.replace('validator-cucei.php');
     }).catch(function(error) {

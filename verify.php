@@ -11,7 +11,12 @@ curl_setopt_array($curl, [
 $resp = curl_exec($curl);
 $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 if ($http_status==400) {
-  echo "<script>window.location.replace(`access.php`);</script>";
+  $json2 = json_decode( $resp, true );
+  $msg = $json2['mensaje'];
+  echo "<script>";
+  echo "if(alert('$msg'));";  
+  echo "window.location = 'access.php';";
+  echo "</script>";  
   return;
 }
 // Close request to clear up some resources

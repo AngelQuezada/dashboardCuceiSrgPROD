@@ -9,7 +9,7 @@ let reportesTodos = () => {
     $("#tablaResultados").empty();
     $("#tablaResultados").append(`<br><table class='table' id="tablaNuevos">
     <thead>
-    <tr class='bg-primary'>
+    <tr class='bg-primary' style="background: #000000">
     <th>Folio</th>
     <th>Status</th>
     <th>Observacion Status</th>
@@ -33,11 +33,11 @@ $.ajax({
           registro.idStatus === '3' ? status = "Finalizado" : status = "Cancelado";
           registro.observacion_status === null ? obs = "Sin Observaciones" : obs = registro.observacion_status;
           $("#bodyTable").append(`
-          <tr style="text-align: center">
+          <tr style="text-align: center; background: #484848">
           <input type="hidden" id="folioId" value="`+registro.folio+`"/>
-          <td>`+registro.folio+`</td>
-          <td>`+status+`</td>
-          <td>`+obs+`</td>
+          <td style="color: #f5f5f5">`+registro.folio+`</td>
+          <td style="color: #f5f5f5">`+status+`</td>
+          <td style="color: #f5f5f5">`+obs+`</td>
           <td><button class="btn btn-primary" id="btnVerReporte" data-toggle="modal" data-target="#myModal" onclick="verReporte('`+registro.folio+`','`+this+`')" style="background-color: #0d47a1"><i class="fa fa-external-link" aria-hidden="true" style="color: white"></i></button></td>
           <td><button class="btn btn-primary" id="btnAgregarObservacion" onclick="agregarObservacion('`+registro.folio+`','`+obs+`','`+this+`')" style="background-color: #ef6c00"><i class="fa fa-bullhorn" aria-hidden="true" style="color: white"></i></button></td>
           <td><button class="btn btn-primary" onclick="cancelarReporte('`+registro.folio+`','`+this+`')" style="background-color: #f44336"><i class="fa fa-ban" aria-hidden="true" style="color: white"></i></button></td>
@@ -200,11 +200,11 @@ let verReporte = (value,object) => {
   $("#modal").append(`<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
-    <div class="modal-header" style="background-color: #FAAC58">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Datos del Reporte:</h4>
+    <div class="modal-header" style="background-color: #212121">
+      <button type="button" class="close" data-dismiss="modal" style="color: #ffffff" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel" style="color: #f5f5f5">Datos del Reporte:</h4>
     </div>
-    <div class="modal-body" style="background-color: #F5ECCE" id="bodyModal">`);
+    <div class="modal-body" style="background-color: #484848" id="bodyModal">`);
     $.ajax({
       type: "GET",
       url: `${URI}/reporte/reporteindpp/`+selectedFolio,
@@ -244,67 +244,67 @@ let verReporte = (value,object) => {
            
           $("#modal").find(".modal-body").append(`<div class="row">
             <div class="col-sm-2" style="background-color:gray;">
-              <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: white;" disabled>
-              <label for="txtFolioR" style="color: black;">Folio</label>
+              <input class="form-control" id="txtFolioR" value="`+registro.folio+`" style="color: #ffffff" disabled>
+              <label for="txtFolioR" style="color: #ffffff">Folio</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtFecha" value="`+registro.fecha_elaboracion+`" disabled>
-              <label for="txtFecha" style="color: black;">Fecha de Elaboracion</label>
+              <input class="form-control" id="txtFecha" value="`+registro.fecha_elaboracion+`" style="color: #ffffff" disabled>
+              <label for="txtFecha" style="color: #ffffff">Fecha de Elaboracion</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtRecibe" value="`+registro.recibe+`" disabled>
-              <label for="txtRecibe" style="color: black;">Recibe</label>
+              <input class="form-control" id="txtRecibe" value="`+registro.recibe+`" style="color: #ffffff" disabled>
+              <label for="txtRecibe" style="color: #ffffff">Recibe</label>
             </div>
             <div class="col-sm-4">
-                <input type="date" class="form-control" id="txtFechaRecepcion" value="`+registro.fecha_recepcion+`">
-                <label for="txtFechaRecepcion" style="color: black;"><small style="color: blue">*</small>Fecha de Recepcion</label>
+                <input type="date" class="form-control" id="txtFechaRecepcion" value="`+registro.fecha_recepcion+`" style="color: #ffffff">
+                <label for="txtFechaRecepcion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Recepcion</label>
             </div>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="txtFechaAsignacion" value="`+registro.fecha_asignacion+`">
-              <label for="txtFechaAsignacion" style="color: black;"><small style="color: blue">*</small>Fecha de Asignacion</label>
+              <input type="date" class="form-control" id="txtFechaAsignacion" value="`+registro.fecha_asignacion+`" style="color: #ffffff">
+              <label for="txtFechaAsignacion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Asignacion</label>
             </div>
             <div class="col-sm-4">
-              <input type="date" class="form-control" id="txtFechaReparacion" value="`+registro.fecha_reparacion+`">
-              <label for="txtFechaReparacion" style="color: black;"><small style="color: blue">*</small>Fecha de Reparacion</label>
+              <input type="date" class="form-control" id="txtFechaReparacion" value="`+registro.fecha_reparacion+`" style="color: #ffffff">
+              <label for="txtFechaReparacion" style="color: #ffffff"><small style="color: blue">*</small>Fecha de Reparacion</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtNombre" value="`+registro.nombre+`" disabled>
-              <label for="txtNombre" style="color: black;">Nombre</label>
+              <input class="form-control" id="txtNombre" value="`+registro.nombre+`" disabled style="color: #ffffff">
+              <label for="txtNombre" style="color: #ffffff">Nombre</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtApaterno" value="`+registro.a_paterno+`" disabled>
-              <label for="txtApaterno" style="color: black;">Apellido Paterno</label>
+              <input class="form-control" id="txtApaterno" value="`+registro.a_paterno+`" disabled style="color: #ffffff">
+              <label for="txtApaterno" style="color: #ffffff">Apellido Paterno</label>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="txtAmaterno" value="`+registro.a_materno+`" disabled>
-              <label for="txtAmaterno" style="color: black;">Apellido Materno</label>
+              <input class="form-control" id="txtAmaterno" value="`+registro.a_materno+`" disabled style="color: #ffffff">
+              <label for="txtAmaterno" style="color: #ffffff">Apellido Materno</label>
             </div>
             <div class="col-sm-3">
-              <input class="form-control" id="txtTelefono" value="`+registro.telefono+`" disabled>
-              <label for="txtTelefono" style="color: black;">Teléfono</label>
+              <input class="form-control" id="txtTelefono" value="`+registro.telefono+`" disabled style="color: #ffffff">
+              <label for="txtTelefono" style="color: #ffffff">Teléfono</label>
             </div>
             <div class="col-sm-3">
-              <input class="form-control" id="txtAreaSolicitante" value="`+registro.area_solicitante+`" disabled>
-              <label for="txtAreaSolicitante" style="color: black;">Área Solicitante</label>
+              <input class="form-control" id="txtAreaSolicitante" value="`+registro.area_solicitante+`" disabled style="color: #ffffff">
+              <label for="txtAreaSolicitante" style="color: #ffffff">Área Solicitante</label>
             </div>
             <div class="col-sm-6">
-              <input class="form-control" id="txtUbicacionServicio" value="`+registro.ubicacion_servicio+`" disabled>
-              <label for="txtUbicacionServicio" style="color: black;">Ubicación del Servicio</label>
+              <input class="form-control" id="txtUbicacionServicio" value="`+registro.ubicacion_servicio+`" disabled style="color: #ffffff">
+              <label for="txtUbicacionServicio" style="color: #ffffff">Ubicación del Servicio</label>
             </div>
             <div class="col-sm-12">
-              <hr style="color: black; border: 1px dotted;">
+              <hr style="color: #ffffff; border: 1px dotted;">
             </div>
             <div class="col-sm-6">
-<textarea rows="4" cols="50" id="txtAnotacionExtra" style="background-color: #F7D358;" disabled>`+registro.anotacion_extra+`</textarea>
-              <label for="txtAnotacionExtra" style="color: black;">Anotación extra</label>
+<textarea rows="4" cols="50" id="txtAnotacionExtra"style="background: rgba(0, 8, 10, 0.322); color: #ffffff" disabled>`+registro.anotacion_extra+`</textarea>
+              <label for="txtAnotacionExtra" tyle="color: #ffffff">Anotación extra</label>
             </div>
             <div class="col-sm-6">
-<textarea rows="4" cols="50" id="txtAnotacionExtra" style="background-color: #F7D358;" disabled>`+registro.descripcion_problema+`</textarea>
-              <label for="txtDescripcionProblema" style="color: black;">Descripcion del Problema</label>
+<textarea rows="4" cols="50" id="txtAnotacionExtra" style="background: rgba(0, 8, 10, 0.322); color: #ffffff" disabled>`+registro.descripcion_problema+`</textarea>
+              <label for="txtDescripcionProblema" style="color: #ffffff">Descripcion del Problema</label>
             </div>
             <div class="col-sm-12">
-              <input class="form-control" id="txtDescripcionServicio" value="`+ds+`" disabled>
-              <label for="txtDescripcionServicio" style="color: black;">Descripcion del Servicio</label>
+              <input class="form-control" id="txtDescripcionServicio" value="`+ds+`" disabled tyle="color: #ffffff">
+              <label for="txtDescripcionServicio" style="color: #ffffff">Descripcion del Servicio</label>
             </div>
           `);
         });
@@ -324,11 +324,11 @@ let verReporte = (value,object) => {
           document.getElementById("txtFechaReparacion").disabled = true;
         }
         $("#modal").find(".modal-body").append(`</div><div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
-          <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white;" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
-          <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white;" onclick="busquedaEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
-          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white;"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary" onclick="imprimir()" style="background-color: #00c853; color: white; border-radius: 20px"><i class="fa fa-print" aria-hidden="true"></i> Imprimir Reporte</button>
+          <button type="button" class="btn btn-danger" style="background-color: #f44336; color: white; border-radius: 20px" onclick="cancelarReportem()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar Reporte</button>
+          <button type="button" class="btn btn-secondary" style="background-color: #e65100; color: white; border-radius: 20px" onclick="busquedaEncargado(`+selectedFolio+`)"><i class="fa fa-user" aria-hidden="true"></i> Asignar Encargado</button>
+          <button type="button" class="btn btn-primary" onclick="guardarReporte()" style="background-color: #01579b; color: white; border-radius: 20px"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-default" style="color: #ffffff" data-dismiss="modal">Cerrar</button>
         </div>
         </div>
         </div>

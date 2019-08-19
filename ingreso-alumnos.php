@@ -109,7 +109,7 @@ firebase.initializeApp(config);
 let login = () => {
     let correo = document.getElementById('txtCorreoLogin').value;
     let password = document.getElementById('txtPassword').value;
-    if(/@alumnos.udg.mx\s*$/.test(correo) === true || /@alumno.udg.mx\s*$/.test(correo)){
+    if(/@alumnos.udg.mx\s*$/.test(correo) === true || /@alumno.udg.mx\s*$/.test(correo) || /@gmail.com\s*$/.test(correo)){
       firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
         window.location.replace('validator-alumno.php');
     }).catch(function(error) {

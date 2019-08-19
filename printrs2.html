@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta charset="utf-8">
-    <link rel="icon" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet"
@@ -107,15 +110,13 @@
                             <b><span><small>Lugar (calle y cruces) Frente a (casa,oficina,baldíos,edificios,etc): </small><br/></span></b><span id="lugar"></span>
                         </div>
                     </div>
-                    <div class="col-xs-6" style="border-right: 2px solid black;border-top: 2px solid black; padding: 0; margin: 0; padding: 10%">
-                        <div style="text-align: top; padding: 0%; margin: 0; position: absolute; top: 0">
-                            <b><span>DESCRIBA EL SUCESO: </span></b><br/><span id="descripcionSuceso"></span>
-                        </div>
+                    <div class="col-xs-6" style="border-top: 2px solid black;">
+                        <b><span>Describa el Suceso: </span></b><br/>
+                        <span id="descripcionSuceso" style="height: auto; word-wrap: break-word;"></span>
                     </div>
-                    <div class="col-xs-6" style="border-top: 2px solid black; padding: 0; margin: 0; padding: 10%">
-                        <div style="text-align: top; padding: 0%; margin: 0; position: absolute; top: 0; left: 30%;">
-                            <b><span>Qué le Robó, Dañó, etc: </span></b><br/><span id="tipoRobo"></span>
-                        </div>
+                    <div class="col-xs-6" style="border-top: 2px solid black; border-left: 2px solid black;">
+                        <b><span>Qué le Robó, Dañó, etc: </span></b><br/>
+                        <span id="tipoRobo" style="height: auto; word-wrap: break-word;"></span>
                     </div>
                     <div class="col-xs-12" style="border-top: 2px solid black; padding: 0; margin: 0;">
                         <div style="text-align: center; padding: 0; margin: 0;">
@@ -199,11 +200,10 @@
                         </div>
                     </div>
                     <div class="col-xs-12" style="border-top: 2px solid black; padding: 0; margin: 0;">
-                        <div style="text-align: left; padding: 0; margin: 0;">
-                            <b>OBSERVACIONES</b><br/>
-                            <span id="observaciones"></span>
-                        </div>
+                        <b><span>OBSERVACIONES</span></b><br/>
+                        <span id="observaciones" style="text-align: left; height: auto; word-wrap: break-word;"></span>
                     </div>
+
                 </div>
             </div>
         </div>
