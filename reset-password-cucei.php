@@ -73,6 +73,13 @@ var onloadCallback = function() {
 let regresarIndex = () => {
     window.location.replace('ingreso-cucei.php');
 }
+$(function () {
+    $('#txtCorreoReset').keypress(function (e) {
+        if (e.which == 13) {
+          verifyReCaptcha();
+        }
+    });
+});
 </script>
 </body>
 </html>

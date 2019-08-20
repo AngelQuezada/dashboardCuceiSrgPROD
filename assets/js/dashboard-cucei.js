@@ -528,6 +528,7 @@ let verReporteManten = (value,object) => {
   let cambiarContraseña = () => {
     swal("Escribe tu nueva Contraseña [6 CARACTERES MINIMO]:", {
       content: "input",
+      buttons: ["Cancelar", true]
     })
     .then((passwordNuevo) => {
       if(passwordNuevo.replace(/\s/g,"") == ""){
@@ -572,6 +573,7 @@ let verReporteManten = (value,object) => {
     var codNacional = "+52";
     swal("Escribe tu número celular a 10 dígitos:", {
       content: "input",
+      buttons: ["Cancelar", true]
     })
     .then((celular) => {
       tel = celular;

@@ -151,6 +151,18 @@ let registroPersonal = () => {
     return;
   }
 };
+$(function() {
+  $('#txtPasswordRegistro').keypress(function(e) {
+    if(e.which == 13) {
+      verifyReCaptcha();
+    }
+  });
+  $('#txtCorreoRegistro').keypress(function(e) {
+    if(e.which == 13) {
+      verifyReCaptcha();
+    }
+  });
+});
 </script>
 </body>
 </html>

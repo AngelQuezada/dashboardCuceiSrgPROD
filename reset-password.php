@@ -76,6 +76,13 @@ var onloadCallback = function() {
     'theme' : 'light'
   });
 };
+$(function () {
+    $('#txtCorreoReset').keypress(function (e) {
+        if (e.which == 13) {
+          verifyReCaptcha();
+        }
+    });
+});
 </script>
 </body>
 </html>

@@ -74,6 +74,13 @@ var onloadCallback = function() {
 let regresarIndex = () => {
     window.location.replace('ingreso-alumnos.php');
 }
+$(function () {
+    $('#txtCorreoReset').keypress(function (e) {
+        if (e.which == 13) {
+          verifyReCaptcha();
+        }
+    });
+});
 </script>
 </body>
 </html>

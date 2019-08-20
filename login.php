@@ -85,6 +85,18 @@ var onloadCallback = function() {
 let registrarse = () => {
   window.location.replace(`${URL}/registro.php`);
 }
+window.onload = () => {
+  $('#txtPassword').keypress(function(e) {
+        if(e.which == 13) {
+          verifyReCaptcha();
+        }
+    });
+    $('#txtCorreoLogin').keypress(function(e) {
+        if(e.which == 13) {
+          verifyReCaptcha();
+      }
+  });
+}
 </script>
 </body>
 </html>

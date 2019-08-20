@@ -58,10 +58,4 @@ let resetPassword = () => {
         }
     });
 }
-$(function () {
-    $('#txtCorreoReset').keypress(function (e) {
-        if (e.which == 13) {
-            resetPassword();
-        }
-    });
-});
+

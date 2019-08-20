@@ -59,16 +59,6 @@ let userLogIn = () => {
 */
 $(function() {
   userLogIn();
-    $('#txtPassword').keypress(function(e) {
-        if(e.which == 13) {
-          login();
-        }
-    });
-    $('#txtCorreoLogin').keypress(function(e) {
-        if(e.which == 13) {
-          login();
-      }
-  });
 });
 /*
 * Redirige a la pagina a restablecer contraseña

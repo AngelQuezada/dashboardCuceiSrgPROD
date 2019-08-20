@@ -139,12 +139,12 @@ $(function() {
   userLogIn();
       $('#txtPassword').keypress(function(e) {
           if(e.which == 13) {
-            login();
+            verifyReCaptcha();
           }
       });
       $('#txtCorreoLogin').keypress(function(e) {
           if(e.which == 13) {
-            login();
+            verifyReCaptcha();
         }
     });
   });
