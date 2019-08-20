@@ -3,6 +3,8 @@ var response;
 var response2;
 var response3;
 $(function(){
+  let nombreAcademPersonal = localStorage.getItem("nombreCompleto");
+  document.getElementById("nombreAcademPersonal").innerHTML = nombreAcademPersonal;
     getReportes();
     getReportes2();
     getReportes3();
@@ -501,4 +503,4 @@ let verReporteManten = (value,object) => {
         error: function() {
       }
     });
-  }
+  };

@@ -2,6 +2,8 @@ var URI = localStorage.getItem('uri');
 var response;
 var response2;
 $(function(){
+   let nombreAlumno = localStorage.getItem("nombreCompleto");
+   document.getElementById("nombreAlumno").innerHTML = nombreAlumno;
     getReportesAlumno();
     getReportes2Alumno();
     if(response != 0){
@@ -312,4 +314,4 @@ let verReporte = (value,object) => {
     error: function() {
   }
 });
-}
+};

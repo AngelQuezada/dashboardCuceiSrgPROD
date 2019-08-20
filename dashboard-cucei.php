@@ -42,6 +42,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <h3 class="ser-title" id="nombreAcademPersonal" style="color: white"></h3>
           <h2 class="ser-title" style="color: white">Tus Reportes de Mantenimiento & Seguridad</h2>
           <hr class="botm-line">
         </div>
