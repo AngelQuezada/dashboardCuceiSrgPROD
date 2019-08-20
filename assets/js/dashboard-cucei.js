@@ -1,10 +1,25 @@
 var URI = localStorage.getItem('uri');
+/*
+* Variables de configuracion de Firebase
+*/
+const config = {
+  apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
+  authDomain: "cucei-srg.firebaseapp.com",
+  databaseURL: "https://cucei-srg.firebaseio.com",
+  projectId: "cucei-srg",
+  storageBucket: "cucei-srg.appspot.com",
+  messagingSenderId: "56958534713"
+};
+firebase.initializeApp(config);
 var response;
 var response2;
 var response3;
 $(function(){
-  let nombreAcademPersonal = localStorage.getItem("nombreCompleto");
-  document.getElementById("nombreAcademPersonal").innerHTML = nombreAcademPersonal;
+  let nombreAcademicoPersonal = localStorage.getItem("nombreCompleto");
+  document.getElementById("nombreAcademicoPersonal").innerHTML = nombreAcademicoPersonal;
+  let tel;
+  let telefono = localStorage.getItem("telefono");
+  telefono === 'null' ? tel = 'No hay número registrado' : tel = telefono;
     getReportes();
     getReportes2();
     getReportes3();
@@ -20,7 +35,13 @@ $(function(){
         document.getElementById("divManten").hidden = false;
         tablaReportes3();
     }
+    document.getElementById("correoAcademicoPersonal").innerHTML = localStorage.getItem("email");
+    document.getElementById("celularAcademicoPersonal").innerHTML = tel;
+    document.getElementById('hrefDatos').addEventListener("click", displayMisDatos);
 });
+let displayMisDatos = () => {
+  document.getElementById("misDatos").hidden = false;
+};
 /*
 * Se obtiene la cantidad de registros de reportes de seguridad formato 1
 * @return JSON del response del REST Web Service
@@ -503,4 +524,105 @@ let verReporteManten = (value,object) => {
         error: function() {
       }
     });
+  };
+  let cambiarContraseña = () => {
+    swal("Escribe tu nueva Contraseña [6 CARACTERES MINIMO]:", {
+      content: "input",
+    })
+    .then((passwordNuevo) => {
+      if(passwordNuevo.replace(/\s/g,"") == ""){
+        swal("ACADEMICO & PERSONAL CUCEI-SRG","No se realizó ningun cambio", "info");
+        return;
+      }
+    swal(`Has escrito: ${passwordNuevo}`+' ¿Es Correcto?',{
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+      buttons: {
+        catch: {
+          text: "SI",
+          value: "OK",
+          },
+          no: true,
+        },
+      }).then((value) => {
+      switch (value) {
+        case "OK":
+          let user = firebase.auth().currentUser;
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              user.updatePassword(passwordNuevo).then(function() {
+                swal("ACADEMICO & PERSONAL CUCEI-SRG","Se ha Cambiado la contraseña correctamente.", "success");
+                }).catch(function(error) {
+                swal("ACADEMICO & PERSONAL CUCEI-SRG",`Ha ocurrido un error: ${error.code}`, "error");
+              });
+            } else {
+            }
+          });
+        break;
+        case "no":
+          swal("ACADEMICO & PERSONAL CUCEI-SRG","No se realizó ningun cambio", "info");
+        break;
+      }
+    });
+  });
+  };
+  let cambiarCelular = () => {
+    var tel;
+    var telefono;
+    var codNacional = "+52";
+    swal("Escribe tu número celular a 10 dígitos:", {
+      content: "input",
+    })
+    .then((celular) => {
+      tel = celular;
+      if(celular.replace(/\s/g,"") == ""){
+        swal("ACADEMICO & PERSONAL CUCEI-SRG","No se realizó ningun cambio", "info");
+        return;
+      }
+    swal(`Has escrito: ${celular}`+' ¿Es Correcto?',{
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+      buttons: {
+        catch: {
+          text: "SI",
+          value: "OK",
+          },
+          no: true,
+        },
+      }).then((value) => {
+      switch (value) {
+        case "OK":
+            let token = localStorage.getItem("token");
+            let idUsuario = localStorage.getItem("idUsuario");
+            telefono = codNacional.concat(tel);
+            let datos = {
+              "telefono" : telefono,
+              "token" : token,
+              "idUsuario" : idUsuario
+            }
+          $.ajax({
+            type: 'POST',
+            url: `${URI}/sms/registrarnumerouser`,
+            data: JSON.stringify(datos),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(data){
+              swal("ACADEMICO & PERSONAL CUCEI-SRG", data.mensaje, "success");
+              localStorage.removeItem("telefono");
+              localStorage.setItem("telefono",telefono);
+              $('#celularAcademicoPersonal').empty();
+              $('#celularAcademicoPersonal').append(telefono);
+            },
+            error: function(data) {
+              swal("ACADEMICO & PERSONAL CUCEI-SRG", data.responseJSON.mensaje, "error");
+              return;
+            }
+          });
+        break;
+        case "no":
+          swal("ACADEMICO & PERSONAL CUCEI-SRG","No se realizó ningun cambio", "info");
+        break;
+      }
+    });
+  });
   };

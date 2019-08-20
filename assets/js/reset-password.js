@@ -30,6 +30,7 @@ let resetPassword = () => {
         closeOnClickOutside: false,
         closeOnEsc: false,
         buttons: {
+            cancel: "Cancelar",
             catch: {
                 text: "Restablecer",
                 value: "restablecer",

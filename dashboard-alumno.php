@@ -30,6 +30,7 @@
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li class=""><a href="#reportes">Reportes</a></li>
+                <li class=""><a href="#misDatos" id="hrefDatos">Mis Datos</a></li>
                 <li class=""><a href="logout-alumno.php">Salir</a></li>
               </ul>
             </div>
@@ -62,10 +63,31 @@
       </div>
     </div>
   </section>
-  <!--/ contact-->
+<!-- Mis Datos-->
+  <section id="misDatos" class="section-padding" hidden>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="ser-title" id="nombreAlumno" style="color: white"></h3>
+          <h2 class="ser-title" style="color: white">Mis Datos</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <p style="color: white">Correo Electrónico: <b><span id="correoAlumno"></span></b></p>
+          <p style="color: white">Número Celular: <b><span id="celularAlumno"></span></b></p>
+          <p style="color: white"><small>El uso del número celular es en caso de ser contactado por el área de seguridad interna de CUCEI.</small></p>
+          <button class="btn btn-default btn-flat" onclick="cambiarContraseña();" style="background-color: #00251a; color: white">Cambiar Contraseña</button>
+          <button class="btn btn-default btn-flat" onclick="cambiarCelular();" style="background-color: #00251a; color: white;">Cambiar/Agregar Celular</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Mis Datos-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="assets/js/libs/jquery.easing.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/js/libs/custom.js"></script>
   <script src="assets/js/dashboard-alumno.js"></script>
 </body>
