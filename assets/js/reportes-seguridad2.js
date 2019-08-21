@@ -126,6 +126,7 @@ let nuevoReporteSeguridad2 = () => {
         "metodoHuida" : metodoHuida,
         "observaciones" : observaciones
     }
+    console.log(JSON.stringify(datos));
     $.ajax({
         type: 'POST',
         url: `${URI}/sreporte/nuevors2`,

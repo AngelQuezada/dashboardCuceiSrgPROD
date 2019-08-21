@@ -35,7 +35,7 @@
       <br>
       <div class="row">
         <div class="col-sm-12">
-            <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: black; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
+            <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
             <button id="btnRegistro" class="btn btn-primary btn-block btn-flat" style="color: black; border-radius: 20px" onclick="registrarse()">Registrarse</button>
         </div>
         <div class="col-sm-12">
@@ -104,7 +104,7 @@ firebase.initializeApp(config);
 let login = () => {
     let correo = document.getElementById('txtCorreoLogin').value;
     let password = document.getElementById('txtPassword').value;
-    if(/@cucei.udg.mx\s*$/.test(correo) || /@academicos.udg.mx\s*$/.test(correo) || /@alumnos.udg.mx\s*$/.test(correo) ){
+    if(/@cucei.udg.mx\s*$/.test(correo) || /@academicos.udg.mx\s*$/.test(correo)){
       firebase.auth().signInWithEmailAndPassword(correo, password).then(function(){
         window.location.replace('validator-cucei.php');
     }).catch(function(error) {

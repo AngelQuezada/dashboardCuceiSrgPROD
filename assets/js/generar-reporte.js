@@ -1,6 +1,6 @@
 $(document).ajaxStart(function () {
   Pace.restart();
-})
+});
 var URI = localStorage.getItem('uri');
 
 $(document).ready(function() {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 });
 document.getElementById('btnNuevoReporte').addEventListener('click',function(){
   nuevoReporte();
-})
+});
 /*
 * Limpia los campos del Formulario de Reporte de Mantenimiento
 */
@@ -49,7 +49,7 @@ let cleanReport = () => {
   getModulo();
   getPiso();
   getAula();
-}
+};
 /*
 * Se obtienen los datos de los campos del formulario
 * Se Registra reporte de Mantenimiento
@@ -101,7 +101,7 @@ let nuevoReporte = () => {
     "anotacionExtra" : anotacionExtra,
     "option" : option,
     "descripcionProblema": descripcionProblema
-  }
+  };
   $.ajax({
     type: 'POST',
     url: `${URI}/reporte/nuevo`,
@@ -118,8 +118,7 @@ let nuevoReporte = () => {
       swal("Reporte de Mantenimiento", "Ha ocurrido un error al hacer el registro: "+data.responseJSON.mensaje, "error");
     }
   });
-
-}
+};
 
 let enviarsms = () => {
   $.ajax({
@@ -132,7 +131,7 @@ let enviarsms = () => {
     error: function() {
     }
 });
-}
+};
 
 let notification = () => {
   // Let's check if the browser supports notifications
@@ -144,16 +143,16 @@ let notification = () => {
     // If it's okay let's create a notification
     let notification = new Notification("Se ha enviado un SMS");
   }
-}
+};
 
-  // At last, if the user has denied notifications, and you 
-  // want to be respectful there is no need to bother them any more.
+// At last, if the user has denied notifications, and you 
+// want to be respectful there is no need to bother them any more.
 Notification.requestPermission().then(function (result) {
 }); function spawnNotification(theBody, theIcon, theTitle) {
   var options = {
     body: theBody,
     icon: theIcon
-  }
+  };
   var n = new Notification(theTitle, options);
 }
 /*
@@ -183,7 +182,7 @@ let getModulo = () => {
         }
     });
 });
-}
+};
 /*
 * Se obtiene el listado de Pisos por el modulo Seleccionado
 * @return JSON del response del REST Web Service
@@ -216,7 +215,7 @@ let getPiso = () => {
         $(this).prevAll('option[value="' + this.value + '"]').remove();
       });
   });
-}
+};
 /*
 * Se obtiene el listado de Aulas por el modulo y piso seleccionado
 * @return JSON del response del REST Web Service
@@ -246,7 +245,7 @@ let getAula = () => {
         }
     });
 });
-}
+};
 /*
 *Seteo el campo recibe y lo deshabilito
 */

@@ -26,7 +26,7 @@
       <br>
       <div class="row">
         <div class="col-sm-12">
-          <button id="btnLogin" type="submit" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: black; border-radius: 20px">Siguiente</button>
+          <button id="btnLogin" type="submit" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px">Siguiente</button>
           <button id="btnAtras" type="button" class="btn btn-danger btn-block btn-flat"  style="background-color: #f44336; color: white; border-radius: 20px" onclick="regresar();">Regresar</button>
         </div>
     </form>

@@ -37,11 +37,7 @@ $(function(){
     }
     document.getElementById("correoAcademicoPersonal").innerHTML = localStorage.getItem("email");
     document.getElementById("celularAcademicoPersonal").innerHTML = tel;
-    document.getElementById('hrefDatos').addEventListener("click", displayMisDatos);
 });
-let displayMisDatos = () => {
-  document.getElementById("misDatos").hidden = false;
-};
 /*
 * Se obtiene la cantidad de registros de reportes de seguridad formato 1
 * @return JSON del response del REST Web Service

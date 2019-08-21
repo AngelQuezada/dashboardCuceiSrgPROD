@@ -41,7 +41,7 @@ $correo = $_SESSION['personal'];
       <br>
       <div class="row">
         <div class="col-sm-12">
-          <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: black; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
+          <button id="btnLogin" class="btn btn-primary btn-block btn-flat" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px" onclick="verifyReCaptcha()">Ingresar</button>
         </div>
          <div class="col-sm-12" style="text-align: center">
           <a href="#" style="color: #f44336;" onclick="resetPwPage()" id="btnResetPassword">Recuperar contraseña</a>

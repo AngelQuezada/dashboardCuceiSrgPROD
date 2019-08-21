@@ -64,7 +64,7 @@
     </div>
   </section>
 <!-- Mis Datos-->
-  <section id="misDatos" class="section-padding" hidden>
+  <section id="misDatos" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
