@@ -1,3 +1,6 @@
+$(document).ajaxStart(function () {
+  Pace.restart();
+});
 var URI = localStorage.getItem('uri');
 $(function() {
   getReportesNuevo();
@@ -13,7 +16,7 @@ $(function() {
 */
 let getReportesNuevo = () => {
   let request = new XMLHttpRequest();
-  request.open("GET",`${URI}/reporte/nuevos`,false);
+  request.open("GET",`${URI}/reporte/nuevos`);
   request.onreadystatechange = () => {
     if (request.status !== 200){
       return;
@@ -31,7 +34,7 @@ let getReportesNuevo = () => {
 */
 let getReportesAtender = () => {
   let request = new XMLHttpRequest();
-  request.open("GET",`${URI}/reporte/atender`,false);
+  request.open("GET",`${URI}/reporte/atender`);
   request.onreadystatechange = () => {
     if (request.status !== 200){
       return;
@@ -49,7 +52,7 @@ let getReportesAtender = () => {
 */
 let getReportesFinalizado = () => {
   let request = new XMLHttpRequest();
-  request.open("GET",`${URI}/reporte/finalizado`,false);
+  request.open("GET",`${URI}/reporte/finalizado`);
   request.onreadystatechange = () => {
     if (request.status !== 200){
       document.getElementById("reporteFinalizado").innerHTML = "ERROR";
@@ -68,7 +71,7 @@ let getReportesFinalizado = () => {
 */
 let getReportesCancelado = () => {
   let request = new XMLHttpRequest();
-  request.open("GET",`${URI}/reporte/cancelados`,false);
+  request.open("GET",`${URI}/reporte/cancelados`);
   request.onreadystatechange = () => {
     if (request.status !== 200){
       return;
@@ -85,7 +88,7 @@ let getReportesCancelado = () => {
 */
 let getComunidadRegistrada = () => {
   let request = new XMLHttpRequest();
-  request.open("GET",`${URI}/usuario/totalusuarios`,false);
+  request.open("GET",`${URI}/usuario/totalusuarios`);
   request.onreadystatechange = () => {
     if (request.status !== 200){
       return;
@@ -96,7 +99,3 @@ let getComunidadRegistrada = () => {
   }
   request.send();
 }
-
-$(document).ajaxStart(function () {
-  Pace.restart();
-})

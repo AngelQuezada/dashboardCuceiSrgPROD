@@ -26,9 +26,6 @@ session_destroy();
 <?php
   include('footer.php');
 ?>
-<?php
-  require_once('centinela.php');
-?>
 <script type="text/javascript">
 $(document).ajaxStart(function () {
   Pace.restart();

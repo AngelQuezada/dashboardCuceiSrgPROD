@@ -119,13 +119,13 @@ let validatedEmail = () => {
 * Funcion base donde se realizan las validaciones pertinentes del usuario logeado
 */
 let userLogIn = () => {
-  let existToken = localStorage.getItem("token");
-  let status = localStorage.getItem("status");
-  if(existToken !== null && status === '3') {
-    window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
-  }else if(existToken !== null && status === '6'){
-    window.location.replace(`${_URL_}/dashboard-seguridad.php`);
-  }
+  // let existToken = localStorage.getItem("token");
+  // let status = localStorage.getItem("status");
+  // if(existToken !== null && status === '3') {
+  //   window.location.replace(`${_URL_}/dashboard-mantenimiento.php`);
+  // }else if(existToken !== null && status === '6'){
+  //   window.location.replace(`${_URL_}/dashboard-seguridad.php`);
+  // }
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       let email = user.email;

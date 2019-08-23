@@ -1,4 +1,26 @@
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
 <script type="text/javascript">
+/*
+ * Variables de configuracion de Firebase
+ */
+const config = {
+    apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
+    authDomain: "cucei-srg.firebaseapp.com",
+    databaseURL: "https://cucei-srg.firebaseio.com",
+    projectId: "cucei-srg",
+    storageBucket: "cucei-srg.appspot.com",
+    messagingSenderId: "56958534713"
+};
+firebase.initializeApp(config);
+firebase.auth().onAuthStateChanged(function(user) {
+	if(user) {
+	}else {
+		if(alert("Ha caducado su sesión."));
+		window.location.replace('validator.php');
+		return;
+	}
+});
 /*
 * Funcion donde se valida si existe el localStorage en el navegador
 * Esta cabecera se utiliza en todas las paginas dentro del sistema ADMIN CUCEI-SRG
@@ -11,9 +33,22 @@ let centinela = () => {
 	let uri = localStorage.getItem("uri");
 	let url = localStorage.getItem("url");
 	if (email === null || nombreCompleto === null || token === null || uri === null || url === null ) {
-		window.location.replace(`${URL}/validator.php`);
+		window.location.replace(`${url}/validator.php`);
 		return;
 	}
+	$.ajax({
+    type: "GET",
+    url: `${uri}/personal/islogged/`+idUsuario+'/'+token+'/'+email,
+    dataType: "json",
+    success: function(data){
+		return;
+    },
+    error: function(data) {
+		if(alert(data.responseJSON.mensaje));
+		window.location.replace(`${url}/index.html`);
+		return;
+    }
+  });
 	return;
 }
 /*
