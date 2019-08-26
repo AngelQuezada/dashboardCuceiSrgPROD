@@ -4,7 +4,7 @@
 /*
  * Variables de configuracion de Firebase
  */
-const config = {
+const config3 = {
     apiKey: "AIzaSyA0DEHXIXxm83tCuyo1ywqWYQxDHC-GAzI",
     authDomain: "cucei-srg.firebaseapp.com",
     databaseURL: "https://cucei-srg.firebaseio.com",
@@ -12,10 +12,12 @@ const config = {
     storageBucket: "cucei-srg.appspot.com",
     messagingSenderId: "56958534713"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config3);
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user) {
+		console.log("Estas logeado");
 	}else {
+		console.log("No estas logeado");
 		if(alert("Ha caducado su sesión."));
 		window.location.replace('validator.php');
 		return;

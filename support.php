@@ -59,7 +59,7 @@ if (!isset($_SESSION['personal'])){
             </div>
             <div style="text-align: center">
                 <div class="row">
-                    <div class="input-field col-sm-5">
+                    <div class="input-field col-sm-12">
                         <div class="box box-solid box-success">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Manual de Usuario</h3>
@@ -69,19 +69,6 @@ if (!isset($_SESSION['personal'])){
                             </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col-sm-5">
-                        <div class="box box-solid box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Manual Técnico</h3>
-                            </div>
-                            <div class="box-body">
-                                <button class="btn btn-primary" onclick="manualTecnico()" style="background-color: #64dd17; color: black;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar</button>                            
-                            </div>
-                    </div>
-                </div>
-            </div>
-
     	</section>
     </div>
     <?php
@@ -94,9 +81,6 @@ if (!isset($_SESSION['personal'])){
 <script>
 let manualUsuario = () => {
     swal("ADMIN CUCEI-SRG", "Disponible Próximamente.", "info");    
-}
-let manualTecnico = () => {
-    swal("ADMIN CUCEI-SRG", "Disponible Próximamente.", "info");
 }
 let messageEmail = () =>{
     window.open('mailto:firebase.cuceisrg001@gmail.com?Subject=Agregue un Asunto', '_blank');

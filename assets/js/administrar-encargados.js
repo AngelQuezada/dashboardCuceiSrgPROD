@@ -63,21 +63,21 @@ let buscarEncargado = () => {
         $("#tablaEncargado").empty();
         $("#tablaEncargado").append(`<div class="row">
 	    <div class="input-field col-sm-12">
-            <div class="box box-solid box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Listado de Encargados</h3>
+            <div class="box box-solid box-default">
+                <div class="box-header with-border" style="background: #000000">
+                    <h3 class="box-title" style="color: #f5f5f5">Listado de Encargados</h3>
                 </div>
-			    <div class="box-body">
-        <br><table class='table table-bordered table-hover'>
+			    <div class="box-body" style="background: #212121">
+        <br><table class='table table-bordered'>
         <thead>
-        <tr class='bg-primary' style="background-color: #ff9100">
-        <th>id</th>
-        <th>Nombre</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
+        <tr class='bg-primary' style="background: #000000">
+        <th style="color: #f5f5f5">id</th>
+        <th style="color: #f5f5f5">Nombre</th>
+        <th style="color: #f5f5f5">Apellido Paterno</th>
+        <th style="color: #f5f5f5">Apellido Materno</th>
         </tr>
         </thead>
-        <tbody id="bodyTable">`);
+        <tbody id="bodyTable" style="background: #212121">`);
         $.ajax({
             type: "GET",
             url: `${URI}/encargado/encargados`,
@@ -87,10 +87,10 @@ let buscarEncargado = () => {
                 $("#bodyTable").append(`
                 <tr style="text-align: center">
                 <input type="hidden" id="id" value="`+registro.id+`"/>
-                <td>`+registro.id+`</td>
-                <td>`+registro.nombre+`</td>
-                <td>`+registro.a_paterno+`</td>
-                <td>`+registro.a_materno+`</td>
+                <td style="color: #f5f5f5">`+registro.id+`</td>
+                <td style="color: #f5f5f5">`+registro.nombre+`</td>
+                <td style="color: #f5f5f5">`+registro.a_paterno+`</td>
+                <td style="color: #f5f5f5">`+registro.a_materno+`</td>
                 </tr>
                 `);
               });
@@ -108,21 +108,21 @@ let buscarEncargado = () => {
         $("#tablaEncargado").empty();
         $("#tablaEncargado").append(`<div class="row">
 	    <div class="input-field col-sm-12">
-            <div class="box box-solid box-warning">
+            <div class="box box-solid box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Encargados</h3>
                 </div>
 			    <div class="box-body">
         <br><table class='table table-bordered table-hover' id="tablaEncargados">
         <thead>
-        <tr class='bg-primary' style="background-color: #ff9100">
-        <th>id</th>
-        <th>Nombre</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
+        <tr class='bg-primary' style="background: #000000">
+        <th style="color: #f5f5f5">id</th>
+        <th style="color: #f5f5f5">Nombre</th>
+        <th style="color: #f5f5f5">Apellido Paterno</th>
+        <th style="color: #f5f5f5">Apellido Materno</th>
         </tr>
         </thead>
-        <tbody id="bodyTable">`);
+        <tbody id="bodyTable" style="background: #212121">`);
         $.ajax({
             type: "GET",
             url: `${URI}/encargado/buscaencargado/`+aPaterno+'/'+aMaterno+'/'+nombre,
@@ -132,10 +132,10 @@ let buscarEncargado = () => {
                 $("#bodyTable").append(`
                 <tr style="text-align: center">
                 <input type="hidden" id="id" value="`+registro.id+`"/>
-                <td>`+registro.id+`</td>
-                <td>`+registro.nombre+`</td>
-                <td>`+registro.a_paterno+`</td>
-                <td>`+registro.a_materno+`</td>
+                <td style="color: #f5f5f5">`+registro.id+`</td>
+                <td style="color: #f5f5f5">`+registro.nombre+`</td>
+                <td style="color: #f5f5f5">`+registro.a_paterno+`</td>
+                <td style="color: #f5f5f5">`+registro.a_materno+`</td>
                 </tr>
                 `);
               });

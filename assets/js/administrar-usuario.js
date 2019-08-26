@@ -3,6 +3,7 @@ var URI = localStorage.getItem('uri');
 
 let bajaUsuario = () => {
     let correo = document.getElementById('txtCorreoBaja').value;
+    let motivo = document.getElementById('txtMotivoBaja').value;
     let token = localStorage.getItem("token");
     let idUsuario = localStorage.getItem("idUsuario");
     if (correo.replace(/\s/g, "") == "") {
@@ -11,9 +12,10 @@ let bajaUsuario = () => {
     }
     let datos = {
         "correo": correo,
+        "motivo": motivo,
         "token": token,
         "idUsuario": idUsuario
-    }
+    };
     swal(`¿Está seguro de dar de baja el correo: ${correo}?`, {
         icon: 'info',
         title: 'ADMIN CUCEI-SRG',
@@ -38,10 +40,12 @@ let bajaUsuario = () => {
                     success: function (data) {
                         swal("ADMIN CUCEI-SRG", data.mensaje, "info");
                         $("#txtCorreoBaja").val('');
+                        $("#txtMotivoBaja").val('');
                     },
                     error: function (data) {
                         swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
                         $("#txtCorreoBaja").val('');
+                        $("#txtMotivoBaja").val('');
                         return;
                     }
                 });

@@ -43,17 +43,17 @@ if (!isset($_SESSION['personal'])){
         <label for="recibe" style="color: #f5f5f5;">Recibe</label>
       </div>
       <div class="col-sm-3">
-        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="email@dominio.udg.mx" style="color: #f5f5f5;" required>
+        <input class="form-control" id="correo" type="email" class="validate" name="correo" placeholder="Correo Electrónico del Usuario" style="color: #f5f5f5;" required>
         <span style="color: crimson;" ng-show="formulario.correo.$touched && formulario.correo.$invalid">Email es requerido.<br/></span>
         <label for="correo" style="color: #f5f5f5;"><small style="color: red">*</small>Correo</label>
       </div>
       <div class="col-sm-2">
-        <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" placeholder="3312345678" style="color: #f5f5f5;" required>
+        <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" placeholder="Teléfono" style="color: #f5f5f5;" required>
         <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Teléfono es requerido.<br/></span>
         <label for="telefono" style="color: #f5f5f5;"><small style="color: red">*</small>Teléfono de contacto</label>
       </div>
       <div class="input-field col-sm-3">
-        <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" placeholder="Área" style="color: #f5f5f5;" required>
+        <input class="form-control" id="area" type="text" class="validate" name="area" ng-model="area" placeholder="Área Solicitante" style="color: #f5f5f5;" required>
         <span style="color: crimson;" ng-show="formulario.area.$touched && formulario.area.$invalid">Área es requerido.<br/></span>
         <label for="area" style="color: #f5f5f5;"><small style="color: red">*</small>Área solicitante</label>
       </div>
@@ -163,7 +163,7 @@ if (!isset($_SESSION['personal'])){
         </fieldset>
       </div>
       <div class="col-sm-12" id="divButton">
-        <button class="btn btn-primary btn-block btn-flat" id="btnNuevoReporte" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px; background-color: #00b248">REGISTRAR REPORTE DE MANTENIMIENTO
+        <button class="btn btn-primary btn-block btn-flat" id="btnNuevoReporte" ng-disabled="formulario.$invalid" style="color: white; border-radius: 20px; background-color: #00b248">REGISTRAR NUEVO REPORTE DE MANTENIMIENTO
         </button>
       </div>
     </form>

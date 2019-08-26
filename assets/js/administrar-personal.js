@@ -36,7 +36,6 @@ const config2 = {
     "correo" : email,
     "rol" : option
   };
-  console.log(JSON.stringify(datos));
   secondaryAcc.auth().createUserWithEmailAndPassword(email,password).then(function(){
     let user = secondaryAcc.auth().currentUser;
       user.sendEmailVerification().then(function(){
@@ -71,6 +70,35 @@ const config2 = {
     let errorMessage = error.message;
     $('#txtCorreo').val('');
     $('#txtPassword').val('');
+    $('#txtNombreAlta').val('');
+    $('#txtApellidoPaterno').val('');
+    $('#txtApellidoMaterno').val('');
+    $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
+    $.ajax({
+      type: 'POST',
+      url: `${URI}/personal/nuevopersonal`,
+      data: JSON.stringify(datos),
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      success: function(){
+        $('#txtCorreo').val('');
+        $('#txtPassword').val('');
+        $('#txtNombreAlta').val('');
+        $('#txtApellidoPaterno').val('');
+        $('#txtApellidoMaterno').val('');
+        $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
+        swal("ADMIN CUCEI-SRG", "La cuenta se ha dado de alta correctamente, se ha enviado un correo de confirmación", "success");
+      },
+      error: function() {
+        $('#txtCorreo').val('');
+        $('#txtPassword').val('');
+        $('#txtNombreAlta').val('');
+        $('#txtApellidoPaterno').val('');
+        $('#txtApellidoMaterno').val('');
+        $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
+        swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
+      }
+    });
     if (errorCode == 'auth/invalid-email' && errorMessage == 'The email address is badly formatted.') {
       swal("¡Oops!", "El correo electronico es invalido", "error");
       return;
@@ -85,14 +113,39 @@ const config2 = {
     }
     if (errorCode == 'auth/email-already-in-use' && errorMessage == 'The email address is already in use by another account.') {
       swal("¡Oops!", "El correo electronico ya esta registrado en el sistema", "error");
-      return;
+      $.ajax({
+        type: 'POST',
+        url: `${URI}/personal/nuevopersonal`,
+        data: JSON.stringify(datos),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function(){
+          $('#txtCorreo').val('');
+          $('#txtPassword').val('');
+          $('#txtNombreAlta').val('');
+          $('#txtApellidoPaterno').val('');
+          $('#txtApellidoMaterno').val('');
+          $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
+          swal("ADMIN CUCEI-SRG", "Se ha dado de alta en el sistema.", "success");
+        },
+        error: function() {
+          $('#txtCorreo').val('');
+          $('#txtPassword').val('');
+          $('#txtNombreAlta').val('');
+          $('#txtApellidoPaterno').val('');
+          $('#txtApellidoMaterno').val('');
+          $('input:radio[name=rolAlta]').each(function () { $(this).prop('checked', false); });
+          swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
+        }
+      });
     }
   });
 };
 let bajaPersonal = () =>{
   let correo = document.getElementById('txtCorreoBaja').value;
+  let motivo = document.getElementById('txtMotivo').value;
   let token = localStorage.getItem("token");
-	let idUsuario = localStorage.getItem("idUsuario");
+  let idUsuario = localStorage.getItem("idUsuario");
   let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!regex.test(correo)) {
     swal("Reporte de Mantenimiento", "Correo electrónico no valido", "error");
@@ -100,6 +153,7 @@ let bajaPersonal = () =>{
   }
   let datos = {
     "correo" : correo,
+    "motivo" : motivo,
     "token" : token,
     "idUsuario" : idUsuario
   }
@@ -127,10 +181,12 @@ let bajaPersonal = () =>{
           success: function(data){
             swal("ADMIN CUCEI-SRG", data.mensaje, "info");
             $("#txtCorreoBaja").val('');
+            $("#txtMotivo").val('');
           },
           error: function(data) {
             swal("ADMIN CUCEI-SRG", data.responseJSON.mensaje, "error");
             $("#txtCorreoBaja").val('');
+            $("#txtMotivo").val('');
             return;
           }
         });
@@ -286,15 +342,29 @@ let cambiarContraseña = () => {
     }).then((value) => {
     switch (value) {
       case "OK":
-        let user = firebase.auth().currentUser;
+        let user1 = firebase.auth().currentUser;
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             user.updatePassword(passwordNuevo).then(function() {
               swal("ADMIN CUCEI-SRG","Se ha Cambiado la contraseña correctamente.", "success");
               }).catch(function(error) {
-              swal("ADMIN CUCEI-SRG",`Ha ocurrido un error: ${error.code}`, "error");
+                  let errorCode = error.code;
+                  let errorMessage = error.message;
+                  if (errorCode == 'auth/requires-recent-login' && errorMessage == 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.') {
+                    swal("¡Oops!", "Compruebe su Conexión a Internet.", "error");
+                    return;
+                  }
+                  if (errorCode == 'auth/requires-recent-login' && errorMessage == 'This operation is sensitive and requires recent authentication. Log in again before retrying this request.') {
+                    swal("¡Oops!", "Para cambiar su contraseña, por seguridad debe iniciar sesión de nuevo para comprobar que es usted.", "error");
+                    return;
+                  }
+                  if (errorCode == 'auth/weak-password' && errorMessage == 'Password should be at least 6 characters') {
+                    swal("La contraseña debe tener mínimo 6 caractéres", "error");
+                    return;
+                  }
             });
           } else {
+            window.location.replace('logout.php');
           }
         });
       break;
@@ -329,8 +399,12 @@ let asignarRolPersonal = () => {
     dataType: 'json',
     success: function (data) {
       swal("ADMIN CUCEI-SRG", data.mensaje, "success");
+      $('#txtCorreoPersonal').val('');
+      $('input:radio[name=rol]').each(function () { $(this).prop('checked', false); });
     },
     error: function (data) {
+      $('#txtCorreoPersonal').val('');
+      $('input:radio[name=rol]').each(function () { $(this).prop('checked', false); });
       swal("ADMIN CUCEI-SRG", "Ha ocurrido un error: " + data.responseJSON.mensaje, "error");
     }
   });

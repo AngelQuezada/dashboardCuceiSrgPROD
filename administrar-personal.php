@@ -51,17 +51,17 @@ if (!isset($_SESSION['personal'])){
             </div>
                 <div class="row">
                     <div class="col-sm-6" id="divAltaPersonal" data-toggle="modal" data-target="#modalAltaPersonal">
-                        <h2>Dar de Alta Nuevo Personal</h2>
+                        <h2>Alta Nuevo Personal/SS</h2>
                     </div>
                     <div class="col-sm-6" id="divBajaPersonal" data-toggle="modal" data-target="#modalBajaPersonal">
-                        <h2>Dar de Baja Personal</h2>
+                        <h2>Baja Prestadores Servicio Social</h2>
                     </div>
                     <br/>
                     <div class="col-sm-12" id="divHabilitarPersonal" data-toggle="modal" data-target="#modalHabilitarPersonal">
-                        <h2>Habilitar Personal dado de Baja</h2>
+                        <h2>Habilitar Personal dado de Baja/SS</h2>
                     </div>
                     <div class="col-sm-6" id="divAsignarRol" data-toggle="modal" data-target="#modalRolPersonal">
-                        <h2>Asignar Roles de Personal</h2>
+                        <h2>Asignar Roles de Personal/SS</h2>
                     </div>
                     <div class="col-sm-6" id="divConsultaDatosP" data-toggle="modal" data-target="#modalConsultarUsuarioActual" onclick="datosPersonales()">
                         <h2>Consultar Mis Datos Personales</h2>
@@ -178,9 +178,14 @@ if (!isset($_SESSION['personal'])){
                     <form autocomplete="off" name="formularioBaja" required>
                         <h5 id="hAlertaBajaPersonal"><b>Cuidado:</b> <i>El usuario dado de baja <b>NO</b> podrá acceder al sistema hasta que sea habilitado nuevamente.</i></h5>
                         <div class="form-group" style="margin: 0px">
-                            <label for="txtCorreoBaja" id="txtCorreoBaja" style="color: blue">Ingresa el Correo Electrónico</label>
+                            <label for="txtCorreoBaja" style="color: blue">Ingresa el Correo Electrónico</label>
                             <input type="email" class="form-control" placeholder="Ingresa el Correo Electrónico" id="txtCorreoBaja" name="txtCorreoBaja" ng-model="txtCorreoBaja" ng-minlength="5" required>
                             <span style="color: crimson;" ng-show="formularioBaja.txtCorreoBaja.$touched && formularioBaja.txtCorreoBaja.$invalid">Correo es requerido.<br/></span>
+                        </div>
+                        <div class="form-group" style="margin: 0px">
+                            <label for="txtMotivo" style="color: blue">Ingrese el Motivo de Baja</label>
+                            <input type="text" class="form-control" placeholder="Ingresa el Motivo" id="txtMotivo" name="txtMotivo" ng-model="txtMotivo" ng-minlength="5" required>
+                            <span style="color: crimson;" ng-show="formularioBaja.txtMotivo.$touched && formularioBaja.txtMotivo.$invalid">Motivo es requerido.<br/></span>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
