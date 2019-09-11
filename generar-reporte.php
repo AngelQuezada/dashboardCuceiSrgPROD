@@ -48,7 +48,7 @@ if (!isset($_SESSION['personal'])){
         <label for="correo" style="color: #f5f5f5;"><small style="color: red">*</small>Correo</label>
       </div>
       <div class="col-sm-2">
-        <input type="tel" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="10" pattern="[0-9]{10}" ng-model="telefono" placeholder="Teléfono" style="color: #f5f5f5;" required>
+        <input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" minlength="3" ng-model="telefono" placeholder="Teléfono" style="color: #f5f5f5;" required>
         <span style="color: crimson;" ng-show="formulario.telefono.$touched && formulario.telefono.$invalid">Teléfono es requerido.<br/></span>
         <label for="telefono" style="color: #f5f5f5;"><small style="color: red">*</small>Teléfono de contacto</label>
       </div>
